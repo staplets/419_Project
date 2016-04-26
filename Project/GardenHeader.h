@@ -8,7 +8,7 @@
 *	This file is the header file for garden objects.
 *
 ******************************/
-/*
+
 //define header
 #ifndef GardenHeader_h
 #define GardenHeader_h
@@ -27,19 +27,21 @@ class Dog
 private:
 
 protected://protected member variables.
-     std::string color;
-     int doors;
-     std::string model;
-     std::string wineBottle;
+     std::string type;
+     std::string description;
+     bool treat;
+     std::string bark;
+     std::string sap;
 
 public:
      //default constructor
      Dog()
      {
-          this->color = "Silver";
-          this->doors = 2;
-          this->model = "Porsche";
-          this->wineBottle = "Wine Bottle of Beaujolais";
+          this->type = "Black lab";
+          this->description = "Older in age with grey hair highlighting his eyebrows and mouth.";
+          this->treat = false;
+          this->bark = "\nRuff Ruff!";
+          this->sap = "Hydrangea Plant Sap";
 
      }
 
@@ -49,28 +51,34 @@ public:
 
 
      //member function to output information provided of each item
-     void carInformation();
+     void dogInformation();
 
      //member function to get into the trunk
-     void openTrunk(std::unordered_map<std::string, std::string>& inv);
+     void dogInteract(std::unordered_map<std::string, std::string>& inv);
+
+     void giveTreat(std::unordered_map<std::string, std::string>& inv);
 
      //Accessor Functions for accessing private variables.
-     std::string getColor() const;
+     std::string getType() const;
 
-     int getDoors() const;
+     std::string getDescription() const;
 
-     std::string getModel() const;
+     bool getTreat() const;
 
-     std::string getWineBottle() const;
+     std::string getBark() const;
+
+     std::string getSap() const;
 
      //Mutator Functions to change private variables.
-     void setColor(const std::string theType);
+     void setType(const std::string theType);
 
-     void setDoors(const int theDoors);
+     void setDescription(const std::string theDescription);
 
-     void setModel(const std::string theModel);
+     void setTreat(const bool theTreat);
 
-     void setWineBottle(const std::string theWineBottle);
+     void setBark(const std::string theBark);
+
+     void setSap(const std::string theSap);
 
 };
 
@@ -83,20 +91,24 @@ protected://protected member variables.
      std::string knowMurderer;
      std::string doingTonight;
      int age;
-     std::string wife;
      std::string jobDescription;
      std::string description;
+     std::string confession;
+     std::string confessionTwo;
+     std::string confessionThree;
 
 public:
      //default constructor
      MsWolf()
      {
-          this->knowMurderer = "\nSir, I haven't a clue what those yuppies do in there. You should leave my wife out of this too because she doesn't get mixed up with their kind.";
-          this->doingTonight = "\nI've been up to my usual routine clipping these bushes here and keeping the plants watered.";
-          this->age = 55;
-          this->wife = "Eleanor";
-          this->jobDescription = "\nI work here with my wife around the place doing landscaping while she takes care of the inside of the house.";
-          this->description = "Middle aged white male. About 6'1. Brown hair. Torn jeans at the knees, a dirty green shirt and leathery skin from the sun's rays.";
+          this->knowMurderer = "\nI cannot say unfortunately. Tonight was a terrible tragedy. My fiance's child was lost and we are grieving.";
+          this->doingTonight = "\nWe were having a lovely dinner party with friends. I was cherishing my time with my beloved Robert and friends!";
+          this->age = 45;
+          this->jobDescription = "\nMy job is to spend time with George and give him all the love he can take. He's getting up there in years you know.";
+          this->description = "A middle aged Italian female. About 5'9. Long dark hair. A black dress with piercing blue eyes.";
+          this->confession = "Alright I confess! Everything simply went wrong tonight! \n\nThe inheritance was going to be mine until George grew a conscience and decided that he was going to give all the money to Willie!\n\n";
+          this->confessionTwo = "Willie is not a golden boy you know. He was in on this with me to take care of George! \n\nI couldn't let him know that the arrangements had changed or he would have left me out of the money.\n\n";
+          this->confessionThree = "We purchased the grapes and wine while in France and once we were happily married, George was going to take one fatal sip \n\nof the wine with poisonous sap, however I had to take care of Willie before George made the new will official!\"\n\n";
 
      }
 
@@ -109,7 +121,7 @@ public:
      void personInformation(std::unordered_map<std::string, std::string>& inventory);
 
      //member function to get into the trunk
-     void conversate(std::unordered_map<std::string, std::string>& inventory);
+     int conversate(std::unordered_map<std::string, std::string>& inventory);
 
      //Accessor Functions for accessing private variables.
      std::string getKnowMurderer() const;
@@ -118,11 +130,15 @@ public:
 
      int getAge() const;
 
-     std::string getWife() const;
-
      std::string getJobDescription() const;
 
      std::string getDescription() const;
+
+     std::string getConfession() const;
+
+     std::string getConfessionTwo() const;
+
+     std::string getConfessionThree() const;
 
      //Mutator Functions to change private variables.
      void setKnowMurderer(const std::string theKnowMurderer);
@@ -131,11 +147,15 @@ public:
 
      void setAge(const int theAge);
 
-     void setWife(const std::string theWife);
-
      void setJobDescription(const std::string theJobDescription);
 
      void setDescription(const std::string theDescription);
+
+     void setConfession(const std::string theConfession);
+
+     void setConfessionTwo(const std::string theConfessionTwo);
+
+     void setConfessionThree(const std::string theConfessionThree);
 
 };
 
@@ -143,4 +163,3 @@ public:
 int gardenNavigate(std::unordered_map<std::string, std::string>& inventory);
 
 #endif
-*/

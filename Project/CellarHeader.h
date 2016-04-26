@@ -36,7 +36,7 @@ public:
      {
           this->material = "Mahogany Cedar";
           this->numDrawers = 4;
-          this->dogTreat = "dog treat";
+          this->dogTreat = "dog treats";
 
      }
 

@@ -128,7 +128,7 @@ public:
 };
 
 
-//navigation function to handle game play while the player is in the driveway
+//navigation function to handle game play while the player is in the foyer
 int foyerNavigate(std::unordered_map<std::string, std::string>& inventory);
 
 #endif

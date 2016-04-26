@@ -199,7 +199,7 @@ void FishBowl::fishConvo(std::unordered_map<std::string, std::string>& inventory
           {
                if (retry > 0)
                {
-                    std::cout << "\n\nPlease select a number between 1 and 6 for questioning: \n\n";
+                    std::cout << "\n\nPlease select a number between 1 and 4: \n\n";
                }
                else{
                     if (firstTime != 0){
@@ -294,7 +294,7 @@ int foyerNavigate(std::unordered_map<std::string, std::string>& inventory){
           "Sherlock is in the Foyer of the Mansion.\n\nLooking around, there is a coat closet you may want to take a look at (Enter \"1\").\n\n" <<
           "There is also a fishbowl on a stand you may examine more closely (Enter \"2\").\n\n" <<
           "You may enter the Dining Room (Enter \"3\")\n\nYou may enter the Sitting Room (Enter \"4\").\n\n" <<
-          "You may enter the Kitchen (Enter \"5\").\n\nYou may go Upstairs (Enter \"6\").\n\n" <<
+          "You may enter the Kitchen (Enter \"5\").\n\nYou may go Upstairs to the Hallway (Enter \"6\").\n\n" <<
           "You may go outside to the driveway (Enter \"7\").\n\n"
           "Check your inventory of items ( Enter \"8\").\n\n" <<
           "What would you like to do? Choose a number between 1 and 8.";
@@ -326,7 +326,7 @@ int foyerNavigate(std::unordered_map<std::string, std::string>& inventory){
                               "Sherlock is in the Foyer of the Mansion.\n\nLooking around, there is a coat closet you may want to take a look at (Enter \"1\").\n\n" <<
                               "There is also a fishbowl on a stand you may examine more closely (Enter \"2\").\n\n" <<
                               "You may enter the Dining Room (Enter \"3\")\n\nYou may enter the Sitting Room (Enter \"4\").\n\n" <<
-                              "You may enter the Kitchen (Enter \"5\").\n\nYou may go Upstairs (Enter \"6\").\n\n" <<
+                              "You may enter the Kitchen (Enter \"5\").\n\nYou may go Upstairs into the Hallway (Enter \"6\").\n\n" <<
                               "You may go back outside to the driveway (Enter \"7\").\n\n"
                               "Check your inventory of items ( Enter \"8\").\n\n" <<
                               "What would you like to do? Choose a number between 1 and 8.";

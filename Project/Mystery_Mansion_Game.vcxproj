@@ -79,21 +79,31 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BilliardsHeader.h" />
     <ClInclude Include="CellarHeader.h" />
+    <ClInclude Include="DeckHeader.h" />
     <ClInclude Include="DrivewayHeader.h" />
     <ClInclude Include="FoyerHeader.h" />
     <ClInclude Include="GardenHeader.h" />
+    <ClInclude Include="HallwayHeader.h" />
     <ClInclude Include="KitchenHeader.h" />
+    <ClInclude Include="SittingHeader.h" />
+    <ClInclude Include="SmokingHeader.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BilliardsSource.cpp" />
     <ClCompile Include="CellarSource.cpp" />
+    <ClCompile Include="DeckSource.cpp" />
     <ClCompile Include="DrivewaySource.cpp" />
     <ClCompile Include="FoyerSource.cpp" />
     <ClCompile Include="GardenSource.cpp" />
+    <ClCompile Include="HallwaySource.cpp" />
     <ClCompile Include="KitchenSource.cpp" />
     <ClCompile Include="Mystery_Mansion_Game.cpp" />
+    <ClCompile Include="SittingSource.cpp" />
+    <ClCompile Include="SmokingSource.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

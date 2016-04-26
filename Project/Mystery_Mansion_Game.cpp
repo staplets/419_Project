@@ -1,7 +1,7 @@
 /***********************************************************
 * Author:					Shaun Stapleton
 * Date Created:			4/11/16
-* Last Modification Date:	4/13/16
+* Last Modification Date:	4/24/16
 * Filename:				Mystery_Mansion.cpp
 *
 * Overview:
@@ -41,6 +41,36 @@
 #ifndef CellarHeader_h
 #define CellarHeader_h
 #include "CellarHeader.h"
+#endif
+
+#ifndef GardenHeader_h
+#define GardenHeader_h
+#include "GardenHeader.h"
+#endif
+
+#ifndef DeckHeader_h
+#define DeckHeader_h
+#include "DeckHeader.h"
+#endif
+
+#ifndef BilliardsHeader_h
+#define BilliardsHeader_h
+#include "BilliardsHeader.h"
+#endif
+
+#ifndef HallwayHeader_h
+#define HallwayHeader_h
+#include "HallwayHeader.h"
+#endif
+
+#ifndef SmokingHeader_h
+#define SmokingHeader_h
+#include "SmokingHeader.h"
+#endif
+
+#ifndef SittingHeader_h
+#define SittingHeader_h
+#include "SittingHeader.h"
 #endif
 
 #include "stdafx.h"
@@ -107,7 +137,7 @@ void gameIntro(){
           "Sherlock pulled up in his Monte Carlo and got out at the end of the driveway for he knew that anywhere he looked,\n" <<
           "there could be evidence that would need to be heavily scrutinized.\n" <<
           "As he approached the large brick archways that led to the front doors of the mansion, a man stepped out of the front door\n" <<
-          "who called himself Mr. Glass. Mr. Glass was an elderly gentleman in his 80's, who appeared visibly upset, however he was\n" <<
+          "who called himself George Glass. Mr. Glass was an elderly gentleman in his 80's, who appeared visibly upset, however he was\n" <<
           "fighting back the tears.\n\nMr Glass explained \"I was having friends over for a dinner party this evening\n" <<
           "and toight a terrible tragedy has occured. One of my guests staying here for the evening was found lifeless in one\n" <<
           "of the bedrooms.\"\n\nHe continued \"Oh my, it was my son Willie Cunningham. He and I had been estranged for some time\n" <<
@@ -144,7 +174,9 @@ void playRooms(){
      //myVector.push_back(theCar.getModel());
      //std::cout << "inventory is: " << myVector[0] << "\n";
 
-//     inventory_Map.insert({ "knife", theCar.getModel() });
+     //testing!!
+     //inventory_Map.insert({ "confession", "the confession" });
+     //inventory_Map.insert({ "revolver", "the gun" });
 
 //     std::cout << "map shows: " << inventory_Map["knife"] << " with a size of: " << inventory_Map.size() << "\n";
 
@@ -173,9 +205,7 @@ void playRooms(){
                break;
           case 3:
                //Navigate the Garden
-               std::cout << "Under construction!" << " choice was: " << returnedNavChoice << "\n\n";
-               gameOver = true;
-               //returnedNavChoice = gardenNavigate(inventory_Map);
+               returnedNavChoice = gardenNavigate(inventory_Map);
                break;
           case 4:
                //Navigate the Study
@@ -185,21 +215,14 @@ void playRooms(){
                break;
           case 5:
                //Navigate the Sitting Room
-               std::cout << "Under construction!" << " choice was: " << returnedNavChoice << "\n\n";
-               gameOver = true;
-               //returnedNavChoice = sittingRoomNavigate(inventory_Map);
+               returnedNavChoice = sittingNavigate(inventory_Map);
                break;
           case 6:
                //Navigate the Smoking Room
-               std::cout << "Under construction!" << " choice was: " << returnedNavChoice << "\n\n";
-               gameOver = true;
-               //returnedNavChoice = smokingRoomNavigate(inventory_Map);
+               returnedNavChoice = smokingRoomNavigate(inventory_Map);
                break;
           case 7:
-               //Navigate the Billiards Room
-               std::cout << "Under construction!" << " choice was: " << returnedNavChoice << "\n\n";
-               gameOver = true;
-               //returnedNavChoice = billiardsRoomNavigate(inventory_Map);
+               returnedNavChoice = billiardsNavigate(inventory_Map);
                break;
           case 8:
                //Navigate the Dining Room
@@ -229,15 +252,11 @@ void playRooms(){
                break;
           case 13:
                //Navigate the Deck
-               std::cout << "Under construction!" << " choice was: " << returnedNavChoice << "\n\n";
-               gameOver = true;
-               //returnedNavChoice = deckNavigate(inventory_Map);
+               returnedNavChoice = deckNavigate(inventory_Map);
                break;
           case 14:
                //Navigate the Hallway
-               std::cout << "Under construction!" << " choice was: " << returnedNavChoice << "\n\n";
-               gameOver = true;
-               //returnedNavChoice = hallwayNavigate(inventory_Map);
+               returnedNavChoice = hallwayNavigate(inventory_Map);
                break;
           case 15:
                //Navigate the Bedroom
