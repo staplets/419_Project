@@ -31,6 +31,7 @@
 
 void inspectCellarObj(std::string objName, std::unordered_map<std::string, std::string>& inventory)
 {
+	//initialize objects
 	Dresser dresser;
 	Box box;
 
@@ -66,7 +67,6 @@ int movePlayerFromCellar(std::string location)
 		//change choice to reflect our room mapping and update move
 		intChoice = 9;
 	}
-
 	return intChoice;
 }
 
@@ -377,7 +377,7 @@ int cellarNavigate(std::unordered_map<std::string, std::string>& inventory){
 			if (retry > 0)
 			{
 				std::cout << "retry is " << retry << std::endl;
-				std::cout << "\n\nPlease select an option to navigate: \n\n";
+				std::cout << "\n\nPlease enter an option to navigate: \n\n";
 			}
 			else{
 				if (firstTime != 0){
@@ -394,39 +394,39 @@ int cellarNavigate(std::unordered_map<std::string, std::string>& inventory){
 			}
 			std::cout << std::endl << std::endl;
 			//Take input for program choice.
-			std::getline (std::cin, choice);
+			std::getline(std::cin, choice);
 			//std::cout << choice << std::endl;
 			while (!std::cin)
 			{
 				std::cin.clear();
 				std::cin.ignore(255, '\n');
-				std::cout << "\n\nPlease enter a choice : \n\n";
+				std::cout << "\n\nPlease enter a valid option (Check dresser, Open box, Garden, Kitchen or Check inventory) : \n\n";
 				std::getline(std::cin, choice);
 			}
 			retry++;
 			firstTime++;
 
-		} while ((choice.compare("Check dresser") != 0) && (choice.compare("Open box") != 0) && (choice.compare("Garden") != 0) && (choice.compare("Kitchen") != 0) && (choice.compare("Check inventory") != 0));
+		} while ((choice.compare("Check dresser") != 0) && (choice.compare("Open box") != 0) &&
+			(choice.compare("Garden") != 0) && (choice.compare("Kitchen") != 0) && (choice.compare("Check inventory") != 0));
 
 
 		//take users choice and interact based on that
-			
+
 		if (choice.compare("Garden") == 0 || choice.compare("Kitchen") == 0) {
 			intChoice = movePlayerFromCellar(choice);
 			move = true;
-			
+
 		}
 		else if (choice.compare("Check inventory") == 0) {
-				std::cout << "\n\nInventory contains: \n\n";
-				int c = 1;
-				for (auto it = inventory.begin(); it != inventory.end(); ++it){
-					std::cout << c << ": " << it->second << "\n";
-					c++;
-				}
-				break;
+			std::cout << "\n\nInventory contains: \n\n";
+			int c = 1;
+			for (auto it = inventory.begin(); it != inventory.end(); ++it){
+				std::cout << c << ": " << it->second << "\n";
+				c++;
+			}
 		}
 		else {
-				inspectCellarObj(choice, inventory);
+			inspectCellarObj(choice, inventory);
 		}
 
 	} while (!move);

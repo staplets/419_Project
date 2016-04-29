@@ -1,5 +1,5 @@
 /***********************************************************
-* Author:					Shaun Stapleton
+* Author:					Shaun Stapleton, Robyn Lin
 * Date Created:			4/18/16
 * Last Modification Date:	4/18/16
 * Filename:				KitchenSource.cpp
@@ -31,9 +31,9 @@
 
 void inspectKitchenObj(std::string objName, std::unordered_map<std::string, std::string>& inventory)
 {
+	//initialize objects
 	KnifeBlock knifeBlock;
 	Refrigerator refrigerator;
-	int intChoice;
 
 	if (objName.compare("Check knife block") == 0) { //if object is knife block
 		knifeBlock.checkKnifeBlock(inventory);
@@ -417,7 +417,7 @@ int kitchenNavigate(std::unordered_map<std::string, std::string>& inventory){
 			{
 				std::cin.clear();
 				std::cin.ignore(255, '\n');
-				std::cout << "\n\nPlease enter a choice : \n\n";
+				std::cout << "\n\nPlease enter a valid option (Check knife block, Open refrigerator, Dining room, Cellar, Smoking room, Deck, Foyer, or Check inventory) : \n\n";
 				std::getline(std::cin, choice);
 			}
 			retry++;
@@ -431,9 +431,8 @@ int kitchenNavigate(std::unordered_map<std::string, std::string>& inventory){
 		//take users choice and interact based on that
 		if (choice.compare("Dining room") == 0 || choice.compare("Cellar") == 0 || choice.compare("Smoking room") == 0 ||
 			choice.compare("Deck") == 0 || choice.compare("Foyer") == 0) {
-				intChoice = movePlayerFromKitchen(choice);
-				move = true;
-				break;
+			intChoice = movePlayerFromKitchen(choice);
+			move = true;
 		}
 		else if (choice.compare("Check inventory") == 0) {
 			std::cout << "\n\nInventory contains: \n\n";
@@ -442,7 +441,6 @@ int kitchenNavigate(std::unordered_map<std::string, std::string>& inventory){
 				std::cout << c << ": " << it->second << "\n";
 				c++;
 			}
-			break;
 		}
 		else {
 			inspectKitchenObj(choice, inventory);

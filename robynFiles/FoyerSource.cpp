@@ -31,11 +31,13 @@
 
 void inspectFoyerObj(std::string objName, std::unordered_map<std::string, std::string>& inventory)
 {
+	//initialize objects
 	CoatCloset Closet;
 	FishBowl fishBowl;
+
 	std::string ans;
 
-	if (objName.compare("Check closet") == 0) { //if object is dresser
+	if (objName.compare("Check closet") == 0) { //if object is closet
 		Closet.closetInformation(inventory);
 		std::cout << "\nWould you like to check the coats?\n\n";
 
@@ -384,7 +386,7 @@ int foyerNavigate(std::unordered_map<std::string, std::string>& inventory){
 		{
 			if (retry > 0)
 			{
-				std::cout << "\n\nPlease select an option to navigate : \n\n";
+				std::cout << "\n\nPlease enter an option to navigate : \n\n";
 			}
 			else{
 				if (firstTime != 0){
@@ -409,13 +411,13 @@ int foyerNavigate(std::unordered_map<std::string, std::string>& inventory){
 			{
 				std::cin.clear();
 				std::cin.ignore(255, '\n');
-				std::cout << "\n\nPlease enter a choice : \n\n";
+				std::cout << "\n\nPlease enter a valid option (Check closet, Examine fishbowl, Dining room, Sitting room, Kitchen, Upstairs, Driveway or Check inventory) : \n\n";
 				std::getline(std::cin, choice);
 			}
 			retry++;
 			firstTime++;
 
-		} while ((choice.compare("Check closet") != 0) && (choice.compare("Examine fishbowl") != 0) && (choice.compare("Dining room") != 0) 
+		} while ((choice.compare("Check closet") != 0) && (choice.compare("Examine fishbowl") != 0) && (choice.compare("Dining room") != 0)
 			&& (choice.compare("Sitting room") != 0) && (choice.compare("Kitchen") != 0) && (choice.compare("Upstairs") != 0)
 			&& (choice.compare("Driveway") != 0) && (choice.compare("Check inventory") != 0));
 
@@ -433,7 +435,6 @@ int foyerNavigate(std::unordered_map<std::string, std::string>& inventory){
 				std::cout << c << ": " << it->second << "\n";
 				c++;
 			}
-			break;
 		}
 		else {
 			inspectFoyerObj(choice, inventory);
