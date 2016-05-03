@@ -35,12 +35,6 @@ void RecliningChair::checkRecliningChair(std::unordered_map<std::string, std::st
      //user input var
      std::string ans;
 
-     //initialize random seed
-     srand((unsigned int)time(NULL));
-
-     //get random number between 1 and 3 to time a smack on the spider
-     int catchSpider = rand() % 3 + 1;
-
      //formatting
      std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
 
@@ -58,7 +52,7 @@ void RecliningChair::checkRecliningChair(std::unordered_map<std::string, std::st
 
           std::cout << "\nSherlock notices a " << getPipe() << " on the recliner, which catches his eye.\n\n";
 
-          std::cout << "Would you like to add the " << getPipe() << " to your inventory?\n\n";
+          std::cout << "\nWould you like to add the " << getPipe() << " to your inventory?\n\n";
 
           //check user input
           do
@@ -193,7 +187,7 @@ void Painting::checkPainting(std::unordered_map<std::string, std::string>& inv){
           }
           else{
                //user decides not to pull forward painting
-               std::cout << "\nOkay, Sherlock leave the painting as is.\n\n";
+               std::cout << "\nOkay, Sherlock leaves the painting as is.\n\n";
           }
 
      }

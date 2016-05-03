@@ -117,7 +117,7 @@ void Couch::checkCouch(std::unordered_map<std::string, std::string>& inv)
                {
                     if (retry > 0)
                     {
-                         std::cout << "\n\nPlease select a number between 1 and 4: \n\n";
+                         std::cout << "\n\nPlease select a number between 1 and 3: \n\n";
                     }
                     else{
                          if (firstTime != 0){
@@ -333,6 +333,7 @@ void MrsDeeds::secretRoom(std::unordered_map<std::string, std::string>& inventor
                std::cout << mrsDeeds.roomTwo << "\n\n";
                //collect note for inventory
                inventory.insert({ "secret note", getSecretNote() });
+               std::cout << "\n\nSherlock notes this in his notepad.\n\n";
           }
      }
      else{
@@ -367,8 +368,8 @@ void MrsDeeds::conversate(std::unordered_map<std::string, std::string>& inventor
                "What have you been doing tonight? (Enter \"1\").\n\n" <<
                "Do you know who the murderer may be? (Enter \"2\").\n\n" <<
                "What's your age? (Enter \"3\") \n\n" <<
-               "What do you do around here for work? (Enter \"4\").\n\n" <<
-               "Is there anything else you can tell me? (Enter \"5\".\n\n" <<
+               "What do you do for work? (Enter \"4\").\n\n" <<
+               "Is there anything else you can tell me? (Enter \"5\").\n\n" <<
                "Finished questioning her (Enter \"6\")\n\n" <<
                "Check your inventory of items (Enter \"7\").\n\n" <<
                "Choose a number between 1 and 7.";
@@ -395,8 +396,8 @@ void MrsDeeds::conversate(std::unordered_map<std::string, std::string>& inventor
                                    "What have you been doing tonight? (Enter \"1\").\n\n" <<
                                    "Do you know who the murderer may be? (Enter \"2\").\n\n" <<
                                    "What's your age? (Enter \"3\") \n\n" <<
-                                   "What do you do around here for work? (Enter \"4\").\n\n" <<
-                                   "Is there anything else you can tell me? (Enter \"5\".\n\n" <<
+                                   "What do you do for work? (Enter \"4\").\n\n" <<
+                                   "Is there anything else you can tell me? (Enter \"5\").\n\n" <<
                                    "Finished questioning her (Enter \"6\")\n\n" <<
                                    "Check your inventory of items (Enter \"7\").\n\n" <<
                                    "Choose a number between 1 and 7.";

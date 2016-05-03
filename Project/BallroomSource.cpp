@@ -1,7 +1,7 @@
 /***********************************************************
 * Author:					Shaun Stapleton
 * Date Created:			4/25/16
-* Last Modification Date:	4/25/16
+* Last Modification Date:	4/26/16
 * Filename:				BallroomSource.cpp
 *
 * Overview:
@@ -25,13 +25,76 @@
 #include <cstdlib>
 #include <stack>
 #include <unordered_map>
+//included for playing piano functionality
+#include <chrono>
+#include <thread>
 
 //include ballroom header
 #include "BallroomHeader.h"
 
-//member function to get into the trunk of Pool Table
-void PoolTable::checkTable(std::unordered_map<std::string, std::string>& inv)
+//member function for piano
+void Piano::playPiano()
 {
+     std::string ans;
+
+     do{
+          //Ascii art taken from: http://www.ascii-code.com/ascii-art/music/musical-notation.php and modified
+          //logic to imitate sherlock sleeping for three seconds
+          std::this_thread::sleep_for(std::chrono::seconds(1));
+          std::cout << "\n\n" <<
+                       "      |~~~~~~~~~~~~~|\n" <<
+                       "      |~~~~~~~~~~~~~|\n" <<
+                       "   __ |          __ |\n" <<
+                       "  /~~\\|         /~~\\|\n" <<
+                       "  \\__/          \\__/  \n\n\n\n";
+
+          std::this_thread::sleep_for(std::chrono::seconds(1));
+          std::cout << "\n\n" <<
+                       "      |~~~~~~~~~~~~~|\n" <<
+                       "      |~~~~~~~~~~~~~|\n" <<
+                       "   __ |          __ |\n" <<
+                       "  /~~\\|         /~~\\|\n" <<
+                       "  \\__/          \\__/  \n\n\n\n";
+
+          std::this_thread::sleep_for(std::chrono::seconds(1));
+          std::cout << "\n\n" <<
+                       "      |~~~~~~~~~~~~~|\n" <<
+                       "      |~~~~~~~~~~~~~|\n" <<
+                       "   __ |          __ |\n" <<
+                       "  /~~\\|         /~~\\|\n" <<
+                       "  \\__/          \\__/  \n\n\n\n";
+
+          std::cout << "\nWould you like to continue playing piano?\n\n";
+
+          //check user input
+          do
+          {
+               std::cout << "\n\nPlease choose 'y' or 'n' to continue: \n\n";
+               std::cout << std::endl << std::endl;
+               std::cin >> ans;
+
+               while (!std::cin)
+               {
+                    std::cin.clear();
+                    std::cin.ignore(255, '\n');
+                    std::cin >> ans;
+               }
+
+               //clear input stream
+               std::cin.clear();
+               std::cin.ignore(255, '\n');
+
+          } while (ans != "y" && ans != "n");
+
+     } while (ans != "n");
+}
+
+//member function for Piano
+void Piano::checkPiano(std::unordered_map<std::string, std::string>& inv)
+{
+     //initialize the couch object
+     Piano piano;
+     int firstTime = 0;
      //user input var
      std::string ans;
      int checkInventory = 0;
@@ -40,196 +103,229 @@ void PoolTable::checkTable(std::unordered_map<std::string, std::string>& inv)
      std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
 
      //coat closet info
-     std::cout << "\n\nThe Pool Table\n\n\n\n";
+     std::cout << "\n\nThe Piano\n\n\n\n";
 
-     std::cout << "\nFrom closer inspection of the pool table, Sherlock notes it as: " << getDescription() << "\n\n";
+     std::cout << "\nFrom closer inspection of the piano, Sherlock notes it as: " << getDescription() << "\n\n";
 
-     //check if pool ball is already in inventory
-     auto search = inv.find("pool ball");
+
+     //check if knife is already in inventory
+     auto search = inv.find("music notes");
      if (search != inv.end()){
-          checkInventory = 1;
+          
+          //set up navigation
+          std::cout << "Sherlock has already grabbed the " << getNotes() << ", but he could still play a little piano.\n\n" <<
+               "What would you like to do? \n\n" <<
+               "Play piano? (Enter \"1\") \n\n" <<
+               "Done with piano? (Enter \"2\")\n\n" <<
+               "Check your inventory of items ( Enter \"3\").\n\n" <<
+               "Choose a number between 1 and 3.";
+
+          //choice from player
+          int choice = 0;
+          int retry = 0;
+
+          //inspect the room
+          do{
+
+               //navigation choice
+               choice = 0;
+               retry = 0;
+
+               do
+               {
+                    if (retry > 0)
+                    {
+                         std::cout << "\n\nPlease select a number between 1 and 3: \n\n";
+                    }
+                    else{
+                         if (firstTime != 0){
+                              //formatting
+                              std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
+
+                              std::cout << "\n\nThe Piano\n\n\n\n" <<
+                                   "Sherlock has already grabbed the " << getNotes() << ", but he could still play a little piano.\n\n" <<
+                                   "What would you like to do? \n\n" <<
+                                   "Play piano? (Enter \"1\") \n\n" <<
+                                   "Done with piano? (Enter \"2\")\n\n" <<
+                                   "Check your inventory of items ( Enter \"3\").\n\n" <<
+                                   "Choose a number between 1 and 3.";
+                         }
+                    }
+                    std::cout << std::endl << std::endl;
+                    //Take input for program choice.
+                    std::cin >> choice;
+
+                    while (!std::cin)
+                    {
+                         std::cin.clear();
+                         std::cin.ignore(255, '\n');
+                         std::cout << "\n\nPlease enter a choice : \n\n";
+                         std::cin >> choice;
+                    }
+                    retry++;
+                    firstTime++;
+
+               } while (choice < 1 || choice > 3);
+
+
+               //navigate based on choice
+               switch (choice){
+               case 1:
+                    //call function to play piano
+                    piano.playPiano();
+                    std::cout << "\n\nSherlock finishes his masterpiece and feels accomplished!\n\n";
+                    break;
+               case 2:
+                    std::cout << "\nSherlock moves away from the piano.\n\n";
+                    break;
+               case 3:
+                    std::cout << "\n\nInventory contains: \n\n";
+                    int c = 1;
+                    for (auto it = inv.begin(); it != inv.end(); ++it){
+                         std::cout << c << ": " << it->second << "\n";
+                         c++;
+                    }
+                    break;
+               }
+
+          } while (choice != 2);
      }
+     else{
 
-     //check if pool stick is already in inventory
-     search = inv.find("pool stick");
-     if (search != inv.end()){
-          //if stick found and ball found
-          if (checkInventory == 1){
-               checkInventory = 2;
-          }
-          //if pie found but steak not found
-          else if (checkInventory == 0){
-               checkInventory = 3;
-          }
+          //set up navigation
+          std::cout << "\nThe piano has some beautiful art work on the side, and there are " << getNotes() << " on top of it that interest him.\n\n" <<
+               "What would you like to do? \n\n" <<
+               "Look at music notes? (Enter \"1\").\n\n" <<
+               "Play the piano? (Enter \"2\") \n\n" <<
+               "Done with piano? (Enter \"3\")\n\n" <<
+               "Check your inventory of items ( Enter \"4\").\n\n" <<
+               "Choose a number between 1 and 4.";
 
-     }
+          //choice from player
+          int choice = 0;
+          int retry = 0;
 
-     //handle output to user based on whether the ball or stick are on the table
-     switch (checkInventory){
-     case 0: // stick and ball not in user inventory
-          //output choices
-          std::cout << "Sherlock takes note of a " << getBall() << " and the " << getStick() << " and wonders if they would be worthwhile evidence.\n\n";
+          //inspect the couch
+          do{
 
-          //check to add ball to inventory
-          std::cout << "Would you like to add a " << getBall() << " to your inventory?\n\n";
+               //navigation choice
+               choice = 0;
+               retry = 0;
 
-          //check user input
-          do
-          {
-               std::cout << "\n\nPlease choose 'y' or 'n' to continue: \n\n";
-               std::cout << std::endl << std::endl;
-               std::cin >> ans;
-
-               while (!std::cin)
+               do
                {
-                    std::cin.clear();
-                    std::cin.ignore(255, '\n');
-                    std::cin >> ans;
+                    if (retry > 0)
+                    {
+                         std::cout << "\n\nPlease select a number between 1 and 4: \n\n";
+                    }
+                    else{
+                         if (firstTime != 0){
+                              //formatting
+                              std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
+
+                              std::cout << "\n\nThe Piano\n\n\n\n" <<
+                                   "\nThe piano has some beautiful art work on the side, and there are " << getNotes() << " on top of it that interest him.\n\n" <<
+                                   "What would you like to do? \n\n" <<
+                                   "Look at music notes? (Enter \"1\").\n\n" <<
+                                   "Play the piano? (Enter \"2\") \n\n" <<
+                                   "Done with piano? (Enter \"3\")\n\n" <<
+                                   "Check your inventory of items ( Enter \"4\").\n\n" <<
+                                   "Choose a number between 1 and 4.";
+                         }
+                    }
+                    std::cout << std::endl << std::endl;
+                    //Take input for program choice.
+                    std::cin >> choice;
+
+                    while (!std::cin)
+                    {
+                         std::cin.clear();
+                         std::cin.ignore(255, '\n');
+                         std::cout << "\n\nPlease enter a choice : \n\n";
+                         std::cin >> choice;
+                    }
+                    retry++;
+                    firstTime++;
+
+               } while (choice < 1 || choice > 4);
+
+
+               //output responses from Mr Whtie
+               switch (choice){
+               case 1:
+                    std::cout << "\nSherlock sees that the " << getNotes() << " are for a few songs by Beethoven.\n\n";
+
+                    std::cout << "Would you like to add the " << getNotes() << " to your inventory?\n\n";
+
+                    //check user input
+                    do
+                    {
+                         std::cout << "\n\nPlease choose 'y' or 'n' to continue: \n\n";
+                         std::cout << std::endl << std::endl;
+                         std::cin >> ans;
+
+                         while (!std::cin)
+                         {
+                              std::cin.clear();
+                              std::cin.ignore(255, '\n');
+                              std::cin >> ans;
+                         }
+
+                         //clear input stream
+                         std::cin.clear();
+                         std::cin.ignore(255, '\n');
+
+                    } while (ans != "y" && ans != "n");
+
+                    if (ans == "y"){
+                         inv.insert({ "music notes", getNotes() });
+                         std::cout << "\nOkay, " << getNotes() << " added to inventory.\n\n";
+                         //change choice to go back out to room loop
+                         choice = 3;
+                    }
+                    else{
+                         std::cout << "\nOkay, " << getNotes() << " not added to inventory.\n\n";
+                    }
+                    break;
+               case 2:
+                    //call function to play piano
+                    piano.playPiano();
+                    std::cout << "\n\nSherlock finishes his masterpiece and feels accomplished!\n\n";
+                    break;
+               case 3:
+                    std::cout << "\nSherlock moves away from the piano.\n\n";
+                    break;
+               case 4:
+                    std::cout << "\n\nInventory contains: \n\n";
+                    int c = 1;
+                    for (auto it = inv.begin(); it != inv.end(); ++it){
+                         std::cout << c << ": " << it->second << "\n";
+                         c++;
+                    }
+                    break;
                }
 
-               //clear input stream
-               std::cin.clear();
-               std::cin.ignore(255, '\n');
-
-          } while (ans != "y" && ans != "n");
-
-          if (ans == "y"){
-               inv.insert({ "pool ball", getBall() });
-               std::cout << "\nOkay, " << getBall() << " added to inventory.\n\n";
-          }
-          else{
-               std::cout << "\nOkay, " << getBall() << " not added to inventory.\n\n";
-          }
-
-          //check to add stick to inventory
-          std::cout << "Would you like to add a " << getStick() << " to your inventory?\n\n";
-
-          //check user input
-          do
-          {
-               std::cout << "\n\nPlease choose 'y' or 'n' to continue: \n\n";
-               std::cout << std::endl << std::endl;
-               std::cin >> ans;
-
-               while (!std::cin)
-               {
-                    std::cin.clear();
-                    std::cin.ignore(255, '\n');
-                    std::cin >> ans;
-               }
-
-               //clear input stream
-               std::cin.clear();
-               std::cin.ignore(255, '\n');
-
-          } while (ans != "y" && ans != "n");
-
-          if (ans == "y"){
-               inv.insert({ "pool stick", getStick() });
-               std::cout << "\nOkay, " << getStick() << " added to inventory.\n\n";
-          }
-          else{
-               std::cout << "\nOkay, " << getStick() << " not added to inventory.\n\n";
-          }
-
-          break;
-     case 1: //only ball in user inventory
-          //output choices
-          std::cout << "Sherlock takes note of the " << getStick() << ", since he already grabbed a pool ball and wonders if it would be worthwhile evidence.\n\n";
-
-          std::cout << "Would you like to add a " << getStick() << " to your inventory?\n\n";
-
-          //check user input
-          do
-          {
-               std::cout << "\n\nPlease choose 'y' or 'n' to continue: \n\n";
-               std::cout << std::endl << std::endl;
-               std::cin >> ans;
-
-               while (!std::cin)
-               {
-                    std::cin.clear();
-                    std::cin.ignore(255, '\n');
-                    std::cin >> ans;
-               }
-
-               //clear input stream
-               std::cin.clear();
-               std::cin.ignore(255, '\n');
-
-          } while (ans != "y" && ans != "n");
-
-          if (ans == "y"){
-               inv.insert({ "pool stick", getStick() });
-               std::cout << "\nOkay, " << getStick() << " added to inventory.\n\n";
-          }
-          else{
-               std::cout << "\nOkay, " << getStick() << " not added to inventory.\n\n";
-          }
-          break;
-     case 2: // stick and ball in user inventory
-          //output choices
-          std::cout << "There are still a few pool balls on the pool table and a stick, but Sherlock has already collected a stick and ball and is content.\n\n";
-          break;
-     case 3: // stick found but not ball in user inventory
-          //output choices
-          std::cout << "Sherlock takes note of the " << getBall() << ", since he already grabbed a " << getStick() << " and wonders if it would be worthwhile evidence.\n\n";
-
-          std::cout << "Would you like to add a " << getBall() << " to your inventory?\n\n";
-
-          //check user input
-          do
-          {
-               std::cout << "\n\nPlease choose 'y' or 'n' to continue: \n\n";
-               std::cout << std::endl << std::endl;
-               std::cin >> ans;
-
-               while (!std::cin)
-               {
-                    std::cin.clear();
-                    std::cin.ignore(255, '\n');
-                    std::cin >> ans;
-               }
-
-               //clear input stream
-               std::cin.clear();
-               std::cin.ignore(255, '\n');
-
-          } while (ans != "y" && ans != "n");
-
-          if (ans == "y"){
-               inv.insert({ "pool ball", getBall() });
-               std::cout << "\nOkay, " << getBall() << " added to inventory.\n\n";
-          }
-          else{
-               std::cout << "\nOkay, " << getBall() << " not added to inventory.\n\n";
-          }
-          break;
+          } while (choice != 3);
      }
 
 }
 
-//Accessor Functions for accessing private variables in CoatCloset.
-std::string PoolTable::getDescription() const { return description; }
+//Accessor Functions for accessing private variables in Piano.
+std::string Piano::getDescription() const { return description; }
 
-std::string PoolTable::getBall() const { return ball; }
-
-std::string PoolTable::getStick() const { return stick; }
+std::string Piano::getNotes() const { return notes; }
 
 //Mutator Functions to change private variables.
-void PoolTable::setDescription(const std::string theDescription){ description = theDescription; }
+void Piano::setDescription(const std::string theDescription){ description = theDescription; }
 
-void PoolTable::setBall(const std::string theBall){ ball = theBall; }
-
-void PoolTable::setStick(const std::string theStick){ stick = theStick; }
-
+void Piano::setNotes(const std::string theNotes){ notes = theNotes; }
 
 
 //member function to output information provided of each item
-void CoffeeTable::checkCoffeeTable(std::unordered_map<std::string, std::string>& inv){
+void Bar::checkBar(std::unordered_map<std::string, std::string>& inv){
 
-     //initialize the fish bowl object
-     CoffeeTable coffeeTable;
+     //initialize the bar object
+     Bar bar;
      int firstTime = 0;
      //user input var
      std::string ans;
@@ -239,21 +335,15 @@ void CoffeeTable::checkCoffeeTable(std::unordered_map<std::string, std::string>&
      std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
 
      //Game Intro
-     std::cout << "\n\nThe Coffee Table\n\n\n\n";
+     std::cout << "\n\nThe Bar\n\n\n\n";
 
      //coffee table info
-     std::cout << "\nWalking over to the coffee table, Sherlock notes: " << getDescription() << "\n\n";
+     std::cout << "\nWalking over to the bar, Sherlock notes: " << getDescription() << "\n\n";
 
-     //check if knife is already in inventory
-     auto search = inv.find("brochure");
-     if (search != inv.end()){
-          std::cout << "\nThe table has a Life magazine, but Sherlock already grabbed the " << getBrochure() << " that interested him.\n\n";
-     }
-     else{
+     if (getNumDrinks() < 3){
+          std::cout << "\nOn top of the bar there is a bottle of " << getAlcohol() << ". Sherlock doesn't see anything else out of place, but he always enjoys a drink.\n\n";
 
-          std::cout << "\nThe table has a copy of Life magazine and a " << getBrochure() << ", which catches his eye.\n\n";
-
-          std::cout << "Would you like to add the brochure to your inventory?\n\n";
+          std::cout << "Would you like to have a drink of " << getAlcohol() << "?\n\n";
 
           //check user input
           do
@@ -276,26 +366,39 @@ void CoffeeTable::checkCoffeeTable(std::unordered_map<std::string, std::string>&
           } while (ans != "y" && ans != "n");
 
           if (ans == "y"){
-               inv.insert({ "brochure", getBrochure() });
-               std::cout << "\nOkay, " << getBrochure() << " added to inventory.\n\n";
+               int amount = getNumDrinks();
+               setNumDrinks(amount + 1);
+
+               std::cout << "\nOkay, That's " << getNumDrinks() << " drink(s) for Sherlock. Don't go overboard or he may need to have a water!\n\n";
           }
           else{
-               std::cout << "\nOkay, " << getBrochure() << " not added to inventory.\n\n";
+               std::cout << "\nOkay, Sherlock has had" << getNumDrinks() << " drink(s).\n\n";
           }
+     }
+     else
+     {
+          std::cout << "\nOn top of the bar there is a bottle of " << getAlcohol() << ". Sherlock has had " << getNumDrinks() << " drink(s) already and needs a water.\n\n";
+          std::cout << "That brings down his consumption count one drink.\n\n";
+          int amount = getNumDrinks();
+          setNumDrinks(amount - 1);
      }
 
 }
 
 
-//Accessor Functions for accessing private variables in CoffeeTable.
-std::string CoffeeTable::getBrochure() const { return brochure; }
+//Accessor Functions for accessing private variables in Bar.
+std::string Bar::getAlcohol() const { return alcohol; }
 
-std::string CoffeeTable::getDescription() const { return description; }
+std::string Bar::getDescription() const { return description; }
+
+int Bar::getNumDrinks() const { return numDrinks; }
 
 //Mutator Functions to change private variables.
-void CoffeeTable::setBrochure(const std::string theBrochure){ brochure = theBrochure; }
+void Bar::setAlcohol(const std::string theAlcohol){ alcohol = theAlcohol; }
 
-void CoffeeTable::setDescription(const std::string theDescription){ description = theDescription; }
+void Bar::setDescription(const std::string theDescription){ description = theDescription; }
+
+void Bar::setNumDrinks(const int theNumDrinks){ numDrinks = theNumDrinks; }
 
 //navigation function to handle game play while the player is in the billiards room
 int ballroomNavigate(std::unordered_map<std::string, std::string>& inventory){
@@ -305,20 +408,22 @@ int ballroomNavigate(std::unordered_map<std::string, std::string>& inventory){
      int firstTime = 0;
 
      //intialize objects
-     PoolTable poolTable;
-     CoffeeTable coffeeTable;
+     Piano piano;
+     Bar bar;
 
      //formatting
      std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
 
      //Game Intro
      std::cout << "\n\nThe Ballroom\n\n\n\n" <<
-          "Sherlock is in the Ballroom.\n\nLooking around, he sees a Pool Table in the center of the room and in the corner of the room there is a coffee table.\n\nLook at Pool Table? (Enter \"1\").\n\n" <<
-          "Go over to look at Coffee Table? (Enter \"2\").\n\n" <<
-          "You may go to the Deck outside (Enter \"3\")\n\nYou may go into the Study (Enter \"4\").\n\n" <<
-          "You may walk into the Smoking Room (Enter \"5\")\n\nYou may go into the Ballroom (Enter \"6\").\n\n" <<
-          "Check your inventory of items ( Enter \"7\").\n\n" <<
-          "What would you like to do? Choose a number between 1 and 7.";
+          "Sherlock is in the Ballroom.\n\nLooking around, he sees a Piano in the center of the room and along the side of the room, there is a Bar.\n\n" <<
+          "Examine the Piano? (Enter \"1\").\n\n" <<
+          "Go over to look at the Bar? (Enter \"2\").\n\n" <<
+          "You may go into the Billiards Room (Enter \"3\")\n\n" <<
+          "You may go into the Library (Enter \"4\").\n\n" <<
+          "You may walk into the Sitting Room (Enter \"5\")\n\n" <<
+          "Check your inventory of items ( Enter \"6\").\n\n" <<
+          "What would you like to do? Choose a number between 1 and 6.";
 
      //choice from player
      int choice = 0;
@@ -336,20 +441,22 @@ int ballroomNavigate(std::unordered_map<std::string, std::string>& inventory){
           {
                if (retry > 0)
                {
-                    std::cout << "\n\nPlease select a number between 1 and 7 to navigate: \n\n";
+                    std::cout << "\n\nPlease select a number between 1 and 6 to navigate: \n\n";
                }
                else{
                     if (firstTime != 0){
                          //formatting
                          std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
 
-                         std::cout << "\n\nThe Billiards Room\n\n\n\n" <<
-                              "Sherlock is in the Billiards Room.\n\nLooking around, he sees a Pool Table in the center of the room and in the corner of the room there is a coffee table.\n\nLook at Pool Table? (Enter \"1\").\n\n" <<
-                              "Go over to look at Coffee Table? (Enter \"2\").\n\n" <<
-                              "You may go to the Deck outside (Enter \"3\")\n\nYou may go into the Study (Enter \"4\").\n\n" <<
-                              "You may walk into the Smoking Room (Enter \"5\")\n\nYou may go into the Ballroom (Enter \"6\").\n\n" <<
-                              "Check your inventory of items ( Enter \"7\").\n\n" <<
-                              "What would you like to do? Choose a number between 1 and 7.";
+                         std::cout << "\n\nThe Ballroom\n\n\n\n" <<
+                              "Sherlock is in the Ballroom.\n\nLooking around, he sees a Piano in the center of the room and along the side of the room, there is a Bar.\n\n" <<
+                              "Examine the Piano? (Enter \"1\").\n\n" <<
+                              "Go over to look at the Bar? (Enter \"2\").\n\n" <<
+                              "You may go into the Billiards Room (Enter \"3\")\n\n" <<
+                              "You may go into the Library (Enter \"4\").\n\n" <<
+                              "You may walk into the Sitting Room (Enter \"5\")\n\n" <<
+                              "Check your inventory of items ( Enter \"6\").\n\n" <<
+                              "What would you like to do? Choose a number between 1 and 6.";
                     }
                }
                std::cout << std::endl << std::endl;
@@ -366,42 +473,36 @@ int ballroomNavigate(std::unordered_map<std::string, std::string>& inventory){
                retry++;
                firstTime++;
 
-          } while (choice < 1 || choice > 7);
+          } while (choice < 1 || choice > 6);
 
 
           //take users choice and interact based on that
           switch (choice){
           case 1:
-               poolTable.checkTable(inventory);
+               piano.checkPiano(inventory);
                break;
           case 2:
-               coffeeTable.checkCoffeeTable(inventory);
+               bar.checkBar(inventory);
                break;
           case 3:
-               std::cout << "\nGoing out to the Deck.\n";
+               std::cout << "\nGoing out to the Billiards Room.\n";
                //change choice to reflect our room mapping and update move
-               choice = 13;
+               choice = 7;
                move = true;
                break;
           case 4:
-               std::cout << "\nWalking into the Study.\n";
+               std::cout << "\nWalking into the Library.\n";
                //change choice to reflect our room mapping and update move
-               choice = 4;
+               choice = 11;
                move = true;
                break;
           case 5:
-               std::cout << "\nWalking into the Smoking Room.\n";
+               std::cout << "\nWalking into the Sitting Room.\n";
                //change choice to reflect our room mapping and update move
-               choice = 6;
+               choice = 5;
                move = true;
                break;
           case 6:
-               std::cout << "\nWalking into the Ballroom.\n";
-               //change choice to reflect our room mapping and update move
-               choice = 16;
-               move = true;
-               break;
-          case 7:
                std::cout << "\n\nInventory contains: \n\n";
                int c = 1;
                for (auto it = inventory.begin(); it != inventory.end(); ++it){

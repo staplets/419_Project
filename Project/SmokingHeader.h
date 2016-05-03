@@ -34,7 +34,7 @@ public:
      RecliningChair()
      {
           this->description = "A large burgundy plush reclining chair that a small child could disappear into.";
-          this->pipe = "pipe";
+          this->pipe = "smoking pipe";
      }
 
      //Virtual Destructor
@@ -65,7 +65,6 @@ private:
 protected://protected member variables.
      std::string revolver;
      std::string description;
-     std::string sculpture;
 
 public:
      //default constructor

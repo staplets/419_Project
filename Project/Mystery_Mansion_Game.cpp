@@ -1,7 +1,7 @@
 /***********************************************************
 * Author:					Shaun Stapleton
 * Date Created:			4/11/16
-* Last Modification Date:	4/24/16
+* Last Modification Date:	5/02/16
 * Filename:				Mystery_Mansion.cpp
 *
 * Overview:
@@ -71,6 +71,31 @@
 #ifndef SittingHeader_h
 #define SittingHeader_h
 #include "SittingHeader.h"
+#endif
+
+#ifndef BallroomHeader_h
+#define BallroomHeader_h
+#include "BallroomHeader.h"
+#endif
+
+#ifndef StudyHeader_h
+#define StudyHeader_h
+#include "StudyHeader.h"
+#endif
+
+#ifndef LibraryHeader_h
+#define LibraryHeader_h
+#include "LibraryHeader.h"
+#endif
+
+#ifndef SecretHeader_h
+#define SecretHeader_h
+#include "SecretHeader.h"
+#endif
+
+#ifndef DiningHeader_h
+#define DiningHeader_h
+#include "DiningHeader.h"
 #endif
 
 #include "stdafx.h"
@@ -176,7 +201,8 @@ void playRooms(){
 
      //testing!!
      //inventory_Map.insert({ "confession", "the confession" });
-     //inventory_Map.insert({ "revolver", "the gun" });
+     inventory_Map.insert({ "password", "password" });
+	 inventory_Map.insert({ "key", "key" });
 
 //     std::cout << "map shows: " << inventory_Map["knife"] << " with a size of: " << inventory_Map.size() << "\n";
 
@@ -209,9 +235,7 @@ void playRooms(){
                break;
           case 4:
                //Navigate the Study
-               std::cout << "Under construction!" << " choice was: " << returnedNavChoice << "\n\n";
-               gameOver = true;
-               //returnedNavChoice = studyNavigate(inventory_Map);
+               returnedNavChoice = studyNavigate(inventory_Map);
                break;
           case 5:
                //Navigate the Sitting Room
@@ -226,9 +250,7 @@ void playRooms(){
                break;
           case 8:
                //Navigate the Dining Room
-               std::cout << "Under construction!" << " choice was: " << returnedNavChoice << "\n\n";
-               gameOver = true;
-               //returnedNavChoice = diningRoomNavigate(inventory_Map);
+               returnedNavChoice = diningNavigate(inventory_Map);
                break;
           case 9:
                //Navigate the Kitchen
@@ -240,15 +262,11 @@ void playRooms(){
                break;
           case 11:
                //Navigate the Library
-               std::cout << "Under construction!" << " choice was: " << returnedNavChoice << "\n\n";
-               gameOver = true;
-               //returnedNavChoice = libraryNavigate(inventory_Map);
+               returnedNavChoice = libraryNavigate(inventory_Map);
                break;
           case 12:
                //Navigate the Secret Room
-               std::cout << "Under construction!" << " choice was: " << returnedNavChoice << "\n\n";
-               gameOver = true;
-               //returnedNavChoice = secretRoomNavigate(inventory_Map);
+               returnedNavChoice = secretNavigate(inventory_Map);
                break;
           case 13:
                //Navigate the Deck
@@ -266,9 +284,7 @@ void playRooms(){
                break;
           case 16:
                //Navigate the Ballroom
-               std::cout << "Under construction!" << " choice was: " << returnedNavChoice << "\n\n";
-               gameOver = true;
-               //returnedNavChoice = ballroomNavigate(inventory_Map);
+               returnedNavChoice = ballroomNavigate(inventory_Map);
                break;
           case 17:
                //Navigate the Servants Room

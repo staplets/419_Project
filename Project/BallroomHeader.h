@@ -1,7 +1,7 @@
 /***********************************************************
 * Author:					Shaun Stapleton
 * Date Created:			4/25/16
-* Last Modification Date:	4/25/16
+* Last Modification Date:	4/26/16
 * Filename:				BallroomHeader.h
 *
 * Overview:
@@ -20,85 +20,87 @@
 #include <stack>
 #include <unordered_map>
 
-//Pool Table Object
-class PoolTable
+//Piano Object
+class Piano
 {
 private:
 
 protected://protected member variables.
      std::string description;
-     std::string ball;
-     std::string stick;
+     std::string notes;
 
 public:
      //default constructor
-     PoolTable()
+     Piano()
      {
-          this->description = "Regulation sized green carpeted pool table with two pool sticks and a few pool balls on the table scattered.";
-          this->ball = "pool ball";
-          this->stick = "pool stick";
-
+          this->description = "A black and white grand piano made for a maestro.";
+          this->notes = "music notes";
      }
 
      //Virtual Destructor
-     virtual ~PoolTable()
+     virtual ~Piano()
      {}
 
+     //member function for piano
+     void playPiano();
+
      //member function to get into the trunk
-     void checkTable(std::unordered_map<std::string, std::string>& inv);
+     void checkPiano(std::unordered_map<std::string, std::string>& inv);
 
      //Accessor Functions for accessing private variables.
      std::string getDescription() const;
 
-     std::string getBall() const;
-
-     std::string getStick() const;
+     std::string getNotes() const;
 
      //Mutator Functions to change private variables.
      void setDescription(const std::string theDescription);
 
-     void setBall(const std::string theBall);
-
-     void setStick(const std::string theStick);
+     void setNotes(const std::string theNotes);
 
 };
 
 
-//Coffee Table
-class CoffeeTable
+//Bar
+class Bar
 {
 private:
 
 protected://protected member variables.
-     std::string brochure;
+     std::string alcohol;
      std::string description;
+     int numDrinks;
 
 public:
      //default constructor
-     CoffeeTable()
+     Bar()
      {
-          this->brochure = "brochure for beaujolis wine vineyards with a URL address written on the inside";
-          this->description = "A mocha colored wooden coffee table about 3 feet high with some reading material on top.";
+          this->alcohol = "Dom Perignon Champagne";
+          this->description = "A 15 foot wide bar, with gold lining around a silver granite top.";
+          this->numDrinks = 0;
 
      }
 
      //Virtual Destructor
-     virtual ~CoffeeTable()
+     virtual ~Bar()
      {}
 
 
      //member function to get into the trunk
-     void checkCoffeeTable(std::unordered_map<std::string, std::string>& inv);
+     void checkBar(std::unordered_map<std::string, std::string>& inv);
 
      //Accessor Functions for accessing private variables.
-     std::string getBrochure() const;
+     std::string getAlcohol() const;
 
      std::string getDescription() const;
 
+     int getNumDrinks() const;
+
      //Mutator Functions to change private variables.
-     void setBrochure(const std::string theBrochure);
+     void setAlcohol(const std::string theAlcohol);
 
      void setDescription(const std::string theDescription);
+
+     void setNumDrinks(const int theNumDrinks);
 
 };
 

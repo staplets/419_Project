@@ -24,3 +24,7 @@
 #include "SmokingHeader.h"
 #include "SittingHeader.h"
 #include "BallroomHeader.h"
+#include "StudyHeader.h"
+#include "LibraryHeader.h"
+#include "SecretHeader.h"
+#include "DiningHeader.h"
