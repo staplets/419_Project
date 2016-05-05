@@ -24,6 +24,7 @@
 #include <cstdlib>
 #include <stack>
 #include <unordered_map>
+#include "animation.hpp"
 
 //include deck header
 #include "DeckHeader.h"
@@ -279,6 +280,43 @@ std::string HotTub::checkHotTub(std::unordered_map<std::string, std::string>& in
 			break;
 		case 2:
 			std::cout << "\nSherlock: \"Lovely night for a dip I say ... \"\n\n";
+			
+		//animation of dripping clothes
+			initscr();
+			printSherlock(start_row, start_column);
+			for (i = 0; i < 19; i++)
+			{
+				printDrops1(start_row, start_column);
+				refresh();
+				eraseDrops1(start_row, start_column);
+				start_row = start_row + 1;
+				for (speed = 1; speed <= 56000000; speed++);
+			}
+			refresh();
+			for (speed = 1; speed <= 5500000; speed++);
+			start_row = start_row - 19;
+			for (i = 0; i < 19; i++)
+			{
+				printDrops2(start_row, start_column);
+				refresh();
+				eraseDrops2(start_row, start_column);
+				start_row = start_row + 1;
+				for (speed = 1; speed <= 56000000; speed++);
+			}
+			refresh();
+			for (speed = 1; speed <= 5500000; speed++);
+			start_row = start_row - 19;
+			for (i = 0; i < 19; i++)
+			{
+				printDrops1(start_row, start_column);
+				refresh();
+				eraseDrops1(start_row, start_column);
+				start_row = start_row + 1;
+				for (speed = 1; speed <= 56000000; speed++);
+			}
+			getch();
+			endwin();
+			
 			std::cout << "Sherlock is now all wet. Maybe not the greatest idea.\n\n";
 			setWet("yes");
 			break;
