@@ -24,6 +24,7 @@
 #include <cstdlib>
 #include <stack>
 #include <unordered_map>
+#include "animation.hpp"
 
 //include secret header
 #include "SecretHeader.h"
@@ -52,6 +53,30 @@ void Safe::checkSafe(std::unordered_map<std::string, std::string>& inv)
 
 		std::cout << "\nUpon inspection Sherlock notices that the safe requires a key.\n\n" <<
 			"Fortunately he has one on him thanks to Mr. Glass\n\n";
+		
+		//key unlocking animation	
+		initscr();
+		for (i = 1; i <= 28; i++)
+		{
+			printKey(start_row, start_column);
+			eraseLock(6, 54, 9, 8);
+			refresh();
+			for (speed = 1; speed <= 55000000; speed++);
+
+			eraseKey(start_row, start_column);
+			refresh();
+
+			printLock(6, 48, 9, 5);
+			eraseLock(6, 54, 9, 8);
+
+			start_row++;
+		}
+		printKey(start_row, start_column);
+		eraseLock(6, 54, 9, 8);
+		refresh();
+
+		getch();
+		endwin();
 
 		//check if new will is already in inventory
 		search = inv.find("new will");
