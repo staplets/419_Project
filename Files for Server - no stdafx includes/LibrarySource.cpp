@@ -415,7 +415,7 @@ int libraryNavigate(std::unordered_map<std::string, std::string>& inventory) {
 			//if 1 returned go to secret room
 			if (shelfRet == 1) {
 				move = true;
-				choice = 12;
+				intChoice = 12;
 			}
 		}
 		else {

@@ -33,7 +33,6 @@ void inspectBilliardsObj(std::string objName, std::unordered_map<std::string, st
 	//intialize objects
 	PoolTable poolTable;
 	CoffeeTable coffeeTable;
-	int intChoice;
 
 	if (objName.compare("Look at pool table") == 0) { //if object is pool table
 		poolTable.checkTable(inventory);
@@ -414,8 +413,8 @@ int billiardsNavigate(std::unordered_map<std::string, std::string>& inventory) {
 
 
 		//take users choice and interact based on that
-		if ((choice.compare("Deck") == 0) || (choice.compare("Study") == 0) || (choice.compare("Smoking room") == 0) || (choice.compare("Ballroom") == 0)
-			&& (choice.compare("Check inventory") == 0)) {
+		if ((choice.compare("Deck") == 0) || (choice.compare("Study") == 0) || (choice.compare("Smoking room") == 0) || ((choice.compare("Ballroom") == 0)
+			&& (choice.compare("Check inventory") == 0))) {
 			intChoice = movePlayerFromBilliards(choice);
 			move = true;
 		}

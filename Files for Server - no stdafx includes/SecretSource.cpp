@@ -37,7 +37,10 @@ void Safe::checkSafe(std::unordered_map<std::string, std::string>& inv)
 	//user input var
 	std::string ans;
 	int checkInventory = 0;
-
+	int start_row = 4;
+	int start_column = 4;
+	int i;
+	int speed;
 
 	//formatting
 	std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";

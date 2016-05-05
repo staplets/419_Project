@@ -374,7 +374,6 @@ int cellarNavigate(std::unordered_map<std::string, std::string>& inventory) {
 	int intChoice;
 	int retry = 0;
 	std::string ans;
-	bool validChoice = true;
 
 	//inspect the room
 	do {
