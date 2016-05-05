@@ -48,35 +48,35 @@ void Safe::checkSafe(std::unordered_map<std::string, std::string>& inv)
 
 	//check if key is already in inventory
 	auto search = inv.find("key");
-	if (search != inv.end()){
+	if (search != inv.end()) {
 
 		std::cout << "\nUpon inspection Sherlock notices that the safe requires a key.\n\n" <<
 			"Fortunately he has one on him thanks to Mr. Glass\n\n";
 
 		//check if new will is already in inventory
 		search = inv.find("new will");
-		if (search != inv.end()){
+		if (search != inv.end()) {
 			checkInventory = 1;
 		}
 
 		//check if jfk is already in inventory
 		search = inv.find("jfk");
-		if (search != inv.end()){
+		if (search != inv.end()) {
 			//if jfk found and new will found
-			if (checkInventory == 1){
+			if (checkInventory == 1) {
 				checkInventory = 2;
 			}
 			//if jfk found but new will not found
-			else if (checkInventory == 0){
+			else if (checkInventory == 0) {
 				checkInventory = 3;
 			}
 
 		}
 
 		//handle output to user based on whether the new will or jfk are in the safe
-		switch (checkInventory){
+		switch (checkInventory) {
 		case 0: // jfk and new will not in user inventory
-			//output choices
+				//output choices
 			std::cout << "In the safe, Sherlock notices that there is a document: \"" << getNewWill() << "\" and also interestingly enough " << getJfkFiles() << ".\n\n";
 
 			//check to add new will to inventory
@@ -102,11 +102,11 @@ void Safe::checkSafe(std::unordered_map<std::string, std::string>& inv)
 
 			} while (ans != "y" && ans != "n");
 
-			if (ans == "y"){
+			if (ans == "y") {
 				inv.insert({ "new will", getNewWill() });
 				std::cout << "\nOkay, " << getNewWill() << " added to inventory.\n\n";
 			}
-			else{
+			else {
 				std::cout << "\nOkay, " << getNewWill() << " not added to inventory.\n\n";
 			}
 
@@ -133,17 +133,17 @@ void Safe::checkSafe(std::unordered_map<std::string, std::string>& inv)
 
 			} while (ans != "y" && ans != "n");
 
-			if (ans == "y"){
+			if (ans == "y") {
 				inv.insert({ "jfk", getJfkFiles() });
 				std::cout << "\nOkay, " << getJfkFiles() << " added to inventory.\n\n";
 			}
-			else{
+			else {
 				std::cout << "\nOkay, " << getJfkFiles() << " not added to inventory.\n\n";
 			}
 
 			break;
 		case 1: //only new will in user inventory
-			//output choices
+				//output choices
 			std::cout << "Sherlock already grabbed the new will of Mr. Glass, but there are still " << getJfkFiles() << "\n\n";
 
 			std::cout << "Would you like to add " << getJfkFiles() << " to your inventory?\n\n";
@@ -168,20 +168,20 @@ void Safe::checkSafe(std::unordered_map<std::string, std::string>& inv)
 
 			} while (ans != "y" && ans != "n");
 
-			if (ans == "y"){
+			if (ans == "y") {
 				inv.insert({ "jfk", getJfkFiles() });
 				std::cout << "\nOkay, " << getJfkFiles() << " added to inventory.\n\n";
 			}
-			else{
+			else {
 				std::cout << "\nOkay, " << getJfkFiles() << " not added to inventory.\n\n";
 			}
 			break;
 		case 2: // jfk and new will in user inventory
-			//output choices
+				//output choices
 			std::cout << "The safe is empty, since you already grabbed the updated will and JFK files.\n\n";
 			break;
 		case 3: // jfk found but not new will in user inventory
-			//output choices
+				//output choices
 			std::cout << "Sherlock already grabbed the JFK files, but there is still a document: " << getNewWill() << "\n\n";
 
 			std::cout << "Would you like to add a " << getNewWill() << " to your inventory?\n\n";
@@ -206,11 +206,11 @@ void Safe::checkSafe(std::unordered_map<std::string, std::string>& inv)
 
 			} while (ans != "y" && ans != "n");
 
-			if (ans == "y"){
+			if (ans == "y") {
 				inv.insert({ "new will", getNewWill() });
 				std::cout << "\nOkay, " << getNewWill() << " added to inventory.\n\n";
 			}
-			else{
+			else {
 				std::cout << "\nOkay, " << getNewWill() << " not added to inventory.\n\n";
 			}
 			break;
@@ -218,7 +218,7 @@ void Safe::checkSafe(std::unordered_map<std::string, std::string>& inv)
 
 
 	}
-	else{
+	else {
 
 		std::cout << "\nUpon closer review, Sherlock notices that the safe requires a specific key to open it.\n\n" <<
 			"Perhaps there is a key somewhere in the mansion ...\n\n";
@@ -234,12 +234,12 @@ std::string Safe::getNewWill() const { return newWill; }
 std::string Safe::getJfkFiles() const { return jfkFiles; }
 
 //Mutator Functions to change private variables.
-void Safe::setDescription(const std::string theDescription){ description = theDescription; }
+void Safe::setDescription(const std::string theDescription) { description = theDescription; }
 
-void Safe::setNewWill(const std::string theNewWill){ newWill = theNewWill; }
+void Safe::setNewWill(const std::string theNewWill) { newWill = theNewWill; }
 
 //member function to output information provided of each item
-int LightSwitch::checkLightSwitch(std::unordered_map<std::string, std::string>& inv){
+int LightSwitch::checkLightSwitch(std::unordered_map<std::string, std::string>& inv) {
 
 	//user input var
 	std::string ans;
@@ -257,19 +257,19 @@ int LightSwitch::checkLightSwitch(std::unordered_map<std::string, std::string>& 
 
 	//check if matches is already in inventory
 	auto search = inv.find("matches");
-	if (search != inv.end()){
+	if (search != inv.end()) {
 		checkInventory = 1;
 	}
 
 	//check if candle is already in inventory
 	search = inv.find("candle");
-	if (search != inv.end()){
+	if (search != inv.end()) {
 		//if candle found and matches found
-		if (checkInventory == 1){
+		if (checkInventory == 1) {
 			checkInventory = 2;
 		}
 		//if candle found but matches not found
-		else if (checkInventory == 0){
+		else if (checkInventory == 0) {
 			checkInventory = 3;
 		}
 
@@ -277,35 +277,35 @@ int LightSwitch::checkLightSwitch(std::unordered_map<std::string, std::string>& 
 
 	//check if bulb is already in inventory
 	search = inv.find("bulb");
-	if (search != inv.end()){
+	if (search != inv.end()) {
 		checkBulb = 1;
 	}
 
 	//if bulb in the inventory then use to replace old bulb
-	if (checkBulb == 1){
+	if (checkBulb == 1) {
 		std::cout << "Luckily Sherlock has a spare light bulb in his inventory and he replaces the bulb and turns the light on.\n\n";
 		return 1;
 	}
 
 	//handle output to user based on whether the matches or candle are in the inventory
-	switch (checkInventory){
+	switch (checkInventory) {
 	case 0: // matches and candle not in user inventory
-		//output choices
+			//output choices
 		std::cout << "Sherlock unfortunately doesn't have anything on him to fix the lighting situation at this time.\n\n";
 		return 0;
 		break;
 	case 1: //only matches in user inventory
-		//output choices
+			//output choices
 		std::cout << "Sherlock unfortunately doesn't have a spare light bulb or something to light with his matches.\n\n";
 		return 0;
 		break;
 	case 2: // candle and matches in user inventory
-		//output choices
+			//output choices
 		std::cout << "Sherlock doesn't have a spare light bulb, but luckily he has a candle and matches to light up the room.\n\n";
 		return 1;
 		break;
 	case 3: // candle found but not matches in user inventory
-		//output choices
+			//output choices
 		std::cout << "Sherlock unfortunately doesn't have a spare light bulb or something to light his candle with.\n\n";
 		return 0;
 		break;
@@ -323,12 +323,12 @@ bool LightSwitch::getBroken() const { return broken; }
 std::string LightSwitch::getDescription() const { return description; }
 
 //Mutator Functions to change private variables.
-void LightSwitch::setBroken(const bool theBroken){ broken = theBroken; }
+void LightSwitch::setBroken(const bool theBroken) { broken = theBroken; }
 
-void LightSwitch::setDescription(const std::string theDescription){ description = theDescription; }
+void LightSwitch::setDescription(const std::string theDescription) { description = theDescription; }
 
 //navigation function to handle game play while the player is in the secret
-int secretNavigate(std::unordered_map<std::string, std::string>& inventory){
+int secretNavigate(std::unordered_map<std::string, std::string>& inventory) {
 
 	//boolean to find out if player wants to move to another room
 	bool move = false;
@@ -360,7 +360,7 @@ int secretNavigate(std::unordered_map<std::string, std::string>& inventory){
 	std::string ans;
 
 	//inspect the room
-	do{
+	do {
 
 		//navigation choice
 		choice = 0;
@@ -372,8 +372,8 @@ int secretNavigate(std::unordered_map<std::string, std::string>& inventory){
 			{
 				std::cout << "\n\nPlease select a number between 1 and 4 to navigate: \n\n";
 			}
-			else{
-				if (firstTime != 0){
+			else {
+				if (firstTime != 0) {
 					//formatting
 					std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
 
@@ -406,28 +406,28 @@ int secretNavigate(std::unordered_map<std::string, std::string>& inventory){
 
 
 		//take users choice and interact based on that
-		switch (choice){
+		switch (choice) {
 		case 1:
-			if (retLight != 0){ //if room is lit
+			if (retLight != 0) { //if room is lit
 				std::cout << "\n\nSherlock already has a light source for the room to navigate around.\n\n";
 			}
-			else{
+			else {
 				retLight = lightSwitch.checkLightSwitch(inventory);
 			}
 			//return 1 if new bulb in the inventory.. takes precedence over candle/match combo
-			if (retLight == 1){
+			if (retLight == 1) {
 				lightSwitch.setBroken(false);
 			}
-			else if (retLight == 2){ //return 2 if candle and match in the inventory
+			else if (retLight == 2) { //return 2 if candle and match in the inventory
 				lightSwitch.setBroken(false);
 			}
 			break;
 		case 2:
 			//if light or candle/match not in posession then can't navigate room
-			if (lightSwitch.getBroken() == false){
+			if (lightSwitch.getBroken() == false) {
 				safe.checkSafe(inventory);
 			}
-			else{
+			else {
 				std::cout << "\nIt's too dark in the room for Sherlock to navigate around.\n\n" <<
 					"Maybe you can turn the light on or find a source of light?\n\n";
 			}
@@ -441,7 +441,7 @@ int secretNavigate(std::unordered_map<std::string, std::string>& inventory){
 		case 4:
 			std::cout << "\n\nInventory contains: \n\n";
 			int c = 1;
-			for (auto it = inventory.begin(); it != inventory.end(); ++it){
+			for (auto it = inventory.begin(); it != inventory.end(); ++it) {
 				std::cout << c << ": " << it->second << "\n";
 				c++;
 			}
