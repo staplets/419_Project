@@ -3,8 +3,8 @@ CXXFLAGS= -std=c++11 -Wall -g
 
 all: mysteryGame;
 
-mysteryGame: mysteryFile.o driveway.o ballroom.o billiards.o cellar.o deck.o dining.o foyer.o garden.o hallway.o kitchen.o library.o secret.o sitting.o smoking.o study.o
-	g++ $(CXXFLAGS) -o mysteryGame mysteryFile.o driveway.o ballroom.o billiards.o cellar.o deck.o dining.o foyer.o garden.o hallway.o kitchen.o library.o secret.o sitting.o smoking.o study.o
+mysteryGame: mysteryFile.o driveway.o ballroom.o billiards.o cellar.o deck.o dining.o foyer.o garden.o hallway.o kitchen.o library.o secret.o sitting.o smoking.o study.o animation.o
+	g++ $(CXXFLAGS) -o mysteryGame mysteryFile.o driveway.o ballroom.o billiards.o cellar.o deck.o dining.o foyer.o garden.o hallway.o kitchen.o library.o secret.o sitting.o smoking.o study.o animation.o -l ncurses
 
 mysteryFile.o: Mystery_Mansion_Game.cpp
 	g++ $(CXXFLAGS) -o mysteryFile.o -c Mystery_Mansion_Game.cpp
@@ -53,7 +53,10 @@ smoking.o: SmokingSource.cpp SmokingHeader.h
 	
 study.o: StudySource.cpp StudyHeader.h
 	g++ $(CXXFLAGS) -o study.o -c StudySource.cpp
+
+animation.o: animation.cpp animation.hpp
+	g++ $(CXXFLAGS) -o animation.o -c animation.cpp
 	
 clean:
 	# -f succeeds even if files don't exist
-	rm -f mysteryGame mysteryFile.o driveway.o ballroom.o billiards.o cellar.o deck.o dining.o foyer.o garden.o hallway.o kitchen.o library.o secret.o sitting.o smoking.o study.o
+	rm -f mysteryGame mysteryFile.o driveway.o ballroom.o billiards.o cellar.o deck.o dining.o foyer.o garden.o hallway.o kitchen.o library.o secret.o sitting.o smoking.o study.o animation.o
