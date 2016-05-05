@@ -176,6 +176,10 @@ std::string HotTub::checkHotTub(std::unordered_map<std::string, std::string>& in
 	//initialize the fish bowl object
 	HotTub hotTub;
 	int firstTime = 0;
+	int start_row = 4;
+	int start_column = 4;
+	int i;
+	int speed;
 
 	//formatting
 	std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
