@@ -27,6 +27,7 @@
 
 //include hallway header
 #include "HallwayHeader.h"
+#include "animation.hpp"
 
 void inspectHallwayObj(std::string objName, std::unordered_map<std::string, std::string>& inventory)
 {
@@ -77,6 +78,11 @@ int movePlayerFromHallway(std::string location)
 //member function to get into the trunk of Shelf
 void Shelf::checkShelf(std::unordered_map<std::string, std::string>& inv)
 {
+	int start_row = 4;
+	int start_column = 4;
+	int i;
+	int speed;
+	
 	//user input var
 	std::string ans;
 
@@ -127,6 +133,41 @@ void Shelf::checkShelf(std::unordered_map<std::string, std::string>& inv)
 				std::cin.ignore(255, '\n');
 
 			} while (ans != "y" && ans != "n");
+
+			//Spider animation
+			initscr();
+			for (i = 1; i <= 12; i++)
+			{
+				printSpider1(start_row, start_column);
+				refresh();
+				for (speed = 1; speed <= 55000000; speed++);
+				eraseSpider(start_row, start_column);
+				refresh();
+				start_column++;
+	
+				printSpider2(start_row, start_column);
+				refresh();
+				for (speed = 1; speed <= 55000000; speed++);
+				eraseSpider(start_row, start_column);
+				refresh();
+				start_column++;
+	
+				printSpider3(start_row, start_column);
+				refresh();
+				for (speed = 1; speed <= 55000000; speed++);
+				eraseSpider(start_row, start_column);
+				refresh();
+				start_column++;
+	
+				printSpider2(start_row, start_column);
+				refresh();
+				for (speed = 1; speed <= 55000000; speed++);
+				eraseSpider(start_row, start_column);
+				refresh();
+				start_column++;
+	
+			}
+			endwin();
 
 			if (ans == "y") {
 				//guess right number to catch spider
@@ -271,6 +312,41 @@ void Shelf::checkShelf(std::unordered_map<std::string, std::string>& inv)
 				std::cin.ignore(255, '\n');
 
 			} while (ans != "y" && ans != "n");
+			
+			//Spider animation
+			initscr();
+			for (i = 1; i <= 12; i++)
+			{
+				printSpider1(start_row, start_column);
+				refresh();
+				for (speed = 1; speed <= 55000000; speed++);
+				eraseSpider(start_row, start_column);
+				refresh();
+				start_column++;
+	
+				printSpider2(start_row, start_column);
+				refresh();
+				for (speed = 1; speed <= 55000000; speed++);
+				eraseSpider(start_row, start_column);
+				refresh();
+				start_column++;
+	
+				printSpider3(start_row, start_column);
+				refresh();
+				for (speed = 1; speed <= 55000000; speed++);
+				eraseSpider(start_row, start_column);
+				refresh();
+				start_column++;
+	
+				printSpider2(start_row, start_column);
+				refresh();
+				for (speed = 1; speed <= 55000000; speed++);
+				eraseSpider(start_row, start_column);
+				refresh();
+				start_column++;
+	
+			}
+			endwin();
 
 			if (ans == "y") {
 				//guess right number to catch spider
