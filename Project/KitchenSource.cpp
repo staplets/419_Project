@@ -113,7 +113,6 @@ void Refrigerator::checkFridge(std::unordered_map<std::string, std::string>& inv
 
      //initialize the fish bowl object
      Refrigerator refrigerator;
-     int firstTime = 0;
      //user input var
      std::string ans;
      int checkInventory = 0;

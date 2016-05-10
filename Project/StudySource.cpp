@@ -30,14 +30,13 @@
 #include <thread>
 
 //guards for header
-#include "SittingHeader.h"
+#include "StudyHeader.h"
 
 //member function for Computer
 void Computer::checkComputer(std::unordered_map<std::string, std::string>& inv)
 {
-     //initialize the couch object
-     Couch couch;
-     int firstTime = 0;
+     //initialize the computer object
+     Computer computer;
      //user input var
      std::string ans;
      int checkInventory = 0;

@@ -79,7 +79,10 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AtticHeader.h" />
     <ClInclude Include="BallroomHeader.h" />
+    <ClInclude Include="BathroomHeader.h" />
+    <ClInclude Include="BedroomHeader.h" />
     <ClInclude Include="BilliardsHeader.h" />
     <ClInclude Include="CellarHeader.h" />
     <ClInclude Include="DeckHeader.h" />
@@ -91,6 +94,7 @@
     <ClInclude Include="KitchenHeader.h" />
     <ClInclude Include="LibraryHeader.h" />
     <ClInclude Include="SecretHeader.h" />
+    <ClInclude Include="ServantsHeader.h" />
     <ClInclude Include="SittingHeader.h" />
     <ClInclude Include="SmokingHeader.h" />
     <ClInclude Include="stdafx.h" />
@@ -98,7 +102,10 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AtticSource.cpp" />
     <ClCompile Include="BallroomSource.cpp" />
+    <ClCompile Include="BathroomSource.cpp" />
+    <ClCompile Include="BedroomSource.cpp" />
     <ClCompile Include="BilliardsSource.cpp" />
     <ClCompile Include="CellarSource.cpp" />
     <ClCompile Include="DeckSource.cpp" />
@@ -111,6 +118,7 @@
     <ClCompile Include="LibrarySource.cpp" />
     <ClCompile Include="Mystery_Mansion_Game.cpp" />
     <ClCompile Include="SecretSource.cpp" />
+    <ClCompile Include="ServantsSource.cpp" />
     <ClCompile Include="SittingSource.cpp" />
     <ClCompile Include="SmokingSource.cpp" />
     <ClCompile Include="stdafx.cpp">

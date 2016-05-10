@@ -28,3 +28,7 @@
 #include "LibraryHeader.h"
 #include "SecretHeader.h"
 #include "DiningHeader.h"
+#include "BedroomHeader.h"
+#include "BathroomHeader.h"
+#include "ServantsHeader.h"
+#include "AtticHeader.h"

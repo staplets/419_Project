@@ -329,6 +329,7 @@ void MrsDeeds::secretRoom(std::unordered_map<std::string, std::string>& inventor
           }
           else{
                //get secret room info 
+			   std::cout << mrsDeeds.roomOne;
                std::cout << "\n\nSherlock gives Mrs. Deeds a piece of blueberry pie that he has.\n\n";
                std::cout << mrsDeeds.roomTwo << "\n\n";
                //collect note for inventory

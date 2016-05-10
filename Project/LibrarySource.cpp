@@ -100,7 +100,6 @@ int BookShelf::checkBookShelf(std::unordered_map<std::string, std::string>& inv)
 
      //initialize the book shelf object
      BookShelf bookShelf;
-     int firstTime = 0;
      //user input var
      std::string ans;
      int choice = 0;

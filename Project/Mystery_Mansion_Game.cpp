@@ -1,7 +1,7 @@
 /***********************************************************
 * Author:					Shaun Stapleton
-* Date Created:			4/11/16
-* Last Modification Date:	5/02/16
+* Date Created:				4/11/16
+* Last Modification Date:	5/06/16
 * Filename:				Mystery_Mansion.cpp
 *
 * Overview:
@@ -98,6 +98,26 @@
 #include "DiningHeader.h"
 #endif
 
+#ifndef BedroomHeader_h
+#define BedroomHeader_h
+#include "BedroomHeader.h"
+#endif
+
+#ifndef BathroomHeader_h
+#define BathroomHeader_h
+#include "BathroomHeader.h"
+#endif
+
+#ifndef ServantsHeader_h
+#define ServantsHeader_h
+#include "ServantsHeader.h"
+#endif
+
+#ifndef AtticHeader_h
+#define AtticHeader_h
+#include "AtticHeader.h"
+#endif
+
 #include "stdafx.h"
 #include <iostream>
 #include <string>
@@ -180,6 +200,26 @@ void gameIntro(){
      playRooms();
 }
 
+//declare navigation functions
+int drivewayNavigate(std::unordered_map<std::string, std::string>& inventory);
+int foyerNavigate(std::unordered_map<std::string, std::string>& inventory);
+int gardenNavigate(std::unordered_map<std::string, std::string>& inventory);
+int sittingNavigate(std::unordered_map<std::string, std::string>& inventory);
+int studyNavigate(std::unordered_map<std::string, std::string>& inventory);
+int smokingRoomNavigate(std::unordered_map<std::string, std::string>& inventory);
+int billiardsNavigate(std::unordered_map<std::string, std::string>& inventory);
+int diningNavigate(std::unordered_map<std::string, std::string>& inventory);
+int kitchenNavigate(std::unordered_map<std::string, std::string>& inventory);
+int cellarNavigate(std::unordered_map<std::string, std::string>& inventory);
+int libraryNavigate(std::unordered_map<std::string, std::string>& inventory);
+int secretNavigate(std::unordered_map<std::string, std::string>& inventory);
+int hallwayNavigate(std::unordered_map<std::string, std::string>& inventory);
+int deckNavigate(std::unordered_map<std::string, std::string>& inventory);
+int ballroomNavigate(std::unordered_map<std::string, std::string>& inventory);
+int bedroomNavigate(std::unordered_map<std::string, std::string>& inventory);
+int bathroomNavigate(std::unordered_map<std::string, std::string>& inventory);
+int servantsNavigate(std::unordered_map<std::string, std::string>& inventory);
+int atticNavigate(std::unordered_map<std::string, std::string>& inventory);
 
 //Calls game menu for user options.
 //Precondition: main properly opens.
@@ -201,8 +241,9 @@ void playRooms(){
 
      //testing!!
      //inventory_Map.insert({ "confession", "the confession" });
-     inventory_Map.insert({ "password", "password" });
+     //inventory_Map.insert({ "password", "password" });
 	 inventory_Map.insert({ "key", "key" });
+	 inventory_Map.insert({ "cigs", "cigarettes" });
 
 //     std::cout << "map shows: " << inventory_Map["knife"] << " with a size of: " << inventory_Map.size() << "\n";
 
@@ -278,9 +319,7 @@ void playRooms(){
                break;
           case 15:
                //Navigate the Bedroom
-               std::cout << "Under construction!" << " choice was: " << returnedNavChoice << "\n\n";
-               gameOver = true;
-               //returnedNavChoice = bedroomNavigate(inventory_Map);
+               returnedNavChoice = bedroomNavigate(inventory_Map);
                break;
           case 16:
                //Navigate the Ballroom
@@ -288,9 +327,7 @@ void playRooms(){
                break;
           case 17:
                //Navigate the Servants Room
-               std::cout << "Under construction!" << " choice was: " << returnedNavChoice << "\n\n";
-               gameOver = true;
-               //returnedNavChoice = servantsRoomNavigate(inventory_Map);
+               returnedNavChoice = servantsNavigate(inventory_Map);
                break;
           case 18:
                //Navigate the Balcony
@@ -300,15 +337,11 @@ void playRooms(){
                break;
           case 19:
                //Navigate the Bathroom
-               std::cout << "Under construction!" << " choice was: " << returnedNavChoice << "\n\n";
-               gameOver = true;
-               //returnedNavChoice = bathroomNavigate(inventory_Map);
+               returnedNavChoice = bathroomNavigate(inventory_Map);
                break;
           case 20:
                //Navigate the Attic
-               std::cout << "Under construction!" << " choice was: " << returnedNavChoice << "\n\n";
-               gameOver = true;
-               //returnedNavChoice = atticNavigate(inventory_Map);
+               returnedNavChoice = atticNavigate(inventory_Map);
                break;
           }
 

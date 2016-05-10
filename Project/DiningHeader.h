@@ -1,7 +1,7 @@
 /***********************************************************
 * Author:					Shaun Stapleton
 * Date Created:				5/02/16
-* Last Modification Date:	5/02/16
+* Last Modification Date:	     5/02/16
 * Filename:					DiningHeader.h
 *
 * Overview:

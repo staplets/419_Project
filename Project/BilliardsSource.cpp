@@ -230,10 +230,8 @@ void CoffeeTable::checkCoffeeTable(std::unordered_map<std::string, std::string>&
 
      //initialize the fish bowl object
      CoffeeTable coffeeTable;
-     int firstTime = 0;
      //user input var
      std::string ans;
-     int checkInventory = 0;
 
      //formatting
      std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";

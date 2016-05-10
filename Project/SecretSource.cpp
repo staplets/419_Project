@@ -34,7 +34,6 @@ void Safe::checkSafe(std::unordered_map<std::string, std::string>& inv)
 {
 	//initialize the fish bowl object
 	Safe safe;
-	int firstTime = 0;
 	//user input var
 	std::string ans;
 	int checkInventory = 0;
@@ -286,6 +285,8 @@ int LightSwitch::checkLightSwitch(std::unordered_map<std::string, std::string>& 
 	//if bulb in the inventory then use to replace old bulb
 	if (checkBulb == 1){
 		std::cout << "Luckily Sherlock has a spare light bulb in his inventory and he replaces the bulb and turns the light on.\n\n";
+		//Take light bulb out of inventory
+		inv.erase("bulb");
 		return 1;
 	}
 

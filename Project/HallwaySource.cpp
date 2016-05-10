@@ -307,7 +307,6 @@ void EndTable::checkEndTable(std::unordered_map<std::string, std::string>& inv){
 
      //initialize the fish bowl object
      EndTable endTable;
-     int firstTime = 0;
      //user input var
      std::string ans;
 

@@ -101,7 +101,6 @@ void Painting::checkPainting(std::unordered_map<std::string, std::string>& inv){
 
      //initialize the painting object
      Painting painting;
-     int firstTime = 0;
      //user input var
      std::string ans;
 

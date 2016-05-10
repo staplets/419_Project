@@ -113,7 +113,6 @@ void Box::checkBox(std::unordered_map<std::string, std::string>& inv){
 
      //initialize the fish bowl object
      Box box;
-     int firstTime = 0;
      //user input var
      std::string ans;
      int checkInventory = 0;

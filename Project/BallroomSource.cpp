@@ -97,7 +97,6 @@ void Piano::checkPiano(std::unordered_map<std::string, std::string>& inv)
      int firstTime = 0;
      //user input var
      std::string ans;
-     int checkInventory = 0;
 
      //formatting
      std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
@@ -326,10 +325,8 @@ void Bar::checkBar(std::unordered_map<std::string, std::string>& inv){
 
      //initialize the bar object
      Bar bar;
-     int firstTime = 0;
      //user input var
      std::string ans;
-     int checkInventory = 0;
 
      //formatting
      std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
