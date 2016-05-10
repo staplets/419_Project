@@ -607,3 +607,256 @@ void eraseDrops2(int startrow, int startcolumn)
 	printw("   ");
 	c = c - 39;
 }
+
+void printSpider1(int startrow, int startcolumn)
+{
+	int r = startrow;
+	int c = startcolumn;
+
+	move(r, c);
+
+	printw("   \\   \\    /");
+	r++; move(r, c);
+	printw("    \\   |  |   /");
+	r++; move(r, c);
+	printw("     |  |  |  /");
+	r++; move(r, c);
+	printw("    ******** |   ");
+	r++; move(r, c);
+	printw("   *        *  *****");
+	r++; move(r, c);
+	printw("  *          **  :: *>");
+	r++; move(r, c);
+	printw("  *          **  :: *>");
+	r++; move(r, c);
+	printw("   *        *  *****");
+	r++; move(r, c);
+	printw("    ******** |");
+	r++; move(r, c);
+	printw("     |  |  |  \\ ");
+	r++; move(r, c);
+	printw("    /   |  |   \\");
+	r++; move(r, c);
+	printw("   /   /    \\");	
+}
+
+void printSpider2(int startrow, int startcolumn)
+{
+	int r = startrow;
+	int c = startcolumn;
+
+	move(r, c);
+
+	printw("  __  __    __");
+	r++; move(r, c);
+	printw("   \\   |  |   __");
+	r++; move(r, c);
+	printw("     |  |  |  /");
+	r++; move(r, c);
+	printw("    ******** |   ");
+	r++; move(r, c);
+	printw("   *        *  *****");
+	r++; move(r, c);
+	printw("  *          **  :: *>");
+	r++; move(r, c);
+	printw("  *          **  :: *>");
+	r++; move(r, c);
+	printw("   *        *  *****");
+	r++; move(r, c);
+	printw("    ******** |");
+	r++; move(r, c);
+	printw("     |  |  | \\__ ");
+	r++; move(r, c);
+	printw("  __/ __|  |__   ");
+}
+
+void printSpider3(int startrow, int startcolumn)
+{
+	int r = startrow;
+	int c = startcolumn;
+
+	move(r, c);
+
+	printw("     __   ");
+	r++; move(r, c);
+	printw("  ___ \\    ____ ");
+	r++; move(r, c);
+	printw("     |  |  |  ____");
+	r++; move(r, c);
+	printw("    ******** |   ");
+	r++; move(r, c);
+	printw("   *        *  *****");
+	r++; move(r, c);
+	printw("  *          **  :: *>");
+	r++; move(r, c);
+	printw("  *          **  :: *>");
+	r++; move(r, c);
+	printw("   *        *  *****");
+	r++; move(r, c);
+	printw("    ******** |____");
+	r++; move(r, c);
+	printw("  ___|  |  |____");
+	r++; move(r, c);
+	printw("     __/    ");
+}
+
+void eraseSpider(int startrow, int startcolumn)
+{
+	int r = startrow;
+	int c = startcolumn;
+
+	move(r, c);
+
+	printw("                     ");
+	r++; move(r, c);
+	printw("                     ");
+	r++; move(r, c);
+	printw("                    ");
+	r++; move(r, c);
+	printw("                     ");
+	r++; move(r, c);
+	printw("                     ");
+	r++; move(r, c);
+	printw("                      ");
+	r++; move(r, c);
+	printw("                      ");
+	r++; move(r, c);
+	printw("                     ");
+	r++; move(r, c);
+	printw("                     ");
+	r++; move(r, c);
+	printw("                    ");
+	r++; move(r, c);
+	printw("                    ");
+	r++; move(r, c);
+	printw("                    ");
+}
+
+void printCandle(int startrow, int startcolumn)
+{
+	int r = startrow + 4;
+	int c = startcolumn;
+
+	move(r, c);
+
+	printw("        |");
+	r++; move(r, c);
+	printw("     *******");
+	r++; move(r, c);
+	printw("     *     *");
+	r++; move(r, c);
+	printw("     *     *");
+	r++; move(r, c);
+	printw("     *     *");
+	r++; move(r, c);
+	printw("     *     *");
+	r++; move(r, c);
+	printw(" ___ *     *");
+	r++; move(r, c);
+	printw("|    *     *");
+	r++; move(r, c);
+	printw("|___ *     *");
+	r++; move(r, c);
+	printw("     *******");
+}
+
+void printFlame1(int startrow, int startcolumn)
+{
+	int r = startrow;
+	int c = startcolumn;
+
+	move(r, c);
+
+	printw("        |");
+	r++; move(r, c);
+	printw("   \\       /");
+	r++; move(r, c);
+	printw("  __  ( )    __");
+	r++; move(r, c);
+	printw("      (   )");
+	r++; move(r, c);
+	printw("    /   |  \\");
+
+}
+
+void printFlame2(int startrow, int startcolumn)
+{
+	int r = startrow;
+	int c = startcolumn;
+
+	move(r, c);
+
+	printw("         ");
+	r++; move(r, c);
+	printw("                ");
+	r++; move(r, c);
+	printw("    \\  ( ) /    ");
+	r++; move(r, c);
+	printw("   -- (   ) --");
+	r++; move(r, c);
+	printw("     /  | \\  ");
+	r++; move(r, c);
+
+}
+
+void printFlame3(int startrow, int startcolumn)
+{
+	int r = startrow;
+	int c = startcolumn;
+
+	move(r, c);
+
+	printw("        |");
+	r++; move(r, c);
+	printw("   \\       /");
+	r++; move(r, c);
+	printw("  __    ( )  __");
+	r++; move(r, c);
+	printw("      (   )");
+	r++; move(r, c);
+	printw("    /   |  \\");
+
+}
+
+void eraseFlame(int startrow, int startcolumn)
+{
+	int r = startrow;
+	int c = startcolumn;
+
+	move(r, c);
+
+	printw("          ");
+	r++; move(r, c);
+	printw("             ");
+	r++; move(r, c);
+	printw("               ");
+	r++; move(r, c);
+	printw("             ");
+	r++; move(r, c);
+	printw("             ");
+
+}
+
+void printZee(int startrow, int startcolumn)
+{
+	int r = startrow;
+	int c = startcolumn;
+
+	move(r, c);
+
+	printw("************* ");
+	r++; move(r, c);
+	printw("*********   * ");
+	r++; move(r, c);
+	printw("        *  *  ");
+	r++; move(r, c);
+	printw("      *  *    ");
+	r++; move(r, c);
+	printw("    *  *      ");
+	r++; move(r, c);
+	printw("  *  *        ");
+	r++; move(r, c);
+	printw("*  ***********");
+	r++; move(r, c);
+	printw("**************");
+}
