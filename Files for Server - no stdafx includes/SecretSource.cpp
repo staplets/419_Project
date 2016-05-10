@@ -28,6 +28,7 @@
 
 //include secret header
 #include "SecretHeader.h"
+#include "animation.hpp"
 
 //member function 
 void Safe::checkSafe(std::unordered_map<std::string, std::string>& inv)
@@ -273,6 +274,11 @@ int LightSwitch::checkLightSwitch(std::unordered_map<std::string, std::string>& 
 	std::string ans;
 	int checkInventory = 0;
 	int checkBulb = 0;
+	
+	int start_row = 4;
+	int start_column = 4;
+	int i;
+	int speed;
 
 	//formatting
 	std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
@@ -329,6 +335,39 @@ int LightSwitch::checkLightSwitch(std::unordered_map<std::string, std::string>& 
 		break;
 	case 2: // candle and matches in user inventory
 			//output choices
+			
+		for (i = 1; i <= 8; i++)
+		{
+			printCandle(start_row, start_column);
+			printFlame1(start_row, start_column);
+			refresh();
+			for (speed = 1; speed <= 59000000; speed++);
+			eraseFlame(start_row, start_column);
+			refresh();
+
+			printCandle(start_row, start_column);
+			printFlame2(start_row, start_column);
+			refresh();
+			for (speed = 1; speed <= 59000000; speed++);
+			eraseFlame(start_row, start_column);
+			refresh();
+
+			printCandle(start_row, start_column);
+			printFlame3(start_row, start_column);
+			refresh();
+			for (speed = 1; speed <= 59000000; speed++);
+			eraseFlame(start_row, start_column);
+			refresh();
+
+			printCandle(start_row, start_column);
+			printFlame2(start_row, start_column);
+			refresh();
+			for (speed = 1; speed <= 59000000; speed++);
+			eraseFlame(start_row, start_column);
+			refresh();
+
+		}
+		endwin();
 		std::cout << "Sherlock doesn't have a spare light bulb, but luckily he has a candle and matches to light up the room.\n\n";
 		return 1;
 		break;
