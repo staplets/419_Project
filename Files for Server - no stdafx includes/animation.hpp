@@ -22,3 +22,16 @@ void printDrops2(int startrow, int startcolumn);
 
 void eraseDrops1(int startrow, int startcolumn);
 void eraseDrops2(int startrow, int startcolumn);
+
+void printSpider1(int startrow, int startcolumn);
+void printSpider2(int startrow, int startcolumn);
+void printSpider3(int startrow, int startcolumn);
+void eraseSpider(int startrow, int startcolumn);
+
+void printCandle(int startrow, int startcolumn);
+void printFlame1(int startrow, int startcolumn);
+void printFlame2(int startrow, int startcolumn);
+void printFlame3(int startrow, int startcolumn);
+void eraseFlame(int startrow, int startcolumn);
+
+void printZee(int startrow, int startcolumn);
