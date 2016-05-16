@@ -3,8 +3,8 @@ CXXFLAGS= -std=c++11 -Wall -g
 
 all: mysteryGame;
 
-mysteryGame: mysteryFile.o driveway.o ballroom.o billiards.o cellar.o deck.o dining.o foyer.o garden.o hallway.o kitchen.o library.o secret.o sitting.o smoking.o study.o bedroom.o bathroom.o servants.o attic.o animation.o
-	g++ $(CXXFLAGS) -o mysteryGame mysteryFile.o driveway.o ballroom.o billiards.o cellar.o deck.o dining.o foyer.o garden.o hallway.o kitchen.o library.o secret.o sitting.o smoking.o study.o bedroom.o bathroom.o servants.o attic.o animation.o -l ncurses
+mysteryGame: mysteryFile.o driveway.o ballroom.o billiards.o cellar.o deck.o dining.o foyer.o garden.o hallway.o kitchen.o library.o secret.o sitting.o smoking.o study.o bedroom.o bathroom.o servants.o attic.o balcony.o animation.o
+	g++ $(CXXFLAGS) -o mysteryGame mysteryFile.o driveway.o ballroom.o billiards.o cellar.o deck.o dining.o foyer.o garden.o hallway.o kitchen.o library.o secret.o sitting.o smoking.o study.o bedroom.o bathroom.o servants.o attic.o balcony.o animation.o -l ncurses
 
 mysteryFile.o: Mystery_Mansion_Game.cpp
 	g++ $(CXXFLAGS) -o mysteryFile.o -c Mystery_Mansion_Game.cpp
@@ -65,10 +65,13 @@ servants.o: ServantsSource.cpp ServantsHeader.h
 
 attic.o: AtticSource.cpp AtticHeader.h
 	g++ $(CXXFLAGS) -o attic.o -c AtticSource.cpp
+	
+balcony.o: BalconySource.cpp BalconyHeader.h
+	g++ $(CXXFLAGS) -o balcony.o -c BalconySource.cpp
 
 animation.o: animation.cpp animation.hpp
 	g++ $(CXXFLAGS) -o animation.o -c animation.cpp
 	
 clean:
 	# -f succeeds even if files don't exist
-	rm -f mysteryGame mysteryFile.o driveway.o ballroom.o billiards.o cellar.o deck.o dining.o foyer.o garden.o hallway.o kitchen.o library.o secret.o sitting.o smoking.o study.o bedroom.o bathroom.o servants.o attic.o animation.o 
+	rm -f mysteryGame mysteryFile.o driveway.o ballroom.o billiards.o cellar.o deck.o dining.o foyer.o garden.o hallway.o kitchen.o library.o secret.o sitting.o smoking.o study.o bedroom.o bathroom.o servants.o attic.o balcony.o animation.o 
