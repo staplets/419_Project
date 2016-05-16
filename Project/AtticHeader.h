@@ -1,7 +1,7 @@
 /***********************************************************
 * Author:					Shaun Stapleton
 * Date Created:				5/09/16
-* Last Modification Date:	5/09/16
+* Last Modification Date:     	5/09/16
 * Filename:					AtticHeader.h
 *
 * Overview:
@@ -29,14 +29,14 @@ private:
 
 protected://protected member variables.
 	std::string description;
-	std::string wrapper;
+	std::string picFrame;
 
 public:
 	//default constructor
 	NightStand()
 	{
-		this->description = "A 3 foot high black wired trash can with a fresh scent garbage bag in it.";
-		this->wrapper = "snickers candy bar wrapper";
+		this->description = "An oak colored 4 foot high night stand with a lamp on it.";
+          this->picFrame = "framed picture of Mr. Glass and Miss Wolf traveling together at the Swiss Alps";
 
 	}
 
@@ -50,12 +50,12 @@ public:
 	//Accessor Functions for accessing private variables.
 	std::string getDescription() const;
 
-	std::string getWrapper() const;
+	std::string getPicFrame() const;
 
 	//Mutator Functions to change private variables.
 	void setDescription(const std::string theDescription);
 
-	void setWrapper(const std::string theWrapper);
+	void setPicFrame(const std::string thePicFrame);
 
 };
 
@@ -67,26 +67,32 @@ private:
 
 protected://protected member variables.
 	std::string knowMurderer;
-	std::string doingTonight;
 	int age;
 	std::string jobDescription;
 	std::string description;
-	std::string pass;
-	std::string passTwo;
-	std::string passwordInfo;
+	std::string keyOne;
+     std::string keyTwo;
+     std::string evidence;
+     std::string confessOne;
+     std::string confessTwo;
+     std::string statement;
+     std::string key;
 
 public:
 	//default constructor
 	MrGlass()
 	{
-		this->knowMurderer = "\nMrs. White \"Honey if I knew they would need a police man to come for me. What they have done to George is awful.\"";
-		this->doingTonight = "\nMrs. White \"I've been working the house cooking dinner for the guests and cleaning up.\"";
-		this->age = 55;
-		this->jobDescription = "\nMrs. White \"I handle the day to day routine of cooking and cleaning around here.\n\nI'm sure you've noticed how much work it is with the size of this place.\"";
-		this->description = "A middle aged Caucasian woman. About 5 feet on the dot in height. Black mid length hair. A bit of a nervous edge to her.";
-		this->pass = "\nMrs. White \"I can provide you with the password to the computer downstairs,\n\nbut I'd appreciate a cigarette to help take the edge off of what happened tonight first.\"\n\n";
-		this->passTwo = "\nMrs. White \"Thank you so much sir! Here's the password.\" Mrs. White hands Sherlock a slip of paper with the password on it.\n\n";
-		this->passwordInfo = "Computer Password: \'MoMoneyMoProblems\'.";
+		this->knowMurderer = "\nMr. Glass \"As I said earlier I don't know who may have done this despicable act. No one that I knew of would want to harm Willie.\"";
+		this->age = 87;
+		this->jobDescription = "\nMr. Glass \"I'm retired of course, however I used to be an Investment banker and I accrued a lot of money over the years.\"";
+		this->description = "As noted previously, an elderly white male in his 80's, who appears to be in the early stages of shock.";
+          this->keyOne = "\nMr. Glass \"Well, I can give you a key to gain access to a secret safe, but I'm quite protective of it.\n\nI'd appreciate if you could provide me with some evidence that you are making progress before I give it up.\"\n\n";
+		this->keyTwo = "\nMr. Glass \"Okay excellent work detective! Here is the key to a secret safe in my house.\n\nMrs. Deeds can tell you where to find it.\" Mr. Glass hands you the key.\n\n";
+          this->evidence = "\nMr. Glass \"I'm happy to be of more assistance if you have some more evidence that points us to the murderer.\"\n\n";
+          this->confessOne = "\nMr. Glass \"Goodness gracious, I can't believe it but this means my fiance Miss Wolf poisoned Willie!.\n\nWe were out of town in France two weeks ago and she was adamant about picking up those Gamay Grapes and that Beaujolais wine!\"\n\n";
+          this->confessTwo = "\nMr. Glass \"She must have seen my new will giving all of my inheritance to Willie. I can't believe it.\n\nI will give you a written statement of our whereabouts and that she purchased those items.\n\nMy boy and now the love of my life!\"\n\n";
+          this->statement = "Written statement by Mr. Glass that Ms Wolf purchased the Grapes and Wine that were used to poison Mr. Cunningham";
+          this->key = "Key to unlock Safe";
 	}
 
 	//Virtual Destructor
@@ -100,13 +106,11 @@ public:
 	//member function for Mrs Deeds
 	void conversate(std::unordered_map<std::string, std::string>& inventory);
 
-	//member function for Mrs Deeds
-	void getPassword(std::unordered_map<std::string, std::string>& inventory);
+	//member function for Mr Glass
+	void getMoreInfo(std::unordered_map<std::string, std::string>& inventory);
 
 	//Accessor Functions for accessing private variables.
 	std::string getKnowMurderer() const;
-
-	std::string getDoingTonight() const;
 
 	int getAge() const;
 
@@ -114,16 +118,22 @@ public:
 
 	std::string getDescription() const;
 
-	std::string getPass() const;
+	std::string getKeyOne() const;
 
-	std::string getPassTwo() const;
+     std::string getKeyTwo() const;
 
-	std::string getPasswordInfo() const;
+     std::string getEvidence() const;
+
+     std::string getConfessOne() const;
+
+     std::string getConfessTwo() const;
+
+	std::string getStatement() const;
+
+     std::string getKey() const;
 
 	//Mutator Functions to change private variables.
 	void setKnowMurderer(const std::string theKnowMurderer);
-
-	void setDoingTonight(const std::string theDoingTonight);
 
 	void setAge(const int theAge);
 
@@ -131,11 +141,19 @@ public:
 
 	void setDescription(const std::string theDescription);
 
-	void setPass(const std::string thePass);
+     void setKeyOne(const std::string theKeyOne);
 
-	void setPassTwo(const std::string thePassTwo);
+     void setKeyTwo(const std::string theKeyTwo);
 
-	void setPasswordInfo(const std::string thePasswordInfo);
+     void setEvidence(const std::string theEvidence);
+
+     void setConfessOne(const std::string theConfessOne);
+
+     void setConfessTwo(const std::string theConfessTwo);
+
+     void setStatement(const std::string theStatement);
+     
+     void setKey(const std::string theKey);
 
 };
 

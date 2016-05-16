@@ -118,6 +118,11 @@
 #include "AtticHeader.h"
 #endif
 
+#ifndef BalconyHeader_h
+#define BalconyHeader_h
+#include "BalconyHeader.h"
+#endif
+
 #include "stdafx.h"
 #include <iostream>
 #include <string>
@@ -184,7 +189,7 @@ void gameIntro(){
           "As he approached the large brick archways that led to the front doors of the mansion, a man stepped out of the front door\n" <<
           "who called himself George Glass. Mr. Glass was an elderly gentleman in his 80's, who appeared visibly upset, however he was\n" <<
           "fighting back the tears.\n\nMr Glass explained \"I was having friends over for a dinner party this evening\n" <<
-          "and toight a terrible tragedy has occured. One of my guests staying here for the evening was found lifeless in one\n" <<
+          "and tonight a terrible tragedy has occured. One of my guests staying here for the evening was found lifeless in one\n" <<
           "of the bedrooms.\"\n\nHe continued \"Oh my, it was my son Willie Cunningham. He and I had been estranged for some time\n" <<
           "and tonight I was planning to work things out between us. I know I myself don't have much time left.\n" <<
           "No other guests were aware of our relation and they only knew him as an acquaintance of mine. This was a very personal matter to me.\"\n\n" <<
@@ -220,6 +225,7 @@ int bedroomNavigate(std::unordered_map<std::string, std::string>& inventory);
 int bathroomNavigate(std::unordered_map<std::string, std::string>& inventory);
 int servantsNavigate(std::unordered_map<std::string, std::string>& inventory);
 int atticNavigate(std::unordered_map<std::string, std::string>& inventory);
+int balconyNavigate(std::unordered_map<std::string, std::string>& inventory);
 
 //Calls game menu for user options.
 //Precondition: main properly opens.
@@ -242,8 +248,12 @@ void playRooms(){
      //testing!!
      //inventory_Map.insert({ "confession", "the confession" });
      //inventory_Map.insert({ "password", "password" });
-	 inventory_Map.insert({ "key", "key" });
-	 inventory_Map.insert({ "cigs", "cigarettes" });
+	 //inventory_Map.insert({ "key", "key" });
+	 //inventory_Map.insert({ "cigs", "cigarettes" });
+      //inventory_Map.insert({ "sap", "sap" });
+      //inventory_Map.insert({ "grape", "Gamay Grape" });
+      //inventory_Map.insert({ "old will", "old will" });
+      //inventory_Map.insert({ "new will", "new will" });
 
 //     std::cout << "map shows: " << inventory_Map["knife"] << " with a size of: " << inventory_Map.size() << "\n";
 
@@ -331,9 +341,7 @@ void playRooms(){
                break;
           case 18:
                //Navigate the Balcony
-               std::cout << "Under construction!" << " choice was: " << returnedNavChoice << "\n\n";
-               gameOver = true;
-               //returnedNavChoice = balconyNavigate(inventory_Map);
+               returnedNavChoice = balconyNavigate(inventory_Map);
                break;
           case 19:
                //Navigate the Bathroom
@@ -348,7 +356,7 @@ void playRooms(){
 
      } while (!gameOver);
      
-     
+     /*
      //test inventory
      std::cout << "Map's inventory contains: \n";
      int c = 1;
@@ -356,4 +364,5 @@ void playRooms(){
           std::cout << c << ": " << it->second << "\n";
           c++;
      }
+     */
 }

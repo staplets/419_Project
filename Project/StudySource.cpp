@@ -98,7 +98,7 @@ void Computer::checkComputer(std::unordered_map<std::string, std::string>& inv)
      switch (checkInventory){
      case 0: // brochure and password not in user inventory
           //output if neither are in inventory
-          std::cout << "\nSherlock cannot get into the computer without the password. Perhaps somewhere in the mansion can assist with that ... \n\n";
+          std::cout << "\nSherlock cannot get into the computer without the password. Perhaps someone in the mansion can assist with that ... \n\n";
           break;
      case 1://only password in user inventory
           std::cout << "\nSherlock can get into the computer with the password. However he is not sure what to look up. Perhaps if he found a book or brochure with information to search ... \n\n";
@@ -149,7 +149,7 @@ void Computer::checkComputer(std::unordered_map<std::string, std::string>& inv)
           }
           break;
      case 3: // brochure found but not password in user inventory
-          std::cout << "\nSherlock cannot get into the computer without the password. Perhaps somewhere in the mansion can assist with that ... \n\n";
+          std::cout << "\nSherlock cannot get into the computer without the password. Perhaps someone in the mansion can assist with that ... \n\n";
           break;
      }
 }

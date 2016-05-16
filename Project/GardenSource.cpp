@@ -243,14 +243,14 @@ int MsWolf::conversate(std::unordered_map<std::string, std::string>& inventory){
      //output info about mr white
      msWolf.personInformation(inventory);
 
-     //check if the confession is already in inventory
-     auto search = inventory.find("confession");
+     //check if the statement is already in inventory
+     auto search = inventory.find("statement");
      if (search != inventory.end()){
           
           //set up navigation
           std::cout << "Ms. Wolf greets Sherlock as he approaches.\n\n" <<
                "What would you like to ask Ms. Wolf? \n\n" <<
-               "\n\nPresent her with the written confession and clues to her murder!!! (Enter \"1\").\n\n\n" <<
+               "\n\nPresent her with the written statement and clues to her murder!!! (Enter \"1\").\n\n\n" <<
                "What have you been doing tonight? (Enter \"2\").\n\n" <<
                "Do you know who the murderer may be? (Enter \"3\").\n\n" <<
                "What's your age? (Enter \"4\") \n\n" <<
@@ -278,7 +278,7 @@ int MsWolf::conversate(std::unordered_map<std::string, std::string>& inventory){
                               std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
 
                               std::cout << "What would you like to ask Ms. Wolf? \n\n" << 
-                                   "\n\nPresent her with the written confession and clues to her murder!!! (Enter \"1\").\n\n\n" <<
+                                   "\n\nPresent her with the written statement and clues to her murder!!! (Enter \"1\").\n\n\n" <<
                                    "What have you been doing tonight? (Enter \"2\").\n\n" <<
                                    "Do you know who the murderer may be? (Enter \"3\").\n\n" <<
                                    "What's your age? (Enter \"4\") \n\n" <<
@@ -312,7 +312,7 @@ int MsWolf::conversate(std::unordered_map<std::string, std::string>& inventory){
                     search = inventory.find("revolver");
                     if (search != inventory.end()){
 
-                         std::cout << "\n\nSherlock presents Ms. Wolf with the signed confession from Mr. Glass and Ms. Wolf looks as though she will burst into tears.\n\n";
+                         std::cout << "\n\nSherlock presents Ms. Wolf with the signed statement from Mr. Glass and Ms. Wolf looks as though she will burst into tears.\n\n";
                          std::cout << "Then she says \"" << getConfession() << getConfessionTwo() << getConfessionThree() << "\n\n";
                          std::cout << "Sherlock then handcuffed her and walked her out to his Monte Carlo and took her to the station.\n\n\nWell done detective!!!\n\nThanks for playing!\n\n";
 

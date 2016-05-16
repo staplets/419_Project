@@ -80,6 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AtticHeader.h" />
+    <ClInclude Include="BalconyHeader.h" />
     <ClInclude Include="BallroomHeader.h" />
     <ClInclude Include="BathroomHeader.h" />
     <ClInclude Include="BedroomHeader.h" />
@@ -103,6 +104,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AtticSource.cpp" />
+    <ClCompile Include="BalconySource.cpp" />
     <ClCompile Include="BallroomSource.cpp" />
     <ClCompile Include="BathroomSource.cpp" />
     <ClCompile Include="BedroomSource.cpp" />
