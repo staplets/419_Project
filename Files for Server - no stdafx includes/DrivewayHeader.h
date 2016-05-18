@@ -18,7 +18,65 @@
 #include <ctime>
 #include <cstdlib>
 #include <stack>
+#include <vector>
 #include <unordered_map>
+
+//Room Driveway Class
+class RoomDriveway
+{
+private:
+
+protected://protected member variables.
+     std::string name;
+     std::vector<std::string> exits{ std::vector<std::string>{"Foyer", "Garden"} };
+     std::vector<std::string> objects{ std::vector<std::string>{"car", "mrWhite"} };
+     int numRooms;
+     int numObjects;
+     std::string description;
+
+public:
+     //default constructor
+     RoomDriveway()
+     {
+          this->name = "The Driveway";
+          this->numRooms = 2;
+          this->numObjects = 2;
+          this->description = "You are in the driveway.\n\nThere is a fancy luxury car that you may want to take a look at (Enter \"car\").\n\nThere is also a man standing by the front of the driveway smoking a cigarette (To talk with him: Enter \"Talk Mr White\").\n\n";
+
+     }
+
+     //Virtual Destructor
+     virtual ~RoomDriveway()
+     {}
+
+
+     //Accessor Functions for accessing private variables.
+     std::string getName() const;
+
+     int getNumRooms() const;
+
+     int getNumObjects() const;
+
+     std::vector<std::string> getExits() const;
+
+     std::vector<std::string> getObjects() const;
+
+     std::string getDescription() const;
+
+     //Mutator Functions to change private variables.
+     void setName(const std::string theName);
+
+     void setNumRooms(const int theNumRooms);
+
+     void setNumObjects(const int theNumObjects);
+
+     void setExits(const std::vector<std::string> theExits);
+
+     void setObjects(const std::vector<std::string> theObjects);
+
+     void setDescription(const std::string theDescription);
+
+};
 
 //Luxury Car Class
 class LuxuryCar
@@ -147,8 +205,5 @@ public:
      void setDescription(const std::string theDescription);
 
 };
-
-//navigation function to handle game play while the player is in the driveway
-int drivewayNavigate(std::unordered_map<std::string, std::string>& inventory);
 
 #endif

@@ -18,6 +18,64 @@
 #include <cstdlib>
 #include <stack>
 #include <unordered_map>
+#include <vector>
+
+//Room Foyer Class
+class RoomFoyer
+{
+private:
+
+protected://protected member variables.
+     std::string name;
+     std::vector<std::string> exits{ std::vector<std::string>{"Driveway", "Kitchen", "Sitting Room", "Upstairs Hallway", "Dining Room" } };
+     std::vector<std::string> objects{ std::vector<std::string>{"closet", "fishBowl"} };
+     int numRooms;
+     int numObjects;
+     std::string description;
+
+public:
+     //default constructor
+     RoomFoyer()
+     {
+          this->name = "The Foyer";
+          this->numRooms = 5;
+          this->numObjects = 2;
+          this->description = "You are in the Foyer of the Mansion.\n\nLooking around, there is a coat closet you may want to take a look at (Enter \"closet\").\n\nThere is also a fishbowl on a stand you may examine more closely (Enter \"fishbowl\").\n\n";
+
+     }
+
+     //Virtual Destructor
+     virtual ~RoomFoyer()
+     {}
+
+
+     //Accessor Functions for accessing private variables.
+     std::string getName() const;
+
+     int getNumRooms() const;
+
+     int getNumObjects() const;
+
+     std::vector<std::string> getExits() const;
+
+     std::vector<std::string> getObjects() const;
+
+     std::string getDescription() const;
+
+     //Mutator Functions to change private variables.
+     void setName(const std::string theName);
+
+     void setNumRooms(const int theNumRooms);
+
+     void setNumObjects(const int theNumObjects);
+
+     void setExits(const std::vector<std::string> theExits);
+
+     void setObjects(const std::vector<std::string> theObjects);
+
+     void setDescription(const std::string theDescription);
+
+};
 
 //Coat Closet Class
 class CoatCloset
@@ -125,9 +183,5 @@ public:
      void setFishTwoAnswer(const std::string theFishTwoAnswer);
 
 };
-
-
-//navigation function to handle game play while the player is in the foyer
-int foyerNavigate(std::unordered_map<std::string, std::string>& inventory);
 
 #endif
