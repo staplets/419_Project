@@ -357,6 +357,12 @@ void Piano::setNotes(const std::string theNotes) { notes = theNotes; }
 
 //member function to output information provided of each item
 void Bar::checkBar(std::unordered_map<std::string, std::string>& inv) {
+	
+	//used for animation
+	int start_row = 4;
+	int start_column = 4;
+	int i;
+	int speed;
 
 	//initialize the bar object
 	Bar bar;
@@ -399,6 +405,52 @@ void Bar::checkBar(std::unordered_map<std::string, std::string>& inv) {
 		} while (ans != "y" && ans != "n");
 
 		if (ans == "y") {
+			
+			initscr();
+			printBar(start_row, start_column);
+			for (i = 1; i <= 5; i++)
+			{
+				for (speed = 1; speed <= 50000000; speed++);
+				refresh();
+			}
+
+			for (i = 1; i <= 11; i++)
+			{
+				if (i == 4)
+				{
+					start_row++;
+				}
+				printPour(start_row, start_column);
+				refresh();
+				for (speed = 1; speed <= 59000000; speed++);
+				start_row++;
+				refresh();
+			}
+			
+			start_row--;
+	
+			for (i = 1; i <= 7; i++)
+			{
+				if (i == 3)
+				{erasePour(start_row - 9, start_column);}
+				if (i == 4)
+				{erasePour(start_row - 7, start_column);}
+				if (i == 5)
+				{erasePour(start_row - 5, start_column);}
+				if (i == 6)
+				{printGlass(start_row - 3, start_column);}
+				if (i == 7)
+				{erasePour(start_row - 1, start_column);}
+				
+				printFill(start_row, start_column);
+				refresh();
+				for (speed = 1; speed <= 48000000; speed++);
+				start_row--;
+				refresh();
+			}
+			getch();
+			endwin();
+			
 			int amount = getNumDrinks();
 			setNumDrinks(amount + 1);
 
