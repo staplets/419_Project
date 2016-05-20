@@ -148,7 +148,7 @@ public:
      {
           this->fishOneType = "\nThe first fish is a burnt orange Goldfish";
           this->fishTwoType = "\nThe second fish is a dark purple Betta.";
-          this->fishOneAnswer = "\nThe goldfish looks at Sherlock with a dumbfounded look and blows a bubble.";
+          this->fishOneAnswer = "\nThe goldfish looks at you with a dumbfounded look and blows a bubble.";
           this->fishTwoAnswer = "\nThe Betta fish goes and hides under a rock.";
 
      }

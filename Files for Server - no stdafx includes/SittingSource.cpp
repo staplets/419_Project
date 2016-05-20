@@ -1,7 +1,7 @@
 /***********************************************************
 * Author:					Shaun Stapleton
-* Date Created:			4/25/16
-* Last Modification Date:	4/25/16
+* Date Created:			5/25/16
+* Last Modification Date:	5/25/16
 * Filename:				SittingSource.cpp
 *
 * Overview:
@@ -27,6 +27,7 @@
 //included for sleeping functionality
 #include <chrono>
 #include <thread>
+#include <vector>
 
 //guards for header
 #include "SittingHeader.h"
@@ -47,7 +48,7 @@ void Couch::takeNap()
           std::this_thread::sleep_for(std::chrono::seconds(1));
           std::cout << "\n\nZzz ...\n\n";
 
-          std::cout << "\nWould you like to wake Sherlock up?\n\n";
+          std::cout << "\nWould you like to wake up?\n\n";
 
           //check user input
           do
@@ -88,13 +89,13 @@ void Couch::checkCouch(std::unordered_map<std::string, std::string>& inv)
      std::cout << "\n\nThe Couch\n\n\n\n";
 
      //coffee table info
-     std::cout << "\nWalking over to the Couch, Sherlock notes: " << getDescription() << "\n\n";
+     std::cout << "\nWalking over to the Couch, you note: " << getDescription() << "\n\n";
 
      auto search = inv.find("book");
      if (search != inv.end()){
 
           //set up navigation
-          std::cout << "Sherlock has already grabbed a book on the couch, but he sees the opportunity for relaxation.\n\n" <<
+          std::cout << "You have already grabbed a book on the couch, but you see the opportunity for relaxation.\n\n" <<
                "What would you like to do? \n\n" <<
                "Take a nap? (Enter \"1\") \n\n" <<
                "Done with couch? (Enter \"2\")\n\n" <<
@@ -124,7 +125,7 @@ void Couch::checkCouch(std::unordered_map<std::string, std::string>& inv)
                               std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
 
                               std::cout << "\n\nThe Couch\n\n\n\n" <<
-                                   "Sherlock has already grabbed a book on the couch, but he sees the opportunity for relaxation.\n\n" <<
+                                   "You have already grabbed a book on the couch, but you see the opportunity for relaxation.\n\n" <<
                                    "What would you like to do? \n\n" <<
                                    "Take a nap? (Enter \"1\") \n\n" <<
                                    "Done with couch? (Enter \"2\")\n\n" <<
@@ -154,10 +155,10 @@ void Couch::checkCouch(std::unordered_map<std::string, std::string>& inv)
                case 1:
                     //call function to take nap
                     takeNap();
-                    std::cout << "\n\nSherlock awakes from the nap feeling nice and rested!\n\n";
+                    std::cout << "\n\nYou awake from the nap feeling nice and rested!\n\n";
                     break;
                case 2:
-                    std::cout << "\nSherlock moves away from the couch.\n\n";
+                    std::cout << "\nYou move away from the couch.\n\n";
                     break;
                case 3:
                     std::cout << "\n\nInventory contains: \n\n";
@@ -174,7 +175,7 @@ void Couch::checkCouch(std::unordered_map<std::string, std::string>& inv)
      else{
 
           //set up navigation
-          std::cout << "Sherlock notices what appears to be a book on the couch. He also sees the opportunity for relaxation.\n\n" <<
+          std::cout << "You notice what appears to be a book on the couch. You also see the opportunity for relaxation.\n\n" <<
                "What would you like to do? \n\n" <<
                "Look at book? (Enter \"1\").\n\n" <<
                "Take a nap? (Enter \"2\") \n\n" <<
@@ -205,7 +206,7 @@ void Couch::checkCouch(std::unordered_map<std::string, std::string>& inv)
                               std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
 
                               std::cout << "\n\nThe Couch\n\n\n\n" <<
-                                   "Sherlock notices what appears to be a book on the couch. He also sees the opportunity for relaxation.\n\n" <<
+                                   "You notice what appears to be a book on the couch. You also see the opportunity for relaxation.\n\n" <<
                                    "What would you like to do? \n\n" <<
                                    "Look at book? (Enter \"1\").\n\n" <<
                                    "Take a nap? (Enter \"2\") \n\n" <<
@@ -234,7 +235,7 @@ void Couch::checkCouch(std::unordered_map<std::string, std::string>& inv)
                //output responses from Mr Whtie
                switch (choice){
                case 1:
-                    std::cout << "\nSherlock notices a " << getBook() << " on the recliner, which catches his eye.\n\n";
+                    std::cout << "\nYou notice a " << getBook() << " on the recliner, which catches your eye.\n\n";
 
                     std::cout << "Would you like to add the " << getBook() << " to your inventory?\n\n";
 
@@ -271,10 +272,10 @@ void Couch::checkCouch(std::unordered_map<std::string, std::string>& inv)
                case 2:
                     //call function to take nap
                     takeNap();
-                    std::cout << "\n\nSherlock awakes from the nap feeling nice and rested!\n\n";
+                    std::cout << "\n\nYou awake from the nap feeling nice and rested!\n\n";
                     break;
                case 3:
-                    std::cout << "\nSherlock moves away from the couch.\n\n";
+                    std::cout << "\nYou move away from the couch.\n\n";
                     break;
                case 4:
                     std::cout << "\n\nInventory contains: \n\n";
@@ -328,12 +329,12 @@ void MrsDeeds::secretRoom(std::unordered_map<std::string, std::string>& inventor
           }
           else{
                //get secret room info 
-			   std::cout << mrsDeeds.roomOne;
-               std::cout << "\n\nSherlock gives Mrs. Deeds a piece of blueberry pie that he has.\n\n";
+               std::cout << mrsDeeds.roomOne;
+               std::cout << "\n\nYou give Mrs. Deeds a piece of blueberry pie that you have.\n\n";
                std::cout << mrsDeeds.roomTwo << "\n\n";
                //collect note for inventory
                inventory.insert({ "secret note", getSecretNote() });
-               std::cout << "\n\nSherlock notes this in his notepad.\n\n";
+               std::cout << "\n\nYou note this in your notepad.\n\n";
           }
      }
      else{
@@ -362,96 +363,96 @@ void MrsDeeds::conversate(std::unordered_map<std::string, std::string>& inventor
      //output info about mr white
      mrsDeeds.personInformation(inventory);
 
-          //set up navigation
-          std::cout << "Mrs. Deeds is sitting on one of the seats and stands to greet Sherlock as he approaches.\n\n" <<
-               "What would you like to ask Mrs. Deeds? \n\n" <<
-               "What have you been doing tonight? (Enter \"1\").\n\n" <<
-               "Do you know who the murderer may be? (Enter \"2\").\n\n" <<
-               "What's your age? (Enter \"3\") \n\n" <<
-               "What do you do for work? (Enter \"4\").\n\n" <<
-               "Is there anything else you can tell me? (Enter \"5\").\n\n" <<
-               "Finished questioning her (Enter \"6\")\n\n" <<
-               "Check your inventory of items (Enter \"7\").\n\n" <<
-               "Choose a number between 1 and 7.";
+     //set up navigation
+     std::cout << "Mrs. Deeds is sitting on one of the seats and stands to greet you as he approaches.\n\n" <<
+          "What would you like to ask Mrs. Deeds? \n\n" <<
+          "What have you been doing tonight? (Enter \"1\").\n\n" <<
+          "Do you know who the murderer may be? (Enter \"2\").\n\n" <<
+          "What's your age? (Enter \"3\") \n\n" <<
+          "What do you do for work? (Enter \"4\").\n\n" <<
+          "Is there anything else you can tell me? (Enter \"5\").\n\n" <<
+          "Finished questioning her (Enter \"6\")\n\n" <<
+          "Check your inventory of items (Enter \"7\").\n\n" <<
+          "Choose a number between 1 and 7.";
 
-          //inspect the room
-          do{
+     //inspect the room
+     do{
 
-               //navigation choice
-               choice = 0;
-               retry = 0;
+          //navigation choice
+          choice = 0;
+          retry = 0;
 
-               do
+          do
+          {
+               if (retry > 0)
                {
-                    if (retry > 0)
-                    {
-                         std::cout << "\n\nPlease select a number between 1 and 7 for questioning: \n\n";
-                    }
-                    else{
-                         if (firstTime != 0){
-                              //formatting
-                              std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
-
-                              std::cout << "What would you like to ask Mrs. Deeds? \n\n" <<
-                                   "What have you been doing tonight? (Enter \"1\").\n\n" <<
-                                   "Do you know who the murderer may be? (Enter \"2\").\n\n" <<
-                                   "What's your age? (Enter \"3\") \n\n" <<
-                                   "What do you do for work? (Enter \"4\").\n\n" <<
-                                   "Is there anything else you can tell me? (Enter \"5\").\n\n" <<
-                                   "Finished questioning her (Enter \"6\")\n\n" <<
-                                   "Check your inventory of items (Enter \"7\").\n\n" <<
-                                   "Choose a number between 1 and 7.";
-                         }
-                    }
-                    std::cout << std::endl << std::endl;
-                    //Take input for program choice.
-                    std::cin >> choice;
-
-                    while (!std::cin)
-                    {
-                         std::cin.clear();
-                         std::cin.ignore(255, '\n');
-                         std::cout << "\n\nPlease enter a choice : \n\n";
-                         std::cin >> choice;
-                    }
-                    retry++;
-                    firstTime++;
-
-               } while (choice < 1 || choice > 7);
-
-
-               //output responses from Mr Whtie
-               switch (choice){
-               case 1:
-                    std::cout << mrsDeeds.doingTonight << "\n\n";
-                    break;
-               case 2:
-                    std::cout << mrsDeeds.knowMurderer << "\n\n";
-                    break;
-               case 3:
-                    std::cout << "\nMrs. Deeds \"I am " << mrsDeeds.age << "\"\n\n";
-                    break;
-               case 4:
-                    std::cout << mrsDeeds.jobDescription << "\n\n";
-                    break;
-               case 5:
-                    //check as to whether she will give up the secret room or not
-                    secretRoom(inventory);
-                    break;
-               case 6:
-                    std::cout << "\nSherlock: \"Thank you for your time Mrs. Deeds.\"\n\n";
-                    break;
-               case 7:
-                    std::cout << "\n\nInventory contains: \n\n";
-                    int c = 1;
-                    for (auto it = inventory.begin(); it != inventory.end(); ++it){
-                         std::cout << c << ": " << it->second << "\n";
-                         c++;
-                    }
-                    break;
+                    std::cout << "\n\nPlease select a number between 1 and 7 for questioning: \n\n";
                }
+               else{
+                    if (firstTime != 0){
+                         //formatting
+                         std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
 
-          } while (choice != 6);
+                         std::cout << "What would you like to ask Mrs. Deeds? \n\n" <<
+                              "What have you been doing tonight? (Enter \"1\").\n\n" <<
+                              "Do you know who the murderer may be? (Enter \"2\").\n\n" <<
+                              "What's your age? (Enter \"3\") \n\n" <<
+                              "What do you do for work? (Enter \"4\").\n\n" <<
+                              "Is there anything else you can tell me? (Enter \"5\").\n\n" <<
+                              "Finished questioning her (Enter \"6\")\n\n" <<
+                              "Check your inventory of items (Enter \"7\").\n\n" <<
+                              "Choose a number between 1 and 7.";
+                    }
+               }
+               std::cout << std::endl << std::endl;
+               //Take input for program choice.
+               std::cin >> choice;
+
+               while (!std::cin)
+               {
+                    std::cin.clear();
+                    std::cin.ignore(255, '\n');
+                    std::cout << "\n\nPlease enter a choice : \n\n";
+                    std::cin >> choice;
+               }
+               retry++;
+               firstTime++;
+
+          } while (choice < 1 || choice > 7);
+
+
+          //output responses from Mr Whtie
+          switch (choice){
+          case 1:
+               std::cout << mrsDeeds.doingTonight << "\n\n";
+               break;
+          case 2:
+               std::cout << mrsDeeds.knowMurderer << "\n\n";
+               break;
+          case 3:
+               std::cout << "\nMrs. Deeds \"I am " << mrsDeeds.age << "\"\n\n";
+               break;
+          case 4:
+               std::cout << mrsDeeds.jobDescription << "\n\n";
+               break;
+          case 5:
+               //check as to whether she will give up the secret room or not
+               secretRoom(inventory);
+               break;
+          case 6:
+               std::cout << "\nYou: \"Thank you for your time Mrs. Deeds.\"\n\n";
+               break;
+          case 7:
+               std::cout << "\n\nInventory contains: \n\n";
+               int c = 1;
+               for (auto it = inventory.begin(); it != inventory.end(); ++it){
+                    std::cout << c << ": " << it->second << "\n";
+                    c++;
+               }
+               break;
+          }
+
+     } while (choice != 6);
 
 }
 
@@ -489,119 +490,29 @@ void MrsDeeds::setRoomTwo(const std::string theRoomTwo){ roomTwo = theRoomTwo; }
 
 void MrsDeeds::setSecretNote(const std::string theSecretNote){ secretNote = theSecretNote; }
 
+/////Room class functions/////
+//get functions
+std::string RoomSitting::getName() const { return name; }
 
-//navigation function to handle game play while the player is in the garden
-int sittingNavigate(std::unordered_map<std::string, std::string>& inventory){
+int RoomSitting::getNumRooms() const { return numRooms; }
 
-     //boolean to find out if player wants to move to another room
-     bool move = false;
-     int firstTime = 0;
+int RoomSitting::getNumObjects() const { return numObjects; }
 
-     //intialize objects
-     Couch couch;
-     MrsDeeds mrsDeeds;
+std::vector<std::string> RoomSitting::getExits() const { return exits; }
 
-     //formatting
-     std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
+std::vector<std::string> RoomSitting::getObjects() const { return objects; }
 
-     //Game Intro
-     std::cout << "\n\nThe Sitting Room\n\n\n\n" <<
-          "Sherlock is in the Sitting Room.\n\nIn this room he spots some lovely furniture, however the only noteworthy one is a couch.\n\n" <<
-          "There is woman dressed in a peach dress reading through a magazine, who you may want to talk with (Interact: Enter \"1\").\n\n" <<
-          "You can also examine the couch (Interact: Enter \"2\").\n\n" <<
-          "You may go around into the Smoking Room (Enter \"3\")\n\nYou may go out to the Foyer (Enter \"4\").\n\n" <<
-          "You may go into the Ballroom ( Enter \"5\").\n\n" <<
-          "Check your inventory of items ( Enter \"6\").\n\n" <<
-          "What would you like to do? Choose a number between 1 and 6.";
+std::string RoomSitting::getDescription() const { return description; }
 
-     //choice from player
-     int choice = 0;
-     int retry = 0;
-     std::string ans;
+//set functions
+void RoomSitting::setName(const std::string theName){ name = theName; }
 
-     //inspect the room
-     do{
+void RoomSitting::setNumRooms(const int theNumRooms){ numRooms = theNumRooms; }
 
-          //navigation choice
-          choice = 0;
-          retry = 0;
+void RoomSitting::setNumObjects(const int theNumObjects){ numObjects = theNumObjects; }
 
-          do
-          {
-               if (retry > 0)
-               {
-                    std::cout << "\n\nPlease select a number between 1 and 6 to navigate: \n\n";
-               }
-               else{
-                    if (firstTime != 0){
-                         //formatting
-                         std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
+void RoomSitting::setExits(const std::vector<std::string> theExits){ exits = theExits; }
 
-                         std::cout << "\n\nThe Sitting Room\n\n\n\n" <<
-                              "Sherlock is in the Sitting Room.\n\nIn this room he spots some lovely furniture, however the only noteworthy one is a couch.\n\n" <<
-                              "There is woman dressed in a peach dress reading through a magazine, who you may want to talk with (Interact: Enter \"1\").\n\n" <<
-                              "You can also examine the couch (Interact: Enter \"2\").\n\n" <<
-                              "You may go around into the Smoking Room (Enter \"3\")\n\nYou may go out to the Foyer (Enter \"4\").\n\n" <<
-                              "You may go into the Ballroom ( Enter \"5\").\n\n" <<
-                              "Check your inventory of items ( Enter \"6\").\n\n" <<
-                              "What would you like to do? Choose a number between 1 and 6.";
-                    }
-               }
-               std::cout << std::endl << std::endl;
-               //Take input for program choice.
-               std::cin >> choice;
+void RoomSitting::setObjects(const std::vector<std::string> theObjects){ objects = theObjects; }
 
-               while (!std::cin)
-               {
-                    std::cin.clear();
-                    std::cin.ignore(255, '\n');
-                    std::cout << "\n\nPlease enter a choice : \n\n";
-                    std::cin >> choice;
-               }
-               retry++;
-               firstTime++;
-
-          } while (choice < 1 || choice > 6);
-
-
-          //take users choice and interact based on that
-          switch (choice){
-          case 1:
-               mrsDeeds.conversate(inventory);
-               break;
-          case 2:
-               couch.checkCouch(inventory);
-               break;
-          case 3:
-               std::cout << "\nWalking into the Smoking Room.\n";
-               //change choice to reflect our room mapping and update move
-               choice = 6;
-               move = true;
-               break;
-          case 4:
-               std::cout << "\nWalking out into the Foyer.\n";
-               //change choice to reflect our room mapping and update move
-               choice = 2;
-               move = true;
-               break;
-          case 5:
-               std::cout << "\nGoing into the BallRoom.\n";
-               //change choice to reflect our room mapping and update move
-               choice = 16;
-               move = true;
-               break;
-          case 6:
-               std::cout << "\n\nInventory contains: \n\n";
-               int c = 1;
-               for (auto it = inventory.begin(); it != inventory.end(); ++it){
-                    std::cout << c << ": " << it->second << "\n";
-                    c++;
-               }
-               break;
-          }
-
-     } while (!move);
-
-     return choice;
-}
-
+void RoomSitting::setDescription(const std::string theDescription){ description = theDescription; }

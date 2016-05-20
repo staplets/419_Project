@@ -98,7 +98,7 @@ void CoatCloset::checkCoats(std::unordered_map<std::string, std::string>& inv)
           }
           else{
 
-               std::cout << "\nSherlock goes through the coats and only finds " << getMatches() << "\n\n";
+               std::cout << "\nYou go through the coats and only find " << getMatches() << "\n\n";
 
                std::cout << "Would you like to add this item to your inventory?\n\n";
 
@@ -233,13 +233,13 @@ void FishBowl::fishConvo(std::unordered_map<std::string, std::string>& inventory
           //output responses from Mr Whtie
           switch (choice){
           case 1:
-               std::cout << "\nSherlock: \"Have you seen anything out of the ordinary tonight goldfish?\"\n\n" << fishBowl.fishOneAnswer << "\n\n";
+               std::cout << "\nYou: \"Have you seen anything out of the ordinary tonight goldfish?\"\n\n" << fishBowl.fishOneAnswer << "\n\n";
                break;
           case 2:
-               std::cout << "\nSherlock: \"Any suspects Betta fish?\"\n\n" << fishBowl.fishTwoAnswer << "\n\n";
+               std::cout << "\nYou: \"Any suspects Betta fish?\"\n\n" << fishBowl.fishTwoAnswer << "\n\n";
                break;
           case 3:
-               std::cout << "\nSherlock: \"Alright they aren't talking.\"\n\n";
+               std::cout << "\nYou: \"Alright they aren't talking.\"\n\n";
                break;
           case 4:
                std::cout << "\n\nInventory contains: \n\n";

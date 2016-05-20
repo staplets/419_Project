@@ -1,7 +1,7 @@
 /***********************************************************
 * Author:					Shaun Stapleton
-* Date Created:			4/24/16
-* Last Modification Date:	4/24/16
+* Date Created:			5/24/16
+* Last Modification Date:	5/24/16
 * Filename:				SmokingSource.cpp
 *
 * Overview:
@@ -24,98 +24,64 @@
 #include <cstdlib>
 #include <stack>
 #include <unordered_map>
+#include <vector>
 
 //include hallway header
 #include "SmokingHeader.h"
 
-void inspectSmokingObj(std::string objName, std::unordered_map<std::string, std::string>& inventory)
-{
-	//intialize objects
-	RecliningChair recliningChair;
-	Painting painting;
-
-	if (objName.compare("Examine reclining chair") == 0) { //if object is reclining chair
-		recliningChair.checkRecliningChair(inventory);
-	}
-	else {
-		painting.checkPainting(inventory);
-	}
-}
-
-int movePlayerFromSmoking(std::string location)
-{
-	int intChoice;
-	if (location.compare("Kitchen") == 0) {
-		std::cout << "\nEntering the Kitchen.\n";
-		//change choice to reflect our room mapping and update move
-		intChoice = 9;
-	}
-	else if (location.compare("Sitting room") == 0) {
-		std::cout << "\nEntering the Sitting Room.\n";
-		//change choice to reflect our room mapping and update move
-		intChoice = 5;
-	}
-	else {
-		std::cout << "\nEntering the Billiards Room.\n";
-		//change choice to reflect our room mapping and update move
-		intChoice = 7;
-	}
-	return intChoice;
-}
-
 //member function 
 void RecliningChair::checkRecliningChair(std::unordered_map<std::string, std::string>& inv)
 {
-	//user input var
-	std::string ans;
+     //user input var
+     std::string ans;
 
-	//formatting
-	std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
+     //formatting
+     std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
 
-	//coat closet info
-	std::cout << "\n\nThe Reclining Chair\n\n\n\n";
+     //coat closet info
+     std::cout << "\n\nThe Reclining Chair\n\n\n\n";
 
-	std::cout << "\nFrom closer inspection of the recliner, Sherlock notes: " << getDescription() << "\n\n";
+     std::cout << "\nFrom closer inspection of the recliner, You note: " << getDescription() << "\n\n";
 
-	//check if pipe is already in inventory
-	auto search = inv.find("pipe");
-	if (search != inv.end()) {
-		std::cout << "\nThe recliner has nothing of note as Sherlock already grabbed the " << getPipe() << " that interested him.\n\n";
-	}
-	else {
+     //check if pipe is already in inventory
+     auto search = inv.find("pipe");
+     if (search != inv.end()) {
+          std::cout << "\nThe recliner has nothing of note as you already grabbed the " << getPipe() << " that interested you.\n\n";
+     }
+     else {
 
-		std::cout << "\nSherlock notices a " << getPipe() << " on the recliner, which catches his eye.\n\n";
+          std::cout << "\nYou notice a " << getPipe() << " on the recliner, which catches your eye.\n\n";
 
-		std::cout << "\nWould you like to add the " << getPipe() << " to your inventory?\n\n";
+          std::cout << "\nWould you like to add the " << getPipe() << " to your inventory?\n\n";
 
-		//check user input
-		do
-		{
-			std::cout << "\n\nPlease choose 'y' or 'n' to continue: \n\n";
-			std::cout << std::endl << std::endl;
-			std::cin >> ans;
+          //check user input
+          do
+          {
+               std::cout << "\n\nPlease choose 'y' or 'n' to continue: \n\n";
+               std::cout << std::endl << std::endl;
+               std::cin >> ans;
 
-			while (!std::cin)
-			{
-				std::cin.clear();
-				std::cin.ignore(255, '\n');
-				std::cin >> ans;
-			}
+               while (!std::cin)
+               {
+                    std::cin.clear();
+                    std::cin.ignore(255, '\n');
+                    std::cin >> ans;
+               }
 
-			//clear input stream
-			std::cin.clear();
-			std::cin.ignore(255, '\n');
+               //clear input stream
+               std::cin.clear();
+               std::cin.ignore(255, '\n');
 
-		} while (ans != "y" && ans != "n");
+          } while (ans != "y" && ans != "n");
 
-		if (ans == "y") {
-			inv.insert({ "pipe", getPipe() });
-			std::cout << "\nOkay, " << getPipe() << " added to inventory.\n\n";
-		}
-		else {
-			std::cout << "\nOkay, " << getPipe() << " not added to inventory.\n\n";
-		}
-	}
+          if (ans == "y") {
+               inv.insert({ "pipe", getPipe() });
+               std::cout << "\nOkay, " << getPipe() << " added to inventory.\n\n";
+          }
+          else {
+               std::cout << "\nOkay, " << getPipe() << " not added to inventory.\n\n";
+          }
+     }
 
 }
 
@@ -133,103 +99,103 @@ void RecliningChair::setPipe(const std::string thePipe) { pipe = thePipe; }
 //member function to output information provided of each item
 void Painting::checkPainting(std::unordered_map<std::string, std::string>& inv) {
 
-	//initialize the painting object
-	Painting painting;
-	//user input var
-	std::string ans;
+     //initialize the painting object
+     Painting painting;
+     //user input var
+     std::string ans;
 
-	//formatting
-	std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
+     //formatting
+     std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
 
-	//Game Intro
-	std::cout << "\n\nThe Painting\n\n\n\n";
+     //Game Intro
+     std::cout << "\n\nThe Painting\n\n\n\n";
 
-	//coffee table info
-	std::cout << "\nWalking over to the painting, Sherlock notes: " << getDescription() << "\n\n";
+     //coffee table info
+     std::cout << "\nWalking over to the painting, you note: " << getDescription() << "\n\n";
 
-	//check if knife is already in inventory
-	auto search = inv.find("knife");
-	if (search != inv.end()) {
-		std::cout << "\nSherlock admires the painting, however he notices it may be hanging a bit askew.\n\n" <<
-			"He thinks there may be something behind it, but it appears to be stuck to the wall.\n\n" <<
-			"No worries! You have a knife on you to try and pry this thing open.\n\n";
+     //check if knife is already in inventory
+     auto search = inv.find("knife");
+     if (search != inv.end()) {
+          std::cout << "\nYou admire the painting, however you notice it may be hanging a bit askew.\n\n" <<
+               "You think there may be something behind it, but it appears to be stuck to the wall.\n\n" <<
+               "No worries! You have a knife on you to try and pry this thing open.\n\n";
 
-		std::cout << "Would you like to try and pry the painting off the wall?\n\n";
+          std::cout << "Would you like to try and pry the painting off the wall?\n\n";
 
-		//check user input
-		do
-		{
-			std::cout << "\n\nPlease choose 'y' or 'n' to continue: \n\n";
-			std::cout << std::endl << std::endl;
-			std::cin >> ans;
+          //check user input
+          do
+          {
+               std::cout << "\n\nPlease choose 'y' or 'n' to continue: \n\n";
+               std::cout << std::endl << std::endl;
+               std::cin >> ans;
 
-			while (!std::cin)
-			{
-				std::cin.clear();
-				std::cin.ignore(255, '\n');
-				std::cin >> ans;
-			}
+               while (!std::cin)
+               {
+                    std::cin.clear();
+                    std::cin.ignore(255, '\n');
+                    std::cin >> ans;
+               }
 
-			//clear input stream
-			std::cin.clear();
-			std::cin.ignore(255, '\n');
+               //clear input stream
+               std::cin.clear();
+               std::cin.ignore(255, '\n');
 
-		} while (ans != "y" && ans != "n");
+          } while (ans != "y" && ans != "n");
 
-		if (ans == "y") {
+          if (ans == "y") {
 
-			//check if revolver is already in inventory
-			auto search = inv.find("revolver");
-			if (search != inv.end()) {
-				std::cout << "\n\nSherlock uses the knife and is able to open the painting from the right side with what appears to be hinges.\n\n" <<
-					"There is a small hiding spot behind the painting, however Sherlock has already grabbed the revolver.\n\n";
-			}
-			else {
+               //check if revolver is already in inventory
+               auto search = inv.find("revolver");
+               if (search != inv.end()) {
+                    std::cout << "\n\nYou use the knife and are able to open the painting from the right side with what appears to be hinges.\n\n" <<
+                         "There is a small hiding spot behind the painting, however you have already grabbed the revolver.\n\n";
+               }
+               else {
 
-				std::cout << "\n\nSherlock uses the knife and is able to open the painting from the right side with what appears to be hinges.\n\n" <<
-					"There is a small hiding spot behind the painting where a revolver sits.\n\nWould you like to add the revolver to the inventory?\n\n";
+                    std::cout << "\n\nYou use the knife and are able to open the painting from the right side with what appears to be hinges.\n\n" <<
+                         "There is a small hiding spot behind the painting where a revolver sits.\n\nWould you like to add the revolver to the inventory?\n\n";
 
-				//check user input
-				do
-				{
-					std::cout << "\n\nPlease choose 'y' or 'n' to continue: \n\n";
-					std::cout << std::endl << std::endl;
-					std::cin >> ans;
+                    //check user input
+                    do
+                    {
+                         std::cout << "\n\nPlease choose 'y' or 'n' to continue: \n\n";
+                         std::cout << std::endl << std::endl;
+                         std::cin >> ans;
 
-					while (!std::cin)
-					{
-						std::cin.clear();
-						std::cin.ignore(255, '\n');
-						std::cin >> ans;
-					}
+                         while (!std::cin)
+                         {
+                              std::cin.clear();
+                              std::cin.ignore(255, '\n');
+                              std::cin >> ans;
+                         }
 
-					//clear input stream
-					std::cin.clear();
-					std::cin.ignore(255, '\n');
+                         //clear input stream
+                         std::cin.clear();
+                         std::cin.ignore(255, '\n');
 
-				} while (ans != "y" && ans != "n");
+                    } while (ans != "y" && ans != "n");
 
-				if (ans == "y") {
-					inv.insert({ "revolver", getRevolver() });
-					std::cout << "\nOkay, " << getRevolver() << " added to inventory.\n\n";
-				}
-				else {
-					std::cout << "\nOkay, " << getRevolver() << " not added to inventory.\n\n";
-				}
-			}
-		}
-		else {
-			//user decides not to pull forward painting
-			std::cout << "\nOkay, Sherlock leaves the painting as is.\n\n";
-		}
+                    if (ans == "y") {
+                         inv.insert({ "revolver", getRevolver() });
+                         std::cout << "\nOkay, " << getRevolver() << " added to inventory.\n\n";
+                    }
+                    else {
+                         std::cout << "\nOkay, " << getRevolver() << " not added to inventory.\n\n";
+                    }
+               }
+          }
+          else {
+               //user decides not to pull forward painting
+               std::cout << "\nOkay, you leave the painting as is.\n\n";
+          }
 
-	}
-	else {
+     }
+     else {
 
-		std::cout << "\nSherlock admires the painting, however he notices it may be hanging a bit askew.\n\n" <<
-			"He thinks there may be something behind it, but it appears to be stuck to the wall.\n\n" <<
-			"Perhaps if you had something sharp with you, such as a knife, you could pry it open ...\n\n";
-	}
+          std::cout << "\nYou admire the painting, however you notice it may be hanging a bit askew.\n\n" <<
+               "You think there may be something behind it, but it appears to be stuck to the wall.\n\n" <<
+               "Perhaps if you had something sharp with you, such as a knife, you could pry it open ...\n\n";
+     }
 }
 
 
@@ -243,99 +209,30 @@ void Painting::setRevolver(const std::string theRevolver) { revolver = theRevolv
 
 void Painting::setDescription(const std::string theDescription) { description = theDescription; }
 
-//navigation function to handle game play while the player is in the smoking room
-int smokingRoomNavigate(std::unordered_map<std::string, std::string>& inventory) {
 
-	//boolean to find out if player wants to move to another room
-	bool move = false;
-	int firstTime = 0;
+/////Room class functions/////
+//get functions
+std::string RoomSmoking::getName() const { return name; }
 
-	//intialize objects
-	RecliningChair recliningChair;
-	Painting painting;
+int RoomSmoking::getNumRooms() const { return numRooms; }
 
-	//formatting
-	std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
+int RoomSmoking::getNumObjects() const { return numObjects; }
 
-	//Game Intro
-	std::cout << "\n\nThe Smoking Room\n\n\n\n" <<
-		"Sherlock is in the Smoking Room.\n\nLooking around, he sees a Reclining Chair and also sees a painting on the wall that it noteworthy.\n\n" <<
-		"Examine the Reclining Chair? (Enter \"Examine reclining chair\").\n\n" <<
-		"Go over to look at Painting? (Enter \"Look at painting\").\n\n" <<
-		"You may go into the Kitchen (Enter \"Kitchen\")\n\nYou may go into the Sitting Room (Enter \"Sitting room\").\n\n" <<
-		"You may walk into the Billiards Room (Enter \"Billiards room\")\n\n" <<
-		"Check your inventory of items ( Enter \"Check inventory\").\n\n" <<
-		"What would you like to do?";
+std::vector<std::string> RoomSmoking::getExits() const { return exits; }
 
-	//choice from player
-	std::string choice;
-	int intChoice;
-	int retry = 0;
-	std::string ans;
+std::vector<std::string> RoomSmoking::getObjects() const { return objects; }
 
-	//inspect the room
-	do {
+std::string RoomSmoking::getDescription() const { return description; }
 
-		//navigation choice
-		retry = 0;
+//set functions
+void RoomSmoking::setName(const std::string theName){ name = theName; }
 
-		do
-		{
-			if (retry > 0)
-			{
-				std::cout << "\n\nPlease enter an option to navigate: \n\n";
-			}
-			else {
-				if (firstTime != 0) {
-					//formatting
-					std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
+void RoomSmoking::setNumRooms(const int theNumRooms){ numRooms = theNumRooms; }
 
-					std::cout << "\n\nThe Smoking Room\n\n\n\n" <<
-						"Sherlock is in the Smoking Room.\n\nLooking around, he sees a Reclining Chair and also sees a painting on the wall that it noteworthy.\n\n" <<
-						"Examine the Reclining Chair? (Enter \"Examine reclining chair\").\n\n" <<
-						"Go over to look at Painting? (Enter \"Look at painting\").\n\n" <<
-						"You may go into the Kitchen (Enter \"Kitchen\")\n\nYou may go into the Sitting Room (Enter \"Sitting room\").\n\n" <<
-						"You may walk into the Billiards Room (Enter \"Billiards room\")\n\n" <<
-						"Check your inventory of items ( Enter \"Check inventory\").\n\n" <<
-						"What would you like to do?";
-				}
-			}
-			std::cout << std::endl << std::endl;
-			//Take input for program choice.
-			std::getline(std::cin, choice);
+void RoomSmoking::setNumObjects(const int theNumObjects){ numObjects = theNumObjects; }
 
-			while (!std::cin)
-			{
-				std::cin.clear();
-				std::cin.ignore(255, '\n');
-				std::cout << "\n\nPlease enter a valid option (Examining reclining chair, Look at painting, Kitchen, Sitting room, Billiards room or Check inventory) : \n\n";
-				std::cin >> choice;
-			}
-			retry++;
-			firstTime++;
+void RoomSmoking::setExits(const std::vector<std::string> theExits){ exits = theExits; }
 
-		} while ((choice.compare("Examine reclining chair") != 0) && (choice.compare("Look at painting") != 0) && (choice.compare("Kitchen") != 0)
-			&& (choice.compare("Sitting room") != 0) && (choice.compare("Billiards room") != 0) && (choice.compare("Check inventory") != 0));
+void RoomSmoking::setObjects(const std::vector<std::string> theObjects){ objects = theObjects; }
 
-
-		//take users choice and interact based on that
-		if (choice.compare("Kitchen") == 0 || choice.compare("Sitting room") == 0 || choice.compare("Billiards room") == 0) {
-			intChoice = movePlayerFromSmoking(choice);
-			move = true;
-		}
-		else if (choice.compare("Check inventory") == 0) {
-			std::cout << "\n\nInventory contains: \n\n";
-			int c = 1;
-			for (auto it = inventory.begin(); it != inventory.end(); ++it) {
-				std::cout << c << ": " << it->second << "\n";
-				c++;
-			}
-		}
-		else {
-			inspectSmokingObj(choice, inventory);
-		}
-
-	} while (!move);
-
-	return intChoice;
-}
+void RoomSmoking::setDescription(const std::string theDescription){ description = theDescription; }

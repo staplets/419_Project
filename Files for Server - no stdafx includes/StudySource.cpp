@@ -27,6 +27,7 @@
 //included for sleeping functionality
 #include <chrono>
 #include <thread>
+#include <vector>
 
 //guards for header
 #include "StudyHeader.h"
@@ -89,30 +90,30 @@ void Computer::checkComputer(std::unordered_map<std::string, std::string>& inv)
           "\t /______________________ /_/ \n\n\n";
 
      //coffee table info
-     std::cout << "\nWalking over to the Computer, Sherlock notes: " << getDescription() << "\n\n";
+     std::cout << "\nWalking over to the Computer, you note: " << getDescription() << "\n\n";
 
-     std::cout << "\nAs he sits down, Sherlock sees the computer is password protected.\n\n";
+     std::cout << "\nAs you sit down, you see the computer is password protected.\n\n";
 
      //handle output to user based on whether the steak or pie are in the fridge
      switch (checkInventory){
      case 0: // brochure and password not in user inventory
           //output if neither are in inventory
-          std::cout << "\nSherlock cannot get into the computer without the password. Perhaps someone in the mansion can assist with that ... \n\n";
+          std::cout << "\nYou cannot get into the computer without the password. Perhaps someone in the mansion can assist with that ... \n\n";
           break;
      case 1://only password in user inventory
-          std::cout << "\nSherlock can get into the computer with the password. However he is not sure what to look up. Perhaps if he found a book or brochure with information to search ... \n\n";
+          std::cout << "\nYou can get into the computer with the password. However you are not sure what to look up. Perhaps if you found a book or brochure with information to search ... \n\n";
           break;
      case 2: // brochure and password in user inventory
           search = inv.find("combo notes");
           if (search != inv.end()){
 
                //output if already grabbed information
-               std::cout << "\nSherlock has already taken down notes from the Vineyard's website regarding the poisonous mixture.\n\nHe doesn't want to check anything else out.\n\n";
+               std::cout << "\nYou have already taken down notes from the Vineyard's website regarding the poisonous mixture.\n\nYou don't want to check anything else out.\n\n";
           }
           else{
 
                //set up navigation
-               std::cout << "\nSherlock has the password and brochure to look up the vineyard. He logs in and gets on the website for Beaujolais Vineyards...\n\n";
+               std::cout << "\nYou have the password and brochure to look up the vineyard. You log in and get on the website for Beaujolais Vineyards...\n\n";
                std::cout << getInfo() << getInfoTwo() << getInfoThree() << getInfoFour() << getInfoFive() << "\n\n";
 
 
@@ -148,7 +149,7 @@ void Computer::checkComputer(std::unordered_map<std::string, std::string>& inv)
           }
           break;
      case 3: // brochure found but not password in user inventory
-          std::cout << "\nSherlock cannot get into the computer without the password. Perhaps someone in the mansion can assist with that ... \n\n";
+          std::cout << "\nYou cannot get into the computer without the password. Perhaps someone in the mansion can assist with that ... \n\n";
           break;
      }
 }
@@ -196,20 +197,20 @@ void MrGreen::otherInfo(std::unordered_map<std::string, std::string>& inventory)
      //initialize mrGreen object
      MrGreen mrGreen;
 
-          //check if sherlock already got the answer
-          auto search = inventory.find("vacay notes");
-          if (search != inventory.end()){
-               //already have vacay note
-               std::cout << "\n\nMr. Green \"Son, I don't know anything else. You should ask him about his travel.\"\n\n";
-          }
-          else{
-               //get vacay info 
-               std::cout << "\n\nSherlock presses Mr. Green for more information.\n\n";
-               std::cout << mrGreen.moreInfo << "\n\n";
-               //collect note for inventory
-               inventory.insert({ "vacay notes", getVacayNote() });
-               std::cout << "\n\nSherlock notes this in his notepad.\n\n";
-          }
+     //check if you already got the answer
+     auto search = inventory.find("vacay notes");
+     if (search != inventory.end()){
+          //already have vacay note
+          std::cout << "\n\nMr. Green \"Son, I don't know anything else. You should ask him about his travel.\"\n\n";
+     }
+     else{
+          //get vacay info 
+          std::cout << "\n\nYou press Mr. Green for more information.\n\n";
+          std::cout << mrGreen.moreInfo << "\n\n";
+          //collect note for inventory
+          inventory.insert({ "vacay notes", getVacayNote() });
+          std::cout << "\n\nYou note this in your notepad.\n\n";
+     }
 
 }
 
@@ -234,7 +235,7 @@ void MrGreen::conversate(std::unordered_map<std::string, std::string>& inventory
      mrGreen.personInformation(inventory);
 
      //set up navigation
-     std::cout << "Sherlock approaches Mr. Green, who turns away from the window and stands to greet Sherlock as he approaches.\n\n" <<
+     std::cout << "You approach Mr. Green, who turns away from the window and stands to greet you as you approach.\n\n" <<
           "What would you like to ask Mr. Green? \n\n" <<
           "What have you been doing tonight? (Enter \"1\").\n\n" <<
           "Do you know who the murderer may be? (Enter \"2\").\n\n" <<
@@ -310,7 +311,7 @@ void MrGreen::conversate(std::unordered_map<std::string, std::string>& inventory
                otherInfo(inventory);
                break;
           case 6:
-               std::cout << "\nSherlock: \"Thank you for your time Mr. Green.\"\n\n";
+               std::cout << "\nYou: \"Thank you for your time Mr. Green.\"\n\n";
                break;
           case 7:
                std::cout << "\n\nInventory contains: \n\n";
@@ -356,123 +357,29 @@ void MrGreen::setMoreInfo(const std::string theMoreInfo){ moreInfo = theMoreInfo
 
 void MrGreen::setVacayNote(const std::string theVacayNote){ vacayNote = theVacayNote; }
 
+/////Room class functions/////
+//get functions
+std::string RoomStudy::getName() const { return name; }
 
-//navigation function to handle game play while the player is in the study
-int studyNavigate(std::unordered_map<std::string, std::string>& inventory){
+int RoomStudy::getNumRooms() const { return numRooms; }
 
-     //boolean to find out if player wants to move to another room
-     bool move = false;
-     int firstTime = 0;
+int RoomStudy::getNumObjects() const { return numObjects; }
 
-     //intialize objects
-     Computer computer;
-     MrGreen mrGreen;
+std::vector<std::string> RoomStudy::getExits() const { return exits; }
 
-     //formatting
-     std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
+std::vector<std::string> RoomStudy::getObjects() const { return objects; }
 
-     //Game Intro
-     std::cout << "\n\nThe Study\n\n\n\n" <<
-          "Sherlock is in the Study.\n\nIn this room, Sherlock sees a gentleman sitting in a chair staring out the window.\n\n" <<
-          "He also notices a computer on a desk in the corner of the room.\n\n" <<
-          "Would you like to talk to the man (Interact: Enter \"1\").\n\n" <<
-          "You can also take a look at the computer (Interact: Enter \"2\").\n\n" <<
-          "You may walk into the Library (Enter \"3\")\n\n" <<
-          "You may go out to the Billiards Room (Enter \"4\").\n\n" <<
-          "You may go upstairs to the Hallway ( Enter \"5\").\n\n" <<
-          "Check your inventory of items ( Enter \"6\").\n\n" <<
-          "What would you like to do? Choose a number between 1 and 6.";
+std::string RoomStudy::getDescription() const { return description; }
 
-     //choice from player
-     int choice = 0;
-     int retry = 0;
-     std::string ans;
+//set functions
+void RoomStudy::setName(const std::string theName){ name = theName; }
 
-     //inspect the room
-     do{
+void RoomStudy::setNumRooms(const int theNumRooms){ numRooms = theNumRooms; }
 
-          //navigation choice
-          choice = 0;
-          retry = 0;
+void RoomStudy::setNumObjects(const int theNumObjects){ numObjects = theNumObjects; }
 
-          do
-          {
-               if (retry > 0)
-               {
-                    std::cout << "\n\nPlease select a number between 1 and 6 to navigate: \n\n";
-               }
-               else{
-                    if (firstTime != 0){
-                         //formatting
-                         std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
+void RoomStudy::setExits(const std::vector<std::string> theExits){ exits = theExits; }
 
-                         std::cout << "\n\nThe Study\n\n\n\n" <<
-                              "Sherlock is in the Study.\n\nIn this room, Sherlock sees a gentleman sitting in a chair staring out the window.\n\n" <<
-                              "He also notices a computer on a desk in the corner of the room.\n\n" <<
-                              "Would you like to talk to the man (Interact: Enter \"1\").\n\n" <<
-                              "You can also take a look at the computer (Interact: Enter \"2\").\n\n" <<
-                              "You may walk into the Library (Enter \"3\")\n\n" <<
-                              "You may go out to the Billiards Room (Enter \"4\").\n\n" <<
-                              "You may go upstairs to the Hallway ( Enter \"5\").\n\n" <<
-                              "Check your inventory of items ( Enter \"6\").\n\n" <<
-                              "What would you like to do? Choose a number between 1 and 6.";
-                    }
-               }
-               std::cout << std::endl << std::endl;
-               //Take input for program choice.
-               std::cin >> choice;
+void RoomStudy::setObjects(const std::vector<std::string> theObjects){ objects = theObjects; }
 
-               while (!std::cin)
-               {
-                    std::cin.clear();
-                    std::cin.ignore(255, '\n');
-                    std::cout << "\n\nPlease enter a choice : \n\n";
-                    std::cin >> choice;
-               }
-               retry++;
-               firstTime++;
-
-          } while (choice < 1 || choice > 6);
-
-
-          //take users choice and interact based on that
-          switch (choice){
-          case 1:
-               mrGreen.conversate(inventory);
-               break;
-          case 2:
-               computer.checkComputer(inventory);
-               break;
-          case 3:
-               std::cout << "\nWalking into the Library.\n";
-               //change choice to reflect our room mapping and update move
-               choice = 11;
-               move = true;
-               break;
-          case 4:
-               std::cout << "\nWalking out into the Billiards Room.\n";
-               //change choice to reflect our room mapping and update move
-               choice = 7;
-               move = true;
-               break;
-          case 5:
-               std::cout << "\nGoing upstairs into the Hallway.\n";
-               //change choice to reflect our room mapping and update move
-               choice = 14;
-               move = true;
-               break;
-          case 6:
-               std::cout << "\n\nInventory contains: \n\n";
-               int c = 1;
-               for (auto it = inventory.begin(); it != inventory.end(); ++it){
-                    std::cout << c << ": " << it->second << "\n";
-                    c++;
-               }
-               break;
-          }
-
-     } while (!move);
-
-     return choice;
-}
-
+void RoomStudy::setDescription(const std::string theDescription){ description = theDescription; }

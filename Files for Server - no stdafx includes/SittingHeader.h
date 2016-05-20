@@ -1,7 +1,7 @@
 /***********************************************************
 * Author:					Shaun Stapleton
-* Date Created:			4/25/16
-* Last Modification Date:	4/25/16
+* Date Created:			5/25/16
+* Last Modification Date:	5/25/16
 * Filename:				SittingHeader.h
 *
 * Overview:
@@ -19,7 +19,63 @@
 #include <cstdlib>
 #include <stack>
 #include <unordered_map>
+#include <vector>
 
+//Room Sitting Class
+class RoomSitting
+{
+private:
+
+protected://protected member variables.
+     std::string name;
+     std::vector<std::string> exits{ std::vector<std::string>{"smoking", "foyer", "ballroom"} };
+     std::vector<std::string> objects{ std::vector<std::string>{"couch", "mrsdeeds"} };
+     int numRooms;
+     int numObjects;
+     std::string description;
+
+public:
+     //default constructor
+     RoomSitting()
+     {
+          this->name = "The Sitting Room";
+          this->numRooms = 3;
+          this->numObjects = 2;
+          this->description = "You are in the Sitting Room.\n\nIn this room you spot some lovely furniture, however the only noteworthy thing is a couch.\n\nThere is woman dressed in a peach dress reading through a magazine, who you may want to talk with (Interact: Enter \"mrsdeeds\").\n\nYou can also examine the couch (Interact: Enter \"couch\").\n\n";
+     }
+
+     //Virtual Destructor
+     virtual ~RoomSitting()
+     {}
+
+
+     //Accessor Functions for accessing private variables.
+     std::string getName() const;
+
+     int getNumRooms() const;
+
+     int getNumObjects() const;
+
+     std::vector<std::string> getExits() const;
+
+     std::vector<std::string> getObjects() const;
+
+     std::string getDescription() const;
+
+     //Mutator Functions to change private variables.
+     void setName(const std::string theName);
+
+     void setNumRooms(const int theNumRooms);
+
+     void setNumObjects(const int theNumObjects);
+
+     void setExits(const std::vector<std::string> theExits);
+
+     void setObjects(const std::vector<std::string> theObjects);
+
+     void setDescription(const std::string theDescription);
+
+};
 
 //Couch Class
 class Couch
@@ -37,7 +93,7 @@ public:
      {
           this->description = "A beige wrap around couch that could hold around 10 people.";
           this->book = "book - \"Clue the board game for dummies\"";
-          this->nap = "\n\nSherlock loves naps almost as much as he loves his mysteries!\n\n";
+          this->nap = "\n\nYou love naps almost as much as you love your mysteries!\n\n";
 
      }
 
@@ -147,7 +203,5 @@ public:
 
 };
 
-//navigation function to handle game play while the player is in the sitting room
-int sittingNavigate(std::unordered_map<std::string, std::string>& inventory);
 
 #endif

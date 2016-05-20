@@ -24,6 +24,7 @@
 #include <cstdlib>
 #include <stack>
 #include <unordered_map>
+#include <vector>
 
 //guards for header
 #include "GardenHeader.h"
@@ -43,15 +44,15 @@ void Dog::giveTreat(std::unordered_map<std::string, std::string>& inv){
      //check if sap is already in inventory
      auto search = inv.find("sap");
      if (search != inv.end()){
-          std::cout << "\nSherlock gives the dog the treat and he moves, however you have already grabbed the " << getSap() << " from behind him.\n\n";
+          std::cout << "\nYou give the dog the treat and he moves, however you have already grabbed the " << getSap() << " from behind him.\n\n";
      }
      else{
 
           //check if dog treat is already in inventory
           auto search = inv.find("dog treat");
           if (search != inv.end()){
-               std::cout << "\nSherlock gives the dog the treat and he allows sherlock to pass. Sherlock inspects the plant behind him and notices it is a Hydrangea plant.\n\n";
-               std::cout << "He can collect a sample of the sap in one of his containers.\n\n";
+               std::cout << "\nYou give the dog the treat and he allows you to pass. You inspects the plant behind him and notice it is a Hydrangea plant.\n\n";
+               std::cout << "You can collect a sample of the sap in one of your containers.\n\n";
 
                std::cout << "Would you like to add this item to your inventory?\n\n";
 
@@ -87,8 +88,8 @@ void Dog::giveTreat(std::unordered_map<std::string, std::string>& inv){
           }
           else{
 
-               std::cout << "\nSherlock doesn't have any treats on him to give to the dog!\n\n";
-          }                   
+               std::cout << "\nYou don't have any treats on you to give to the dog!\n\n";
+          }
      }
 
 }
@@ -111,7 +112,7 @@ void Dog::dogInteract(std::unordered_map<std::string, std::string>& inv)
      dog.dogInformation();
 
      //set up navigation
-     std::cout << "As Sherlock approaches the dog, he looks playful but growls as he gets closer.\n\n" <<
+     std::cout << "As you approach the dog, he looks playful but growls as you gets closer.\n\n" <<
           "What would you like to do? \n\n" <<
           "Attempt to pet the dog? (Enter \"1\").\n\n" <<
           "Give the dog a treat? (Enter \"2\") \n\n" <<
@@ -178,7 +179,7 @@ void Dog::dogInteract(std::unordered_map<std::string, std::string>& inv)
                giveTreat(inv);
                break;
           case 3:
-               std::cout << "\nSherlock: \"See you later dog.\"\n\n";
+               std::cout << "\nYou: \"See you later dog.\"\n\n";
                break;
           case 4:
                std::cout << "\n\nInventory contains: \n\n";
@@ -245,9 +246,9 @@ int MsWolf::conversate(std::unordered_map<std::string, std::string>& inventory){
      //check if the statement is already in inventory
      auto search = inventory.find("statement");
      if (search != inventory.end()){
-          
+
           //set up navigation
-          std::cout << "Ms. Wolf greets Sherlock as he approaches.\n\n" <<
+          std::cout << "Ms. Wolf greets you as you approach.\n\n" <<
                "What would you like to ask Ms. Wolf? \n\n" <<
                "\n\nPresent her with the written statement and clues to her murder!!! (Enter \"1\").\n\n\n" <<
                "What have you been doing tonight? (Enter \"2\").\n\n" <<
@@ -276,7 +277,7 @@ int MsWolf::conversate(std::unordered_map<std::string, std::string>& inventory){
                               //formatting
                               std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
 
-                              std::cout << "What would you like to ask Ms. Wolf? \n\n" << 
+                              std::cout << "What would you like to ask Ms. Wolf? \n\n" <<
                                    "\n\nPresent her with the written statement and clues to her murder!!! (Enter \"1\").\n\n\n" <<
                                    "What have you been doing tonight? (Enter \"2\").\n\n" <<
                                    "Do you know who the murderer may be? (Enter \"3\").\n\n" <<
@@ -311,9 +312,9 @@ int MsWolf::conversate(std::unordered_map<std::string, std::string>& inventory){
                     search = inventory.find("revolver");
                     if (search != inventory.end()){
 
-                         std::cout << "\n\nSherlock presents Ms. Wolf with the signed statement from Mr. Glass and Ms. Wolf looks as though she will burst into tears.\n\n";
+                         std::cout << "\n\nYou present Ms. Wolf with the signed statement from Mr. Glass and Ms. Wolf looks as though she will burst into tears.\n\n";
                          std::cout << "Then she says \"" << getConfession() << getConfessionTwo() << getConfessionThree() << "\n\n";
-                         std::cout << "Sherlock then handcuffed her and walked her out to his Monte Carlo and took her to the station.\n\n\nWell done detective!!!\n\nThanks for playing!\n\n";
+                         std::cout << "You then handcuff her and walk her out to your Monte Carlo and take her to the station.\n\n\nWell done detective!!!\n\nThanks for playing!\n\n";
 
                     }
                     else{
@@ -335,7 +336,7 @@ int MsWolf::conversate(std::unordered_map<std::string, std::string>& inventory){
                     std::cout << msWolf.jobDescription << "\n\n";
                     break;
                case 6:
-                    std::cout << "\nSherlock: \"Thank you for your time Ms. Wolf.\"\n\n";
+                    std::cout << "\nYou: \"Thank you for your time Ms. Wolf.\"\n\n";
                     break;
                case 7:
                     std::cout << "\n\nInventory contains: \n\n";
@@ -347,104 +348,104 @@ int MsWolf::conversate(std::unordered_map<std::string, std::string>& inventory){
                     break;
                }
 
-           } while (choice != 6 && choice != 1);
+          } while (choice != 6 && choice != 1);
 
-               //if choice is 1, game is over
-               if (choice == 1){
-                    return choice;
+          //if choice is 1, game is over
+          if (choice == 1){
+               return choice;
+          }
+
+     }
+     else{
+
+
+          //set up navigation
+          std::cout << "Ms. Wolf greets you as you approach.\"\n\n" <<
+               "What would you like to ask Ms. Wolf? \n\nWhat have you been doing tonight? (Enter \"1\").\n\n" <<
+               "Do you know who the murderer may be? (Enter \"2\").\n\n" <<
+               "What's your age? (Enter \"3\") \n\n" <<
+               "What do you do around here for work? (Enter \"4\").\n\n" <<
+               "Finished questioning her (Enter \"5\")\n\n" <<
+               "Check your inventory of items ( Enter \"6\").\n\n" <<
+               "Choose a number between 1 and 6.";
+
+          //inspect the room
+          do{
+
+               //navigation choice
+               choice = 0;
+               retry = 0;
+
+               do
+               {
+                    if (retry > 0)
+                    {
+                         std::cout << "\n\nPlease select a number between 1 and 6 for questioning: \n\n";
+                    }
+                    else{
+                         if (firstTime != 0){
+                              //formatting
+                              std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
+
+                              std::cout << "What would you like to ask Ms. Wolf? \n\nWhat have you been doing tonight? (Enter \"1\").\n\n" <<
+                                   "Do you know who the murderer may be? (Enter \"2\").\n\n" <<
+                                   "What's your age? (Enter \"3\") \n\n" <<
+                                   "What do you do around here for work? (Enter \"4\").\n\n" <<
+                                   "Finished questioning her (Enter \"5\")\n\n" <<
+                                   "Check your inventory of items ( Enter \"6\").\n\n" <<
+                                   "Choose a number between 1 and 6.";
+                         }
+                    }
+                    std::cout << std::endl << std::endl;
+                    //Take input for program choice.
+                    std::cin >> choice;
+
+                    while (!std::cin)
+                    {
+                         std::cin.clear();
+                         std::cin.ignore(255, '\n');
+                         std::cout << "\n\nPlease enter a choice : \n\n";
+                         std::cin >> choice;
+                    }
+                    retry++;
+                    firstTime++;
+
+               } while (choice < 1 || choice > 6);
+
+
+               //output responses from Mr Whtie
+               switch (choice){
+               case 1:
+                    std::cout << msWolf.doingTonight << "\n\n";
+                    break;
+               case 2:
+                    std::cout << msWolf.knowMurderer << "\n\n";
+                    break;
+               case 3:
+                    std::cout << "\nI am " << msWolf.age << "\n\n";
+                    break;
+               case 4:
+                    std::cout << msWolf.jobDescription << "\n\n";
+                    break;
+               case 5:
+                    std::cout << "\nYou: \"Thank you for your time Ms. Wolf.\"\n\n";
+                    break;
+               case 6:
+                    std::cout << "\n\nInventory contains: \n\n";
+                    int c = 1;
+                    for (auto it = inventory.begin(); it != inventory.end(); ++it){
+                         std::cout << c << ": " << it->second << "\n";
+                         c++;
+                    }
+                    break;
                }
 
-          }
-          else{
-
-
-               //set up navigation
-               std::cout << "Ms. Wolf greets Sherlock as he approaches.\"\n\n" <<
-                    "What would you like to ask Ms. Wolf? \n\nWhat have you been doing tonight? (Enter \"1\").\n\n" <<
-                    "Do you know who the murderer may be? (Enter \"2\").\n\n" <<
-                    "What's your age? (Enter \"3\") \n\n" <<
-                    "What do you do around here for work? (Enter \"4\").\n\n" <<
-                    "Finished questioning her (Enter \"5\")\n\n" <<
-                    "Check your inventory of items ( Enter \"6\").\n\n" <<
-                    "Choose a number between 1 and 6.";
-                    
-               //inspect the room
-               do{
-
-                    //navigation choice
-                    choice = 0;
-                    retry = 0;
-
-                    do
-                    {
-                         if (retry > 0)
-                         {
-                              std::cout << "\n\nPlease select a number between 1 and 6 for questioning: \n\n";
-                         }
-                         else{
-                              if (firstTime != 0){
-                                   //formatting
-                                   std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
-
-                                   std::cout << "What would you like to ask Ms. Wolf? \n\nWhat have you been doing tonight? (Enter \"1\").\n\n" <<
-                                        "Do you know who the murderer may be? (Enter \"2\").\n\n" <<
-                                        "What's your age? (Enter \"3\") \n\n" <<
-                                        "What do you do around here for work? (Enter \"4\").\n\n" <<
-                                        "Finished questioning her (Enter \"5\")\n\n" <<
-                                        "Check your inventory of items ( Enter \"6\").\n\n" <<
-                                        "Choose a number between 1 and 6.";
-                              }
-                         }
-                         std::cout << std::endl << std::endl;
-                         //Take input for program choice.
-                         std::cin >> choice;
-
-                         while (!std::cin)
-                         {
-                              std::cin.clear();
-                              std::cin.ignore(255, '\n');
-                              std::cout << "\n\nPlease enter a choice : \n\n";
-                              std::cin >> choice;
-                         }
-                         retry++;
-                         firstTime++;
-
-                    } while (choice < 1 || choice > 6);
-
-
-                    //output responses from Mr Whtie
-                    switch (choice){
-                    case 1:
-                         std::cout << msWolf.doingTonight << "\n\n";
-                         break;
-                    case 2:
-                         std::cout << msWolf.knowMurderer << "\n\n";
-                         break;
-                    case 3:
-                         std::cout << "\nI am " << msWolf.age << "\n\n";
-                         break;
-                    case 4:
-                         std::cout << msWolf.jobDescription << "\n\n";
-                         break;
-                    case 5:
-                         std::cout << "\nSherlock: \"Thank you for your time Ms. Wolf.\"\n\n";
-                         break;
-                    case 6:
-                         std::cout << "\n\nInventory contains: \n\n";
-                         int c = 1;
-                         for (auto it = inventory.begin(); it != inventory.end(); ++it){
-                              std::cout << c << ": " << it->second << "\n";
-                              c++;
-                         }
-                         break;
-                    }
-
-               } while (choice != 5);
-
-               return 0;
-          }
+          } while (choice != 5);
 
           return 0;
+     }
+
+     return 0;
 }
 
 //Accessor Functions for accessing private variables in MrWhite.
@@ -482,124 +483,29 @@ void MsWolf::setConfessionTwo(const std::string theConfessionTwo){ confession = 
 void MsWolf::setConfessionThree(const std::string theConfessionThree){ confession = theConfessionThree; }
 
 
-//navigation function to handle game play while the player is in the garden
-int gardenNavigate(std::unordered_map<std::string, std::string>& inventory){
+/////Room class functions/////
+//get functions
+std::string RoomGarden::getName() const { return name; }
 
-     //boolean to find out if player wants to move to another room
-     bool move = false;
-     int firstTime = 0;
+int RoomGarden::getNumRooms() const { return numRooms; }
 
-     //intialize objects
-     Dog dog;
-     MsWolf msWolf;
+int RoomGarden::getNumObjects() const { return numObjects; }
 
-     //formatting
-     std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
+std::vector<std::string> RoomGarden::getExits() const { return exits; }
 
-     //Game Intro
-     std::cout << "\n\nThe Garden\n\n\n\n" <<
-          "Sherlock is in the garden.\n\nMany unique and colorful plants mix in to create an otherwordly atmosphere.\n\n" <<
-          "There is woman dressed in a black evening gown smoking a cigarrette on a bench, who you may want to talk with (Interact: Enter \"1\").\n\n" <<
-          "There is also a dog laying down chained to a water fountain in front of what looks like a Hydrangea plant (Interact: Enter \"2\").\n\n" <<
-          "You may also go around to the driveway (Enter \"3\")\n\nYou may go up on the deck (Enter \"4\").\n\n" <<
-          "You may go down into the cellar ( Enter \"5\").\n\n" <<
-          "Check your inventory of items ( Enter \"6\").\n\n" <<
-          "What would you like to do? Choose a number between 1 and 6.";
+std::vector<std::string> RoomGarden::getObjects() const { return objects; }
 
-     //choice from player
-     int choice = 0;
-     int retry = 0;
-     std::string ans;
-     int wolfRet;
+std::string RoomGarden::getDescription() const { return description; }
 
-     //inspect the room
-     do{
+//set functions
+void RoomGarden::setName(const std::string theName){ name = theName; }
 
-          //navigation choice
-          choice = 0;
-          retry = 0;
+void RoomGarden::setNumRooms(const int theNumRooms){ numRooms = theNumRooms; }
 
-          do
-          {
-               if (retry > 0)
-               {
-                    std::cout << "\n\nPlease select a number between 1 and 6 to navigate: \n\n";
-               }
-               else{
-                    if (firstTime != 0){
-                         //formatting
-                         std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
+void RoomGarden::setNumObjects(const int theNumObjects){ numObjects = theNumObjects; }
 
-                         std::cout << "\n\nThe Garden\n\n\n\n" <<
-                              "Sherlock is in the garden.\n\nMany unique and colorful plants mix in to create an otherwordly atmosphere.\n\n" <<
-                              "There is woman dressed in a black evening gown smoking a cigarrette on a bench, who you may want to talk with (Interact: Enter \"1\").\n\n" <<
-                              "There is also a dog laying down chained to a water fountain in front of what looks like a Hydrangea plant (Interact: Enter \"2\").\n\n" <<
-                              "You may also go around to the driveway (Enter \"3\")\n\nYou may go up on the deck (Enter \"4\").\n\n" <<
-                              "You may go down into the cellar ( Enter \"5\").\n\n" <<
-                              "Check your inventory of items ( Enter \"6\").\n\n" <<
-                              "What would you like to do? Choose a number between 1 and 6.";
-                    }
-               }
-               std::cout << std::endl << std::endl;
-               //Take input for program choice.
-               std::cin >> choice;
+void RoomGarden::setExits(const std::vector<std::string> theExits){ exits = theExits; }
 
-               while (!std::cin)
-               {
-                    std::cin.clear();
-                    std::cin.ignore(255, '\n');
-                    std::cout << "\n\nPlease enter a choice : \n\n";
-                    std::cin >> choice;
-               }
-               retry++;
-               firstTime++;
+void RoomGarden::setObjects(const std::vector<std::string> theObjects){ objects = theObjects; }
 
-          } while (choice < 1 || choice > 6);
-
-
-          //take users choice and interact based on that
-          switch (choice){
-          case 1:
-               wolfRet = msWolf.conversate(inventory);
-               //if 1 returned game over
-               if (wolfRet == 1){
-                    move = true;
-                    choice = 0;
-               }
-               break;
-          case 2:
-               dog.dogInteract(inventory);
-               break;
-          case 3:
-               std::cout << "\nWalking around the mansion to the driveway.\n";
-               //change choice to reflect our room mapping and update move
-               choice = 1;
-               move = true;
-               break;
-          case 4:
-               std::cout << "\nWalking up to the deck.\n";
-               //change choice to reflect our room mapping and update move
-               choice = 13;
-               move = true;
-               break;
-          case 5:
-               std::cout << "\nGoing down into the cellar.\n";
-               //change choice to reflect our room mapping and update move
-               choice = 10;
-               move = true;
-               break;
-          case 6:
-               std::cout << "\n\nInventory contains: \n\n";
-               int c = 1;
-               for (auto it = inventory.begin(); it != inventory.end(); ++it){
-                    std::cout << c << ": " << it->second << "\n";
-                    c++;
-               }
-               break;
-          }
-
-     } while (!move);
-
-     return choice;
-}
-
+void RoomGarden::setDescription(const std::string theDescription){ description = theDescription; }

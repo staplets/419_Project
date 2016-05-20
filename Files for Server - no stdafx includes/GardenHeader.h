@@ -19,6 +19,63 @@
 #include <cstdlib>
 #include <stack>
 #include <unordered_map>
+#include <vector>
+
+//Room Garden Class
+class RoomGarden
+{
+private:
+
+protected://protected member variables.
+     std::string name;
+     std::vector<std::string> exits{ std::vector<std::string>{"driveway", "deck", "cellar"} };
+     std::vector<std::string> objects{ std::vector<std::string>{"dog", "mswolf"} };
+     int numRooms;
+     int numObjects;
+     std::string description;
+
+public:
+     //default constructor
+     RoomGarden()
+     {
+          this->name = "The Garden";
+          this->numRooms = 3;
+          this->numObjects = 2;
+          this->description = "You are in the garden.\n\nMany unique and colorful plants mix in to create an otherwordly atmosphere.\n\nThere is woman dressed in a black evening gown smoking a cigarrette on a bench, who you may want to talk with (Interact: Enter \"Ms Wolf\").\n\nThere is also a dog laying down chained to a water fountain in front of what looks like a Hydrangea plant (Interact: Enter \"dog\").\n\n";
+     }
+
+     //Virtual Destructor
+     virtual ~RoomGarden()
+     {}
+
+
+     //Accessor Functions for accessing private variables.
+     std::string getName() const;
+
+     int getNumRooms() const;
+
+     int getNumObjects() const;
+
+     std::vector<std::string> getExits() const;
+
+     std::vector<std::string> getObjects() const;
+
+     std::string getDescription() const;
+
+     //Mutator Functions to change private variables.
+     void setName(const std::string theName);
+
+     void setNumRooms(const int theNumRooms);
+
+     void setNumObjects(const int theNumObjects);
+
+     void setExits(const std::vector<std::string> theExits);
+
+     void setObjects(const std::vector<std::string> theObjects);
+
+     void setDescription(const std::string theDescription);
+
+};
 
 //Luxury Car Class
 class Dog
@@ -107,7 +164,7 @@ public:
           this->description = "A middle aged Italian female. About 5'9. Long dark hair. A black dress with piercing blue eyes.";
           this->confession = "Alright I confess! Everything simply went wrong tonight! \n\nThe inheritance was going to be mine until George grew a conscience and decided that he was going to give all the money to Willie!\n\n";
           this->confessionTwo = "Willie is not a golden boy you know. He was in on this with me to take care of George! \n\nI couldn't let him know that the arrangements had changed or he would have left me out of the money.\n\n";
-          this->confessionThree = "We purchased the grapes and wine while in France and once we were happily married, George was going to take one fatal sip \n\nof the wine with poisonous sap, however I had to take care of Willie before George made the new will official!\"\n\n";
+          this->confessionThree = "We purchased the grapes and wine while in France and once we were happily married, George was going to take one fatal sip of the wine with the poisonous sap.\n\nHowever I had to take care of Willie before George made the new will official!\"\n\n";
 
      }
 
@@ -157,8 +214,5 @@ public:
      void setConfessionThree(const std::string theConfessionThree);
 
 };
-
-//navigation function to handle game play while the player is in the driveway
-int gardenNavigate(std::unordered_map<std::string, std::string>& inventory);
 
 #endif

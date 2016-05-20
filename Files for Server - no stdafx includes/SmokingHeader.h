@@ -1,7 +1,7 @@
 /***********************************************************
 * Author:					Shaun Stapleton
-* Date Created:			4/24/16
-* Last Modification Date:	4/24/16
+* Date Created:			5/24/16
+* Last Modification Date:	5/24/16
 * Filename:				SmokingHeader.h
 *
 * Overview:
@@ -18,6 +18,63 @@
 #include <cstdlib>
 #include <stack>
 #include <unordered_map>
+#include <vector>
+
+//Room Smoking Class
+class RoomSmoking
+{
+private:
+
+protected://protected member variables.
+     std::string name;
+     std::vector<std::string> exits{ std::vector<std::string>{"kitchen", "sitting", "billiards"} };
+     std::vector<std::string> objects{ std::vector<std::string>{"recliningchair", "painting"} };
+     int numRooms;
+     int numObjects;
+     std::string description;
+
+public:
+     //default constructor
+     RoomSmoking()
+     {
+          this->name = "The Smoking Room";
+          this->numRooms = 3;
+          this->numObjects = 2;
+          this->description = "You are in the Smoking Room.\n\nLooking around, you see a Reclining Chair and you also see a painting on the wall that it noteworthy.\n\nExamine the Reclining Chair? (Enter \"reclining chair\").\n\nGo over to look at Painting? (Enter \"painting\").\n\n";
+     }
+
+     //Virtual Destructor
+     virtual ~RoomSmoking()
+     {}
+
+
+     //Accessor Functions for accessing private variables.
+     std::string getName() const;
+
+     int getNumRooms() const;
+
+     int getNumObjects() const;
+
+     std::vector<std::string> getExits() const;
+
+     std::vector<std::string> getObjects() const;
+
+     std::string getDescription() const;
+
+     //Mutator Functions to change private variables.
+     void setName(const std::string theName);
+
+     void setNumRooms(const int theNumRooms);
+
+     void setNumObjects(const int theNumObjects);
+
+     void setExits(const std::vector<std::string> theExits);
+
+     void setObjects(const std::vector<std::string> theObjects);
+
+     void setDescription(const std::string theDescription);
+
+};
 
 //RecliningChair Object
 class RecliningChair
@@ -93,9 +150,5 @@ public:
      void setDescription(const std::string theDescription);
 
 };
-
-
-//navigation function to handle game play while the player is in the hallway room
-int smokingRoomNavigate(std::unordered_map<std::string, std::string>& inventory);
 
 #endif
