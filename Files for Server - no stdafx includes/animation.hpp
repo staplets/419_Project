@@ -35,3 +35,9 @@ void printFlame3(int startrow, int startcolumn);
 void eraseFlame(int startrow, int startcolumn);
 
 void printZee(int startrow, int startcolumn);
+
+void printBar(int startrow, int startcolumn);
+void printPour(int startrow, int startcolumn);
+void printGlass(int startrow, int startcolumn);
+void erasePour(int startrow, int startcolumn);
+void printFill(int startrow, int startcolumn);
