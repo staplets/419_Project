@@ -860,3 +860,65 @@ void printZee(int startrow, int startcolumn)
 	r++; move(r, c);
 	printw("**************");
 }
+
+void printBar(int startrow, int startcolumn)
+{
+	int r = startrow + 3;
+	int c = startcolumn;
+
+	move(r, c);
+
+	printw("                         ______________");
+	r++; move(r, c);
+	printw("                        |              |");
+	r++; move(r, c);
+	printw("                        |              |");
+	r++; move(r, c);
+	printw("                        |              |");
+	r++; move(r, c);
+	printw("                        |              |");
+	r++; move(r, c);
+	printw("                        |              |");
+	r++; move(r, c);
+	printw("                        |              |");
+	r++; move(r, c);
+	printw("                        |              |");
+	r++; move(r, c);
+	printw("                        |              |");
+	r++; move(r, c);
+	printw(" _______________________|______________|_____________________");
+	r++; move(r, c);
+	printw("|____________________________________________________________|");
+}
+
+void printPour(int startrow, int startcolumn)
+{
+	int r = startrow;
+	int c = startcolumn + 35;
+	move(r, c);
+	printw("**");
+}
+
+void printGlass(int startrow, int startcolumn)
+{
+	int r = startrow;
+	int c = startcolumn + 35;
+	move(r, c);
+	printw("__");
+}
+
+void erasePour(int startrow, int startcolumn)
+{
+	int r = startrow;
+	int c = startcolumn + 35;
+	move(r, c);
+	printw("  ");
+}
+
+void printFill(int startrow, int startcolumn)
+{
+	int r = startrow;
+	int c = startcolumn + 25;
+	move(r, c);
+	printw(" ************ ");
+}
