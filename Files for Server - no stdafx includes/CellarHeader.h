@@ -18,6 +18,63 @@
 #include <cstdlib>
 #include <stack>
 #include <unordered_map>
+#include <vector>
+
+//Room Cellar Class
+class RoomCellar
+{
+private:
+
+protected://protected member variables.
+     std::string name;
+     std::vector<std::string> exits{ std::vector<std::string>{"garden", "kitchen"} };
+     std::vector<std::string> objects{ std::vector<std::string>{"dresser", "box"} };
+     int numRooms;
+     int numObjects;
+     std::string description;
+
+public:
+     //default constructor
+     RoomCellar()
+     {
+          this->name = "The Cellar";
+          this->numRooms = 2;
+          this->numObjects = 2;
+          this->description = "You are in the Cellar.\n\nLooking around, you see a Dresser in the corner and a Box in the other far corner that may be worth a look.\n\nLook at Dresser? (Enter \"dresser\").\n\nOpen the Box? (Enter \"box\").\n\n";
+     }
+
+     //Virtual Destructor
+     virtual ~RoomCellar()
+     {}
+
+
+     //Accessor Functions for accessing private variables.
+     std::string getName() const;
+
+     int getNumRooms() const;
+
+     int getNumObjects() const;
+
+     std::vector<std::string> getExits() const;
+
+     std::vector<std::string> getObjects() const;
+
+     std::string getDescription() const;
+
+     //Mutator Functions to change private variables.
+     void setName(const std::string theName);
+
+     void setNumRooms(const int theNumRooms);
+
+     void setNumObjects(const int theNumObjects);
+
+     void setExits(const std::vector<std::string> theExits);
+
+     void setObjects(const std::vector<std::string> theObjects);
+
+     void setDescription(const std::string theDescription);
+
+};
 
 //Dresser Object
 class Dresser
@@ -109,9 +166,5 @@ public:
      void setDescription(const std::string theDescription);
 
 };
-
-
-//navigation function to handle game play while the player is in the driveway
-int cellarNavigate(std::unordered_map<std::string, std::string>& inventory);
 
 #endif

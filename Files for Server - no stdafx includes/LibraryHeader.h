@@ -1,7 +1,7 @@
 /***********************************************************
 * Author:					Shaun Stapleton
-* Date Created:			4/26/16
-* Last Modification Date:	4/28/16
+* Date Created:			5/26/16
+* Last Modification Date:	5/28/16
 * Filename:				LibraryHeader.h
 *
 * Overview:
@@ -18,6 +18,63 @@
 #include <cstdlib>
 #include <stack>
 #include <unordered_map>
+#include <vector>
+
+//Room Library Class
+class RoomLibrary
+{
+private:
+
+protected://protected member variables.
+     std::string name;
+     std::vector<std::string> exits{ std::vector<std::string>{"ballroom", "study"} };
+     std::vector<std::string> objects{ std::vector<std::string>{"desk", "bookshelf"} };
+     int numRooms;
+     int numObjects;
+     std::string description;
+
+public:
+     //default constructor
+     RoomLibrary()
+     {
+          this->name = "The Library";
+          this->numRooms = 2;
+          this->numObjects = 2;
+          this->description = "You are in the Library.\n\nUpon initial glance, you see several book shelves throughout the room, but one that seems to catch your attention.\n\nYou also see a desk by the side of the room where there are several windows overlooking the expansive landscape of the estate.\n\nWhat would you like to do?\n\nExamine the Book Shelf? (Enter \"1\").\n\nGo over to look at Desk? (Enter \"2\").\n\n";
+     }
+
+     //Virtual Destructor
+     virtual ~RoomLibrary()
+     {}
+
+
+     //Accessor Functions for accessing private variables.
+     std::string getName() const;
+
+     int getNumRooms() const;
+
+     int getNumObjects() const;
+
+     std::vector<std::string> getExits() const;
+
+     std::vector<std::string> getObjects() const;
+
+     std::string getDescription() const;
+
+     //Mutator Functions to change private variables.
+     void setName(const std::string theName);
+
+     void setNumRooms(const int theNumRooms);
+
+     void setNumObjects(const int theNumObjects);
+
+     void setExits(const std::vector<std::string> theExits);
+
+     void setObjects(const std::vector<std::string> theObjects);
+
+     void setDescription(const std::string theDescription);
+
+};
 
 //Desk Object
 class Desk
@@ -94,8 +151,5 @@ public:
 
 };
 
-
-//navigation function to handle game play while the player is in the library room
-int libraryNavigate(std::unordered_map<std::string, std::string>& inventory);
 
 #endif
