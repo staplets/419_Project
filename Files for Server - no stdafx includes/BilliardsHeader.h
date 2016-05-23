@@ -1,7 +1,7 @@
 /***********************************************************
 * Author:					Shaun Stapleton
-* Date Created:			4/21/16
-* Last Modification Date:	4/21/16
+* Date Created:			5/21/16
+* Last Modification Date:	5/21/16
 * Filename:				BilliardsHeader.h
 *
 * Overview:
@@ -18,6 +18,63 @@
 #include <cstdlib>
 #include <stack>
 #include <unordered_map>
+#include <vector>
+
+//Room Billiards Class
+class RoomBilliards
+{
+private:
+
+protected://protected member variables.
+     std::string name;
+     std::vector<std::string> exits{ std::vector<std::string>{"deck", "study", "smoking", "ballroom"} };
+     std::vector<std::string> objects{ std::vector<std::string>{"pooltable", "coffeetable"} };
+     int numRooms;
+     int numObjects;
+     std::string description;
+
+public:
+     //default constructor
+     RoomBilliards()
+     {
+          this->name = "The Billiards Room";
+          this->numRooms = 4;
+          this->numObjects = 2;
+          this->description = "You are in the Billiards Room.\n\nLooking around, you see a Pool Table in the center of the room and in the corner of the room there is a coffee table.\n\nLook at Pool Table? (Enter \"pool table\").\n\nGo over to look at Coffee Table? (Enter \"coffee table\").\n\n";
+     }
+
+     //Virtual Destructor
+     virtual ~RoomBilliards()
+     {}
+
+
+     //Accessor Functions for accessing private variables.
+     std::string getName() const;
+
+     int getNumRooms() const;
+
+     int getNumObjects() const;
+
+     std::vector<std::string> getExits() const;
+
+     std::vector<std::string> getObjects() const;
+
+     std::string getDescription() const;
+
+     //Mutator Functions to change private variables.
+     void setName(const std::string theName);
+
+     void setNumRooms(const int theNumRooms);
+
+     void setNumObjects(const int theNumObjects);
+
+     void setExits(const std::vector<std::string> theExits);
+
+     void setObjects(const std::vector<std::string> theObjects);
+
+     void setDescription(const std::string theDescription);
+
+};
 
 //Pool Table Object
 class PoolTable
@@ -100,9 +157,5 @@ public:
      void setDescription(const std::string theDescription);
 
 };
-
-
-//navigation function to handle game play while the player is in the billiards room
-int billiardsNavigate(std::unordered_map<std::string, std::string>& inventory);
 
 #endif

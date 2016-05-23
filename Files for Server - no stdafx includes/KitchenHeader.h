@@ -1,7 +1,7 @@
 /***********************************************************
 * Author:					Shaun Stapleton
-* Date Created:			4/18/16
-* Last Modification Date:	4/18/16
+* Date Created:			5/22/16
+* Last Modification Date:	5/22/16
 * Filename:				KitchenHeader.h
 *
 * Overview:
@@ -18,6 +18,63 @@
 #include <cstdlib>
 #include <stack>
 #include <unordered_map>
+#include <vector>
+
+//Room Kitchen Class
+class RoomKitchen
+{
+private:
+
+protected://protected member variables.
+     std::string name;
+     std::vector<std::string> exits{ std::vector<std::string>{"dining", "cellar", "smoking", "deck", "foyer"} };
+     std::vector<std::string> objects{ std::vector<std::string>{"knifeblock", "refrigerator"} };
+     int numRooms;
+     int numObjects;
+     std::string description;
+
+public:
+     //default constructor
+     RoomKitchen()
+     {
+          this->name = "The Kitchen";
+          this->numRooms = 5;
+          this->numObjects = 2;
+          this->description = "You are in the Kitchen.\n\nLooking around, you see a knife block and refrigerator that may be worth checking out.\n\nLook at Knife Block? (Enter \"knife block\").\n\nOpen the refrigerator? (Enter \"refrigerator\").\n\n";
+     }
+
+     //Virtual Destructor
+     virtual ~RoomKitchen()
+     {}
+
+
+     //Accessor Functions for accessing private variables.
+     std::string getName() const;
+
+     int getNumRooms() const;
+
+     int getNumObjects() const;
+
+     std::vector<std::string> getExits() const;
+
+     std::vector<std::string> getObjects() const;
+
+     std::string getDescription() const;
+
+     //Mutator Functions to change private variables.
+     void setName(const std::string theName);
+
+     void setNumRooms(const int theNumRooms);
+
+     void setNumObjects(const int theNumObjects);
+
+     void setExits(const std::vector<std::string> theExits);
+
+     void setObjects(const std::vector<std::string> theObjects);
+
+     void setDescription(const std::string theDescription);
+
+};
 
 //Knife Block Object
 class KnifeBlock
@@ -109,9 +166,5 @@ public:
      void setDescription(const std::string theDescription);
 
 };
-
-
-//navigation function to handle game play while the player is in the driveway
-int kitchenNavigate(std::unordered_map<std::string, std::string>& inventory);
 
 #endif

@@ -1,7 +1,7 @@
 /***********************************************************
 * Author:					Shaun Stapleton
-* Date Created:				5/02/16
-* Last Modification Date:	5/02/16
+* Date Created:				5/22/16
+* Last Modification Date:	     5/22/16
 * Filename:					DiningHeader.h
 *
 * Overview:
@@ -18,6 +18,63 @@
 #include <cstdlib>
 #include <stack>
 #include <unordered_map>
+#include <vector>
+
+//Room Dining Class
+class RoomDining
+{
+private:
+
+protected://protected member variables.
+     std::string name;
+     std::vector<std::string> exits{ std::vector<std::string>{"deck", "kitchen", "foyer"} };
+     std::vector<std::string> objects{ std::vector<std::string>{"diningtable", "parrot"} };
+     int numRooms;
+     int numObjects;
+     std::string description;
+
+public:
+     //default constructor
+     RoomDining()
+     {
+          this->name = "The Dining Room";
+          this->numRooms = 3;
+          this->numObjects = 2;
+          this->description = "You are in the Dining Room.\n\nIn the center of the room, there is an exquisite Dining Table.\n\nIn the corner of the room there is also a Parrot.\n\nLook at Dining Table? (Enter \"dining table\").\n\nGo over to see the Parrot? (Enter \"parrot\").\n\n";
+     }
+
+     //Virtual Destructor
+     virtual ~RoomDining()
+     {}
+
+
+     //Accessor Functions for accessing private variables.
+     std::string getName() const;
+
+     int getNumRooms() const;
+
+     int getNumObjects() const;
+
+     std::vector<std::string> getExits() const;
+
+     std::vector<std::string> getObjects() const;
+
+     std::string getDescription() const;
+
+     //Mutator Functions to change private variables.
+     void setName(const std::string theName);
+
+     void setNumRooms(const int theNumRooms);
+
+     void setNumObjects(const int theNumObjects);
+
+     void setExits(const std::vector<std::string> theExits);
+
+     void setObjects(const std::vector<std::string> theObjects);
+
+     void setDescription(const std::string theDescription);
+
+};
 
 //Dining Table Object
 class DiningTable
@@ -107,8 +164,5 @@ public:
 
 };
 
-
-//navigation function to handle game play while the player is in the dining room
-int diningNavigate(std::unordered_map<std::string, std::string>& inventory);
 
 #endif

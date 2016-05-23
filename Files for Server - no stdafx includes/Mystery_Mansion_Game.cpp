@@ -24,102 +24,82 @@
 //Header files
 //guards for header
 #ifndef DrivewayHeader_h
-//#define DrivewayHeader_h
 #include "DrivewayHeader.h"
 #endif
 
 #ifndef FoyerHeader_h
-//#define FoyerHeader_h
 #include "FoyerHeader.h"
 #endif
 
 #ifndef KitchenHeader_h
-//#define KitchenHeader_h
 #include "KitchenHeader.h"
 #endif
 
 #ifndef CellarHeader_h
-//#define CellarHeader_h
 #include "CellarHeader.h"
 #endif
 
 #ifndef GardenHeader_h
-//#define GardenHeader_h
 #include "GardenHeader.h"
 #endif
 
 #ifndef DeckHeader_h
-//#define DeckHeader_h
 #include "DeckHeader.h"
 #endif
 
 #ifndef BilliardsHeader_h
-//#define BilliardsHeader_h
 #include "BilliardsHeader.h"
 #endif
 
 #ifndef HallwayHeader_h
-//#define HallwayHeader_h
 #include "HallwayHeader.h"
 #endif
 
 #ifndef SmokingHeader_h
-//#define SmokingHeader_h
 #include "SmokingHeader.h"
 #endif
 
 #ifndef SittingHeader_h
-//#define SittingHeader_h
 #include "SittingHeader.h"
 #endif
 
 #ifndef BallroomHeader_h
-//#define BallroomHeader_h
 #include "BallroomHeader.h"
 #endif
 
 #ifndef StudyHeader_h
-//#define StudyHeader_h
 #include "StudyHeader.h"
 #endif
 
 #ifndef LibraryHeader_h
-//#define LibraryHeader_h
 #include "LibraryHeader.h"
 #endif
 
 #ifndef SecretHeader_h
-//#define SecretHeader_h
 #include "SecretHeader.h"
 #endif
 
 #ifndef DiningHeader_h
-//#define DiningHeader_h
 #include "DiningHeader.h"
 #endif
 
 #ifndef BedroomHeader_h
-//#define BedroomHeader_h
 #include "BedroomHeader.h"
 #endif
 
 #ifndef BathroomHeader_h
-//#define BathroomHeader_h
 #include "BathroomHeader.h"
 #endif
 
 #ifndef ServantsHeader_h
-//#define ServantsHeader_h
 #include "ServantsHeader.h"
 #endif
 
 #ifndef AtticHeader_h
-//#define AtticHeader_h
 #include "AtticHeader.h"
 #endif
 
 #ifndef BalconyHeader_h
-//#define BalconyHeader_h
 #include "BalconyHeader.h"
 #endif
 
@@ -266,10 +246,13 @@ void playRooms(){
      RoomStudy roomStudy;
      RoomSitting roomSitting;
      RoomSmoking roomSmoking;
-     //RoomBilliards roomBilliards;
-     //RoomDining roomDining;
-     //RoomKitchen roomKitchen;
+     RoomBilliards roomBilliards;
+     RoomDining roomDining;
+     RoomKitchen roomKitchen;
      //RoomCellar roomCellar;
+     //RoomLibrary roomLibrary;
+     //RoomSecret roomSecret;
+     //RoomDeck roomDeck;
 
      //Hash map for the inventory items
      std::unordered_map<std::string, std::string> inventory_Map;
@@ -747,13 +730,13 @@ void playRooms(){
                     else if (roomReturn == "computer"){
                          choice = 2;
                     }
-                    else if (roomReturn == "driveway"){
+                    else if (roomReturn == "library"){
                          choice = 3;
                     }
-                    else if (roomReturn == "deck"){
+                    else if (roomReturn == "billiards"){
                          choice = 4;
                     }
-                    else if (roomReturn == "cellar"){
+                    else if (roomReturn == "hallway"){
                          choice = 5;
                     }
                     else if (roomReturn == "inventory"){
@@ -975,15 +958,280 @@ void playRooms(){
                } while (!moving);
                break;
           case 7:
-               returnedNavChoice = billiardsNavigate(inventory_Map);
+               //Navigate the Billiards Room
+               do{
+                    //set moving to false
+                    moving = false;
+
+                    //variables
+                    std::string ans;
+                    //choice from player
+                    int choice = 0;
+
+                    //intialize objects
+                    PoolTable poolTable;
+                    CoffeeTable coffeeTable;
+
+                    roomReturn = roomMenu(inventory_Map, roomBilliards);
+                    //returnedNavChoice = foyerNavigate(inventory_Map, roomReturn);
+
+                    //logic to check against parsed input
+                    if (roomReturn == "pooltable"){
+                         choice = 1;
+                    }
+                    else if (roomReturn == "coffeetable"){
+                         choice = 2;
+                    }
+                    else if (roomReturn == "deck"){
+                         choice = 3;
+                    }
+                    else if (roomReturn == "study"){
+                         choice = 4;
+                    }
+                    else if (roomReturn == "smoking"){
+                         choice = 5;
+                    }
+                    else if (roomReturn == "ballroom"){
+                         choice = 6;
+                    }
+                    else if (roomReturn == "inventory"){
+                         choice = 7;
+                    }
+                    else{
+                         std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+                    }
+
+                    //take users choice and interact based on that
+                    switch (choice){
+                    case 1:
+                         poolTable.checkTable(inventory_Map);
+                         choice = 0;
+                         break;
+                    case 2:
+                         coffeeTable.checkCoffeeTable(inventory_Map);
+                         choice = 0;
+                         break;
+                    case 3:
+                         std::cout << "\nGoing out to the Deck.\n";
+                         //change choice to reflect our room mapping and update move
+                         choice = 13;
+                         break;
+                    case 4:
+                         std::cout << "\nWalking into the Study.\n";
+                         //change choice to reflect our room mapping and update move
+                         choice = 4;
+                         break;
+                    case 5:
+                         std::cout << "\nWalking into the Smoking Room.\n";
+                         //change choice to reflect our room mapping and update move
+                         choice = 6;
+                         break;
+                    case 6:
+                         std::cout << "\nWalking into the Ballroom.\n";
+                         //change choice to reflect our room mapping and update move
+                         choice = 16;
+                         break;
+                    case 7:
+                         std::cout << "\n\nInventory contains: \n\n";
+                         int c = 1;
+                         for (auto it = inventory_Map.begin(); it != inventory_Map.end(); ++it){
+                              std::cout << c << ": " << it->second << "\n";
+                              c++;
+                         }
+                         choice = 0;
+                         break;
+                    }
+
+                    //if returned code is to leave room then break loop
+                    if (choice != 0){
+                         moving = true;
+                    }
+                    returnedNavChoice = choice;
+               } while (!moving);
                break;
           case 8:
                //Navigate the Dining Room
-               returnedNavChoice = diningNavigate(inventory_Map);
+               do{
+                    //set moving to false
+                    moving = false;
+
+                    //variables
+                    std::string ans;
+                    //choice from player
+                    int choice = 0;
+
+                    //intialize objects
+                    DiningTable diningTable;
+                    Parrot parrot;
+
+                    roomReturn = roomMenu(inventory_Map, roomDining);
+                    //returnedNavChoice = foyerNavigate(inventory_Map, roomReturn);
+
+                    //logic to check against parsed input
+                    if (roomReturn == "diningtable"){
+                         choice = 1;
+                    }
+                    else if (roomReturn == "parrot"){
+                         choice = 2;
+                    }
+                    else if (roomReturn == "deck"){
+                         choice = 3;
+                    }
+                    else if (roomReturn == "kitchen"){
+                         choice = 4;
+                    }
+                    else if (roomReturn == "foyer"){
+                         choice = 5;
+                    }
+                    else if (roomReturn == "inventory"){
+                         choice = 6;
+                    }
+                    else{
+                         std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+                    }
+
+                    //take users choice and interact based on that
+                    switch (choice){
+                    case 1:
+                         diningTable.checkDiningTable(inventory_Map);
+                         choice = 0;
+                         break;
+                    case 2:
+                         parrot.convoParrot(inventory_Map);
+                         choice = 0;
+                         break;
+                    case 3:
+                         std::cout << "\nGoing out to the Deck.\n";
+                         //change choice to reflect our room mapping and update move
+                         choice = 13;
+                         break;
+                    case 4:
+                         std::cout << "\nWalking into the Kitchen.\n";
+                         //change choice to reflect our room mapping and update move
+                         choice = 9;
+                         break;
+                    case 5:
+                         std::cout << "\nGoing into the Foyer.\n";
+                         //change choice to reflect our room mapping and update move
+                         choice = 2;
+                         break;
+                    case 6:
+                         std::cout << "\n\nInventory contains: \n\n";
+                         int c = 1;
+                         for (auto it = inventory_Map.begin(); it != inventory_Map.end(); ++it){
+                              std::cout << c << ": " << it->second << "\n";
+                              c++;
+                         }
+                         choice = 0;
+                         break;
+                    }
+
+                    //if returned code is to leave room then break loop
+                    if (choice != 0){
+                         moving = true;
+                    }
+                    returnedNavChoice = choice;
+               } while (!moving);
                break;
           case 9:
                //Navigate the Kitchen
-               returnedNavChoice = kitchenNavigate(inventory_Map);
+               do{
+                    //set moving to false
+                    moving = false;
+
+                    //variables
+                    std::string ans;
+                    //choice from player
+                    int choice = 0;
+
+                    //intialize objects
+                    KnifeBlock knifeBlock;
+                    Refrigerator refrigerator;
+
+                    roomReturn = roomMenu(inventory_Map, roomKitchen);
+                    //returnedNavChoice = foyerNavigate(inventory_Map, roomReturn);
+
+                    //logic to check against parsed input
+                    if (roomReturn == "knifeblock"){
+                         choice = 1;
+                    }
+                    else if (roomReturn == "refrigerator"){
+                         choice = 2;
+                    }
+                    else if (roomReturn == "dining"){
+                         choice = 3;
+                    }
+                    else if (roomReturn == "cellar"){
+                         choice = 4;
+                    }
+                    else if (roomReturn == "smoking"){
+                         choice = 5;
+                    }
+                    else if (roomReturn == "deck"){
+                         choice = 6;
+                    }
+                    else if (roomReturn == "foyer"){
+                         choice = 7;
+                    }
+                    else if (roomReturn == "inventory"){
+                         choice = 8;
+                    }
+                    else{
+                         std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+                    }
+
+                    //take users choice and interact based on that
+                    switch (choice){
+                    case 1:
+                         knifeBlock.checkKnifeBlock(inventory_Map);
+                         choice = 0;
+                         break;
+                    case 2:
+                         refrigerator.checkFridge(inventory_Map);
+                         choice = 0;
+                         break;
+                    case 3:
+                         std::cout << "\nEntering the Dining Room.\n";
+                         //change choice to reflect our room mapping and update move
+                         choice = 8;
+                         break;
+                    case 4:
+                         std::cout << "\nEntering the Cellar.\n";
+                         //change choice to reflect our room mapping and update move
+                         choice = 10;
+                         break;
+                    case 5:
+                         std::cout << "\nEntering the Smoking Room.\n";
+                         //change choice to reflect our room mapping and update move
+                         choice = 6;
+                         break;
+                    case 6:
+                         std::cout << "\nGoing outside to the Deck.\n";
+                         //change choice to reflect our room mapping and update move
+                         choice = 13;
+                         break;
+                    case 7:
+                         std::cout << "\nEntering the Foyer.\n";
+                         //change choice to reflect our room mapping and update move
+                         choice = 2;
+                         break;
+                    case 8:
+                         std::cout << "\n\nInventory contains: \n\n";
+                         int c = 1;
+                         for (auto it = inventory_Map.begin(); it != inventory_Map.end(); ++it){
+                              std::cout << c << ": " << it->second << "\n";
+                              c++;
+                         }
+                         choice = 0;
+                         break;
+                    }
+
+                    //if returned code is to leave room then break loop
+                    if (choice != 0){
+                         moving = true;
+                    }
+                    returnedNavChoice = choice;
+               } while (!moving);
                break;
           case 10:
                //Navigate the Cellar
