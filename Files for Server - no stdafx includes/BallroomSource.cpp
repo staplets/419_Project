@@ -31,6 +31,9 @@
 //include ballroom header
 #include "BallroomHeader.h"
 
+//include animation header
+#include "animation.hpp"
+
 void inspectBallroomObj(std::string objName, std::unordered_map<std::string, std::string>& inventory)
 {
 	//intialize objects
