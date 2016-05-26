@@ -28,8 +28,8 @@ private:
 
 protected://protected member variables.
      std::string name;
-     std::vector<std::string> exits{ std::vector<std::string>{"Foyer", "Garden"} };
-     std::vector<std::string> objects{ std::vector<std::string>{"car", "mrWhite"} };
+     std::vector<std::string> exits{ std::vector<std::string>{"foyer", "garden"} };
+     std::vector<std::string> objects{ std::vector<std::string>{"car", "mrwhite"} };
      int numRooms;
      int numObjects;
      std::string description;

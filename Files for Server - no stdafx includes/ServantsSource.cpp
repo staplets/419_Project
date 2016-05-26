@@ -1,8 +1,8 @@
 /***********************************************************
 * Author:					Shaun Stapleton
-* Date Created:				5/06/16
-* Last Modification Date:	5/06/16
-* Filename:					ServantsSource.cpp
+* Date Created:			5/26/16
+* Last Modification Date:	5/26/16
+* Filename:				ServantsSource.cpp
 *
 * Overview:
 *	This file holds the implementation for the Servants Room objects.
@@ -27,6 +27,7 @@
 //included for sleeping functionality
 #include <chrono>
 #include <thread>
+#include <vector>
 
 //guards for header
 #include "ServantsHeader.h"
@@ -36,7 +37,7 @@ void Trash::checkTrash(std::unordered_map<std::string, std::string>& inv)
 {
 	//initialize the couch object
 	Trash trash;
-	int firstTime = 0;
+
 	//user input var
 	std::string ans;
 
@@ -46,19 +47,19 @@ void Trash::checkTrash(std::unordered_map<std::string, std::string>& inv)
 	//Game Intro
 	std::cout << "\n\nThe Trash\n\n\n\n";
 
-	std::cout << "\nWalking towards the trash can, Sherlock notes: " << getDescription() << "\n\n";
+	std::cout << "\nWalking towards the trash can, you note: " << getDescription() << "\n\n";
 
 	//check if wrapper is already in inventory
 	auto search = inv.find("wrapper");
 	if (search != inv.end()){
-		std::cout << "\nSherlock looks into the trash can and doesn't see anything now that he grabbed the wrapper.\n\n" <<
-			"\n\"Not a speck of trash! Wonderful service here!\" he says out loud for Mrs. White to hear.\n\n\n";
+		std::cout << "\nYou look into the trash can and don't see anything now that you've grabbed the wrapper.\n\n" <<
+			"\n\"Not a speck of trash! Wonderful service here!\" you say out loud for Mrs. White to hear.\n\n\n";
 	}
 	else{
 
-		std::cout << "\nSherlock looks into the trash can and doesn't see much of anything.\n\n" <<
-			"\n\"The maid must do a great job cleaning up around here!\" he says out loud for Mrs. White to hear.\n\n\n" <<
-			"He only sees a " << getWrapper() << " in the bin.\n\n";
+		std::cout << "\nYou look into the trash can and don't see much of anything.\n\n" <<
+			"\n\"The maid must do a great job cleaning up around here!\" you say out loud for Mrs. White to hear.\n\n\n" <<
+			"You only see a " << getWrapper() << " in the bin.\n\n";
 
 		std::cout << "\nWould you like to add the " << getWrapper() << " to your inventory?\n\n";
 
@@ -128,7 +129,7 @@ void MrsWhite::getPassword(std::unordered_map<std::string, std::string>& invento
 		else{
 			//get password info 
 			std::cout << mrsWhite.getPass();
-			std::cout << "\n\nSherlock gives Mrs. White a cigarette from his inventory.\n\n";
+			std::cout << "\n\nYou give Mrs. White a cigarette from your inventory.\n\n";
 			std::cout << mrsWhite.getPassTwo() << "\n\n";
 			std::cout << getPasswordInfo() << "\n\n";
 			//collect note for inventory
@@ -162,7 +163,7 @@ void MrsWhite::conversate(std::unordered_map<std::string, std::string>& inventor
 	mrsWhite.personInformation(inventory);
 
 	//set up navigation
-	std::cout << "Mrs. White is sitting on her bed repairing a vacuum cleaner. She looks at Sherlock as he approaches and smiles.\n\n" <<
+	std::cout << "Mrs. White is sitting on her bed repairing a vacuum cleaner. She looks at you as you approach and smiles.\n\n" <<
 		"What would you like to ask Mrs. White? \n\n" <<
 		"What have you been doing tonight? (Enter \"1\").\n\n" <<
 		"Do you know who the murderer may be? (Enter \"2\").\n\n" <<
@@ -238,7 +239,7 @@ void MrsWhite::conversate(std::unordered_map<std::string, std::string>& inventor
 			getPassword(inventory);
 			break;
 		case 6:
-			std::cout << "\nSherlock: \"Thank you for your time Mrs. White.\"\n\n";
+			std::cout << "\nYou: \"Thank you for your time Mrs. White.\"\n\n";
 			break;
 		case 7:
 			std::cout << "\n\nInventory contains: \n\n";
@@ -288,105 +289,29 @@ void MrsWhite::setPassTwo(const std::string thePassTwo){ passTwo = thePassTwo; }
 
 void MrsWhite::setPasswordInfo(const std::string thePasswordInfo){ passwordInfo = thePasswordInfo; }
 
+/////Room class functions/////
+//get functions
+std::string RoomServants::getName() const { return name; }
 
-//navigation function to handle game play while the player is in the servants room
-int servantsNavigate(std::unordered_map<std::string, std::string>& inventory){
+int RoomServants::getNumRooms() const { return numRooms; }
 
-	//boolean to find out if player wants to move to another room
-	bool move = false;
-	int firstTime = 0;
+int RoomServants::getNumObjects() const { return numObjects; }
 
-	//intialize objects
-	Trash trash;
-	MrsWhite mrsWhite;
+std::vector<std::string> RoomServants::getExits() const { return exits; }
 
-	//formatting
-	std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
+std::vector<std::string> RoomServants::getObjects() const { return objects; }
 
-	//Game Intro
-	std::cout << "\n\nThe Servants Room\n\n\n\n" <<
-		"Sherlock is in the Servants Room.\n\nThe room is a little less fancy than the others of the household, but Mr. Glass still provides exceptional furniture and appliances for the staff.\n\n" <<
-		"There is woman dressed in a white and black maid's dress, looking worried who you may want to talk with (Interact: Enter \"1\").\n\n" <<
-		"Besides the woman there is not too much outstanding about the room. However there is a trash can you may want to examine (Examine: Enter \"2\").\n\n" <<
-		"You may go into the Hallway ( Enter \"3\").\n\n" <<
-		"Check your inventory of items ( Enter \"4\").\n\n" <<
-		"What would you like to do? Choose a number between 1 and 4.";
+std::string RoomServants::getDescription() const { return description; }
 
-	//choice from player
-	int choice = 0;
-	int retry = 0;
-	std::string ans;
+//set functions
+void RoomServants::setName(const std::string theName){ name = theName; }
 
-	//inspect the room
-	do{
+void RoomServants::setNumRooms(const int theNumRooms){ numRooms = theNumRooms; }
 
-		//navigation choice
-		choice = 0;
-		retry = 0;
+void RoomServants::setNumObjects(const int theNumObjects){ numObjects = theNumObjects; }
 
-		do
-		{
-			if (retry > 0)
-			{
-				std::cout << "\n\nPlease select a number between 1 and 4 to navigate: \n\n";
-			}
-			else{
-				if (firstTime != 0){
-					//formatting
-					std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
+void RoomServants::setExits(const std::vector<std::string> theExits){ exits = theExits; }
 
-					std::cout << "\n\nThe Servants Room\n\n\n\n" <<
-						"Sherlock is in the Servants Room.\n\nThe room is a little less fancy than the others of the household, but Mr. Glass still provides exceptional furniture and appliances for the staff.\n\n" <<
-						"There is woman dressed in a white and black maid's dress, looking worried who you may want to talk with (Interact: Enter \"1\").\n\n" <<
-						"Besides the woman there is not too much outstanding about the room. However there is a trash can you may want to examine (Examine: Enter \"2\").\n\n" <<
-						"You may go into the Hallway ( Enter \"3\").\n\n" <<
-						"Check your inventory of items ( Enter \"4\").\n\n" <<
-						"What would you like to do? Choose a number between 1 and 4.";
-				}
-			}
-			std::cout << std::endl << std::endl;
-			//Take input for program choice.
-			std::cin >> choice;
+void RoomServants::setObjects(const std::vector<std::string> theObjects){ objects = theObjects; }
 
-			while (!std::cin)
-			{
-				std::cin.clear();
-				std::cin.ignore(255, '\n');
-				std::cout << "\n\nPlease enter a choice : \n\n";
-				std::cin >> choice;
-			}
-			retry++;
-			firstTime++;
-
-		} while (choice < 1 || choice > 4);
-
-
-		//take users choice and interact based on that
-		switch (choice){
-		case 1:
-			mrsWhite.conversate(inventory);
-			break;
-		case 2:			
-			trash.checkTrash(inventory);
-			break;
-		case 3:
-			std::cout << "\nWalking into the Hallway.\n";
-			//change choice to reflect our room mapping and update move
-			choice = 14;
-			move = true;
-			break;
-		case 4:
-			std::cout << "\n\nInventory contains: \n\n";
-			int c = 1;
-			for (auto it = inventory.begin(); it != inventory.end(); ++it){
-				std::cout << c << ": " << it->second << "\n";
-				c++;
-			}
-			break;
-		}
-
-	} while (!move);
-
-	return choice;
-}
-
+void RoomServants::setDescription(const std::string theDescription){ description = theDescription; }

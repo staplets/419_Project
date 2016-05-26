@@ -1,7 +1,7 @@
 /***********************************************************
 * Author:					Shaun Stapleton
-* Date Created:			4/24/16
-* Last Modification Date:	4/24/16
+* Date Created:			5/24/16
+* Last Modification Date:	5/24/16
 * Filename:				HallwayHeader.h
 *
 * Overview:
@@ -18,6 +18,62 @@
 #include <cstdlib>
 #include <stack>
 #include <unordered_map>
+
+//Room Hallway Class
+class RoomHallway
+{
+private:
+
+protected://protected member variables.
+     std::string name;
+     std::vector<std::string> exits{ std::vector<std::string>{"foyer", "study", "bedroom", "servants", "attic" } };
+     std::vector<std::string> objects{ std::vector<std::string>{"shelf", "endtable"} };
+     int numRooms;
+     int numObjects;
+     std::string description;
+
+public:
+     //default constructor
+     RoomHallway()
+     {
+          this->name = "The Hallway";
+          this->numRooms = 5;
+          this->numObjects = 2;
+          this->description = "You are in the upstairs Hallway.\n\nLooking around, you see a Shelf on the wall and also see an end table along the hall.\n\nExamine the Shelf? (Enter \"shelf\").\n\nGo over to look at End Table? (Enter \"end table\").\n\n";
+     }
+
+     //Virtual Destructor
+     virtual ~RoomHallway()
+     {}
+
+
+     //Accessor Functions for accessing private variables.
+     std::string getName() const;
+
+     int getNumRooms() const;
+
+     int getNumObjects() const;
+
+     std::vector<std::string> getExits() const;
+
+     std::vector<std::string> getObjects() const;
+
+     std::string getDescription() const;
+
+     //Mutator Functions to change private variables.
+     void setName(const std::string theName);
+
+     void setNumRooms(const int theNumRooms);
+
+     void setNumObjects(const int theNumObjects);
+
+     void setExits(const std::vector<std::string> theExits);
+
+     void setObjects(const std::vector<std::string> theObjects);
+
+     void setDescription(const std::string theDescription);
+
+};
 
 //Shelf Object
 class Shelf
@@ -83,7 +139,7 @@ public:
      //default constructor
      EndTable()
      {
-          this->mirror = "\n\nSherlock looks in the mirror and sees it has been a while since his last shave. Not a pretty site. Otherwise nothing stands out.";
+          this->mirror = "\n\nYou look in the mirror and see it has been a while since your last shave. Not a pretty site. Otherwise nothing stands out.";
           this->description = "A victorian style white end table about 4 feet off the ground with a mirror above it and sculpture on it.";
           this->sculpture = "sculpture of a wolf";
 

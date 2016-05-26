@@ -1,7 +1,7 @@
 /***********************************************************
 * Author:					Shaun Stapleton
-* Date Created:				5/06/16
-* Last Modification Date:	5/06/16
+* Date Created:			5/26/16
+* Last Modification Date:	5/26/16
 * Filename:				ServantsHeader.h
 *
 * Overview:
@@ -19,7 +19,63 @@
 #include <cstdlib>
 #include <stack>
 #include <unordered_map>
+#include <vector>
 
+//Room Servants Class
+class RoomServants
+{
+private:
+
+protected://protected member variables.
+     std::string name;
+     std::vector<std::string> exits{ std::vector<std::string>{"hallway"} };
+     std::vector<std::string> objects{ std::vector<std::string>{"trash", "mrs white"} };
+     int numRooms;
+     int numObjects;
+     std::string description;
+
+public:
+     //default constructor
+     RoomServants()
+     {
+          this->name = "The Servants Room";
+          this->numRooms = 1;
+          this->numObjects = 2;
+          this->description = "You are in the Servants Room.\n\nThe room is a little less fancy than the others of the household, but Mr. Glass still provides exceptional furniture and appliances for the staff.\n\nThere is woman dressed in a white and black maid's dress, looking worried who you may want to talk with (Interact: Enter \"mrs white\").\n\nBesides the woman there is not too much outstanding about the room. However there is a trash can you may want to examine (Examine: Enter \"trash\").\n\n";
+     }
+
+     //Virtual Destructor
+     virtual ~RoomServants()
+     {}
+
+
+     //Accessor Functions for accessing private variables.
+     std::string getName() const;
+
+     int getNumRooms() const;
+
+     int getNumObjects() const;
+
+     std::vector<std::string> getExits() const;
+
+     std::vector<std::string> getObjects() const;
+
+     std::string getDescription() const;
+
+     //Mutator Functions to change private variables.
+     void setName(const std::string theName);
+
+     void setNumRooms(const int theNumRooms);
+
+     void setNumObjects(const int theNumObjects);
+
+     void setExits(const std::vector<std::string> theExits);
+
+     void setObjects(const std::vector<std::string> theObjects);
+
+     void setDescription(const std::string theDescription);
+
+};
 
 //Trash Class
 class Trash
@@ -84,7 +140,7 @@ public:
 		this->jobDescription = "\nMrs. White \"I handle the day to day routine of cooking and cleaning around here.\n\nI'm sure you've noticed how much work it is with the size of this place.\"";
 		this->description = "A middle aged Caucasian woman. About 5 feet on the dot in height. Black mid length hair. A bit of a nervous edge to her.";
 		this->pass = "\nMrs. White \"I can provide you with the password to the computer downstairs,\n\nbut I'd appreciate a cigarette to help take the edge off of what happened tonight first.\"\n\n";
-		this->passTwo = "\nMrs. White \"Thank you so much sir! Here's the password.\" Mrs. White hands Sherlock a slip of paper with the password on it.\n\n";
+		this->passTwo = "\nMrs. White \"Thank you so much sir! Here's the password.\" Mrs. White hands you a slip of paper with the password on it.\n\n";
 		this->passwordInfo = "Computer Password: \'MoMoneyMoProblems\'.";
 	}
 
@@ -138,7 +194,5 @@ public:
 
 };
 
-//navigation function to handle game play while the player is in the servants room
-int servantsNavigate(std::unordered_map<std::string, std::string>& inventory);
 
 #endif

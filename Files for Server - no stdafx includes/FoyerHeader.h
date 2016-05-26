@@ -27,7 +27,7 @@ private:
 
 protected://protected member variables.
      std::string name;
-     std::vector<std::string> exits{ std::vector<std::string>{"Driveway", "Kitchen", "Sitting Room", "Upstairs Hallway", "Dining Room" } };
+     std::vector<std::string> exits{ std::vector<std::string>{"driveway", "kitchen", "sitting room", "upstairs hallway", "dining room" } };
      std::vector<std::string> objects{ std::vector<std::string>{"closet", "fishBowl"} };
      int numRooms;
      int numObjects;

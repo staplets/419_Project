@@ -33,10 +33,7 @@ void Cabinet::checkCabinet(std::unordered_map<std::string, std::string>& inv)
 {
      //initialize the parrott
      Cabinet cabinet;
-     int firstTime = 0;
      //choice from player
-     int choice = 0;
-     int retry = 0;
      std::string ans;
 
      //formatting

@@ -1,7 +1,7 @@
 /***********************************************************
 * Author:					Shaun Stapleton
-* Date Created:			4/20/16
-* Last Modification Date:	4/20/16
+* Date Created:			5/24/16
+* Last Modification Date:	5/24/16
 * Filename:				DeckHeader.h
 *
 * Overview:
@@ -18,6 +18,64 @@
 #include <cstdlib>
 #include <stack>
 #include <unordered_map>
+#include <vector>
+
+//Room Deck Class
+class RoomDeck
+{
+private:
+
+protected://protected member variables.
+     std::string name;
+     std::vector<std::string> exits{ std::vector<std::string>{"dining", "billiards", "kitchen", "garden"} };
+     std::vector<std::string> objects{ std::vector<std::string>{"chair", "hottub"} };
+     int numRooms;
+     int numObjects;
+     std::string description;
+
+public:
+     //default constructor
+     RoomDeck()
+     {
+          this->name = "The Deck";
+          this->numRooms = 4;
+          this->numObjects = 2;
+          this->description = "You are on the Deck outside of the Mansion.\n\nLooking around, there is a Chair you may want to take a look at (Enter \"chair\").\n\nThere is also a hot tub you may examine more closely (Enter \"hot tub\").\n\n";
+
+     }
+
+     //Virtual Destructor
+     virtual ~RoomDeck()
+     {}
+
+
+     //Accessor Functions for accessing private variables.
+     std::string getName() const;
+
+     int getNumRooms() const;
+
+     int getNumObjects() const;
+
+     std::vector<std::string> getExits() const;
+
+     std::vector<std::string> getObjects() const;
+
+     std::string getDescription() const;
+
+     //Mutator Functions to change private variables.
+     void setName(const std::string theName);
+
+     void setNumRooms(const int theNumRooms);
+
+     void setNumObjects(const int theNumObjects);
+
+     void setExits(const std::vector<std::string> theExits);
+
+     void setObjects(const std::vector<std::string> theObjects);
+
+     void setDescription(const std::string theDescription);
+
+};
 
 //Chair Class
 class Chair
@@ -114,7 +172,5 @@ public:
 
 };
 
-//navigation function to handle game play while the player is in the deck
-int deckNavigate(std::unordered_map<std::string, std::string>& inventory);
 
 #endif

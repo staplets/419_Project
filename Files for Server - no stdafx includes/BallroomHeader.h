@@ -1,7 +1,7 @@
 /***********************************************************
 * Author:					Shaun Stapleton
-* Date Created:			4/25/16
-* Last Modification Date:	4/26/16
+* Date Created:			5/25/16
+* Last Modification Date:	5/26/16
 * Filename:				BallroomHeader.h
 *
 * Overview:
@@ -18,6 +18,63 @@
 #include <cstdlib>
 #include <stack>
 #include <unordered_map>
+#include <vector>
+
+//Room Ballroom Class
+class RoomBallroom
+{
+private:
+
+protected://protected member variables.
+     std::string name;
+     std::vector<std::string> exits{ std::vector<std::string>{"billiards", "library", "sitting" } };
+     std::vector<std::string> objects{ std::vector<std::string>{"piano", "bar"} };
+     int numRooms;
+     int numObjects;
+     std::string description;
+
+public:
+     //default constructor
+     RoomBallroom()
+     {
+          this->name = "The Ballroom";
+          this->numRooms = 3;
+          this->numObjects = 2;
+          this->description = "You are in the Ballroom.\n\nLooking around, you see a Piano in the center of the room and along the side of the room, there is a Bar.\n\nExamine the Piano? (Enter \"piano\").\n\nGo over to look at the Bar? (Enter \"bar\").\n\n";
+     }
+
+     //Virtual Destructor
+     virtual ~RoomBallroom()
+     {}
+
+
+     //Accessor Functions for accessing private variables.
+     std::string getName() const;
+
+     int getNumRooms() const;
+
+     int getNumObjects() const;
+
+     std::vector<std::string> getExits() const;
+
+     std::vector<std::string> getObjects() const;
+
+     std::string getDescription() const;
+
+     //Mutator Functions to change private variables.
+     void setName(const std::string theName);
+
+     void setNumRooms(const int theNumRooms);
+
+     void setNumObjects(const int theNumObjects);
+
+     void setExits(const std::vector<std::string> theExits);
+
+     void setObjects(const std::vector<std::string> theObjects);
+
+     void setDescription(const std::string theDescription);
+
+};
 
 //Piano Object
 class Piano
@@ -102,9 +159,5 @@ public:
      void setNumDrinks(const int theNumDrinks);
 
 };
-
-
-//navigation function to handle game play while the player is in the billiards room
-int ballroomNavigate(std::unordered_map<std::string, std::string>& inventory);
 
 #endif

@@ -1,7 +1,7 @@
 /***********************************************************
 * Author:					Shaun Stapleton
-* Date Created:				5/04/16
-* Last Modification Date:	     5/05/16
+* Date Created:				5/24/16
+* Last Modification Date:	     5/25/16
 * Filename:					BedroomSource.cpp
 *
 * Overview:
@@ -17,12 +17,14 @@
 *    as the player goes from room to room.
 *
 ******************************/
+
 #include <iostream>
 #include <string>
 #include <ctime>
 #include <cstdlib>
 #include <stack>
 #include <unordered_map>
+#include <vector>
 
 //include bedroom header
 #include "BedroomHeader.h"
@@ -32,10 +34,8 @@ void Bed::checkBed(std::unordered_map<std::string, std::string>& inv)
 {
      //initialize the parrott
      Bed bed;
-     int firstTime = 0;
+    
      //choice from player
-     int choice = 0;
-     int retry = 0;
      std::string ans;
 
      //initialize random seed
@@ -47,17 +47,17 @@ void Bed::checkBed(std::unordered_map<std::string, std::string>& inv)
      //coat closet info
      std::cout << "\n\nThe Bed\n\n\n\n";
 
-     std::cout << "\nWalking towards the bed, Sherlock notes it as: " << getDescription() << "\n\n";
+     std::cout << "\nWalking towards the bed, you note it as: " << getDescription() << "\n\n";
 
      //check if pen is already in inventory
      auto search = inv.find("pen");
      if (search != inv.end()){
-          std::cout << "\nSherlock moves closer to examine the bed. He carefully looks under the pillows and sheets being mindful of the body.\n\n" <<
-               "\nSherlock has already grabbed the " << getPen() << " and does not see anything else out of the ordinary.\n\n";
+          std::cout << "\nYou move closer to examine the bed. You carefully look under the pillows and sheets being mindful of the body.\n\n" <<
+               "\nYou have already grabbed the " << getPen() << " and do not see anything else out of the ordinary.\n\n";
      }
      else{
 
-          std::cout << "\nSherlock moves closer to examine the bed. He carefully looks under the pillows and sheets being mindful of the body.\n\n" <<
+          std::cout << "\nYou move closer to examine the bed. You carefully look under the pillows and sheets being mindful of the body.\n\n" <<
                "\nStuck between the headboard and the matress is a " << getPen() << ".\n\n";
 
           std::cout << "\nWould you like to add the " << getPen() << " to your inventory?\n\n";
@@ -109,15 +109,14 @@ void Body::checkBody(std::unordered_map<std::string, std::string>& inv){
 
      //user input var
      std::string ans;
-     int checkInventory = 0;
-
+    
      //formatting
      std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
 
      //coat closet info
      std::cout << "\n\nThe Body of Mr. Cunningham\n\n\n\n";
 
-     std::cout << "\nSherlock approaches the body to examine. " << getDescription() << getDescriptionTwo() << getDescriptionThree();
+     std::cout << "\nYou approach the body to examine. " << getDescription() << getDescriptionTwo() << getDescriptionThree();
 
      std::cout << "\nWould you like to check for a pulse to be conclusive of death?\n\n";
 
@@ -151,14 +150,14 @@ void Body::checkBody(std::unordered_map<std::string, std::string>& inv){
      //check if grape is already in inventory
      auto search = inv.find("grape");
      if (search != inv.end()){
-          std::cout << "\nSherlock pats down the body and checks all of Mr. Cunningham's pockets.\n\nHe doesn't find anything of use in the pants or outer coat pockets.\n\n" <<
-               "He has also already grabbed the " << getGrape() << " from the inner pocket so he finds no evidence of use here.\n\n";
+          std::cout << "\nYou pat down the body and check all of Mr. Cunningham's pockets.\n\nYou don't find anything of use in the pants or outer coat pockets.\n\n" <<
+               "You have also already grabbed the " << getGrape() << " from the inner pocket so you find no evidence of use here.\n\n";
      }
      else{
 
-          std::cout << "\nSherlock pats down the body and checks all of Mr. Cunningham's pockets.\n\nHe doesn't find anything of use in the pants or outer coat pockets.\n\n" <<
-               "When he feels into an inside coat pocket he pulls out a grape. From Sherlock's knowledge of the fruit, he recognizes the type as a " << getGrape() << ".\n\n" <<
-               "\"Peculiar ... \" Sherlock he thinks to himself. He knows they are not native to this region of America, as he believes they come from an area of France.\n\n";
+          std::cout << "\nYou pat down the body and check all of Mr. Cunningham's pockets.\n\nYou don't find anything of use in the pants or outer coat pockets.\n\n" <<
+               "When you feel into an inside coat pocket you pull out a grape. From your knowledge of the fruit, you recognize the type as a " << getGrape() << ".\n\n" <<
+               "\"Peculiar ... \" you think to yourself. You know they are not native to this region of America, as you believe they come from an area of France.\n\n";
 
           std::cout << "\nWould you like to add the " << getGrape() << " to your inventory?\n\n";
 
@@ -217,117 +216,29 @@ void Body::setDescriptionTwo(const std::string theDescriptionTwo){ descriptionTw
 
 void Body::setDescriptionThree(const std::string theDescriptionThree){ descriptionThree = theDescriptionThree; }
 
-//navigation function to handle game play while the player is in the bedroom
-int bedroomNavigate(std::unordered_map<std::string, std::string>& inventory){
+/////Room class functions/////
+//get functions
+std::string RoomBedroom::getName() const { return name; }
 
-     //boolean to find out if player wants to move to another room
-     bool move = false;
-     int firstTime = 0;
+int RoomBedroom::getNumRooms() const { return numRooms; }
 
-     //intialize objects
-     Bed bed;
-     Body body;
+int RoomBedroom::getNumObjects() const { return numObjects; }
 
-     //formatting
-     std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
+std::vector<std::string> RoomBedroom::getExits() const { return exits; }
 
-     //Game Intro
-     std::cout << "\n\nThe Bedroom\n\n\n\n" <<
-          "Sherlock is in the Bedoom.\n\nThe body of Willie Cunningham lies on the bed in the middle of the room.\n\n" <<
-          "Otherwise the room looks to be in pristine condition.\n\n" <<
-          "Any of the evidence in this room is either on the body or the bed of which he lies.\n\n" <<
-          "Additionally the bedroom leads to it's own personal bathroom.\n\n" <<
-          "Examine the body? (Enter \"1\").\n\n" <<
-          "Examine the bed? (Enter \"2\").\n\n" <<
-          "You may go into the Bathroom (Enter \"3\")\n\n" <<
-          "You may go out into the hallway (Enter \"4\").\n\n" <<
-          "Check your inventory of items ( Enter \"5\").\n\n" <<
-          "What would you like to do? Choose a number between 1 and 5.";
+std::vector<std::string> RoomBedroom::getObjects() const { return objects; }
 
-     //choice from player
-     int choice = 0;
-     int retry = 0;
-     std::string ans;
+std::string RoomBedroom::getDescription() const { return description; }
 
-     //inspect the room
-     do{
+//set functions
+void RoomBedroom::setName(const std::string theName){ name = theName; }
 
-          //navigation choice
-          choice = 0;
-          retry = 0;
+void RoomBedroom::setNumRooms(const int theNumRooms){ numRooms = theNumRooms; }
 
-          do
-          {
-               if (retry > 0)
-               {
-                    std::cout << "\n\nPlease select a number between 1 and 5 to navigate: \n\n";
-               }
-               else{
-                    if (firstTime != 0){
-                         //formatting
-                         std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
+void RoomBedroom::setNumObjects(const int theNumObjects){ numObjects = theNumObjects; }
 
-                         std::cout << "\n\nThe Bedroom\n\n\n\n" <<
-                              "Sherlock is in the Bedoom.\n\nThe body of Willie Cunningham lies on the bed in the middle of the room.\n\n" <<
-                              "Otherwise the room looks to be in pristine condition.\n\n" <<
-                              "Any of the evidence in this room is either on the body or the bed of which he lies.\n\n" <<
-                              "Additionally the bedroom leads to it's own personal bathroom.\n\n" <<
-                              "Examine the body? (Enter \"1\").\n\n" <<
-                              "Examine the bed? (Enter \"2\").\n\n" <<
-                              "You may go into the Bathroom (Enter \"3\")\n\n" <<
-                              "You may go out into the hallway (Enter \"4\").\n\n" <<
-                              "Check your inventory of items ( Enter \"5\").\n\n" <<
-                              "What would you like to do? Choose a number between 1 and 5.";
-                    }
-               }
-               std::cout << std::endl << std::endl;
-               //Take input for program choice.
-               std::cin >> choice;
+void RoomBedroom::setExits(const std::vector<std::string> theExits){ exits = theExits; }
 
-               while (!std::cin)
-               {
-                    std::cin.clear();
-                    std::cin.ignore(255, '\n');
-                    std::cout << "\n\nPlease enter a choice : \n\n";
-                    std::cin >> choice;
-               }
-               retry++;
-               firstTime++;
+void RoomBedroom::setObjects(const std::vector<std::string> theObjects){ objects = theObjects; }
 
-          } while (choice < 1 || choice > 5);
-
-
-          //take users choice and interact based on that
-          switch (choice){
-          case 1:
-               body.checkBody(inventory);
-               break;
-          case 2:
-               bed.checkBed(inventory);
-               break;
-          case 3:
-               std::cout << "\nGoing into the Bathroom.\n";
-               //change choice to reflect our room mapping and update move
-               choice = 19;
-               move = true;
-               break;
-          case 4:
-               std::cout << "\nWalking into the Hallway.\n";
-               //change choice to reflect our room mapping and update move
-               choice = 14;
-               move = true;
-               break;
-          case 5:
-               std::cout << "\n\nInventory contains: \n\n";
-               int c = 1;
-               for (auto it = inventory.begin(); it != inventory.end(); ++it){
-                    std::cout << c << ": " << it->second << "\n";
-                    c++;
-               }
-               break;
-          }
-
-     } while (!move);
-
-     return choice;
-}
+void RoomBedroom::setDescription(const std::string theDescription){ description = theDescription; }

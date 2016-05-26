@@ -1,7 +1,7 @@
 /***********************************************************
 * Author:					Shaun Stapleton
-* Date Created:			4/24/16
-* Last Modification Date:	4/24/16
+* Date Created:			5/24/16
+* Last Modification Date:	5/24/16
 * Filename:				HallwaySource.cpp
 *
 * Overview:
@@ -24,382 +24,337 @@
 #include <cstdlib>
 #include <stack>
 #include <unordered_map>
+#include <vector>
 
 //include hallway header
 #include "HallwayHeader.h"
 #include "animation.hpp"
 
-void inspectHallwayObj(std::string objName, std::unordered_map<std::string, std::string>& inventory)
-{
-	//intialize objects
-	Shelf shelf;
-	EndTable endTable;
-
-	if (objName.compare("Examine shelf") == 0) { //if object is shelf
-		shelf.checkShelf(inventory);
-	}
-	else {
-		endTable.checkEndTable(inventory);
-	}
-}
-
-int movePlayerFromHallway(std::string location)
-{
-	int intChoice;
-
-	if (location.compare("Foyer") == 0) {
-		std::cout << "\nGoing down to the Foyer.\n";
-		//change choice to reflect our room mapping and update move
-		intChoice = 2;
-	}
-	else if (location.compare("Study") == 0) {
-		std::cout << "\nGoing down into the Study.\n";
-		//change choice to reflect our room mapping and update move
-		intChoice = 4;
-	}
-	else if (location.compare("Bedroom") == 0) {
-		std::cout << "\nWalking into the Bedroom.\n";
-		//change choice to reflect our room mapping and update move
-		intChoice = 15;
-	}
-	else if (location.compare("Servants room") == 0) {
-		std::cout << "\nWalking into the Servants Quarters.\n";
-		//change choice to reflect our room mapping and update move
-		intChoice = 17;
-	}
-	else {
-		std::cout << "\nGoing up to the Attic.\n";
-		//change choice to reflect our room mapping and update move
-		intChoice = 20;
-	}
-	return intChoice;
-}
-
 //member function to get into the trunk of Shelf
 void Shelf::checkShelf(std::unordered_map<std::string, std::string>& inv)
 {
-	int start_row = 4;
-	int start_column = 4;
-	int i;
-	int speed;
-	
-	//user input var
-	std::string ans;
+     int start_row = 4;
+     int start_column = 4;
+     int i;
+     int speed;
 
-	//initialize random seed
-	srand((unsigned int)time(NULL));
+     //user input var
+     std::string ans;
 
-	//get random number between 1 and 3 to time a smack on the spider
-	int catchSpider = rand() % 3 + 1;
+     //initialize random seed
+     srand((unsigned int)time(NULL));
 
-	//formatting
-	std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
+     //get random number between 1 and 3 to time a smack on the spider
+     int catchSpider = rand() % 3 + 1;
 
-	//coat closet info
-	std::cout << "\n\nThe Shelf\n\n\n\n";
+     //formatting
+     std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
 
-	std::cout << "\nFrom closer inspection of the shelf, Sherlock notes: " << getDescription() << "\n\n";
+     //coat closet info
+     std::cout << "\n\nThe Shelf\n\n\n\n";
 
-	//check if candle is already in inventory
-	auto search = inv.find("candle");
-	if (search != inv.end()) {
+     std::cout << "\nFrom closer inspection of the shelf, you note: " << getDescription() << "\n\n";
 
-		if (getDead() == true) {
-			//if spider dead and candle in inventory
-			std::cout << "\nThe shelf is empty. Sherlock already grabbed the " << getCandle() << " and killed a spider.\n\n";
-		}
-		else {
-			//candle in inventory but spider lives on
-			std::cout << "\nThe shelf has a Spider on it, but Sherlock already grabbed the " << getCandle() << ".\n\n";
+     //check if candle is already in inventory
+     auto search = inv.find("candle");
+     if (search != inv.end()) {
 
-			std::cout << "\nWould you like to try and kill the " << getSpider() << ".\n\n";
+          if (getDead() == true) {
+               //if spider dead and candle in inventory
+               std::cout << "\nThe shelf is empty. You already grabbed the " << getCandle() << " and killed a spider.\n\n";
+          }
+          else {
+               //candle in inventory but spider lives on
+               std::cout << "\nThe shelf has a Spider on it, but you already grabbed the " << getCandle() << ".\n\n";
 
-			//check user input
-			do
-			{
-				std::cout << "\n\nPlease choose 'y' or 'n' to continue: \n\n";
-				std::cout << std::endl << std::endl;
-				std::cin >> ans;
+               std::cout << "\nWould you like to try and kill the " << getSpider() << ".\n\n";
 
-				while (!std::cin)
-				{
-					std::cin.clear();
-					std::cin.ignore(255, '\n');
-					std::cin >> ans;
-				}
+               //check user input
+               do
+               {
+                    std::cout << "\n\nPlease choose 'y' or 'n' to continue: \n\n";
+                    std::cout << std::endl << std::endl;
+                    std::cin >> ans;
 
-				//clear input stream
-				std::cin.clear();
-				std::cin.ignore(255, '\n');
+                    while (!std::cin)
+                    {
+                         std::cin.clear();
+                         std::cin.ignore(255, '\n');
+                         std::cin >> ans;
+                    }
 
-			} while (ans != "y" && ans != "n");
+                    //clear input stream
+                    std::cin.clear();
+                    std::cin.ignore(255, '\n');
 
-			//Spider animation
-			initscr();
-			for (i = 1; i <= 12; i++)
-			{
-				printSpider1(start_row, start_column);
-				refresh();
-				for (speed = 1; speed <= 55000000; speed++);
-				eraseSpider(start_row, start_column);
-				refresh();
-				start_column++;
-	
-				printSpider2(start_row, start_column);
-				refresh();
-				for (speed = 1; speed <= 55000000; speed++);
-				eraseSpider(start_row, start_column);
-				refresh();
-				start_column++;
-	
-				printSpider3(start_row, start_column);
-				refresh();
-				for (speed = 1; speed <= 55000000; speed++);
-				eraseSpider(start_row, start_column);
-				refresh();
-				start_column++;
-	
-				printSpider2(start_row, start_column);
-				refresh();
-				for (speed = 1; speed <= 55000000; speed++);
-				eraseSpider(start_row, start_column);
-				refresh();
-				start_column++;
-	
-			}
-			endwin();
+               } while (ans != "y" && ans != "n");
+               
+               //Spider animation
+               initscr();
+               for (i = 1; i <= 12; i++)
+               {
+                    printSpider1(start_row, start_column);
+                    refresh();
+                    for (speed = 1; speed <= 55000000; speed++);
+                    eraseSpider(start_row, start_column);
+                    refresh();
+                    start_column++;
 
-			if (ans == "y") {
-				//guess right number to catch spider
-				std::cout << "\nOkay, in order to kill the spider you have to try timing when you want to smack him correctly.\n\n";
+                    printSpider2(start_row, start_column);
+                    refresh();
+                    for (speed = 1; speed <= 55000000; speed++);
+                    eraseSpider(start_row, start_column);
+                    refresh();
+                    start_column++;
 
-				//choice from player
-				int choice = 0;
-				int retry = 0;
+                    printSpider3(start_row, start_column);
+                    refresh();
+                    for (speed = 1; speed <= 55000000; speed++);
+                    eraseSpider(start_row, start_column);
+                    refresh();
+                    start_column++;
 
-				//navigation choice
-				choice = 0;
-				retry = 0;
+                    printSpider2(start_row, start_column);
+                    refresh();
+                    for (speed = 1; speed <= 55000000; speed++);
+                    eraseSpider(start_row, start_column);
+                    refresh();
+                    start_column++;
 
-				do
-				{
-					if (retry > 0)
-					{
-						std::cout << "\n\nPlease select a number between 1 and 3: \n\n";
-					}
-					else {
-						std::cout << "\n\nTry to smack the spider on the count of 1, 2, or 3: \n\n";
-					}
-					std::cout << std::endl << std::endl;
-					//Take input for program choice.
-					std::cin >> choice;
+               }
+               endwin();
+               
+               if (ans == "y") {
+                    //guess right number to catch spider
+                    std::cout << "\nOkay, in order to kill the spider you have to try timing when you want to smack him correctly.\n\n";
 
-					while (!std::cin)
-					{
-						std::cin.clear();
-						std::cin.ignore(255, '\n');
-						std::cout << "\n\nPlease enter a choice : \n\n";
-						std::cin >> choice;
-					}
-					retry++;
+                    //choice from player
+                    int choice = 0;
+                    int retry = 0;
 
-				} while (choice < 1 || choice > 3);
+                    //navigation choice
+                    choice = 0;
+                    retry = 0;
 
-				//check if guessed right
-				if (choice == catchSpider) {
-					std::cout << "\n\nGood timing! You got the spider!\n\n";
-					setDead(true);
-				}
-				else {
-					std::cout << "\n\nClose but no cigar! Should have tried on " << catchSpider << "\n\n";
-				}
+                    do
+                    {
+                         if (retry > 0)
+                         {
+                              std::cout << "\n\nPlease select a number between 1 and 3: \n\n";
+                         }
+                         else {
+                              std::cout << "\n\nTry to smack the spider on the count of 1, 2, or 3: \n\n";
+                         }
+                         std::cout << std::endl << std::endl;
+                         //Take input for program choice.
+                         std::cin >> choice;
 
-			}
-			else {
-				std::cout << "\nOkay, the " << getSpider() << " will live on!\n\n";
-			}
-		}
+                         while (!std::cin)
+                         {
+                              std::cin.clear();
+                              std::cin.ignore(255, '\n');
+                              std::cout << "\n\nPlease enter a choice : \n\n";
+                              std::cin >> choice;
+                         }
+                         retry++;
 
-	}
-	else {
+                    } while (choice < 1 || choice > 3);
 
-		if (getDead() == true) {
-			//if spider dead and candle not in inventory
-			std::cout << "\nThe shelf has a " << getCandle() << ", which is lit to provide light.\n\n";
+                    //check if guessed right
+                    if (choice == catchSpider) {
+                         std::cout << "\n\nGood timing! You got the spider!\n\n";
+                         setDead(true);
+                    }
+                    else {
+                         std::cout << "\n\nClose but no cigar! Should have tried on " << catchSpider << "\n\n";
+                    }
 
-			std::cout << "Would you like to add the " << getCandle() << " to your inventory?\n\n";
+               }
+               else {
+                    std::cout << "\nOkay, the " << getSpider() << " will live on!\n\n";
+               }
+          }
 
-			//check user input
-			do
-			{
-				std::cout << "\n\nPlease choose 'y' or 'n' to continue: \n\n";
-				std::cout << std::endl << std::endl;
-				std::cin >> ans;
+     }
+     else {
 
-				while (!std::cin)
-				{
-					std::cin.clear();
-					std::cin.ignore(255, '\n');
-					std::cin >> ans;
-				}
+          if (getDead() == true) {
+               //if spider dead and candle not in inventory
+               std::cout << "\nThe shelf has a " << getCandle() << ", which is lit to provide light.\n\n";
 
-				//clear input stream
-				std::cin.clear();
-				std::cin.ignore(255, '\n');
+               std::cout << "Would you like to add the " << getCandle() << " to your inventory?\n\n";
 
-			} while (ans != "y" && ans != "n");
+               //check user input
+               do
+               {
+                    std::cout << "\n\nPlease choose 'y' or 'n' to continue: \n\n";
+                    std::cout << std::endl << std::endl;
+                    std::cin >> ans;
 
-			if (ans == "y") {
-				inv.insert({ "candle", getCandle() });
-				std::cout << "\nOkay, " << getCandle() << " added to inventory.\n\n";
-			}
-			else {
-				std::cout << "\nOkay, " << getCandle() << " not added to inventory.\n\n";
-			}
-		}
-		else {
-			//spider alive and candle on shelf
-			std::cout << "\nThe shelf has a spider crawling around on it and a " << getCandle() << ", which is lit to provide light.\n\n";
+                    while (!std::cin)
+                    {
+                         std::cin.clear();
+                         std::cin.ignore(255, '\n');
+                         std::cin >> ans;
+                    }
 
-			std::cout << "Would you like to add the " << getCandle() << " to your inventory?\n\n";
+                    //clear input stream
+                    std::cin.clear();
+                    std::cin.ignore(255, '\n');
 
-			//check user input
-			do
-			{
-				std::cout << "\n\nPlease choose 'y' or 'n' to continue: \n\n";
-				std::cout << std::endl << std::endl;
-				std::cin >> ans;
+               } while (ans != "y" && ans != "n");
 
-				while (!std::cin)
-				{
-					std::cin.clear();
-					std::cin.ignore(255, '\n');
-					std::cin >> ans;
-				}
+               if (ans == "y") {
+                    inv.insert({ "candle", getCandle() });
+                    std::cout << "\nOkay, " << getCandle() << " added to inventory.\n\n";
+               }
+               else {
+                    std::cout << "\nOkay, " << getCandle() << " not added to inventory.\n\n";
+               }
+          }
+          else {
+               //spider alive and candle on shelf
+               std::cout << "\nThe shelf has a spider crawling around on it and a " << getCandle() << ", which is lit to provide light.\n\n";
 
-				//clear input stream
-				std::cin.clear();
-				std::cin.ignore(255, '\n');
+               std::cout << "Would you like to add the " << getCandle() << " to your inventory?\n\n";
 
-			} while (ans != "y" && ans != "n");
+               //check user input
+               do
+               {
+                    std::cout << "\n\nPlease choose 'y' or 'n' to continue: \n\n";
+                    std::cout << std::endl << std::endl;
+                    std::cin >> ans;
 
-			if (ans == "y") {
-				inv.insert({ "candle", getCandle() });
-				std::cout << "\nOkay, " << getCandle() << " added to inventory.\n\n";
-			}
-			else {
-				std::cout << "\nOkay, " << getCandle() << " not added to inventory.\n\n";
-			}
+                    while (!std::cin)
+                    {
+                         std::cin.clear();
+                         std::cin.ignore(255, '\n');
+                         std::cin >> ans;
+                    }
 
-			std::cout << "\nWould you like to try and kill the " << getSpider() << ".\n\n";
+                    //clear input stream
+                    std::cin.clear();
+                    std::cin.ignore(255, '\n');
 
-			//check user input
-			do
-			{
-				std::cout << "\n\nPlease choose 'y' or 'n' to continue: \n\n";
-				std::cout << std::endl << std::endl;
-				std::cin >> ans;
+               } while (ans != "y" && ans != "n");
 
-				while (!std::cin)
-				{
-					std::cin.clear();
-					std::cin.ignore(255, '\n');
-					std::cin >> ans;
-				}
+               if (ans == "y") {
+                    inv.insert({ "candle", getCandle() });
+                    std::cout << "\nOkay, " << getCandle() << " added to inventory.\n\n";
+               }
+               else {
+                    std::cout << "\nOkay, " << getCandle() << " not added to inventory.\n\n";
+               }
 
-				//clear input stream
-				std::cin.clear();
-				std::cin.ignore(255, '\n');
+               std::cout << "\nWould you like to try and kill the " << getSpider() << ".\n\n";
 
-			} while (ans != "y" && ans != "n");
-			
-			//Spider animation
-			initscr();
-			for (i = 1; i <= 12; i++)
-			{
-				printSpider1(start_row, start_column);
-				refresh();
-				for (speed = 1; speed <= 55000000; speed++);
-				eraseSpider(start_row, start_column);
-				refresh();
-				start_column++;
-	
-				printSpider2(start_row, start_column);
-				refresh();
-				for (speed = 1; speed <= 55000000; speed++);
-				eraseSpider(start_row, start_column);
-				refresh();
-				start_column++;
-	
-				printSpider3(start_row, start_column);
-				refresh();
-				for (speed = 1; speed <= 55000000; speed++);
-				eraseSpider(start_row, start_column);
-				refresh();
-				start_column++;
-	
-				printSpider2(start_row, start_column);
-				refresh();
-				for (speed = 1; speed <= 55000000; speed++);
-				eraseSpider(start_row, start_column);
-				refresh();
-				start_column++;
-	
-			}
-			endwin();
+               //check user input
+               do
+               {
+                    std::cout << "\n\nPlease choose 'y' or 'n' to continue: \n\n";
+                    std::cout << std::endl << std::endl;
+                    std::cin >> ans;
 
-			if (ans == "y") {
-				//guess right number to catch spider
-				std::cout << "\nOkay, in order to kill the spider you have to try timing when you want to smack him correctly.\n\n";
+                    while (!std::cin)
+                    {
+                         std::cin.clear();
+                         std::cin.ignore(255, '\n');
+                         std::cin >> ans;
+                    }
 
-				//choice from player
-				int choice = 0;
-				int retry = 0;
+                    //clear input stream
+                    std::cin.clear();
+                    std::cin.ignore(255, '\n');
 
-				//navigation choice
-				choice = 0;
-				retry = 0;
+               } while (ans != "y" && ans != "n");
+               
+               //Spider animation
+               initscr();
+               for (i = 1; i <= 12; i++)
+               {
+                    printSpider1(start_row, start_column);
+                    refresh();
+                    for (speed = 1; speed <= 55000000; speed++);
+                    eraseSpider(start_row, start_column);
+                    refresh();
+                    start_column++;
 
-				do
-				{
-					if (retry > 0)
-					{
-						std::cout << "\n\nPlease select a number between 1 and 3: \n\n";
-					}
-					else {
-						std::cout << "\n\nTry to smack the spider on the count of 1, 2, or 3: \n\n";
-					}
-					std::cout << std::endl << std::endl;
-					//Take input for program choice.
-					std::cin >> choice;
+                    printSpider2(start_row, start_column);
+                    refresh();
+                    for (speed = 1; speed <= 55000000; speed++);
+                    eraseSpider(start_row, start_column);
+                    refresh();
+                    start_column++;
 
-					while (!std::cin)
-					{
-						std::cin.clear();
-						std::cin.ignore(255, '\n');
-						std::cout << "\n\nPlease enter a choice : \n\n";
-						std::cin >> choice;
-					}
-					retry++;
+                    printSpider3(start_row, start_column);
+                    refresh();
+                    for (speed = 1; speed <= 55000000; speed++);
+                    eraseSpider(start_row, start_column);
+                    refresh();
+                    start_column++;
 
-				} while (choice < 1 || choice > 3);
+                    printSpider2(start_row, start_column);
+                    refresh();
+                    for (speed = 1; speed <= 55000000; speed++);
+                    eraseSpider(start_row, start_column);
+                    refresh();
+                    start_column++;
 
-				//check if guessed right
-				if (choice == catchSpider) {
-					std::cout << "\n\nGood timing! You got the spider!\n\n";
-					setDead(true);
-				}
-				else {
-					std::cout << "\n\nClose but no cigar! Should have tried on " << catchSpider << "\n\n";
-				}
+               }
+               endwin();
+               
+               if (ans == "y") {
+                    //guess right number to catch spider
+                    std::cout << "\nOkay, in order to kill the spider you have to try timing when you want to smack him correctly.\n\n";
 
-			}
-			else {
-				std::cout << "\nOkay, the " << getSpider() << " will live on!\n\n";
-			}
-		}
+                    //choice from player
+                    int choice = 0;
+                    int retry = 0;
 
-	}
+                    //navigation choice
+                    choice = 0;
+                    retry = 0;
+
+                    do
+                    {
+                         if (retry > 0)
+                         {
+                              std::cout << "\n\nPlease select a number between 1 and 3: \n\n";
+                         }
+                         else {
+                              std::cout << "\n\nTry to smack the spider on the count of 1, 2, or 3: \n\n";
+                         }
+                         std::cout << std::endl << std::endl;
+                         //Take input for program choice.
+                         std::cin >> choice;
+
+                         while (!std::cin)
+                         {
+                              std::cin.clear();
+                              std::cin.ignore(255, '\n');
+                              std::cout << "\n\nPlease enter a choice : \n\n";
+                              std::cin >> choice;
+                         }
+                         retry++;
+
+                    } while (choice < 1 || choice > 3);
+
+                    //check if guessed right
+                    if (choice == catchSpider) {
+                         std::cout << "\n\nGood timing! You got the spider!\n\n";
+                         setDead(true);
+                    }
+                    else {
+                         std::cout << "\n\nClose but no cigar! Should have tried on " << catchSpider << "\n\n";
+                    }
+
+               }
+               else {
+                    std::cout << "\nOkay, the " << getSpider() << " will live on!\n\n";
+               }
+          }
+
+     }
 
 }
 
@@ -426,114 +381,114 @@ void Shelf::setCandle(const std::string theCandle) { candle = theCandle; }
 //member function to output information provided of each item
 void EndTable::checkEndTable(std::unordered_map<std::string, std::string>& inv) {
 
-	//initialize the fish bowl object
-	EndTable endTable;
-	//user input var
-	std::string ans;
+     //initialize the fish bowl object
+     EndTable endTable;
+     //user input var
+     std::string ans;
 
-	//formatting
-	std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
+     //formatting
+     std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
 
-	//Game Intro
-	std::cout << "\n\nThe End Table\n\n\n\n";
+     //Game Intro
+     std::cout << "\n\nThe End Table\n\n\n\n";
 
-	//coffee table info
-	std::cout << "\nWalking over to the end table, Sherlock notes: " << getDescription() << "\n\n";
+     //coffee table info
+     std::cout << "\nWalking over to the end table, you note: " << getDescription() << "\n\n";
 
-	//check if knife is already in inventory
-	auto search = inv.find("sculpture");
-	if (search != inv.end()) {
-		std::cout << "\nThe end table has a mirror above it, but Sherlock already grabbed the " << getSculpture() << " from here.\n\n";
+     //check if knife is already in inventory
+     auto search = inv.find("sculpture");
+     if (search != inv.end()) {
+          std::cout << "\nThe end table has a mirror above it, but you already grabbed the " << getSculpture() << " from here.\n\n";
 
-		std::cout << "Would you like to look at mirror?\n\n";
+          std::cout << "Would you like to look at mirror?\n\n";
 
-		//check user input
-		do
-		{
-			std::cout << "\n\nPlease choose 'y' or 'n' to continue: \n\n";
-			std::cout << std::endl << std::endl;
-			std::cin >> ans;
+          //check user input
+          do
+          {
+               std::cout << "\n\nPlease choose 'y' or 'n' to continue: \n\n";
+               std::cout << std::endl << std::endl;
+               std::cin >> ans;
 
-			while (!std::cin)
-			{
-				std::cin.clear();
-				std::cin.ignore(255, '\n');
-				std::cin >> ans;
-			}
+               while (!std::cin)
+               {
+                    std::cin.clear();
+                    std::cin.ignore(255, '\n');
+                    std::cin >> ans;
+               }
 
-			//clear input stream
-			std::cin.clear();
-			std::cin.ignore(255, '\n');
+               //clear input stream
+               std::cin.clear();
+               std::cin.ignore(255, '\n');
 
-		} while (ans != "y" && ans != "n");
+          } while (ans != "y" && ans != "n");
 
-		if (ans == "y") {
-			std::cout << getMirror() << "\n\n";
-		}
+          if (ans == "y") {
+               std::cout << getMirror() << "\n\n";
+          }
 
-	}
-	else {
+     }
+     else {
 
-		std::cout << "\nThe table has a mirror above it and a " << getSculpture() << ", which catches his eye.\n\n";
+          std::cout << "\nThe table has a mirror above it and a " << getSculpture() << ", which catches his eye.\n\n";
 
-		std::cout << "Would you like to add the sculpture to your inventory?\n\n";
+          std::cout << "Would you like to add the sculpture to your inventory?\n\n";
 
-		//check user input
-		do
-		{
-			std::cout << "\n\nPlease choose 'y' or 'n' to continue: \n\n";
-			std::cout << std::endl << std::endl;
-			std::cin >> ans;
+          //check user input
+          do
+          {
+               std::cout << "\n\nPlease choose 'y' or 'n' to continue: \n\n";
+               std::cout << std::endl << std::endl;
+               std::cin >> ans;
 
-			while (!std::cin)
-			{
-				std::cin.clear();
-				std::cin.ignore(255, '\n');
-				std::cin >> ans;
-			}
+               while (!std::cin)
+               {
+                    std::cin.clear();
+                    std::cin.ignore(255, '\n');
+                    std::cin >> ans;
+               }
 
-			//clear input stream
-			std::cin.clear();
-			std::cin.ignore(255, '\n');
+               //clear input stream
+               std::cin.clear();
+               std::cin.ignore(255, '\n');
 
-		} while (ans != "y" && ans != "n");
+          } while (ans != "y" && ans != "n");
 
-		if (ans == "y") {
-			inv.insert({ "sculpture", getSculpture() });
-			std::cout << "\nOkay, " << getSculpture() << " added to inventory.\n\n";
-		}
-		else {
-			std::cout << "\nOkay, " << getSculpture() << " not added to inventory.\n\n";
-		}
+          if (ans == "y") {
+               inv.insert({ "sculpture", getSculpture() });
+               std::cout << "\nOkay, " << getSculpture() << " added to inventory.\n\n";
+          }
+          else {
+               std::cout << "\nOkay, " << getSculpture() << " not added to inventory.\n\n";
+          }
 
 
-		//prompt user to look at mirror
-		std::cout << "Would you like to look at mirror?\n\n";
+          //prompt user to look at mirror
+          std::cout << "Would you like to look at mirror?\n\n";
 
-		//check user input
-		do
-		{
-			std::cout << "\n\nPlease choose 'y' or 'n' to continue: \n\n";
-			std::cout << std::endl << std::endl;
-			std::cin >> ans;
+          //check user input
+          do
+          {
+               std::cout << "\n\nPlease choose 'y' or 'n' to continue: \n\n";
+               std::cout << std::endl << std::endl;
+               std::cin >> ans;
 
-			while (!std::cin)
-			{
-				std::cin.clear();
-				std::cin.ignore(255, '\n');
-				std::cin >> ans;
-			}
+               while (!std::cin)
+               {
+                    std::cin.clear();
+                    std::cin.ignore(255, '\n');
+                    std::cin >> ans;
+               }
 
-			//clear input stream
-			std::cin.clear();
-			std::cin.ignore(255, '\n');
+               //clear input stream
+               std::cin.clear();
+               std::cin.ignore(255, '\n');
 
-		} while (ans != "y" && ans != "n");
+          } while (ans != "y" && ans != "n");
 
-		if (ans == "y") {
-			std::cout << getMirror() << "\n\n";
-		}
-	}
+          if (ans == "y") {
+               std::cout << getMirror() << "\n\n";
+          }
+     }
 
 }
 
@@ -553,101 +508,29 @@ void EndTable::setDescription(const std::string theDescription) { description = 
 void EndTable::setSculpture(const std::string theSculpture) { sculpture = theSculpture; }
 
 
-//navigation function to handle game play while the player is in the hallway room
-int hallwayNavigate(std::unordered_map<std::string, std::string>& inventory) {
+/////Room class functions/////
+//get functions
+std::string RoomHallway::getName() const { return name; }
 
-	//boolean to find out if player wants to move to another room
-	bool move = false;
-	int firstTime = 0;
+int RoomHallway::getNumRooms() const { return numRooms; }
 
-	//intialize objects
-	Shelf shelf;
-	EndTable endTable;
+int RoomHallway::getNumObjects() const { return numObjects; }
 
-	//formatting
-	std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
+std::vector<std::string> RoomHallway::getExits() const { return exits; }
 
-	//Game Intro
-	std::cout << "\n\nThe Hallway\n\n\n\n" <<
-		"Sherlock is in the upstairs Hallway.\n\nLooking around, he sees a Shelf on the wall and also sees an end table along the hall.\n\nExamine the Shelf? (Enter \"Examine shelf\").\n\n" <<
-		"Go over to look at End Table? (Enter \"Look at end table\").\n\n" <<
-		"You may go downstairs either to the Foyer (Enter \"Foyer\")\n\nor go downstairs into the Study (Enter \"Study\").\n\n" <<
-		"You may walk into the Bedroom (Enter \"Bedroom\")\n\nYou may go into the Servants Room (Enter \"Servants room\").\n\n" <<
-		"You may go up into the Attic (Enter \"Attic\").\n\n" <<
-		"Check your inventory of items ( Enter \"Check inventory\").\n\n" <<
-		"What would you like to do?";
+std::vector<std::string> RoomHallway::getObjects() const { return objects; }
 
-	//choice from player
-	std::string choice;
-	int intChoice;
-	int retry = 0;
-	std::string ans;
+std::string RoomHallway::getDescription() const { return description; }
 
-	//inspect the room
-	do {
+//set functions
+void RoomHallway::setName(const std::string theName){ name = theName; }
 
-		//navigation choice
-		retry = 0;
+void RoomHallway::setNumRooms(const int theNumRooms){ numRooms = theNumRooms; }
 
-		do
-		{
-			if (retry > 0)
-			{
-				std::cout << "\n\nPlease enter an option to navigate: \n\n";
-			}
-			else {
-				if (firstTime != 0) {
-					//formatting
-					std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
+void RoomHallway::setNumObjects(const int theNumObjects){ numObjects = theNumObjects; }
 
-					std::cout << "\n\nThe Hallway\n\n\n\n" <<
-						"Sherlock is in the upstairs Hallway.\n\nLooking around, he sees a Shelf on the wall and also sees an end table along the hall.\n\nExamine the Shelf? (Enter \"Examine shelf\").\n\n" <<
-						"Go over to look at End Table? (Enter \"Look at end table\").\n\n" <<
-						"You may go downstairs either to the Foyer (Enter \"Foyer\")\n\nor go downstairs into the Study (Enter \"Study\").\n\n" <<
-						"You may walk into the Bedroom (Enter \"Bedroom\")\n\nYou may go into the Servants Room (Enter \"Servants room\").\n\n" <<
-						"You may go up into the Attic (Enter \"Attic\").\n\n" <<
-						"Check your inventory of items ( Enter \"Check inventory\").\n\n" <<
-						"What would you like to do?";
-				}
-			}
-			std::cout << std::endl << std::endl;
-			//Take input for program choice.
-			std::getline(std::cin, choice);
+void RoomHallway::setExits(const std::vector<std::string> theExits){ exits = theExits; }
 
-			while (!std::cin)
-			{
-				std::cin.clear();
-				std::cin.ignore(255, '\n');
-				std::cout << "\n\nPlease enter a valid option (Examine shelf, Look at end table, Foyer, Study, Bedroom, Servants room, Attic or Check inventory) : \n\n";
-				std::cin >> choice;
-			}
-			retry++;
-			firstTime++;
+void RoomHallway::setObjects(const std::vector<std::string> theObjects){ objects = theObjects; }
 
-		} while ((choice.compare("Examine shelf") != 0) && (choice.compare("Look at end table") != 0) && (choice.compare("Foyer") != 0)
-			&& (choice.compare("Study") != 0) && (choice.compare("Bedroom") != 0) && (choice.compare("Servants room") != 0)
-			&& (choice.compare("Attic") != 0) && (choice.compare("Check inventory") != 0));
-
-
-		//take users choice and interact based on that
-		if (choice.compare("Foyer") == 0 || choice.compare("Study") == 0 || choice.compare("Bedroom") == 0 ||
-			choice.compare("Servants room") == 0 || choice.compare("Attic") == 0) {
-			intChoice = movePlayerFromHallway(choice);
-			move = true;
-		}
-		else if (choice.compare("Check inventory") == 0) {
-			std::cout << "\n\nInventory contains: \n\n";
-			int c = 1;
-			for (auto it = inventory.begin(); it != inventory.end(); ++it) {
-				std::cout << c << ": " << it->second << "\n";
-				c++;
-			}
-		}
-		else {
-			inspectHallwayObj(choice, inventory);
-		}
-
-	} while (!move);
-
-	return intChoice;
-}
+void RoomHallway::setDescription(const std::string theDescription){ description = theDescription; }
