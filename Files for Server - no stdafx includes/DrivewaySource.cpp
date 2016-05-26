@@ -26,6 +26,9 @@
 #include <vector>
 #include <unordered_map>
 
+//include animation header
+#include "animation.hpp"
+
 //guards for header
 //#ifndef DrivewayHeader_h
 //#define DrivewayHeader_h
@@ -45,10 +48,23 @@ void LuxuryCar::openTrunk(std::unordered_map<std::string, std::string>& inv)
      //user input var
      std::string ans;
 
+	 //animation variables
+	 int start_row = 4;
+	 int start_column = 4;
+
      auto search = inv.find("knife");
      if (search != inv.end()){
           std::cout << "\nYou have a knife on you and you are able to pick the lock to open the trunk\n\n";
           
+		  //animation to open the trunk
+		  initscr();
+		  printCar(start_row, start_column);
+		  refresh();
+		  getch();
+		  printOpen(start_row, start_column);
+		  getch();
+		  endwin();
+
           //check if bottle is already in inventory
           auto search = inv.find("bottle");
           if (search != inv.end()){

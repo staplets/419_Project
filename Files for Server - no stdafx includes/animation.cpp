@@ -922,3 +922,625 @@ void printFill(int startrow, int startcolumn)
 	move(r, c);
 	printw(" ************ ");
 }
+
+void printPainting(int startrow, int startcolumn)
+{
+	int r = startrow;
+	int c = startcolumn;
+
+	move(r, c);
+
+	printw("*****************************************");
+	r++; move(r, c);
+	printw("*                                       *");
+	r++; move(r, c);
+	printw("*              . ~,.,, I.               *");
+	r++; move(r, c);
+	printw("*                .~.:. .,.              *");
+	r++; move(r, c);
+	printw("*             .:    ..$: ..             *");
+	r++; move(r, c);
+	printw("*            .7        7..:             *");
+	r++; move(r, c);
+	printw("*                      ~= ,I            *");
+	r++; move(r, c);
+	printw("*                ,  =O ...I,            *");
+	r++; move(r, c);
+	printw("*            =.         . ?.            *");
+	r++; move(r, c);
+	printw("*            +   =.=   =7  ..           *");
+	r++; move(r, c);
+	printw("*            I ..Z.O  . + . .           *");
+	r++; move(r, c);
+	printw("*            I Z+... I  I,.Z8           *");
+	r++; move(r, c);
+	printw("*            . 8,+ .    :,.O.           *");
+	r++; move(r, c);
+	printw("*            . ..7O.    78=D,.          *");
+	r++; move(r, c);
+	printw("*            .. =? .     :Z~.~          *");
+	r++; move(r, c);
+	printw("*            .:?         +.   :.        *");
+	r++; move(r, c);
+	printw("*           . .           . .  .?       *");
+	r++; move(r, c);
+	printw("*         Z. ?           ,+=~.??,+      *");
+	r++; move(r, c);
+	printw("*       D  ..IO.       8= .  : .   :.   *");
+	r++; move(r, c);
+	printw("*      7Z  =  ?$,~?::+..7.          .   *");
+	r++; move(r, c);
+	printw("*     .OZ   .:.7 .Z.  $. . . Z  . I,.   *");
+	r++; move(r, c);
+	printw("*      :  .    .: +.:.   . O  .O     7  *");
+	r++; move(r, c);
+	printw("*     .    .   .: Z=..  =.O   .      .  *");
+	r++; move(r, c);
+	printw("*   .=Z.   O    .I.=.    . Z.        .  *");
+	r++; move(r, c);
+	printw("*  .       .    $   .  . .O  ..         *");
+	r++; move(r, c);
+	printw("* :  .:$Z..... I       .,+ . ?   .    . *");
+	r++; move(r, c);
+	printw("*.. .I$7Z~OZ.=       . ..  7. ... = . ? *");
+	r++; move(r, c);
+	printw("*.. O:~ Z,$.  . :    .  I $?7.. O. ,7 $ *");
+	r++; move(r, c);
+	printw("* =  .:+ ?,        ?,.  ... .?. 7.O   . *");
+	r++; move(r, c);
+	printw("* .D..I,,?= ,      ...=$?.I=I,.:     .  *");
+	r++; move(r, c);
+	printw("*       .:.   ..  . ..:7 IO  .$.I .. +  *");
+	r++; move(r, c);
+	printw("*        =$   . ., ~ Z.I:O I$ ..D  . .  *");
+	r++; move(r, c);
+	printw("*        : .  =7  ,~?O:, 8OD,..:  .+    *");
+	r++; move(r, c);
+	printw("*          ..              .    ..I     *");
+	r++; move(r, c);
+	printw("*          .               ....I        *");
+	r++; move(r, c);
+	printw("*****************************************");
+}
+
+void printCar(int startrow, int startcolumn)
+{
+	int r = startrow;
+	int c = startcolumn;
+
+	move(r, c);
+
+	printw("                        *****************");
+	r++; move(r, c);
+	printw("                       *    |     |----|   *");
+	r++; move(r, c);
+	printw("           ************_____|     |____|      *");
+	r++; move(r, c);
+	printw("         *                                       *****");
+	r++; move(r, c);
+	printw("       *                                              *");
+	r++; move(r, c);
+	printw("       *___      _________________________     _______*");
+	r++; move(r, c);
+	printw("           (    )                         (    )");
+	r = r + 3; move(r, c);
+	printw("              PRESS ENTER TO OPEN THE TRUNK");
+	r++; c = c + 28; move(r, c);
+}
+
+void printOpen(int startrow, int startcolumn)
+{
+	int r = startrow + 3;
+	int c = startcolumn + 49;
+	int speed;
+
+	for (int i = 1; i <= 1; i++)
+	{
+		move(r, c);
+		printw("***  ");
+		r--;
+		move(r, c);
+		printw("   **");
+		r = r + 1;
+
+		for (speed = 1; speed <= 48000000; speed++);
+		refresh();
+	}
+
+	for (int i = 1; i <= 1; i++)
+	{
+		move(r, c);
+		printw("*    ");
+		r--;
+		move(r, c);
+		printw(" *** ");
+		r--;
+		move(r, c);
+		printw("    *");
+		r = r + 2;
+
+		for (speed = 1; speed <= 48000000; speed++);
+		refresh();
+	}
+
+	for (int i = 1; i <= 1; i++)
+	{
+		move(r, c);
+		printw("*    ");
+		r--;
+		move(r, c);
+		printw("*    ");
+		r--;
+		move(r, c);
+		printw(" *   ");
+		r--;
+		move(r, c);
+		printw("  ** ");
+		r = r + 3;
+
+		for (speed = 1; speed <= 48000000; speed++);
+		refresh();
+	}
+}
+
+void printFishbowl(int startrow, int startcolumn)
+{
+	int r = startrow;
+	int c = startcolumn;
+
+	move(r, c);
+
+	printw("               *******************");
+	r++; move(r, c);
+	printw("               *                 *");
+	r++; move(r, c);
+	printw("             * ^^^^^^^^^^^^^^^^^^ *");
+	r++; move(r, c);
+	printw("            *                       *");
+	r++; move(r, c);
+	printw("           *                         *");
+	r++; move(r, c);
+	printw("          *                           *");
+	r++; move(r, c);
+	printw("          *                           *");
+	r++; move(r, c);
+	printw("          *                           *");
+	r++; move(r, c);
+	printw("           *                         *");
+	r++; move(r, c);
+	printw("            *                       *");
+	r++; move(r, c);
+	printw("             *                     *");
+	r++; move(r, c);
+	printw("              *********************");
+}
+
+void printLeftFish(int startrow, int startcolumn)
+{
+	int r = startrow;
+	int c = startcolumn;
+
+	move(r, c);
+
+	printw("   _____");
+	r++; move(r, c);
+	printw("|>[__ _*]");
+	r++; move(r, c);
+	printw("     V");
+}
+
+void printRightFish(int startrow, int startcolumn)
+{
+	int r = startrow;
+	int c = startcolumn;
+
+	move(r, c);
+
+	printw(" _____");
+	r++; move(r, c);
+	printw("[*_ __]<|");
+	r++; move(r, c);
+	printw("   V");
+}
+
+void eraseFish(int startrow, int startcolumn)
+{
+	int r = startrow;
+	int c = startcolumn;
+
+	move(r, c);
+
+	printw("        ");
+	r++; move(r, c);
+	printw("         ");
+	r++; move(r, c);
+	printw("       ");
+}
+
+void printParrot1(int startrow, int startcolumn)
+{
+	int r = startrow;
+	int c = startcolumn;
+
+	move(r, c);
+
+	printw("             *****");
+	r++; move(r, c);
+	printw("           *   0 0 *         ");
+	r++; move(r, c);
+	printw("          *       _*___      ");
+	r++; move(r, c);
+	printw("          *      *-----\\    ");
+	r++; move(r, c);
+	printw("          *      *------\\   ");
+	r++; move(r, c);
+	printw("           *        *");
+	r++; move(r, c);
+	printw("           *        *");
+	r++; move(r, c);
+	printw("          *          *");
+	r++; move(r, c);
+	printw("         *            *");
+	r++; move(r, c);
+	printw("         *            *");
+	r++; move(r, c);
+	printw("         *            *");
+	r++; move(r, c);
+	printw("         *            *");
+	r++; move(r, c);
+	printw("         *            *");
+	r++; move(r, c);
+	printw("         *  **    **  *");
+	r++; move(r, c);
+	printw(" ___________||____||_____________");
+	r++; move(r, c);
+	printw(" ___________MM____MM_____________|");
+	r++; move(r, c);
+	printw("          *     *");
+	r++; move(r, c);
+	printw("          *     *");
+	r++; move(r, c);
+	printw("          *    *");
+	r++; move(r, c);
+	printw("          *   *");
+	r++; move(r, c);
+	printw("          *   *");
+	r++; move(r, c);
+	printw("          *  *");
+	r++; move(r, c);
+	printw("          *  *");
+	r++; move(r, c);
+	printw("           * *");
+	r++; move(r, c);
+	printw("             *");
+}
+
+void printParrot2(int startrow, int startcolumn)
+{
+	int r = startrow;
+	int c = startcolumn;
+
+	move(r, c);
+
+	printw("             *****");
+	r++; move(r, c);
+	printw("           *   0 0_____    ");
+	r++; move(r, c);
+	printw("          *      *-----\\  /");
+	r++; move(r, c);
+	printw("          *      _______  --");
+	r++; move(r, c);
+	printw("          *      *------\\ \\");
+	r++; move(r, c);
+	printw("           *        *");
+	r++; move(r, c);
+	printw("           *        *");
+	r++; move(r, c);
+	printw("          *          *");
+	r++; move(r, c);
+	printw("         *            *");
+	r++; move(r, c);
+	printw("         *            *");
+	r++; move(r, c);
+	printw("         *            *");
+	r++; move(r, c);
+	printw("         *            *");
+	r++; move(r, c);
+	printw("         *            *");
+	r++; move(r, c);
+	printw("         *  **    **  *");
+	r++; move(r, c);
+	printw(" ___________||____||_____________");
+	r++; move(r, c);
+	printw(" ___________MM____MM_____________|");
+	r++; move(r, c);
+	printw("          *     *");
+	r++; move(r, c);
+	printw("          *     *");
+	r++; move(r, c);
+	printw("          *    *");
+	r++; move(r, c);
+	printw("          *   *");
+	r++; move(r, c);
+	printw("          *   *");
+	r++; move(r, c);
+	printw("          *  *");
+	r++; move(r, c);
+	printw("          *  *");
+	r++; move(r, c);
+	printw("           * *");
+	r++; move(r, c);
+	printw("             *");
+}
+
+void printBilliards(int startrow, int startcolumn)
+{
+	int r = startrow;
+	int c = startcolumn;
+
+	move(r, c);
+	printw(" ___________________________________________");
+	r++; move(r, c);
+	printw("|()                  ()                   ()|");
+	r++; move(r, c);
+	printw("|                                           |");
+	r++; move(r, c);
+	printw("|       O                                   |");
+	r++; move(r, c);
+	printw("|       O O                                 |");
+	r++; move(r, c);
+	printw("|       O O O                    O          |");
+	r++; move(r, c);
+	printw("|       O O                                 |");
+	r++; move(r, c);
+	printw("|       O                                   |");
+	r++; move(r, c);
+	printw("|                                           |");
+	r++; move(r, c);
+	printw("|()__________________()___________________()|");
+}
+
+void printCueBall(int startrow, int startcolumn)
+{
+	int r = startrow + 5;
+	int c = startcolumn + 33;
+
+	for (int i = 0; i < 21; i++)
+	{
+		move(r, c);
+		printw(" ");
+		c--;
+		move(r, c);
+		printw("O");
+		refresh();
+		for (int s = 1; s <= 60000000; s++);
+	}
+}
+
+void printBalls(int startrow, int startcolumn)
+{
+	int r = startrow + 3;
+	int c = startcolumn + 8;
+	int i = 0;
+
+	for (int p = 0; p < 6; p++)
+	{
+
+		r = startrow + 3;
+		c = startcolumn + 8;
+
+		//erase top
+		if (i < 2)
+		{
+			move(r - i, c);
+			printw(" ");
+		}
+		else
+		{
+			move(r - 2, c);
+			printw(" ");
+		}
+
+		//erase 2nd-left
+		r++;
+		if (i < 3)
+		{
+			move(r - i, c - (i * 2));
+			printw(" ");
+		}
+		else
+		{
+			move(r - 3, c - 6);
+			printw("  ");
+		}
+
+		//erase 2nd-right
+		c = c + 2;
+		if (i < 3)
+		{
+			move(r - i, c + (i * 2));
+			printw(" ");
+		}
+		else
+		{
+			move(r - 3, c + 6);
+			printw(" ");
+		}
+
+		//erase 3rd-left
+		r++;
+		c = c - 2;
+		if (i < 3)
+		{
+			move(r, c - (i * 2));
+			printw(" ");
+		}
+		else
+		{
+			move(r, c - 6);
+			printw(" ");
+		}
+
+		//erase 3rd-middle
+		c = c + 2;
+		move(r, c);
+		printw(" ");
+
+		//erase 3rd-right
+		c = c + 2;
+		move(r, c);
+		printw(" ");
+
+		//erase 4th-left
+		c = c - 4;
+		r++;
+		if (i < 3)
+		{
+			move(r + i, c - (i * 2));
+			printw(" ");
+		}
+		else
+		{
+			move(r + 3, c - 6);
+			printw("  ");
+		}
+
+		//erase 4th-right
+		c = c + 2;
+		if (i < 3)
+		{
+			move(r + i, c + (i * 2));
+			printw(" ");
+		}
+		else
+		{
+			move(r + 3, c + 6);
+			printw(" ");
+		}
+
+		//erase bottom
+		c = c - 2;
+		r++;
+		if (i < 3)
+		{
+			move(r + i, c);
+			printw(" ");
+		}
+		else
+		{
+			move(r + 3, c);
+			printw(" ");
+		}
+
+		i++;
+		r = startrow + 3;
+		c = startcolumn + 8;
+
+		//top
+		if (i < 2)
+		{
+			move(r - i, c);
+			printw("O");
+		}
+		else
+		{
+			move(r - 2, c);
+			printw("O");
+		}
+
+		//2nd-left
+		r++;
+		if (i < 3)
+		{
+			move(r - i, c - (i * 2));
+			printw("O");
+		}
+		else
+		{
+			move(r - 3, c - 6);
+			printw("O)");
+		}
+
+		//2nd-right
+		c = c + 2;
+		if (i < 3)
+		{
+			move(r - i, c + (i * 2));
+			printw("O");
+		}
+		else
+		{
+			move(r - 3, c + 6);
+			printw("O");
+		}
+
+		//3rd-left
+		r++;
+		c = c - 2;
+		if (i < 3)
+		{
+			move(r, c - (i * 2));
+			printw("O");
+		}
+		else
+		{
+			move(r, c - 6);
+			printw("O");
+		}
+
+		//3rd-middle
+		c = c + 2;
+		move(r, c);
+		printw("O");
+
+		//3rd-right
+		c = c + 2;
+		move(r, c);
+		printw("O");
+
+		//4th-left
+		c = c - 4;
+		r++;
+		if (i < 3)
+		{
+			move(r + i, c - (i * 2));
+			printw("O");
+		}
+		else
+		{
+			move(r + 3, c - 6);
+			printw("O)");
+		}
+
+		//4th-right
+		c = c + 2;
+		if (i < 3)
+		{
+			move(r + i, c + (i * 2));
+			printw("O");
+		}
+		else
+		{
+			move(r + 3, c + 6);
+			printw("O");
+		}
+
+		//bottom
+		c = c - 2;
+		r++;
+		if (i < 2)
+		{
+			move(r + i, c);
+			printw("O");
+		}
+		else
+		{
+			move(r + 2, c);
+			printw("O");
+		}
+
+		refresh();
+
+		for (int s = 1; s <= 60000000; s++);
+	}
+}

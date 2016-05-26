@@ -41,3 +41,20 @@ void printPour(int startrow, int startcolumn);
 void printGlass(int startrow, int startcolumn);
 void erasePour(int startrow, int startcolumn);
 void printFill(int startrow, int startcolumn);
+
+void printPainting(int startrow, int startcolumn);
+
+void printCar(int startrow, int startcolumn);
+void printOpen(int startrow, int startcolumn);
+
+void printFishbowl(int startrow, int startcolumn);
+void printLeftFish(int startrow, int startcolumn);
+void printRightFish(int startrow, int startcolumn);
+void eraseFish(int startrow, int startcolumn);
+
+void printParrot1(int startrow, int startcolumn);
+void printParrot2(int startrow, int startcolumn);
+
+void printBilliards(int startrow, int startcolumn);
+void printCueBall(int startrow, int startcolumn);
+void printBalls(int startrow, int startcolumn);

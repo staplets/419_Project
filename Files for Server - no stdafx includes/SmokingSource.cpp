@@ -26,6 +26,9 @@
 #include <unordered_map>
 #include <vector>
 
+//include animation header
+#include "animation.hpp"
+
 //include hallway header
 #include "SmokingHeader.h"
 
@@ -104,8 +107,19 @@ void Painting::checkPainting(std::unordered_map<std::string, std::string>& inv) 
      //user input var
      std::string ans;
 
+	 //animation variables
+	 int start_row = 4;
+	 int start_column = 4;
+
      //formatting
      std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
+
+	 //painting animation
+	 initscr();
+	 printPainting(start_row, start_column);
+	 refresh();
+	 getch();
+	 endwin();
 
      //Game Intro
      std::cout << "\n\nThe Painting\n\n\n\n";

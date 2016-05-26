@@ -26,6 +26,9 @@
 #include <unordered_map>
 #include <vector>
 
+//include animation header
+#include "animation.hpp"
+
 //include dining header
 #include "DiningHeader.h"
 
@@ -39,6 +42,12 @@ void Parrot::convoParrot(std::unordered_map<std::string, std::string>& inv)
 	int choice = 0;
 	int retry = 0;
 	std::string ans;
+
+	//animation variables
+	int start_row = 4;
+	int start_column = 4;
+	int i;
+	int speed;
 
 	//initialize random seed
 	srand((unsigned int)time(NULL));
@@ -109,6 +118,33 @@ void Parrot::convoParrot(std::unordered_map<std::string, std::string>& inv)
 		//output responses from the parrot
 		switch (choice){
 		case 1:
+			//animation of parrot talking
+			initscr();
+			printParrot1(start_row, start_column);
+			for (i = 1; i <= 14; i++)
+			{
+				refresh();
+				for (speed = 1; speed <= 59000000; speed++);
+			}
+
+			for (i = 1; i <= 14; i++)
+			{
+				printParrot2(start_row, start_column);
+				refresh();
+				for (speed = 1; speed <= 59000000; speed++);
+				printParrot1(start_row, start_column);
+				refresh();
+				for (speed = 1; speed <= 59000000; speed++);
+			}
+
+			for (i = 1; i <= 14; i++)
+			{
+				printParrot1(start_row, start_column);
+				refresh();
+				for (speed = 1; speed <= 59000000; speed++);
+			}
+			endwin();
+
 			//output parrots reply depending on random number
 			if (parrotReply == 1){
 				std::cout << "\n\nYou speak to the bird in hopes of getting a response. The parrot replies: \n";

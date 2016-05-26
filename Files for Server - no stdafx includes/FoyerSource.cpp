@@ -28,6 +28,9 @@
 //include foyer header
 #include "FoyerHeader.h"
 
+//include animation header
+#include "animation.hpp"
+
 //member function to output information provided of each item in CoatCloset
 void CoatCloset::closetInformation(std::unordered_map<std::string, std::string>& inv)
 {
@@ -165,6 +168,12 @@ void FishBowl::fishConvo(std::unordered_map<std::string, std::string>& inventory
      FishBowl fishBowl;
      int firstTime = 0;
 
+	 //animation variables
+	 int start_row = 4;
+	 int start_column = 4;
+	 int i;
+	 int speed;
+
      //formatting
      std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
 
@@ -173,6 +182,49 @@ void FishBowl::fishConvo(std::unordered_map<std::string, std::string>& inventory
 
      //get bowl info
      fishBowl.bowlInformation();
+
+	 //fishbowl animation
+	 initscr();
+	 printFishbowl(start_row, start_column);
+	 start_row = start_row + 6;
+	 start_column = start_column + 14;
+	 for (i = 1; i <= 14; i++)
+	 {
+		 eraseFish(start_row, start_column);
+		 start_column++;
+		 printLeftFish(start_row, start_column);
+		 refresh();
+		 for (speed = 1; speed <= 59000000; speed++);
+	 }
+
+	 for (i = 1; i <= 14; i++)
+	 {
+		 eraseFish(start_row, start_column);
+		 start_column--;
+		 printRightFish(start_row, start_column);
+		 refresh();
+		 for (speed = 1; speed <= 59000000; speed++);
+	 }
+
+	 for (i = 1; i <= 14; i++)
+	 {
+		 eraseFish(start_row, start_column);
+		 start_column++;
+		 printLeftFish(start_row, start_column);
+		 refresh();
+		 for (speed = 1; speed <= 59000000; speed++);
+	 }
+
+	 for (i = 1; i <= 14; i++)
+	 {
+		 eraseFish(start_row, start_column);
+		 start_column++;
+		 printLeftFish(start_row, start_column);
+		 refresh();
+		 for (speed = 1; speed <= 59000000; speed++);
+	 }
+
+	 endwin();
 
      //output choices
      std::cout << "There doesn't appear to be anything out of the ordinary with the bowl, however you can question the fish.\"\n\n" <<

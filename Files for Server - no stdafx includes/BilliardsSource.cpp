@@ -30,6 +30,9 @@
 //include billiards header
 #include "BilliardsHeader.h"
 
+//include animation header
+#include "animation.hpp"
+
 //member function to get into the trunk of Pool Table
 void PoolTable::checkTable(std::unordered_map<std::string, std::string>& inv)
 {
@@ -37,11 +40,24 @@ void PoolTable::checkTable(std::unordered_map<std::string, std::string>& inv)
      std::string ans;
      int checkInventory = 0;
 
+	 //animation variables
+	 int start_row = 4;
+	 int start_column = 4;
+
      //formatting
      std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
 
      //coat closet info
      std::cout << "\n\nThe Pool Table\n\n\n\n";
+
+	 //pool table animation
+	 initscr();
+	 printBilliards(start_row, start_column);
+	 printCueBall(start_row, start_column);
+	 printBalls(start_row, start_column);
+
+	 getch();
+	 endwin();
 
      std::cout << "\nFrom closer inspection of the pool table, you note: " << getDescription() << "\n\n";
 
