@@ -26,6 +26,9 @@
 #include <unordered_map>
 #include <vector>
 
+//include animation header
+#include "animation.hpp"
+
 //include library header
 #include "LibraryHeader.h"
 
@@ -104,6 +107,12 @@ int BookShelf::checkBookShelf(std::unordered_map<std::string, std::string>& inv)
      std::string ans;
      int choice = 0;
 
+	 //animation variables
+	 int start_row = 4;
+	 int start_column = 4;
+	 int i;
+	 int speed;
+
      //formatting
      std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
 
@@ -142,6 +151,23 @@ int BookShelf::checkBookShelf(std::unordered_map<std::string, std::string>& inv)
           } while (ans != "y" && ans != "n");
 
           if (ans == "y"){
+
+			  //bookshelf animation
+			  initscr();
+			  printBookshelf(start_row, start_column);
+
+			  getch();
+
+			  for (i = 0; i < 17; i++)
+			  {
+				  printDoorway(start_row, start_column);
+				  start_column--;
+				  for (speed = 1; speed <= 50000000; speed++);
+				  refresh();
+			  }
+
+			  getch();
+			  endwin();
 
                //logic to go to the secret room ********
                std::cout << "\n\nYou start to push the book case from left to right and realize that it is on a sliding rail.\n\n" <<
