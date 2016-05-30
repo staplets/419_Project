@@ -1,7 +1,7 @@
 /***********************************************************
 * Author:					Shaun Stapleton
-* Date Created:			5/12/16
-* Last Modification Date:	5/12/16
+* Date Created:			5/30/16
+* Last Modification Date:	5/30/16
 * Filename:				BalconySource.cpp
 *
 * Overview:
@@ -24,6 +24,7 @@
 #include <cstdlib>
 #include <stack>
 #include <unordered_map>
+#include <vector>
 
 //guards for header
 #include "BalconyHeader.h"
@@ -41,7 +42,7 @@ void FoldingTable::checkTable(std::unordered_map<std::string, std::string>& inv)
      //coat closet info
      std::cout << "\n\nThe Folding Table\n\n\n\n";
 
-     std::cout << "\nFrom closer inspection of the folding table, Sherlock notes it as: " << getDescription() << "\n\n";
+     std::cout << "\nFrom closer inspection of the folding table, you note it as: " << getDescription() << "\n\n";
 
      //check if cigs is already in inventory
      auto search = inv.find("cigs");
@@ -234,7 +235,7 @@ void MrDeeds::otherInfo(std::unordered_map<std::string, std::string>& inventory)
      //initialize MrDeeds object
      MrDeeds mrDeeds;
 
-     //check if sherlock already got the answer
+     //check if you already got the answer
      auto search = inventory.find("dining notes");
      if (search != inventory.end()){
           //already have vacay note
@@ -242,11 +243,11 @@ void MrDeeds::otherInfo(std::unordered_map<std::string, std::string>& inventory)
      }
      else{
           //get dining info 
-          std::cout << "\n\nSherlock presses Mr. Green for more information.\n\n";
+          std::cout << "\n\nYou press Mr. Green for more information.\n\n";
           std::cout << mrDeeds.moreInfo << "\n\n";
           //collect note for inventory
           inventory.insert({ "dining notes", getDiningNote() });
-          std::cout << "\n\nSherlock notes this in his notepad.\n\n";
+          std::cout << "\n\nYou note this in your notepad.\n\n";
      }
 
 }
@@ -394,106 +395,29 @@ void MrDeeds::setMoreInfo(const std::string theMoreInfo){ moreInfo = theMoreInfo
 
 void MrDeeds::setDiningNote(const std::string theDiningNote){ diningNote = theDiningNote; }
 
-//navigation function to handle game play while the player is in the balcony
-int balconyNavigate(std::unordered_map<std::string, std::string>& inventory){
+/////Room class functions/////
+//get functions
+std::string RoomBalcony::getName() const { return name; }
 
-     //boolean to find out if player wants to move to another room
-     bool move = false;
-     int firstTime = 0;
+int RoomBalcony::getNumRooms() const { return numRooms; }
 
-     //intialize objects
-     FoldingTable foldingTable;
-     MrDeeds mrDeeds;
+int RoomBalcony::getNumObjects() const { return numObjects; }
 
-     //formatting
-     std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
+std::vector<std::string> RoomBalcony::getExits() const { return exits; }
 
-     //Game Intro
-     std::cout << "\n\nThe Balcony\n\n\n\n" <<
-          "You are out on the Balcony.\n\nOut here, you see a gentleman leaning against a rail smoking a cigarette.\n\n" <<
-          "You also notice a Folding Table that has a few items on it.\n\n" <<
-          "Would you like to talk to the man (Interact: Enter \"1\").\n\n" <<
-          "You can inspect the folding table (Inspect: Enter \"2\").\n\n" <<
-          "You may walk back into the Attic (Enter \"3\")\n\n" <<
-          "Check your inventory of items ( Enter \"4\").\n\n" <<
-          "What would you like to do? Choose a number between 1 and 4.";
+std::vector<std::string> RoomBalcony::getObjects() const { return objects; }
 
-     //choice from player
-     int choice = 0;
-     int retry = 0;
-     std::string ans;
+std::string RoomBalcony::getDescription() const { return description; }
 
-     //inspect the room
-     do{
+//set functions
+void RoomBalcony::setName(const std::string theName){ name = theName; }
 
-          //navigation choice
-          choice = 0;
-          retry = 0;
+void RoomBalcony::setNumRooms(const int theNumRooms){ numRooms = theNumRooms; }
 
-          do
-          {
-               if (retry > 0)
-               {
-                    std::cout << "\n\nPlease select a number between 1 and 4 to navigate: \n\n";
-               }
-               else{
-                    if (firstTime != 0){
-                         //formatting
-                         std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
+void RoomBalcony::setNumObjects(const int theNumObjects){ numObjects = theNumObjects; }
 
-                         std::cout << "\n\nThe Balcony\n\n\n\n" <<
-                              "You are out on the Balcony.\n\nOut here, you see a gentleman leaning against a rail smoking a cigarette.\n\n" <<
-                              "You also notice a Folding Table that has a few items on it.\n\n" <<
-                              "Would you like to talk to the man (Interact: Enter \"1\").\n\n" <<
-                              "You can inspect the folding table (Inspect: Enter \"2\").\n\n" <<
-                              "You may walk back into the Attic (Enter \"3\")\n\n" <<
-                              "Check your inventory of items ( Enter \"4\").\n\n" <<
-                              "What would you like to do? Choose a number between 1 and 4.";
-                    }
-               }
-               std::cout << std::endl << std::endl;
-               //Take input for program choice.
-               std::cin >> choice;
+void RoomBalcony::setExits(const std::vector<std::string> theExits){ exits = theExits; }
 
-               while (!std::cin)
-               {
-                    std::cin.clear();
-                    std::cin.ignore(255, '\n');
-                    std::cout << "\n\nPlease enter a choice : \n\n";
-                    std::cin >> choice;
-               }
-               retry++;
-               firstTime++;
+void RoomBalcony::setObjects(const std::vector<std::string> theObjects){ objects = theObjects; }
 
-          } while (choice < 1 || choice > 4);
-
-
-          //take users choice and interact based on that
-          switch (choice){
-          case 1:
-               mrDeeds.conversate(inventory);
-               break;
-          case 2:
-               foldingTable.checkTable(inventory);
-               break;
-          case 3:
-               std::cout << "\nWalking into the Attic.\n";
-               //change choice to reflect our room mapping and update move
-               choice = 20;
-               move = true;
-               break;
-          case 4:
-               std::cout << "\n\nInventory contains: \n\n";
-               int c = 1;
-               for (auto it = inventory.begin(); it != inventory.end(); ++it){
-                    std::cout << c << ": " << it->second << "\n";
-                    c++;
-               }
-               break;
-          }
-
-     } while (!move);
-
-     return choice;
-}
-
+void RoomBalcony::setDescription(const std::string theDescription){ description = theDescription; }

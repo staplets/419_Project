@@ -1,7 +1,7 @@
 /***********************************************************
 * Author:					Shaun Stapleton
-* Date Created:				5/05/16
-* Last Modification Date:	     5/06/16
+* Date Created:				5/30/16
+* Last Modification Date:	     5/30/16
 * Filename:					BathroomSource.cpp
 *
 * Overview:
@@ -24,6 +24,7 @@
 #include <cstdlib>
 #include <stack>
 #include <unordered_map>
+#include <vector>
 
 //include bedroom header
 #include "BathroomHeader.h"
@@ -33,6 +34,7 @@ void Cabinet::checkCabinet(std::unordered_map<std::string, std::string>& inv)
 {
      //initialize the parrott
      Cabinet cabinet;
+    
      //choice from player
      std::string ans;
 
@@ -42,18 +44,18 @@ void Cabinet::checkCabinet(std::unordered_map<std::string, std::string>& inv)
      //coat closet info
      std::cout << "\n\nThe Vanity Cabinet\n\n\n\n";
 
-     std::cout << "\nWalking towards the Vanity Cabinet, Sherlock notes: " << getDescription() << "\n\n";
+     std::cout << "\nWalking towards the Vanity Cabinet, you note: " << getDescription() << "\n\n";
 
      //check if light bulb is already in inventory
      auto search = inv.find("bulb");
      if (search != inv.end()){
-		 std::cout << "\nSherlock meticulously reviews the vanity cabinet.\n\n\nHe sees some toiletries in the cabinet and the mirror doesn't have anything on it.\n\n" <<
-			 "\nIn the cabinet, there is nothing of note as he already grabbed " << getLightBulb() << " for his inventory.\n\n";
+		 std::cout << "\nYou meticulously review the vanity cabinet.\n\n\nYou see some toiletries in the cabinet and the mirror doesn't have anything on it.\n\n" <<
+			 "\nIn the cabinet, there is nothing of note as you've already grabbed " << getLightBulb() << " for your inventory.\n\n";
      }
      else{
 
-          std::cout << "\nSherlock meticulously reviews the vanity cabinet. \n\n\nHe sees some toiletries in the cabinet and the mirror doesn't have anything on it.\n\n" <<
-               "\nIn the cabinet below he does notice " << getLightBulb() << ".\n\n";
+          std::cout << "\nYou meticulously review the vanity cabinet. \n\n\nYou see some toiletries in the cabinet and the mirror doesn't have anything on it.\n\n" <<
+               "\nIn the cabinet below you do notice " << getLightBulb() << ".\n\n";
 
           std::cout << "\nWould you like to add the " << getLightBulb() << " to your inventory?\n\n";
 
@@ -112,9 +114,9 @@ void Bath::checkBath(std::unordered_map<std::string, std::string>& inv){
      //coat closet info
      std::cout << "\n\nThe Bath Tub\n\n\n\n";
 
-     std::cout << "\nSherlock looks at the bath tub and notes: " << getDescription() << "\n\n";
+     std::cout << "\nYou look at the bath tub and note: " << getDescription() << "\n\n";
 
-	 std::cout << "\n\"It has been a long night ...\" Sherlock thinks to himself. Would you like to take a bath?\n\n";
+	 std::cout << "\n\"It has been a long night ...\" You think to yourself. Would you like to take a bath?\n\n";
 
 	 //check user input
 	 do
@@ -140,7 +142,7 @@ void Bath::checkBath(std::unordered_map<std::string, std::string>& inv){
 		 std::cout << getTakeBath();
 	 }
 	 else{
-		 std::cout << "\nOkay, Sherlock probably shouldn't have taken a bath anyway.\n\n";
+		 std::cout << "\nOkay, You probably shouldn't have taken a bath anyway.\n\n";
 	 }
 
 	 
@@ -168,7 +170,7 @@ void Bath::checkBath(std::unordered_map<std::string, std::string>& inv){
      switch (checkInventory){
      case 0: // ducky and soap not in user inventory
           //output choices
-          std::cout << "Sherlock takes note of a " << getSoap() << " and a " << getDucky() << " and wonders if they would be worthwhile evidence.\n\n";
+          std::cout << "You take note of a " << getSoap() << " and a " << getDucky() << " and wonder if they would be worthwhile evidence.\n\n";
 
           //check to add soap to inventory
           std::cout << "Would you like to add a " << getSoap() << " to your inventory?\n\n";
@@ -235,7 +237,7 @@ void Bath::checkBath(std::unordered_map<std::string, std::string>& inv){
           break;
      case 1: //only soap in user inventory
           //output choices
-          std::cout << "Sherlock takes note of the " << getDucky() << ", since he already grabbed the soap and wonders if it would be worthwhile evidence.\n\n";
+          std::cout << "You take note of the " << getDucky() << ", since you've already grabbed the soap and wonder if it would be worthwhile evidence.\n\n";
 
           std::cout << "Would you like to add a " << getDucky() << " to your inventory?\n\n";
 
@@ -269,11 +271,11 @@ void Bath::checkBath(std::unordered_map<std::string, std::string>& inv){
           break;
      case 2: // ducky and soap in user inventory
           //output choices
-          std::cout << "The bath tub is clear of any items, since Sherlock has already collected the soap and rubber ducky.\n\n";
+          std::cout << "The bath tub is clear of any items, since you have already collected the soap and rubber ducky.\n\n";
           break;
      case 3: // ducky found but not soap in user inventory
           //output choices
-          std::cout << "Sherlock takes note of the " << getSoap() << ", since he already grabbed a " << getDucky() << "\n\nand wonders if it would be worthwhile evidence.\n\n";
+          std::cout << "You take note of the " << getSoap() << ", since you've already grabbed a " << getDucky() << "\n\nand wonder if it would be worthwhile evidence.\n\n";
 
 		  std::cout << "Would you like to add a " << getSoap() << " to your inventory?\n\n";
 
@@ -328,105 +330,29 @@ void Bath::setDescription(const std::string theDescription){ description = theDe
 
 void Bath::setTakeBath(const std::string theTakeBath){ takeBath = theTakeBath; }
 
-//navigation function to handle game play while the player is in the Bathroom
-int bathroomNavigate(std::unordered_map<std::string, std::string>& inventory){
+/////Room class functions/////
+//get functions
+std::string RoomBathroom::getName() const { return name; }
 
-     //boolean to find out if player wants to move to another room
-     bool move = false;
-     int firstTime = 0;
+int RoomBathroom::getNumRooms() const { return numRooms; }
 
-     //intialize objects
-     Cabinet cabinet;
-     Bath bath;
+int RoomBathroom::getNumObjects() const { return numObjects; }
 
-     //formatting
-     std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
+std::vector<std::string> RoomBathroom::getExits() const { return exits; }
 
-     //Game Intro
-     std::cout << "\n\nThe Bathroom\n\n\n\n" <<
-          "Sherlock is in the Bathroom.\n\nIn this room he see a sizable bath tub and a fancy vanity cabinet.\n\n" <<
-          "The toilet and sink look to be in order without traces of anything interesting.\n\n" <<
-          "Examine the bath tub? (Enter \"1\").\n\n" <<
-          "Check out the vanity cabinet? (Enter \"2\").\n\n" <<
-          "Walk into the Bedroom (Enter \"3\")\n\n" <<
-          "Check your inventory of items ( Enter \"4\").\n\n" <<
-          "What would you like to do? Choose a number between 1 and 4.";
+std::vector<std::string> RoomBathroom::getObjects() const { return objects; }
 
-     //choice from player
-     int choice = 0;
-     int retry = 0;
-     std::string ans;
+std::string RoomBathroom::getDescription() const { return description; }
 
-     //inspect the room
-     do{
+//set functions
+void RoomBathroom::setName(const std::string theName){ name = theName; }
 
-          //navigation choice
-          choice = 0;
-          retry = 0;
+void RoomBathroom::setNumRooms(const int theNumRooms){ numRooms = theNumRooms; }
 
-          do
-          {
-               if (retry > 0)
-               {
-                    std::cout << "\n\nPlease select a number between 1 and 4 to navigate: \n\n";
-               }
-               else{
-                    if (firstTime != 0){
-                         //formatting
-                         std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
+void RoomBathroom::setNumObjects(const int theNumObjects){ numObjects = theNumObjects; }
 
-						 std::cout << "\n\nThe Bathroom\n\n\n\n" <<
-							 "Sherlock is in the Bathroom.\n\nIn this room he see a sizable bath tub and a fancy vanity cabinet.\n\n" <<
-							 "The Toilet and sink look to be in order without traces of anything interesting.\n\n" <<
-							 "Examine the bath tub? (Enter \"1\").\n\n" <<
-							 "Check out the vanity cabinet? (Enter \"2\").\n\n" <<
-							 "Walk into the Bedroom (Enter \"3\")\n\n" <<
-							 "Check your inventory of items ( Enter \"4\").\n\n" <<
-							 "What would you like to do? Choose a number between 1 and 4.";
-                    }
-               }
-               std::cout << std::endl << std::endl;
-               //Take input for program choice.
-               std::cin >> choice;
+void RoomBathroom::setExits(const std::vector<std::string> theExits){ exits = theExits; }
 
-               while (!std::cin)
-               {
-                    std::cin.clear();
-                    std::cin.ignore(255, '\n');
-                    std::cout << "\n\nPlease enter a choice : \n\n";
-                    std::cin >> choice;
-               }
-               retry++;
-               firstTime++;
+void RoomBathroom::setObjects(const std::vector<std::string> theObjects){ objects = theObjects; }
 
-          } while (choice < 1 || choice > 4);
-
-
-          //take users choice and interact based on that
-          switch (choice){
-          case 1:
-               bath.checkBath(inventory);
-               break;
-          case 2:
-               cabinet.checkCabinet(inventory);
-               break;
-          case 3:
-               std::cout << "\nGoing into the Bedroom.\n";
-               //change choice to reflect our room mapping and update move
-               choice = 15;
-               move = true;
-               break;
-          case 4:
-               std::cout << "\n\nInventory contains: \n\n";
-               int c = 1;
-               for (auto it = inventory.begin(); it != inventory.end(); ++it){
-                    std::cout << c << ": " << it->second << "\n";
-                    c++;
-               }
-               break;
-          }
-
-     } while (!move);
-
-     return choice;
-}
+void RoomBathroom::setDescription(const std::string theDescription){ description = theDescription; }

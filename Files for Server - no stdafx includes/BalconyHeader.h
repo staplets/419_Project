@@ -19,7 +19,63 @@
 #include <cstdlib>
 #include <stack>
 #include <unordered_map>
+#include <vector>
 
+// Room Balcony Class
+class RoomBalcony
+{
+private:
+
+protected://protected member variables.
+     std::string name;
+     std::vector<std::string> exits{ std::vector<std::string>{"attic"} };
+     std::vector<std::string> objects{ std::vector<std::string>{"folding table", "mr deeds"} };
+     int numRooms;
+     int numObjects;
+     std::string description;
+
+public:
+     //default constructor
+     RoomBalcony()
+     {
+          this->name = "The Balcony";
+          this->numRooms = 1;
+          this->numObjects = 2;
+          this->description = "You are out on the Balcony.\n\nOut here, you see a gentleman leaning against a rail smoking a cigarette.\n\nYou also notice a Folding Table that has a few items on it.\n\nWould you like to talk to the man (Interact: Enter \"mr deeds\").\n\nYou can inspect the folding table (Inspect: Enter \"folding table\").\n\n";
+     }
+
+     //Virtual Destructor
+     virtual ~RoomBalcony()
+     {}
+
+
+     //Accessor Functions for accessing private variables.
+     std::string getName() const;
+
+     int getNumRooms() const;
+
+     int getNumObjects() const;
+
+     std::vector<std::string> getExits() const;
+
+     std::vector<std::string> getObjects() const;
+
+     std::string getDescription() const;
+
+     //Mutator Functions to change private variables.
+     void setName(const std::string theName);
+
+     void setNumRooms(const int theNumRooms);
+
+     void setNumObjects(const int theNumObjects);
+
+     void setExits(const std::vector<std::string> theExits);
+
+     void setObjects(const std::vector<std::string> theObjects);
+
+     void setDescription(const std::string theDescription);
+
+};
 
 //FoldingTable Class
 class FoldingTable
@@ -137,8 +193,5 @@ public:
      void setDiningNote(const std::string theDiningNote);
 
 };
-
-//navigation function to handle game play while the player is in the balcony
-int balconyNavigate(std::unordered_map<std::string, std::string>& inventory);
 
 #endif

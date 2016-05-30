@@ -1,7 +1,7 @@
 /***********************************************************
 * Author:					Shaun Stapleton
-* Date Created:				5/05/16
-* Last Modification Date:	     5/06/16
+* Date Created:				5/30/16
+* Last Modification Date:	     5/30/16
 * Filename:					BathroomHeader.h
 *
 * Overview:
@@ -18,6 +18,64 @@
 #include <cstdlib>
 #include <stack>
 #include <unordered_map>
+#include <vector>
+
+//Room Bathroom Class
+class RoomBathroom
+{
+private:
+
+protected://protected member variables.
+     std::string name;
+     std::vector<std::string> exits{ std::vector<std::string>{"bedroom"} };
+     std::vector<std::string> objects{ std::vector<std::string>{"cabinet", "bath"} };
+     int numRooms;
+     int numObjects;
+     std::string description;
+
+public:
+     //default constructor
+     RoomBathroom()
+     {
+          this->name = "The Bathroom";
+          this->numRooms = 1;
+          this->numObjects = 2;
+          this->description = "You are in the Bathroom.\n\nIn this room you see a sizable bath tub and a fancy vanity cabinet.\n\nThe Toilet and sink look to be in order without traces of anything interesting.\n\nExamine the bath tub? (Enter \"bath\").\n\nCheck out the vanity cabinet? (Enter \"cabinet\").\n\n";
+     }
+
+     //Virtual Destructor
+     virtual ~RoomBathroom()
+     {}
+
+
+     //Accessor Functions for accessing private variables.
+     std::string getName() const;
+
+     int getNumRooms() const;
+
+     int getNumObjects() const;
+
+     std::vector<std::string> getExits() const;
+
+     std::vector<std::string> getObjects() const;
+
+     std::string getDescription() const;
+
+     //Mutator Functions to change private variables.
+     void setName(const std::string theName);
+
+     void setNumRooms(const int theNumRooms);
+
+     void setNumObjects(const int theNumObjects);
+
+     void setExits(const std::vector<std::string> theExits);
+
+     void setObjects(const std::vector<std::string> theObjects);
+
+     void setDescription(const std::string theDescription);
+
+};
+
 
 //Cabinet Object
 class Cabinet
@@ -75,7 +133,7 @@ public:
           this->ducky = "rubber ducky";
           this->soap = "bar of soap";
           this->description = "A jacuzzi style white porcelain bath tub, with no signs of foul play.";
-          this->takeBath = "\n\nSherlock may want to take a dip out in the hot tub out on the deck and not in the victims bath tub.\n\n";
+          this->takeBath = "\n\nYou may want to take a dip out in the hot tub on the deck and not in the victims bath tub.\n\n";
      }
 
      //Virtual Destructor
@@ -105,9 +163,5 @@ public:
 	 void setTakeBath(const std::string takeBath);
 
 };
-
-
-//navigation function to handle game play while the player is in the bathroom
-int bathroomNavigate(std::unordered_map<std::string, std::string>& inventory);
 
 #endif

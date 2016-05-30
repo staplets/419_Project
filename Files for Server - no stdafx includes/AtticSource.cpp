@@ -1,7 +1,7 @@
 /***********************************************************
 * Author:					Shaun Stapleton
-* Date Created:				5/09/16
-* Last Modification Date:	     5/10/16
+* Date Created:				5/30/16
+* Last Modification Date:	     5/30/16
 * Filename:					AtticSource.cpp
 *
 * Overview:
@@ -27,6 +27,7 @@
 //included for sleeping functionality
 #include <chrono>
 #include <thread>
+#include <vector>
 
 //guards for header
 #include "AtticHeader.h"
@@ -277,7 +278,7 @@ void MrGlass::conversate(std::unordered_map<std::string, std::string>& inventory
 	mrGlass.personInformation(inventory);
 
 	//set up navigation
-     std::cout << "As Sherlock approaches Mr. Glass, his stare is broken and he looks to Sherlock hopefully.\n\n" <<
+     std::cout << "As you approach Mr. Glass, his stare is broken and he looks to you hopefully.\n\n" <<
 		"What would you like to ask Mr. Glass? \n\n" <<
 		"Do you have any better idea who the murderer may be? (Enter \"1\").\n\n" <<
 		"What's your age? (Enter \"2\") \n\n" <<
@@ -408,117 +409,29 @@ void MrGlass::setStatement(const std::string theStatement){ statement = theState
 
 void MrGlass::setKey(const std::string theKey){ key = theKey; }
 
+/////Room class functions/////
+//get functions
+std::string RoomAttic::getName() const { return name; }
 
-//navigation function to handle game play while the player is in the attic room
-int atticNavigate(std::unordered_map<std::string, std::string>& inventory){
+int RoomAttic::getNumRooms() const { return numRooms; }
 
-	//boolean to find out if player wants to move to another room
-	bool move = false;
-	int firstTime = 0;
+int RoomAttic::getNumObjects() const { return numObjects; }
 
-	//intialize objects
-	NightStand nightStand;
-	MrGlass mrGlass;
+std::vector<std::string> RoomAttic::getExits() const { return exits; }
 
-	//formatting
-	std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
+std::vector<std::string> RoomAttic::getObjects() const { return objects; }
 
-	//Game Intro
-	std::cout << "\n\nThe Attic\n\n\n\n" <<
-		"Sherlock is in the Attic.\n\nThe attic doubles as a suite for Mr. Glass, who has the whole top floor of the mansion to himself.\n\n" <<
-		"There are a few basic bedroom items. Nothing particularly interesting except a night stand with an item or two on it.\n\n" <<
-		"Mr. Glass is sitting on a sofa in his room staring blankly across the room to the other wall.\n\n" <<
-		"Would you like to talk with him (Interact: Enter \"1\").\n\n" <<
-		"Take a look night stand (Examine: Enter \"2\").\n\n" <<
-		"You may go back down into the second floor Hallway ( Enter \"3\").\n\n" <<
-		"There is also a balcony going out from the attic ( Enter \"4\").\n\n" <<
-		"Check your inventory of items ( Enter \"5\").\n\n" <<
-		"What would you like to do? Choose a number between 1 and 5.";
+std::string RoomAttic::getDescription() const { return description; }
 
-	//choice from player
-	int choice = 0;
-	int retry = 0;
-	std::string ans;
+//set functions
+void RoomAttic::setName(const std::string theName){ name = theName; }
 
-	//inspect the room
-	do{
+void RoomAttic::setNumRooms(const int theNumRooms){ numRooms = theNumRooms; }
 
-		//navigation choice
-		choice = 0;
-		retry = 0;
+void RoomAttic::setNumObjects(const int theNumObjects){ numObjects = theNumObjects; }
 
-		do
-		{
-			if (retry > 0)
-			{
-				std::cout << "\n\nPlease select a number between 1 and 5 to navigate: \n\n";
-			}
-			else{
-				if (firstTime != 0){
-					//formatting
-					std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
+void RoomAttic::setExits(const std::vector<std::string> theExits){ exits = theExits; }
 
-					std::cout << "\n\nThe Attic\n\n\n\n" <<
-						"Sherlock is in the Attic.\n\nThe attic doubles as a suite for Mr. Glass, who has the whole top floor of the mansion to himself.\n\n" <<
-						"There are a few basic bedroom items. Nothing particularly interesting except a night stand with an item or two on it.\n\n" <<
-						"Mr. Glass is sitting on a sofa in his room staring blankly across the room to the other wall.\n\n" <<
-						"Would you like to talk with him (Interact: Enter \"1\").\n\n" <<
-						"Take a look night stand (Examine: Enter \"2\").\n\n" <<
-						"You may go back down into the second floor Hallway ( Enter \"3\").\n\n" <<
-						"There is also a balcony going out from the attic ( Enter \"4\").\n\n" <<
-						"Check your inventory of items ( Enter \"5\").\n\n" <<
-						"What would you like to do? Choose a number between 1 and 5.";
-				}
-			}
-			std::cout << std::endl << std::endl;
-			//Take input for program choice.
-			std::cin >> choice;
+void RoomAttic::setObjects(const std::vector<std::string> theObjects){ objects = theObjects; }
 
-			while (!std::cin)
-			{
-				std::cin.clear();
-				std::cin.ignore(255, '\n');
-				std::cout << "\n\nPlease enter a choice : \n\n";
-				std::cin >> choice;
-			}
-			retry++;
-			firstTime++;
-
-		} while (choice < 1 || choice > 5);
-
-
-		//take users choice and interact based on that
-		switch (choice){
-		case 1:
-			mrGlass.conversate(inventory);
-			break;
-		case 2:
-			nightStand.checkStand(inventory);
-			break;
-		case 3:
-			std::cout << "\nGoing down into the Hallway.\n";
-			//change choice to reflect our room mapping and update move
-			choice = 14;
-			move = true;
-			break;
-		case 4:
-			std::cout << "\nWalking out onto the Balcony.\n";
-			//change choice to reflect our room mapping and update move
-			choice = 18;
-			move = true;
-			break;
-		case 5:
-			std::cout << "\n\nInventory contains: \n\n";
-			int c = 1;
-			for (auto it = inventory.begin(); it != inventory.end(); ++it){
-				std::cout << c << ": " << it->second << "\n";
-				c++;
-			}
-			break;
-		}
-
-	} while (!move);
-
-	return choice;
-}
-
+void RoomAttic::setDescription(const std::string theDescription){ description = theDescription; }
