@@ -1638,3 +1638,675 @@ void printDoorway(int startrow, int startcolumn)
 	r++; move(r, c);
 	printw("|____________________________*");
 }
+
+void printOldPhoto(int startrow, int startcolumn)
+{
+	int r = startrow;
+	int c = startcolumn;
+	move(r, c);
+
+	printw("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
+	r++; move(r, c);
+	printw("D                                 D");
+	r++; move(r, c);
+	printw("D                                 D");
+	r++; move(r, c);
+	printw("D                                 D");
+	r++; move(r, c);
+	printw("D             MMMMMMMM            D");
+	r++; move(r, c);
+	printw("D           MM M    M MM          D");
+	r++; move(r, c);
+	printw("D    MMMM      DMMMMD      MMMMM  D");
+	r++; move(r, c);
+	printw("D    MMMM~                 MMMM   D");
+	r++; move(r, c);
+	printw("D     MMM                  MMMM   D");
+	r++; move(r, c);
+	printw("D    MMMM                   MM    D");
+	r++; move(r, c);
+	printw("D    MMMMM DMMM      NMM  MMMMZ   D");
+	r++; move(r, c);
+	printw("D    MMMMMMM   D$$~     MMMMMM    D");
+	r++; move(r, c);
+	printw("D    MMMM        M         MM     D");
+	r++; move(r, c);
+	printw("D    MMMM   :I  MM  ZM     MMM    D");
+	r++; move(r, c);
+	printw("D   MMMMMM               NMMMMD   D");
+	r++; move(r, c);
+	printw("D   MMMMMMMMMO,        MMMMNMMM   D");
+	r++; move(r, c);
+	printw("D   +MM?~MMMMM        ,MMD MMM    D");
+	r++; move(r, c);
+	printw("D        M MMMM       MMMN  M     D");
+	r++; move(r, c);
+	printw("D        M MMMM       MMMN  M     D");
+	r++; move(r, c);
+	printw("D        M MMMMM      MM N  M     D");
+	r++; move(r, c);
+	printw("D        MMMMMMM     M MMN  M     D");
+	r++; move(r, c);
+	printw("D      M MMMM MMMM  M8,M$N        D");
+	r++; move(r, c);
+	printw("D                                 D");
+	r++; move(r, c);
+	printw("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
+}
+
+void printOutline(int startrow, int startcolumn)
+{
+	int r = startrow;
+	int c = startcolumn;
+	move(r, c);
+
+	printw("                      @*                                   ");
+	r++; move(r, c);
+	printw("                     @  ,@@.                               ");
+	r++; move(r, c);
+	printw("          @@@@@      @,   (@(                             ");
+	r++; move(r, c);
+	printw("         @     @@*      @&   .@&                           ");
+	r++; move(r, c);
+	printw("         @       #@.  .@@@      @                          ");
+	r++; move(r, c);
+	printw("          (@               . @@@.                          ");
+	r++; move(r, c);
+	printw("          @@            .@                                 ");
+	r++; move(r, c);
+	printw("      #@&.               .@(                               ");
+	r++; move(r, c);
+	printw("    &&      (@@&            *@,                            ");
+	r++; move(r, c);
+	printw("    @    .@.    #@,            &@*                         ");
+	r++; move(r, c);
+	printw("    @    @         @#             %@%*                     ");
+	r++; move(r, c);
+	printw("     %.  .@          %@.                 .@&@#             ");
+	r++; move(r, c);
+	printw("      (*             .@#                    %#           ");
+	r++; move(r, c);
+	printw("       *%   ,@            &@      @@@@&@       @.          ");
+	r++; move(r, c);
+	printw("         @, .@              #@      @     &&   ,&          ");
+	r++; move(r, c);
+	printw("           .                  #@      &    #    @.         ");
+	r++; move(r, c);
+	printw("                                &%      @   @    %@#.      ");
+	r++; move(r, c);
+	printw("                                  @       %@&%        @    ");
+	r++; move(r, c);
+	printw("                                    @%       ,&@@@@@@@%    ");
+	r++; move(r, c);
+	printw("                                      .&@@(.       #@      ");
+	r++; move(r, c);
+	printw("                                            .(@@*   (      ");
+	r++; move(r, c);
+	printw("                                                ,%   (     ");
+	r++; move(r, c);
+	printw("                                                 @   /    ");
+	r++; move(r, c);
+	printw("                                                 ,@@@  ");
+}
+
+void printGuilty(int startrow, int startcolumn)
+{
+	int r = startrow;
+	int c = startcolumn;
+	move(r, c);
+
+	printw("     |      |                   |      |    ");
+	r++; move(r, c);
+	printw("     |      |                   |      |    ");
+	r++; move(r, c);
+	printw("     |      |                   |      |    ");
+	r++; move(r, c);
+	printw("     |      |                   |      |    ");
+	r++; move(r, c);
+	printw("     |      |                   |      |    ");
+	r++; move(r, c);
+	printw("     |      |                   |      |    ");
+	r++; move(r, c);
+	printw("     |      |                   |      |    ");
+	r++; move(r, c);
+	printw("     |      |                   |      |    ");
+	r++; move(r, c);
+	printw("     |      |                   |      |    ");
+	r++; move(r, c);
+	printw("    /       |                   |       \\");
+	r++; move(r, c);
+	printw("    |        \\                 /        |");
+	r++; move(r, c);
+	printw("    |         \\               /         |");
+	r++; move(r, c);
+	printw("    |       |  |             |  |       |");
+	r++; move(r, c);
+	printw("    | | | | || |             | || | | | |");
+	r++; move(r, c);
+	printw("    | | | | ||_|             |_|| | | | |");
+	r++; move(r, c);
+	printw("    |_| | | |                   | | | |_|");
+	r++; move(r, c);
+	printw("      |_| |_|                   |_| |_|");
+	r++; move(r, c);
+	printw("        |_|                       |_|");
+}
+
+void printCuffs(int startrow, int startcolumn)
+{
+	int r = startrow;
+	int c = startcolumn;
+	move(r, c);
+
+	printw("   -----------                 ----------- ");
+	r++; move(r, c);
+	printw("  |           |===============|           |");
+	r++; move(r, c);
+	printw("   -----------                 ----------- ");
+}
+
+void printDog(int startrow, int startcolumn)
+{
+	int r = startrow;
+	int c = startcolumn;
+	move(r, c);
+
+	printw("       **                               ");
+	r++; move(r, c);
+	printw("       ***                              ");
+	r++; move(r, c);
+	printw("       ****                             ");
+	r++; move(r, c);
+	printw("     *******                            ");
+	r++; move(r, c);
+	printw("  ************                          ");
+	r++; move(r, c);
+	printw("**************                          ");
+	r++; move(r, c);
+	printw(" **********   ***                       ");
+	r++; move(r, c);
+	printw("         *   ********     ***********   ");
+	r++; move(r, c);
+	printw("          **************************    ");
+	r++; move(r, c);
+	printw("          ***************************   ");
+	r++; move(r, c);
+	printw("          ***************************   ");
+	r++; move(r, c);
+	printw("          ***************************   ");
+	r++; move(r, c);
+	printw("          ***************   *********   ");
+	r++; move(r, c);
+	printw("           **********       *********   ");
+	r++; move(r, c);
+	printw("           ******            *******    ");
+	r++; move(r, c);
+	printw("           ******            *******    ");
+	r++; move(r, c);
+	printw("           ******             *** ***   ");
+	r++; move(r, c);
+	printw("           *** **             *** ***  ");
+	r++; move(r, c);
+	printw("           *** ***            *** ****  ");
+	r++; move(r, c);
+	printw("           *** ***           **** ***  ");
+	r++; move(r, c);
+	printw("         **** ****           ***  ***   ");
+}
+
+void printTail1(int startrow, int startcolumn)
+{
+	int r = startrow + 2;
+	int c = startcolumn + 35;
+	move(r, c);
+
+	printw("**         ");
+	r++; move(r, c);
+	printw(" **     ");
+	r++; move(r, c);
+	printw(" **       ");
+	r++; move(r, c);
+	printw(" **      ");
+	r++; move(r, c);
+	printw("**       ");
+}
+
+void printTail2(int startrow, int startcolumn)
+{
+	int r = startrow + 2;
+	int c = startcolumn + 35;
+	move(r, c);
+
+	printw(" **         ");
+	r++; move(r, c);
+	printw("  **     ");
+	r++; move(r, c);
+	printw("  **       ");
+	r++; move(r, c);
+	printw("  **      ");
+	r++; move(r, c);
+	printw("**       ");
+}
+
+void printTail3(int startrow, int startcolumn)
+{
+	int r = startrow + 2;
+	int c = startcolumn + 35;
+	move(r, c);
+
+	printw("     **     ");
+	r++; move(r, c);
+	printw("    **     ");
+	r++; move(r, c);
+	printw("   **       ");
+	r++; move(r, c);
+	printw("  **      ");
+	r++; move(r, c);
+	printw("**       ");
+}
+
+void printTail4(int startrow, int startcolumn)
+{
+	int r = startrow + 2;
+	int c = startcolumn + 35;
+	move(r, c);
+
+	printw("            ");
+	r++; move(r, c);
+	printw("    ** **  ");
+	r++; move(r, c);
+	printw("   **       ");
+	r++; move(r, c);
+	printw("  **      ");
+	r++; move(r, c);
+	printw("**       ");
+}
+
+void printVial(int startrow, int startcolumn)
+{
+	int r = startrow + 5;
+	int c = startcolumn;
+	move(r, c);
+
+	printw("  _______________");
+	r++; move(r, c);
+	printw(" |_             _|");
+	r++; move(r, c);
+	printw("   |           |");
+	r++; move(r, c);
+	printw("   |^^^^^^^^^^^|");
+	r++; move(r, c);
+	printw("   |           |");
+	r++; move(r, c);
+	printw("   |           |");
+	r++; move(r, c);
+	printw("   |           |");
+	r++; move(r, c);
+	printw("   |           |");
+	r++; move(r, c);
+	printw("   |           |");
+	r++; move(r, c);
+	printw("   |           |");
+	r++; move(r, c);
+	printw("   |           |");
+	r++; move(r, c);
+	printw("   |___________|");
+}
+
+void printGrape(int startrow, int startcolumn)
+{
+	int r = startrow;
+	int c = startcolumn + 7;
+	move(r, c);
+
+	printw(" ___");
+	r++; move(r, c);
+	printw("/   \\");
+	r++; move(r, c);
+	printw("\\___/");
+}
+
+void eraseGrape(int startrow, int startcolumn)
+{
+	int r = startrow;
+	int c = startcolumn + 7;
+	move(r, c);
+
+	printw("     ");
+	r++; move(r, c);
+	printw("      ");
+	r++; move(r, c);
+	printw("     ");
+}
+
+void printReaction(int startrow, int startcolumn)
+{
+	int r = startrow + 13;
+	int c = startcolumn + 7;
+	int speed;
+	move(r, c);
+
+	for (int i = 0; i <= 5; i++)
+	{
+		move(r, c);
+		printw("o");
+		c = c + 3; move(r, c);
+		printw("o");
+		r--; c = startcolumn + 7;
+		refresh();
+		for (speed = 1; speed <= 55000000; speed++);
+	}
+
+	r = startrow + 8;
+	c = startcolumn + 4;
+	move(r, c);
+	printw("^^oo^^^oo^^");
+	refresh();
+	for (speed = 1; speed <= 55000000; speed++);
+	move(r, c);
+	printw("^ooo^^^ooo^");
+	refresh();
+	for (speed = 1; speed <= 55000000; speed++);
+	move(r, c);
+	printw("oooo^^^oooo");
+	refresh();
+	for (speed = 1; speed <= 55000000; speed++);
+	move(r, c);
+	printw("ooooo^ooooo");
+	refresh();
+	for (speed = 1; speed <= 55000000; speed++);
+	move(r, c);
+	printw("ooooooooooo");
+	refresh();
+	for (speed = 1; speed <= 55000000; speed++);
+}
+
+void printPie(int startrow, int startcolumn)
+{
+	int r = startrow;
+	int c = startcolumn;
+	move(r, c);
+
+	printw("              *  ** ***   ");
+	r++; move(r, c);
+	printw("            **         *     ");
+	r++; move(r, c);
+	printw("       ******           *          ");
+	r++; move(r, c);
+	printw("      ** *  * **********             ");
+	r++; move(r, c);
+	printw("     *    ***          ***             ");
+	r++; move(r, c);
+	printw("  ****  **        *  **  *              ");
+	r++; move(r, c);
+	printw(" *    **         *****   **             ");
+	r++; move(r, c);
+	printw(" * * **         * *       **            ");
+	r++; move(r, c);
+	printw("     **      * *  * * ** *  **         ");
+	r++; move(r, c);
+	printw("     *  *****  *  *  * *      *         ");
+	r++; move(r, c);
+	printw("     *   *  ***** * **         *        ");
+	r++; move(r, c);
+	printw("    ***          ****           *       ");
+	r++; move(r, c);
+	printw("      *              ****        *   ");
+	r++; move(r, c);
+	printw("      **                  ***      *   ");
+	r++; move(r, c);
+	printw("        *****                  **   *   ");
+	r++; move(r, c);
+	printw("             *****                  **  ");
+	r++; move(r, c);
+	printw("              ********              *  ");
+	r++; move(r, c);
+	printw("                     *******         *  ");
+	r++; move(r, c);
+	printw("                          *** ****  *   ");
+	r++; move(r, c);
+	printw("                                  * *   ");
+}
+
+void printCig(int startrow, int startcolumn)
+{
+	int r = startrow + 7;
+	int c = startcolumn + 7;
+	move(r, c);
+
+	printw(" __________________________________");
+	r++; move(r, c);
+	printw(":                          |       |");
+	r++; move(r, c);
+	printw(":__________________________|_______|");
+}
+
+void printSmoke1(int startrow, int startcolumn)
+{
+	int r = startrow;
+	int c = startcolumn;
+	move(r, c);
+
+	printw("   *  *  *  ");
+	r++; move(r, c);
+	printw("    *  *  *  ");
+	r++; move(r, c);
+	printw("   * *  *   ");
+	r++; move(r, c);
+	printw("    *  * *  ");
+	r++; move(r, c);
+	printw("   *  *     ");
+	r++; move(r, c);
+	printw("   * *  *   ");
+	r++; move(r, c);
+	printw("    *  *   ");
+	r++; move(r, c);
+	printw("     * *");
+	r++; move(r, c);
+	printw("      *");
+}
+
+void printSmoke2(int startrow, int startcolumn)
+{
+	int r = startrow;
+	int c = startcolumn;
+	move(r, c);
+
+	printw("    *  *  *       ");
+	r++; move(r, c);
+	printw("     * *   *       ");
+	r++; move(r, c);
+	printw("    * *  * ");
+	r++; move(r, c);
+	printw("   * *  *        ");
+	r++; move(r, c);
+	printw("    *  *   ");
+	r++; move(r, c);
+	printw("    *  * *   ");
+	r++; move(r, c);
+	printw("     *  *  ");
+	r++; move(r, c);
+	printw("    * * ");
+	r++; move(r, c);
+	printw("     * ");
+}
+
+void printSmoke3(int startrow, int startcolumn)
+{
+	int r = startrow;
+	int c = startcolumn;
+	move(r, c);
+
+	printw("    *  *   *       ");
+	r++; move(r, c);
+	printw("    *  *  *       ");
+	r++; move(r, c);
+	printw("   *  * * ");
+	r++; move(r, c);
+	printw("  *  * *        ");
+	r++; move(r, c);
+	printw("   * * *          ");
+	r++; move(r, c);
+	printw("    *   *   ");
+	r++; move(r, c);
+	printw("    *  *  ");
+	r++; move(r, c);
+	printw("     * *");
+	r++; move(r, c);
+	printw("      *");
+}
+
+void printSmoke4(int startrow, int startcolumn)
+{
+	int r = startrow;
+	int c = startcolumn;
+	move(r, c);
+
+	printw("   *   *   *    ");
+	r++; move(r, c);
+	printw("   *  *  *     ");
+	r++; move(r, c);
+	printw("    * *   *     ");
+	r++; move(r, c);
+	printw("   *  * *     ");
+	r++; move(r, c);
+	printw("  *  * *       ");
+	r++; move(r, c);
+	printw("   *   *       ");
+	r++; move(r, c);
+	printw("   *  *        ");
+	r++; move(r, c);
+	printw("    * * ");
+	r++; move(r, c);
+	printw("      *");
+}
+
+void printTub(int startrow, int startcolumn)
+{
+	int r = startrow + 4;
+	int c = startcolumn;
+	move(r, c);
+
+	printw("  ____                  ____");
+	r++; move(r, c);
+	printw("  \\   \\________________/   /");
+	r++; move(r, c);
+	printw("   |                      |");
+	r++; move(r, c);
+	printw("   |                      |");
+	r++; move(r, c);
+	printw("    \\____________________/");
+	r++; move(r, c);
+	printw("      ||              ||");
+}
+
+void printBubbles1(int startrow, int startcolumn)
+{
+	int r = startrow + 2;
+	int c = startcolumn;
+	move(r, c);
+
+	printw("          o               ");
+	r++; move(r, c);
+	printw("              o    x            ");
+	r++; move(r, c);
+	printw("  ____  o               ____");
+}
+
+void printBubbles2(int startrow, int startcolumn)
+{
+	int r = startrow + 2;
+	int c = startcolumn;
+	move(r, c);
+
+	printw("          x   o           ");
+	r++; move(r, c);
+	printw("        o                    ");
+	r++; move(r, c);
+	printw("  ____              o   ____");
+}
+
+void printBubbles3(int startrow, int startcolumn)
+{
+	int r = startrow + 2;
+	int c = startcolumn;
+	move(r, c);
+
+	printw("        o     x           ");
+	r++; move(r, c);
+	printw("                    o         ");
+	r++; move(r, c);
+	printw("  ____     o            ____");
+}
+
+void printBubbles4(int startrow, int startcolumn)
+{
+	int r = startrow + 2;
+	int c = startcolumn;
+	move(r, c);
+
+	printw("        x                 ");
+	r++; move(r, c);
+	printw("           o        o        ");
+	r++; move(r, c);
+	printw("  ____         o        ____");
+}
+
+void printSky(int startrow, int startcolumn)
+{
+	int r = startrow;
+	int c = startcolumn;
+	move(r, c);
+
+	printw("                                           ");
+	r++; move(r, c);
+	printw("                      *                     ");
+	r++; move(r, c);
+	printw("      *                     *        *        ");
+	r++; move(r, c);
+	printw("                                           ");
+	r++; move(r, c);
+	printw("                                           ");
+	r++; move(r, c);
+	printw("         *          *                       ");
+	r++; move(r, c);
+	printw("                                           ");
+	r++; move(r, c);
+	printw("                                           ");
+	r++; move(r, c);
+	printw("   *                            *            ");
+	r++; move(r, c);
+	printw("                  *                       *  ");
+	r++; move(r, c);
+	printw("                                           ");
+	r++; move(r, c);
+	printw("__________________________________________");
+	r++; move(r, c);
+	printw("__________________________________________|");
+	r++; move(r, c);
+	printw("   | |        | |        | |        | |");
+	r++; move(r, c);
+	printw("   | |    *   | |        | |        | |");
+	r++; move(r, c);
+	printw("   | |        | |        | |        | |");
+	r++; move(r, c);
+	printw("   | |        | |        | |      * | |");
+}
+
+void printShootingStar(int startrow, int startcolumn)
+{
+	int r = startrow;
+	int c = startcolumn;
+	move(r, c);
+
+	printw("----x");
+}
+
+void eraseShootingStar(int startrow, int startcolumn)
+{
+	int r = startrow;
+	int c = startcolumn;
+	move(r, c);
+
+	printw("     ");
+}

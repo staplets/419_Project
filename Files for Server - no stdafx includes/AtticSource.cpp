@@ -32,6 +32,9 @@
 //guards for header
 #include "AtticHeader.h"
 
+//animation header
+#include "animation.hpp"
+
 
 //member function for NightStand
 void NightStand::checkStand(std::unordered_map<std::string, std::string>& inv)
@@ -119,6 +122,12 @@ void MrGlass::getMoreInfo(std::unordered_map<std::string, std::string>& inventor
      int noMotive = 5;
      int checkInventory = 0;
 
+	 //animation variables
+	 int start_row = 4;
+	 int start_column = 4;
+	 int i;
+	 int speed;
+
      //check if key is already in inventory
      auto search = inventory.find("key");
      if (search != inventory.end()){
@@ -184,6 +193,23 @@ void MrGlass::getMoreInfo(std::unordered_map<std::string, std::string>& inventor
           }
           else if (gotEvidence == 1){
                //have all the evidence to get a statement from Mr. Glass
+			   
+			  //chemistry animation
+			  initscr();
+			  for (i = 0; i <= 13; i++)
+			  {
+				  printVial(start_row, start_column);
+				  printGrape(start_row + i, start_column);
+				  refresh();
+				  for (speed = 1; speed <= 55000000; speed++);
+				  eraseGrape(start_row + i, start_column);
+			  }
+			  printGrape(start_row + 13, start_column);
+			  printReaction(start_row, start_column);
+
+			  getch();
+			  endwin();
+
                std::cout << mrGlass.getEvidence();
                std::cout << "You show Mr. Glass a demonstration of the Gamay Grape mixing with the wine and it fizzles and appears to be toxic.\n\n";
                std::cout << "You also provide Mr. Glass with his old will and his new will which gives us a murder weapon and a motive.\n\n";
