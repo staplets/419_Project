@@ -218,7 +218,7 @@ void FishBowl::fishConvo(std::unordered_map<std::string, std::string>& inventory
 	 for (i = 1; i <= 14; i++)
 	 {
 		 eraseFish(start_row, start_column);
-		 start_column++;
+		 start_column--;
 		 printLeftFish(start_row, start_column);
 		 refresh();
 		 for (speed = 1; speed <= 59000000; speed++);

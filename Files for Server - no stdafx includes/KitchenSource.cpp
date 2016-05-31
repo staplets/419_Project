@@ -29,6 +29,9 @@
 //include foyer header
 #include "KitchenHeader.h"
 
+//include animation header
+#include "animation.hpp"
+
 //member function to get into the trunk of LuxuryCar
 void KnifeBlock::checkKnifeBlock(std::unordered_map<std::string, std::string>& inv)
 {
@@ -116,6 +119,10 @@ void Refrigerator::checkFridge(std::unordered_map<std::string, std::string>& inv
      //user input var
      std::string ans;
      int checkInventory = 0;
+
+	 //animation variables
+	 int start_row = 4;
+	 int start_column = 4;
 
      //formatting
      std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
@@ -207,6 +214,14 @@ void Refrigerator::checkFridge(std::unordered_map<std::string, std::string>& inv
           } while (ans != "y" && ans != "n");
 
           if (ans == "y"){
+
+			  //code for pie animation
+			  initscr();
+			  printPie(start_row, start_column);
+			  refresh();
+			  getch();
+			  endwin();
+
                inv.insert({ "pie", getPie() });
                std::cout << "\nOkay, " << getPie() << " added to inventory.\n\n";
           }

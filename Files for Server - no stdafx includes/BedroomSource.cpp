@@ -29,6 +29,9 @@
 //include bedroom header
 #include "BedroomHeader.h"
 
+//include animation header
+#include "animation.hpp"
+
 //member function for the Bed
 void Bed::checkBed(std::unordered_map<std::string, std::string>& inv)
 {
@@ -109,7 +112,18 @@ void Body::checkBody(std::unordered_map<std::string, std::string>& inv){
 
      //user input var
      std::string ans;
+
+	 //animation variables
+	 int start_row = 4;
+	 int start_column = 4;
     
+	 //body outline animation
+	 initscr();
+	 printOutline(start_row, start_column);
+	 refresh();
+	 getch();
+	 endwin();
+
      //formatting
      std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
 

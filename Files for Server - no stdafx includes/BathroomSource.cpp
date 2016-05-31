@@ -29,6 +29,9 @@
 //include bedroom header
 #include "BathroomHeader.h"
 
+//include animation header
+#include "animation.hpp"
+
 //member function for the Bed
 void Cabinet::checkCabinet(std::unordered_map<std::string, std::string>& inv)
 {
@@ -108,6 +111,12 @@ void Bath::checkBath(std::unordered_map<std::string, std::string>& inv){
      std::string ans;
      int checkInventory = 0;
 
+	 //animation variables
+	 int start_row = 4;
+	 int start_column = 4;
+	 int i;
+	 int speed;
+
      //formatting
      std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
 
@@ -139,6 +148,28 @@ void Bath::checkBath(std::unordered_map<std::string, std::string>& inv){
 	 } while (ans != "y" && ans != "n");
 
 	 if (ans == "y"){
+
+		 //bathtub animation
+		 initscr();
+		 printTub(start_row, start_column);
+
+		 for (i = 0; i <= 7; i++)
+		 {
+			 printBubbles1(start_row, start_column);
+			 refresh();
+			 for (speed = 1; speed <= 55000000; speed++);
+			 printBubbles2(start_row, start_column);
+			 refresh();
+			 for (speed = 1; speed <= 55000000; speed++);
+			 printBubbles3(start_row, start_column);
+			 refresh();
+			 for (speed = 1; speed <= 55000000; speed++);
+			 printBubbles4(start_row, start_column);
+			 refresh();
+			 for (speed = 1; speed <= 55000000; speed++);
+		 }
+		 endwin();
+
 		 std::cout << getTakeBath();
 	 }
 	 else{

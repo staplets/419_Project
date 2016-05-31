@@ -32,6 +32,9 @@
 //guards for header
 #include "ServantsHeader.h"
 
+//animation header
+#include "animation.hpp"
+
 //member function for Trash
 void Trash::checkTrash(std::unordered_map<std::string, std::string>& inv)
 {
@@ -116,6 +119,12 @@ void MrsWhite::getPassword(std::unordered_map<std::string, std::string>& invento
 	//initialize mrsWhite object
 	MrsWhite mrsWhite;
 
+	//animation variables
+	int start_row = 4;
+	int start_column = 4;
+	int i;
+	int speed;
+
 	//check if the cigarettes is already in inventory
 	auto search = inventory.find("cigs");
 	if (search != inventory.end()){
@@ -130,6 +139,28 @@ void MrsWhite::getPassword(std::unordered_map<std::string, std::string>& invento
 			//get password info 
 			std::cout << mrsWhite.getPass();
 			std::cout << "\n\nYou give Mrs. White a cigarette from your inventory.\n\n";
+
+			//cigarette animation
+			initscr();
+			printCig(start_row, start_column);
+
+			for (i = 0; i <= 6; i++)
+			{
+				printSmoke1(start_row, start_column);
+				refresh();
+				for (speed = 1; speed <= 55000000; speed++);
+				printSmoke2(start_row, start_column);
+				refresh();
+				for (speed = 1; speed <= 55000000; speed++);
+				printSmoke3(start_row, start_column);
+				refresh();
+				for (speed = 1; speed <= 55000000; speed++);
+				printSmoke4(start_row, start_column);
+				refresh();
+				for (speed = 1; speed <= 55000000; speed++);
+			}
+			endwin();
+			
 			std::cout << mrsWhite.getPassTwo() << "\n\n";
 			std::cout << getPasswordInfo() << "\n\n";
 			//collect note for inventory

@@ -57,3 +57,39 @@ void printBalls(int startrow, int startcolumn);
 
 void printBookshelf(int startrow, int startcolumn);
 void printDoorway(int startrow, int startcolumn);
+
+void printOldPhoto(int startrow, int startcolumn);
+
+void printOutline(int startrow, int startcolumn);
+
+void printGuilty(int startrow, int startcolumn);
+void printCuffs(int startrow, int startcolumn);
+
+void printDog(int startrow, int startcolumn);
+void printTail1(int startrow, int startcolumn);
+void printTail2(int startrow, int startcolumn);
+void printTail3(int startrow, int startcolumn);
+void printTail4(int startrow, int startcolumn);
+
+void printVial(int startrow, int startcolumn);
+void printGrape(int startrow, int startcolumn);
+void eraseGrape(int startrow, int startcolumn);
+void printReaction(int startrow, int startcolumn);
+
+void printPie(int startrow, int startcolumn);
+
+void printCig(int startrow, int startcolumn);
+void printSmoke1(int startrow, int startcolumn);
+void printSmoke2(int startrow, int startcolumn);
+void printSmoke3(int startrow, int startcolumn);
+void printSmoke4(int startrow, int startcolumn);
+
+void printTub(int startrow, int startcolumn);
+void printBubbles1(int startrow, int startcolumn);
+void printBubbles2(int startrow, int startcolumn);
+void printBubbles3(int startrow, int startcolumn);
+void printBubbles4(int startrow, int startcolumn);
+
+void printSky(int startrow, int startcolumn);
+void printShootingStar(int startrow, int startcolumn);
+void eraseShootingStar(int startrow, int startcolumn);

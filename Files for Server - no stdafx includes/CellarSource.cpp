@@ -29,6 +29,9 @@
 //include foyer header
 #include "CellarHeader.h"
 
+//include animation header
+#include "animation.hpp"
+
 //member function to get into the trunk of LuxuryCar
 void Dresser::checkDresser(std::unordered_map<std::string, std::string>& inv)
 {
@@ -117,6 +120,10 @@ void Box::checkBox(std::unordered_map<std::string, std::string>& inv){
      std::string ans;
      int checkInventory = 0;
 
+	 //animation variables
+	 int start_row = 4;
+	 int start_column = 4;
+
      //formatting
      std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
 
@@ -176,6 +183,14 @@ void Box::checkBox(std::unordered_map<std::string, std::string>& inv){
           } while (ans != "y" && ans != "n");
 
           if (ans == "y"){
+
+			  //pictures animation
+			  initscr();
+			  printOldPhoto(start_row, start_column);
+			  refresh();
+			  getch();
+			  endwin();
+
                inv.insert({ "pictures", getPictures() });
                std::cout << "\nOkay, the " << getPictures() << " added to inventory.\n\n";
           }

@@ -29,6 +29,9 @@
 //guards for header
 #include "GardenHeader.h"
 
+//animation header
+#include "animation.hpp"
+
 //member function to output information provided of each item in Dog
 void Dog::dogInformation()
 {
@@ -40,6 +43,39 @@ void Dog::giveTreat(std::unordered_map<std::string, std::string>& inv){
 
      //user input var
      std::string ans;
+
+	 //animation variables
+	 int start_row = 4;
+	 int start_column = 4;
+	 int i;
+	 int speed;
+
+	 //dog tail-wagging animation
+	 initscr();
+	 printDog(start_row, start_column);
+	 for (i = 0; i <= 7; i++)
+	 {
+		 printTail1(start_row, start_column);
+		 refresh();
+		 for (speed = 1; speed <= 30000000; speed++);
+		 printTail2(start_row, start_column);
+		 refresh();
+		 for (speed = 1; speed <= 30000000; speed++);
+		 printTail3(start_row, start_column);
+		 refresh();
+		 for (speed = 1; speed <= 30000000; speed++);
+		 printTail4(start_row, start_column);
+		 refresh();
+		 for (speed = 1; speed <= 30000000; speed++);
+		 printTail3(start_row, start_column);
+		 refresh();
+		 for (speed = 1; speed <= 30000000; speed++);
+		 printTail2(start_row, start_column);
+		 refresh();
+		 for (speed = 1; speed <= 30000000; speed++);
+	 }
+	 getch();
+	 endwin();
 
      //check if sap is already in inventory
      auto search = inv.find("sap");
@@ -234,6 +270,12 @@ int MsWolf::conversate(std::unordered_map<std::string, std::string>& inventory){
      int retry = 0;
      std::string ans;
 
+	 //animation variables
+	 int start_row = 4;
+	 int start_column = 4;
+	 int i;
+	 int speed;
+
      //formatting
      std::cout << "\n\n////////////////////////////////////////////////////////////////////////////////////\n\n";
 
@@ -314,6 +356,19 @@ int MsWolf::conversate(std::unordered_map<std::string, std::string>& inventory){
 
                          std::cout << "\n\nYou present Ms. Wolf with the signed statement from Mr. Glass and Ms. Wolf looks as though she will burst into tears.\n\n";
                          std::cout << "Then she says \"" << getConfession() << getConfessionTwo() << getConfessionThree() << "\n\n";
+
+						 //animation for handcuffs
+						 initscr();
+						 for (i = 0; i <= 7; i++)
+						 {
+							 printGuilty(start_row, start_column);
+							 printCuffs(start_row + i, start_column);
+							 refresh();
+							 for (speed = 1; speed <= 55000000; speed++);
+						 }
+						 getch();
+						 endwin();
+
                          std::cout << "You then handcuff her and walk her out to your Monte Carlo and take her to the station.\n\n\nWell done detective!!!\n\nThanks for playing!\n\n";
 
                     }
