@@ -116,6 +116,7 @@ void Painting::checkPainting(std::unordered_map<std::string, std::string>& inv) 
 
 	 //painting animation
 	 initscr();
+	 clear();
 	 printPainting(start_row, start_column);
 	 refresh();
 	 getch();

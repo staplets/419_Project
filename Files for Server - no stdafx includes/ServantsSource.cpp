@@ -142,6 +142,7 @@ void MrsWhite::getPassword(std::unordered_map<std::string, std::string>& invento
 
 			//cigarette animation
 			initscr();
+			clear();
 			printCig(start_row, start_column);
 
 			for (i = 0; i <= 6; i++)

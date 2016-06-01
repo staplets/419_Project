@@ -52,6 +52,7 @@ void PoolTable::checkTable(std::unordered_map<std::string, std::string>& inv)
 
 	 //pool table animation
 	 initscr();
+	 clear();
 	 printBilliards(start_row, start_column);
 	 printCueBall(start_row, start_column);
 	 printBalls(start_row, start_column);

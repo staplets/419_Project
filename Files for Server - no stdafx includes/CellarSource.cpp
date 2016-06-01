@@ -186,6 +186,7 @@ void Box::checkBox(std::unordered_map<std::string, std::string>& inv){
 
 			  //pictures animation
 			  initscr();
+			  clear();
 			  printOldPhoto(start_row, start_column);
 			  refresh();
 			  getch();

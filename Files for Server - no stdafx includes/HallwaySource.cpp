@@ -91,6 +91,7 @@ void Shelf::checkShelf(std::unordered_map<std::string, std::string>& inv)
                
                //Spider animation
                initscr();
+			   clear();
                for (i = 1; i <= 12; i++)
                {
                     printSpider1(start_row, start_column);

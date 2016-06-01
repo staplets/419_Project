@@ -60,6 +60,7 @@ void Safe::checkSafe(std::unordered_map<std::string, std::string>& inv)
           
           //key unlocking animation	
           initscr();
+		  clear();
           for (i = 1; i <= 28; i++)
           {
                printKey(start_row, start_column);
@@ -337,7 +338,11 @@ int LightSwitch::checkLightSwitch(std::unordered_map<std::string, std::string>& 
           break;
      case 2: // candle and matches in user inventory
           //output choices
-          
+
+		 //candle animation
+		 initscr();
+		 clear();
+
           for (i = 1; i <= 8; i++)
           {
                printCandle(start_row, start_column);

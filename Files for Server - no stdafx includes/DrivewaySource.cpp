@@ -58,6 +58,7 @@ void LuxuryCar::openTrunk(std::unordered_map<std::string, std::string>& inv)
           
 		  //animation to open the trunk
 		  initscr();
+		  clear();
 		  printCar(start_row, start_column);
 		  refresh();
 		  getch();

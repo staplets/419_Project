@@ -377,6 +377,7 @@ void Bar::checkBar(std::unordered_map<std::string, std::string>& inv) {
           if (ans == "y") {
                
                initscr();
+			   clear();
                printBar(start_row, start_column);
                for (i = 1; i <= 5; i++)
                {
