@@ -356,13 +356,13 @@ std::string roomMenu(std::unordered_map<std::string, std::string>& inv, X theRoo
           else { //obj name is more than 1 word
 		if((vstrings[1].compare("night") == 0 && vstrings[2].compare("stand") == 0) || (vstrings[1].compare("Night") == 0 && vstrings[2].compare("Stand") == 0))
 		  choice = "nightstand";
-		if((vstrings[1].compare("folding") == 0 && vstrings[2].compare("Folding") == 0) || (vstrings[1].compare("table") == 0 && vstrings[2].compare("Table") == 0))
+		if((vstrings[1].compare("folding") == 0 && vstrings[2].compare("table") == 0) || (vstrings[1].compare("Folding") == 0 && vstrings[2].compare("Table") == 0))
 		  choice = "folding table";
-		if((vstrings[1].compare("pool") == 0 && vstrings[2].compare("Pool") == 0) || (vstrings[1].compare("table") == 0 && vstrings[2].compare("Table") == 0))
+		if((vstrings[1].compare("pool") == 0 && vstrings[2].compare("table") == 0) || (vstrings[1].compare("Pool") == 0 && vstrings[2].compare("Table") == 0))
 		  choice = "pooltable";
 		if((vstrings[1].compare("coffee") == 0 && vstrings[2].compare("table") == 0) || (vstrings[1].compare("Coffee") == 0 && vstrings[2].compare("Table") == 0))
 		  choice = "coffeetable";
-		if((vstrings[1].compare("hot") == 0 && vstrings[2].compare("Hot") == 0) || (vstrings[1].compare("tub") == 0 && vstrings[2].compare("Tub") == 0))
+		if((vstrings[1].compare("hot") == 0 && vstrings[2].compare("tub") == 0) || (vstrings[1].compare("Hot") == 0 && vstrings[2].compare("Tub") == 0))
 		  choice = "hottub";
 		if((vstrings[1].compare("dining") == 0 && vstrings[2].compare("table") == 0) || (vstrings[1].compare("Dining") == 0 && vstrings[2].compare("Table") == 0))
 		  choice = "diningtable";
@@ -1160,10 +1160,10 @@ void playRooms(){
                     //returnedNavChoice = foyerNavigate(inventory_Map, roomReturn);
 
                     //logic to check against parsed input
-                    if (roomReturn == "mrs.deeds"){
+                    if (roomReturn == "couch"){
                          choice = 1;
                     }
-                    else if (roomReturn == "couch"){
+                    else if (roomReturn == "mrs.deeds"){
                          choice = 2;
                     }
                     else if (roomReturn == "smoking room"){
@@ -1188,13 +1188,14 @@ void playRooms(){
                     //take users choice and interact based on that
                     switch (choice){
                     case 1:
-                         mrsDeeds.conversate(inventory_Map);
-						 newline = true;
+                         couch.checkCouch(inventory_Map);
+			 newline = true;
                          choice = 0;
                          break;
+
                     case 2:
-                         couch.checkCouch(inventory_Map);
-						 newline = true;
+                         mrsDeeds.conversate(inventory_Map);
+			 newline = true;
                          choice = 0;
                          break;
                     case 3:
