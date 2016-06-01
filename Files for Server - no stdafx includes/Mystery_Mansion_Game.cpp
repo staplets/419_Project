@@ -239,7 +239,7 @@ std::string roomMenu(std::unordered_map<std::string, std::string>& inv, X theRoo
        std::getline(std::cin, choice);
      }
      
-     std::cout << "\n\nChoice is " << choice << "\n\n";
+     std::cout << "\n\nChoice is: " << choice << "\n\n";
 
      //split user input words into vector
      std::stringstream ss(choice);
@@ -497,7 +497,7 @@ std::string roomMenu(std::unordered_map<std::string, std::string>& inv, X theRoo
                }
                if (choice.compare(theRoom.getExits()[i]) == 0) {
                     for (j = 0; j < theRoom.getExits()[i].length(); j++) {
-                         std::cout << tolower(theRoom.getExits()[i][j]) << std::endl;
+                         //std::cout << tolower(theRoom.getExits()[i][j]) << std::endl;
                          choice[j] = theRoom.getExits()[i][j];
                     }
                }
@@ -640,7 +640,8 @@ void playRooms(){
                choice = 5;
           }
           else{
-               std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+               //std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+               std::cout << "\n\nPlease enter a properly formatted choice from the menu of options.\n\n";
           }
 
 
@@ -763,7 +764,7 @@ void playRooms(){
                     }
                     else{
                          //std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
-			 std::cout << "\n\nERROR: please enter a properly formatted choice\n\n";
+						 std::cout << "\n\nPlease enter a properly formatted choice from the menu of options.\n\n";
 
                     }
 
@@ -881,7 +882,8 @@ void playRooms(){
                          choice = 8;
                     }
                     else{
-                         std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+                          //std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+						 std::cout << "\n\nPlease enter a properly formatted choice from the menu of options.\n\n";
                     }
 
                     //take users choice and interact based on that
@@ -966,7 +968,6 @@ void playRooms(){
                } while (!moving);
                break;
 	  
-          newline = false;
           case 3:
                //Navigate the Garden
                do{
@@ -1006,7 +1007,8 @@ void playRooms(){
                          choice = 6;
                     }
                     else{
-                         std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+                          //std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+						 std::cout << "\n\nPlease enter a properly formatted choice from the menu of options.\n\n";
                     }
 
                     //take users choice and interact based on that
@@ -1059,7 +1061,7 @@ void playRooms(){
 		    
                } while (!moving);
                break;
-	  newline = false;
+
           case 4:
                //Navigate the Study
                do{
@@ -1098,7 +1100,8 @@ void playRooms(){
                          choice = 6;
                     }
                     else{
-                         std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+                          //std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+						 std::cout << "\n\nPlease enter a properly formatted choice from the menu of options.\n\n";
                     }
 
                     //take users choice and interact based on that
@@ -1147,7 +1150,7 @@ void playRooms(){
 		    
                } while (!moving);
                break;
-	  newline = false;
+	  
           case 5:
                //Navigate the Sitting Room
                do{
@@ -1189,7 +1192,8 @@ void playRooms(){
                          choice = 7;
                     }
                     else{
-                         std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+                          //std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+						 std::cout << "\n\nPlease enter a properly formatted choice from the menu of options.\n\n";
                     }
 
                     //take users choice and interact based on that
@@ -1243,7 +1247,7 @@ void playRooms(){
 		    
                } while (!moving);
                break;
-	  newline = false;
+	  
           case 6:
                //Navigate the Smoking Room
                do{
@@ -1282,7 +1286,8 @@ void playRooms(){
                          choice = 6;
                     }
                     else{
-                         std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+                          //std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+						 std::cout << "\n\nPlease enter a properly formatted choice from the menu of options.\n\n";
                     }
 
                     //take users choice and interact based on that
@@ -1332,7 +1337,6 @@ void playRooms(){
                } while (!moving);
                break;
 
-	  newline = false;
           case 7:
                //Navigate the Billiards Room
                do{
@@ -1374,7 +1378,8 @@ void playRooms(){
                          choice = 7;
                     }
                     else{
-                         std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+                          //std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+						 std::cout << "\n\nPlease enter a properly formatted choice from the menu of options.\n\n";
                     }
 
                     //take users choice and interact based on that
@@ -1428,7 +1433,7 @@ void playRooms(){
 		    
                } while (!moving);
                break;
-	  newline = false;
+	
           case 8:
                //Navigate the Dining Room
                do{
@@ -1517,7 +1522,7 @@ void playRooms(){
 		    
                } while (!moving);
                break;
-	  newline = false;
+	 
           case 9:
                //Navigate the Kitchen
                do{
@@ -1562,7 +1567,8 @@ void playRooms(){
                          choice = 8;
                     }
                     else{
-                         std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+                          //std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+						 std::cout << "\n\nPlease enter a properly formatted choice from the menu of options.\n\n";
                     }
 
                     //take users choice and interact based on that
@@ -1621,7 +1627,7 @@ void playRooms(){
 		    
                } while (!moving);
                break;
-	  newline = false;
+	 
           case 10:
                //Navigate the Cellar
                do{
@@ -1657,7 +1663,8 @@ void playRooms(){
                          choice = 5;
                     }
                     else{
-                         std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+                          //std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+						 std::cout << "\n\nPlease enter a properly formatted choice from the menu of options.\n\n";
                     }
 
                     //take users choice and interact based on that
@@ -1701,7 +1708,7 @@ void playRooms(){
 		    
                } while (!moving);
                break;
-	  newline = false;
+	 
           case 11:
                //Navigate the Library
                do{
@@ -1740,7 +1747,8 @@ void playRooms(){
                          choice = 5;
                     }
                     else{
-                         std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+                          //std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+						 std::cout << "\n\nPlease enter a properly formatted choice from the menu of options.\n\n";
                     }
 
                     //take users choice and interact based on that
@@ -1790,7 +1798,7 @@ void playRooms(){
 		    
                } while (!moving);
                break;
-	  newline = false;
+	 
           case 12:
                //Navigate the Secret Room
                do{
@@ -1822,7 +1830,8 @@ void playRooms(){
                          choice = 4;
                     }
                     else{
-                         std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+                          //std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+						 std::cout << "\n\nPlease enter a properly formatted choice from the menu of options.\n\n";
                     }
 
                     //take users choice and interact based on that
@@ -1880,7 +1889,7 @@ void playRooms(){
 		    
                } while (!moving);
                break;
-	  newline = false;
+	 
           case 13:
                //Navigate the Deck               
                do{
@@ -1930,7 +1939,8 @@ void playRooms(){
                          choice = 8;
                     }
                     else{
-                         std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+                          //std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+						 std::cout << "\n\nPlease enter a properly formatted choice from the menu of options.\n\n";
                     }
 
 
@@ -2081,7 +2091,7 @@ void playRooms(){
 		    
                } while (!moving);
                break;
-	  newline = false;
+	  
           case 14:
                //Navigate the Hallway
                do{
@@ -2126,7 +2136,8 @@ void playRooms(){
                          choice = 8;
                     }
                     else{
-                         std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+                          //std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+						 std::cout << "\n\nPlease enter a properly formatted choice from the menu of options.\n\n";
                     }
 
                     //take users choice and interact based on that
@@ -2185,7 +2196,7 @@ void playRooms(){
 		    
                } while (!moving);
                break;
-	  newline = false;
+	 
           case 15:
                //Navigate the Bedroom
                do{
@@ -2221,7 +2232,8 @@ void playRooms(){
                          choice = 5;
                     }
                     else{
-                         std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+                          //std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+						 std::cout << "\n\nPlease enter a properly formatted choice from the menu of options.\n\n";
                     }
 
                     //take users choice and interact based on that
@@ -2265,7 +2277,7 @@ void playRooms(){
 		   
                } while (!moving);
                break;
-	  newline = false;
+	  
           case 16:
                //Navigate the Ballroom
                do{
@@ -2307,7 +2319,8 @@ void playRooms(){
                          choice = 7;
                     }
                     else{
-                         std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+                          //std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+						 std::cout << "\n\nPlease enter a properly formatted choice from the menu of options.\n\n";
                     }
 
                     //take users choice and interact based on that
@@ -2360,7 +2373,7 @@ void playRooms(){
 		    
                } while (!moving);
                break;
-	  newline = false;
+	
           case 17:
                //Navigate the Servants Room
                do{
@@ -2393,7 +2406,8 @@ void playRooms(){
                          choice = 4;
                     }
                     else{
-                         std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+                          //std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+						 std::cout << "\n\nPlease enter a properly formatted choice from the menu of options.\n\n";
                     }
 
                     //take users choice and interact based on that
@@ -2432,7 +2446,7 @@ void playRooms(){
                     returnedNavChoice = choice;
                } while (!moving);
                break;
-	  newline = false;
+	  
           case 18:
                 //Navigate the Balcony
                do{
@@ -2465,7 +2479,8 @@ void playRooms(){
                          choice = 4;
                     }
                     else{
-                         std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+                          //std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+						 std::cout << "\n\nPlease enter a properly formatted choice from the menu of options.\n\n";
                     }
 
                     //take users choice and interact based on that
@@ -2505,7 +2520,6 @@ void playRooms(){
                } while (!moving);
                break;
 
-	  newline = false;
           case 19:
                //Navigate the Bathroom
                do{
@@ -2538,7 +2552,8 @@ void playRooms(){
                          choice = 4;
                     }
                     else{
-                         std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+                          //std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+						 std::cout << "\n\nPlease enter a properly formatted choice from the menu of options.\n\n";
                     }
 
                     //take users choice and interact based on that
@@ -2575,7 +2590,6 @@ void playRooms(){
                } while (!moving);
                break;
 
-	  newline = false;
           case 20:
                //Navigate the Attic
                do{
@@ -2611,7 +2625,8 @@ void playRooms(){
                          choice = 5;
                     }
                     else{
-                         std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+                          //std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+						 std::cout << "\n\nPlease enter a properly formatted choice from the menu of options.\n\n";
                     }
 
                     //take users choice and interact based on that
