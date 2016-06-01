@@ -226,7 +226,7 @@ std::string roomMenu(std::unordered_map<std::string, std::string>& inv, X theRoo
           std::cout << i + 1 << "." << " " << theRoom.getObjects()[i] << "\n";
      }
 
-     std::cout << "\nPlease enter a command from this menu of options:\n\n\"Go to (room name)\" or just \"(room name)\"\n, \"Inspect (object name)\"\n, \"Talk to (person name)\"\n, \"Interact with (animal name)\"\n, \"Get in (object name)\"\n, \"Sleep on (furniture name)\"\n, \"Switch on (object name)\"\n, \"Open (object/door name)\"\n, or \"Play (instrument name)\".\n You may additionally check your inventory (\"Check inventory\").\n\n" << std::endl;
+     std::cout << "\nPlease enter a command from this menu of options:\n\n\"Go to (room name, example: go to dining room)\" or just \"(room name, example: Dining Room)\"\n, \"Inspect (object name)\"\n, \"Talk to (person name, example: Mr.White or Mr White)\"\n, \"Interact with (animal name)\"\n, \"Get in (object name)\"\n, \"Sleep on (furniture name)\"\n, \"Switch on (object name)\"\n, \"Open (object/door name)\"\n, or \"Play (instrument name)\".\n You may additionally check your inventory (\"Check inventory\").\n\n" << std::endl;
  //not using these: \"Give (object name)\", \"Use (object name)\", \"Add (object name) to inventory\", 
      //std::cin.clear();
      //std::cin >> choice;
@@ -756,7 +756,9 @@ void playRooms(){
                          choice = 5;
                     }
                     else{
-                         std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+                         //std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+			 std::cout << "\n\nERROR: please enter a properly formatted choice\n\n";
+
                     }
 
 
