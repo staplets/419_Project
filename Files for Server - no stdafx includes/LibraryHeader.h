@@ -40,7 +40,7 @@ public:
           this->name = "The Library";
           this->numRooms = 2;
           this->numObjects = 2;
-          this->description = "You are in the Library.\n\nUpon initial glance, you see several book shelves throughout the room, but one that seems to catch your attention.\n\nYou also see a desk by the side of the room where there are several windows overlooking the expansive landscape of the estate.\n\nWhat would you like to do?\n\nExamine the Book Shelf? (Enter \"1\").\n\nGo over to look at Desk? (Enter \"2\").\n\n";
+          this->description = "You are in the Library.\n\nUpon initial glance, you see several book shelves throughout the room, but one that seems to catch your attention.\n\nYou also see a desk by the side of the room where there are several windows overlooking the expansive landscape of the estate.\n\n";
      }
 
      //Virtual Destructor

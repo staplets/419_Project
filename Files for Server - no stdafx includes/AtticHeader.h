@@ -29,7 +29,7 @@ private:
 protected://protected member variables.
      std::string name;
      std::vector<std::string> exits{ std::vector<std::string>{"hallway", "balcony"} };
-     std::vector<std::string> objects{ std::vector<std::string>{"night stand", "mr glass"} };
+     std::vector<std::string> objects{ std::vector<std::string>{"night stand", "mr.glass"} };
      int numRooms;
      int numObjects;
      std::string description;
@@ -41,7 +41,7 @@ public:
           this->name = "The Attic";
           this->numRooms = 2;
           this->numObjects = 2;
-          this->description = "You are in the Attic.\n\nThe attic doubles as a suite for Mr. Glass, who has the whole top floor of the mansion to himself.\n\nThere are a few basic bedroom items. Nothing particularly interesting except a night stand with an item or two on it.\n\nMr. Glass is sitting on a sofa in his room staring blankly across the room to the other wall.\n\nWould you like to talk with him (Interact: Enter \"mr glass\").\n\nTake a look night stand (Examine: Enter \"night stand\").\n\n";
+          this->description = "You are in the Attic.\n\nThe attic doubles as a suite for Mr. Glass, who has the whole top floor of the mansion to himself.\n\nThere are a few basic bedroom items. Nothing particularly interesting except a night stand with an item or two on it.\n\nMr. Glass is sitting on a sofa in his room staring blankly across the room to the other wall.\n\n";
      }
 
      //Virtual Destructor

@@ -28,7 +28,7 @@ private:
 protected://protected member variables.
      std::string name;
      std::vector<std::string> exits{ std::vector<std::string>{"library"} };
-     std::vector<std::string> objects{ std::vector<std::string>{"lightswitch", "safe"} };
+     std::vector<std::string> objects{ std::vector<std::string>{"light switch", "safe"} };
      int numRooms;
      int numObjects;
      std::string description;
@@ -40,7 +40,7 @@ public:
           this->name = "The Secret Room";
           this->numRooms = 1;
           this->numObjects = 2;
-          this->description = "You are in the Secret Room.\n\nIt is quite dark in there, however you make out a safe in the corner of the room.\n\nFeeling around you notice there is a light switch as well\n\nWhat would you like to do?\n\nTurn on the light switch? (Enter \"light switch\").\n\nGo over to examine the Safe? (Enter \"safe\").\n\n";
+          this->description = "You are in the Secret Room.\n\nIt is quite dark in there, however you make out a safe in the corner of the room that you can try to open.\n\nFeeling around you notice there is a light switch you can switch on as well.\n\n";
      }
 
      //Virtual Destructor

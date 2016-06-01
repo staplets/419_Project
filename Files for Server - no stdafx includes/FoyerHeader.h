@@ -27,8 +27,8 @@ private:
 
 protected://protected member variables.
      std::string name;
-     std::vector<std::string> exits{ std::vector<std::string>{"driveway", "kitchen", "sitting room", "upstairs hallway", "dining room" } };
-     std::vector<std::string> objects{ std::vector<std::string>{"closet", "fishBowl"} };
+     std::vector<std::string> exits{ std::vector<std::string>{"driveway", "kitchen", "sitting room", "hallway", "dining room" } };
+     std::vector<std::string> objects{ std::vector<std::string>{"closet", "fishbowl"} };
      int numRooms;
      int numObjects;
      std::string description;
@@ -40,7 +40,7 @@ public:
           this->name = "The Foyer";
           this->numRooms = 5;
           this->numObjects = 2;
-          this->description = "You are in the Foyer of the Mansion.\n\nLooking around, there is a coat closet you may want to take a look at (Enter \"closet\").\n\nThere is also a fishbowl on a stand you may examine more closely (Enter \"fishbowl\").\n\n";
+          this->description = "You are in the Foyer of the Mansion.\n\nLooking around, there is a coat closet you may want to inspect.\n\nThere is also a fishbowl on a stand you may want to look at more closely.\n\n";
 
      }
 

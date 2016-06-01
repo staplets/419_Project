@@ -29,7 +29,7 @@ private:
 protected://protected member variables.
      std::string name;
      std::vector<std::string> exits{ std::vector<std::string>{"hallway"} };
-     std::vector<std::string> objects{ std::vector<std::string>{"trash", "mrs white"} };
+     std::vector<std::string> objects{ std::vector<std::string>{"trash", "mrs.white"} };
      int numRooms;
      int numObjects;
      std::string description;
@@ -41,7 +41,7 @@ public:
           this->name = "The Servants Room";
           this->numRooms = 1;
           this->numObjects = 2;
-          this->description = "You are in the Servants Room.\n\nThe room is a little less fancy than the others of the household, but Mr. Glass still provides exceptional furniture and appliances for the staff.\n\nThere is woman dressed in a white and black maid's dress, looking worried who you may want to talk with (Interact: Enter \"mrs white\").\n\nBesides the woman there is not too much outstanding about the room. However there is a trash can you may want to examine (Examine: Enter \"trash\").\n\n";
+          this->description = "You are in the Servants Room.\n\nThe room is a little less fancy than the others of the household, but Mr. Glass still provides exceptional furniture and appliances for the staff.\n\nThere is woman dressed in a white and black maid's dress, looking worried who you may want to talk with.\n\nBesides the woman there is not too much outstanding about the room. However there is a trash can you may want to examine.\n\n";
      }
 
      //Virtual Destructor

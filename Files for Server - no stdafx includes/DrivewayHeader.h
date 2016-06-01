@@ -29,7 +29,7 @@ private:
 protected://protected member variables.
      std::string name;
      std::vector<std::string> exits{ std::vector<std::string>{"foyer", "garden"} };
-     std::vector<std::string> objects{ std::vector<std::string>{"car", "mrwhite"} };
+     std::vector<std::string> objects{ std::vector<std::string>{"car", "mr.white"} };
      int numRooms;
      int numObjects;
      std::string description;
@@ -41,7 +41,7 @@ public:
           this->name = "The Driveway";
           this->numRooms = 2;
           this->numObjects = 2;
-          this->description = "You are in the driveway.\n\nThere is a fancy luxury car that you may want to take a look at (Enter \"car\").\n\nThere is also a man standing by the front of the driveway smoking a cigarette (To talk with him: Enter \"Talk Mr White\").\n\n";
+          this->description = "You are in the driveway.\n\nThere is a fancy luxury car that you may want to inspect.\n\nThere is also a man standing by the front of the driveway smoking a cigarette.\n\n";
 
      }
 

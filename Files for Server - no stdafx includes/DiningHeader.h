@@ -28,7 +28,7 @@ private:
 protected://protected member variables.
      std::string name;
      std::vector<std::string> exits{ std::vector<std::string>{"deck", "kitchen", "foyer"} };
-     std::vector<std::string> objects{ std::vector<std::string>{"diningtable", "parrot"} };
+     std::vector<std::string> objects{ std::vector<std::string>{"dining table", "parrot"} };
      int numRooms;
      int numObjects;
      std::string description;
@@ -40,7 +40,7 @@ public:
           this->name = "The Dining Room";
           this->numRooms = 3;
           this->numObjects = 2;
-          this->description = "You are in the Dining Room.\n\nIn the center of the room, there is an exquisite Dining Table.\n\nIn the corner of the room there is also a Parrot.\n\nLook at Dining Table? (Enter \"dining table\").\n\nGo over to see the Parrot? (Enter \"parrot\").\n\n";
+          this->description = "You are in the Dining Room.\n\nIn the center of the room, there is an exquisite Dining Table you may want to examine.\n\nIn the corner of the room there is also a Parrot you can interact with.\n\n";
      }
 
      //Virtual Destructor

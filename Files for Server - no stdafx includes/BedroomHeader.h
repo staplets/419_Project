@@ -40,7 +40,7 @@ public:
           this->name = "The Bedroom";
           this->numRooms = 2;
           this->numObjects = 2;
-          this->description = "You are in the Bedroom.\n\nThe body of Willie Cunningham lies on the bed in the middle of the room.\n\nOtherwise the room looks to be in pristine condition.\n\nAny of the evidence in this room is either on the body or the bed of which he lies.\n\nAdditionally the bedroom leads to it's own personal bathroom.\n\nExamine the body? (Enter \"body\").\n\nExamine the bed? (Enter \"bed\").\n\n";
+          this->description = "You are in the Bedroom.\n\nThe body of Willie Cunningham lies on the bed in the middle of the room.\n\nOtherwise the room looks to be in pristine condition.\n\nAny of the evidence in this room is either on the body or the bed of which he lies.\n\nAdditionally the bedroom leads to it's own personal bathroom.\n\n";
      }
 
      //Virtual Destructor

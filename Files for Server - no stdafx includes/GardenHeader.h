@@ -29,7 +29,7 @@ private:
 protected://protected member variables.
      std::string name;
      std::vector<std::string> exits{ std::vector<std::string>{"driveway", "deck", "cellar"} };
-     std::vector<std::string> objects{ std::vector<std::string>{"dog", "mswolf"} };
+     std::vector<std::string> objects{ std::vector<std::string>{"dog", "ms.wolf"} };
      int numRooms;
      int numObjects;
      std::string description;
@@ -41,7 +41,7 @@ public:
           this->name = "The Garden";
           this->numRooms = 3;
           this->numObjects = 2;
-          this->description = "You are in the garden.\n\nMany unique and colorful plants mix in to create an otherwordly atmosphere.\n\nThere is woman dressed in a black evening gown smoking a cigarrette on a bench, who you may want to talk with (Interact: Enter \"Ms Wolf\").\n\nThere is also a dog laying down chained to a water fountain in front of what looks like a Hydrangea plant (Interact: Enter \"dog\").\n\n";
+          this->description = "You are in the garden.\n\nMany unique and colorful plants mix in to create an otherwordly atmosphere.\n\nThere is woman dressed in a black evening gown smoking a cigarrette on a bench, who you may want to talk with.\n\nYou can also interact with a dog laying down chained to a water fountain in front of what looks like a Hydrangea plant.\n\n";
      }
 
      //Virtual Destructor

@@ -40,7 +40,7 @@ public:
           this->name = "The Cellar";
           this->numRooms = 2;
           this->numObjects = 2;
-          this->description = "You are in the Cellar.\n\nLooking around, you see a Dresser in the corner and a Box in the other far corner that may be worth a look.\n\nLook at Dresser? (Enter \"dresser\").\n\nOpen the Box? (Enter \"box\").\n\n";
+          this->description = "You are in the Cellar.\n\nLooking around, you see a Dresser in the corner and a Box in the other far corner that may be worth a look.\n\n";
      }
 
      //Virtual Destructor

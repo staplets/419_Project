@@ -40,7 +40,7 @@ public:
           this->name = "The Bathroom";
           this->numRooms = 1;
           this->numObjects = 2;
-          this->description = "You are in the Bathroom.\n\nIn this room you see a sizable bath tub and a fancy vanity cabinet.\n\nThe Toilet and sink look to be in order without traces of anything interesting.\n\nExamine the bath tub? (Enter \"bath\").\n\nCheck out the vanity cabinet? (Enter \"cabinet\").\n\n";
+          this->description = "You are in the Bathroom.\n\nIn this room you see a sizable bath tub and a fancy vanity cabinet which you can open and inspect.\n\nThe Toilet and sink look to be in order without traces of anything interesting.\n\n";
      }
 
      //Virtual Destructor
