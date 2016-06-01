@@ -623,6 +623,10 @@ void playRooms(){
           roomReturn = roomMenu(inventory_Map, roomDriveway, newline);
           //returnedNavChoice = drivewayNavigate(inventory_Map, roomReturn);
 
+		  //set newline flag to false each iteration
+		  //this avoids a true flag staying set
+		  newline = false;
+		  
           //logic to check against parsed input
           if (roomReturn == "car"){
                choice = 1;
@@ -740,7 +744,11 @@ void playRooms(){
                     //intialize objects
                     LuxuryCar aCar;
                     MrWhite mrWhite;
-	            roomReturn = roomMenu(inventory_Map, roomDriveway, newline);
+					roomReturn = roomMenu(inventory_Map, roomDriveway, newline);
+				
+					//set newline flag to false each iteration
+					//this avoids a true flag staying set
+					newline = false;
 
                     //returnedNavChoice = drivewayNavigate(inventory_Map, roomReturn);
 
@@ -799,12 +807,12 @@ void playRooms(){
                          if (ans == "y"){
                               aCar.openTrunk(inventory_Map);
                          }
-			 newline = false;
+						 newline = false;
                          choice = 0;
                          break;
                     case 2:
                          mrWhite.conversate(inventory_Map);
-			 newline = true;
+						 newline = true;
                          choice = 0;
                          break;
                     case 3:
@@ -855,6 +863,10 @@ void playRooms(){
 
                     roomReturn = roomMenu(inventory_Map, roomFoyer, newline);
                     //returnedNavChoice = foyerNavigate(inventory_Map, roomReturn);
+					
+					//set newline flag to false each iteration
+					//this avoids a true flag staying set
+					newline = false;
 
                     //logic to check against parsed input
                     if (roomReturn == "closet"){
@@ -986,6 +998,10 @@ void playRooms(){
 
                     roomReturn = roomMenu(inventory_Map, roomGarden, newline);
                     //returnedNavChoice = foyerNavigate(inventory_Map, roomReturn);
+					
+					//set newline flag to false each iteration
+					//this avoids a true flag staying set
+					newline = false;
 
                     //logic to check against parsed input
                     if (roomReturn == "ms.wolf"){
@@ -1079,6 +1095,10 @@ void playRooms(){
 
                     roomReturn = roomMenu(inventory_Map, roomStudy, newline);
                     //returnedNavChoice = foyerNavigate(inventory_Map, roomReturn);
+					
+					//set newline flag to false each iteration
+					//this avoids a true flag staying set
+					newline = false;
 
                     //logic to check against parsed input
                     if (roomReturn == "computer"){
@@ -1168,6 +1188,10 @@ void playRooms(){
 
                     roomReturn = roomMenu(inventory_Map, roomSitting, newline);
                     //returnedNavChoice = foyerNavigate(inventory_Map, roomReturn);
+					
+					//set newline flag to false each iteration
+					//this avoids a true flag staying set
+					newline = false;
 
                     //logic to check against parsed input
                     if (roomReturn == "couch"){
@@ -1224,10 +1248,10 @@ void playRooms(){
                          //change choice to reflect our room mapping and update move
                          choice = 16;
                          break;
-		    case 6:
-			 couch.takeNap();
-			 choice = 0;
-			 break;
+					case 6:
+						couch.takeNap();
+						choice = 0;
+						break;
                     case 7:
                          std::cout << "\n\nInventory contains: \n\n";
                          int c = 1;
@@ -1265,6 +1289,10 @@ void playRooms(){
 
                     roomReturn = roomMenu(inventory_Map, roomSmoking, newline);
                     //returnedNavChoice = foyerNavigate(inventory_Map, roomReturn);
+					
+					//set newline flag to false each iteration
+					//this avoids a true flag staying set
+					newline = false;
 
                     //logic to check against parsed input
                     if (roomReturn == "recliningchair"){
@@ -1354,6 +1382,10 @@ void playRooms(){
 
                     roomReturn = roomMenu(inventory_Map, roomBilliards, newline);
                     //returnedNavChoice = foyerNavigate(inventory_Map, roomReturn);
+					
+					//set newline flag to false each iteration
+					//this avoids a true flag staying set
+					newline = false;
 
                     //logic to check against parsed input
                     if (roomReturn == "pooltable"){
@@ -1451,6 +1483,10 @@ void playRooms(){
 
                     roomReturn = roomMenu(inventory_Map, roomDining, newline);
                     //returnedNavChoice = foyerNavigate(inventory_Map, roomReturn);
+					
+					//set newline flag to false each iteration
+					//this avoids a true flag staying set
+					newline = false;
 
                     //logic to check against parsed input
                     if (roomReturn == "diningtable"){
@@ -1540,6 +1576,10 @@ void playRooms(){
 
                     roomReturn = roomMenu(inventory_Map, roomKitchen, newline);
                     //returnedNavChoice = foyerNavigate(inventory_Map, roomReturn);
+					
+					//set newline flag to false each iteration
+					//this avoids a true flag staying set
+					newline = false;
 
                     //logic to check against parsed input
                     if (roomReturn == "knifeblock"){
@@ -1645,6 +1685,10 @@ void playRooms(){
 
                     roomReturn = roomMenu(inventory_Map, roomCellar, newline);
                     //returnedNavChoice = foyerNavigate(inventory_Map, roomReturn);
+					
+					//set newline flag to false each iteration
+					//this avoids a true flag staying set
+					newline = false;
 
                     //logic to check against parsed input
                     if (roomReturn == "dresser"){
@@ -1729,6 +1773,10 @@ void playRooms(){
 
                     roomReturn = roomMenu(inventory_Map, roomLibrary, newline);
                     //returnedNavChoice = foyerNavigate(inventory_Map, roomReturn);
+					
+					//set newline flag to false each iteration
+					//this avoids a true flag staying set
+					newline = false;
 
                     //logic to check against parsed input
                     if (roomReturn == "bookshelf"){
@@ -1815,6 +1863,10 @@ void playRooms(){
 
                     roomReturn = roomMenu(inventory_Map, roomSecret, newline);
                     //returnedNavChoice = foyerNavigate(inventory_Map, roomReturn);
+					
+					//set newline flag to false each iteration
+					//this avoids a true flag staying set
+					newline = false;
 
                     //logic to check against parsed input
                     if (roomReturn == "lightswitch"){
@@ -1900,10 +1952,10 @@ void playRooms(){
                     std::string ans;
                     //choice from player
                     int choice = 0;                                 
-		    int start_row = 4;
-		    int start_column = 4;
-		    int i;
-		    int speed;
+					int start_row = 4;
+					int start_column = 4;
+					int i;
+					int speed;
 
                     //intialize objects
                     Chair chair;
@@ -1911,6 +1963,10 @@ void playRooms(){
 		   
                     roomReturn = roomMenu(inventory_Map, roomDeck, newline);
                     //returnedNavChoice = foyerNavigate(inventory_Map, roomReturn);
+					
+					//set newline flag to false each iteration
+					//this avoids a true flag staying set
+					newline = false;
 
                     //logic to check against parsed input
                     if (roomReturn == "chair"){
@@ -1931,7 +1987,7 @@ void playRooms(){
                     else if (roomReturn == "garden"){
                          choice = 6;
                     }
-	            else if (roomReturn == "get in hottub"){
+					else if (roomReturn == "get in hottub"){
                          choice = 7;
                     }
 
@@ -2005,7 +2061,7 @@ void playRooms(){
                          {
                               dry = false;
                          }
-			 newline = true;
+						 newline = true;
                          choice = 0;
                          break;
                     case 3:
@@ -2028,50 +2084,50 @@ void playRooms(){
                          //change choice to reflect our room mapping and update move
                          choice = 3;
                          break;
-		    case 7:
-               std::cout << "\nYou: \"Lovely night for a dip I say ... \"\n\n";
-               
-               //animation of dripping clothes
-               initscr();
-               printSherlock(start_row, start_column);
-               for (i = 0; i < 19; i++)
-               {
-                    printDrops1(start_row, start_column);
-                    refresh();
-                    eraseDrops1(start_row, start_column);
-                    start_row = start_row + 1;
-                    for (speed = 1; speed <= 56000000; speed++);
-               }
-               refresh();
-               for (speed = 1; speed <= 5500000; speed++);
-               start_row = start_row - 19;
-               for (i = 0; i < 19; i++)
-               {
-                    printDrops2(start_row, start_column);
-                    refresh();
-                    eraseDrops2(start_row, start_column);
-                    start_row = start_row + 1;
-                    for (speed = 1; speed <= 56000000; speed++);
-               }
-               refresh();
-               for (speed = 1; speed <= 5500000; speed++);
-               start_row = start_row - 19;
-               for (i = 0; i < 19; i++)
-               {
-                    printDrops1(start_row, start_column);
-                    refresh();
-                    eraseDrops1(start_row, start_column);
-                    start_row = start_row + 1;
-                    for (speed = 1; speed <= 56000000; speed++);
-               }
-               getch();
-               endwin();
-               
-               std::cout << "You are now all wet. Maybe not the greatest idea.\n\n";
-	       dry = false;
-               hotTub.setWet("yes");
-			 choice = 0;
-			 break;
+					case 7:
+					   std::cout << "\nYou: \"Lovely night for a dip I say ... \"\n\n";
+					   
+					   //animation of dripping clothes
+					   initscr();
+					   printSherlock(start_row, start_column);
+					   for (i = 0; i < 19; i++)
+					   {
+							printDrops1(start_row, start_column);
+							refresh();
+							eraseDrops1(start_row, start_column);
+							start_row = start_row + 1;
+							for (speed = 1; speed <= 56000000; speed++);
+					   }
+					   refresh();
+					   for (speed = 1; speed <= 5500000; speed++);
+					   start_row = start_row - 19;
+					   for (i = 0; i < 19; i++)
+					   {
+							printDrops2(start_row, start_column);
+							refresh();
+							eraseDrops2(start_row, start_column);
+							start_row = start_row + 1;
+							for (speed = 1; speed <= 56000000; speed++);
+					   }
+					   refresh();
+					   for (speed = 1; speed <= 5500000; speed++);
+					   start_row = start_row - 19;
+					   for (i = 0; i < 19; i++)
+					   {
+							printDrops1(start_row, start_column);
+							refresh();
+							eraseDrops1(start_row, start_column);
+							start_row = start_row + 1;
+							for (speed = 1; speed <= 56000000; speed++);
+					   }
+					   getch();
+					   endwin();
+					   
+					   std::cout << "You are now all wet. Maybe not the greatest idea.\n\n";
+					   dry = false;
+					   hotTub.setWet("yes");
+					   choice = 0;
+					   break;
                     case 8:
                          std::cout << "\n\nInventory contains: \n\n";
                          int c = 1;
@@ -2109,6 +2165,10 @@ void playRooms(){
 
                     roomReturn = roomMenu(inventory_Map, roomHallway, newline);
                     //returnedNavChoice = foyerNavigate(inventory_Map, roomReturn);
+					
+					//set newline flag to false each iteration
+					//this avoids a true flag staying set
+					newline = false;
 
                     //logic to check against parsed input
                     if (roomReturn == "shelf"){
@@ -2215,6 +2275,10 @@ void playRooms(){
                     roomReturn = roomMenu(inventory_Map, roomBedroom, newline);
                     //returnedNavChoice = foyerNavigate(inventory_Map, roomReturn);
 
+					//set newline flag to false each iteration
+					//this avoids a true flag staying set
+					newline = false;
+					
                     //logic to check against parsed input
                     if (roomReturn == "body"){
                          choice = 1;
@@ -2295,6 +2359,10 @@ void playRooms(){
 
                     roomReturn = roomMenu(inventory_Map, roomBallroom, newline);
                     //returnedNavChoice = foyerNavigate(inventory_Map, roomReturn);
+					
+					//set newline flag to false each iteration
+					//this avoids a true flag staying set
+					newline = false;
 
                     //logic to check against parsed input
                     if (roomReturn == "piano"){
@@ -2312,9 +2380,9 @@ void playRooms(){
                     else if (roomReturn == "sitting room"){
                          choice = 5;
                     }
-		    else if (roomReturn == "play piano") {
-			 choice = 6;
-		    }
+					else if (roomReturn == "play piano") {
+					 choice = 6;
+					}
                     else if (roomReturn == "inventory"){
                          choice = 7;
                     }
@@ -2350,10 +2418,10 @@ void playRooms(){
                          //change choice to reflect our room mapping and update move
                          choice = 5;
                          break;
-		    case 6:
-			 piano.playPiano();
-			 choice = 0;
-		         break;
+					case 6:
+						piano.playPiano();
+						choice = 0;
+						break;
                     case 7:
                          std::cout << "\n\nInventory contains: \n\n";
                          int c = 1;
@@ -2391,6 +2459,10 @@ void playRooms(){
 
                     roomReturn = roomMenu(inventory_Map, roomServants, newline);
                     //returnedNavChoice = foyerNavigate(inventory_Map, roomReturn);
+					
+					//set newline flag to false each iteration
+					//this avoids a true flag staying set
+					newline = false;
 
                     //logic to check against parsed input
                     if (roomReturn == "trash"){
@@ -2414,12 +2486,12 @@ void playRooms(){
                     switch (choice){
                     case 1:
                          trash.checkTrash(inventory_Map);
-			 newline = false;
+						newline = false;
                          choice = 0;
                          break;
                     case 2:
                          mrsWhite.conversate(inventory_Map);
-			 newline = true;
+						 newline = true;
                          choice = 0;
                          break;
 
@@ -2464,6 +2536,10 @@ void playRooms(){
 
                     roomReturn = roomMenu(inventory_Map, roomBalcony, newline);
                     //returnedNavChoice = foyerNavigate(inventory_Map, roomReturn);
+					
+					//set newline flag to false each iteration
+					//this avoids a true flag staying set
+					newline = false;
 
                     //logic to check against parsed input
                     if (roomReturn == "foldingtable"){
@@ -2487,12 +2563,12 @@ void playRooms(){
                     switch (choice){
                     case 1:
                          foldingTable.checkTable(inventory_Map);
-			 newline = false;
+						 newline = false;
                          choice = 0;
                          break;
                     case 2:
                          mrDeeds.conversate(inventory_Map);
-			 newline = true;
+						 newline = true;
                          choice = 0;
                          break;
 
@@ -2537,6 +2613,10 @@ void playRooms(){
 
                     roomReturn = roomMenu(inventory_Map, roomBathroom, newline);
                     //returnedNavChoice = foyerNavigate(inventory_Map, roomReturn);
+					
+					//set newline flag to false each iteration
+					//this avoids a true flag staying set
+					newline = false;
 
                     //logic to check against parsed input
                     if (roomReturn == "bath"){
@@ -2607,6 +2687,10 @@ void playRooms(){
 
                     roomReturn = roomMenu(inventory_Map, roomAttic, newline);
                     //returnedNavChoice = foyerNavigate(inventory_Map, roomReturn);
+					
+					//set newline flag to false each iteration
+					//this avoids a true flag staying set
+					newline = false;
 
                     //logic to check against parsed input
                     if (roomReturn == "nightstand"){
@@ -2633,19 +2717,19 @@ void playRooms(){
                     switch (choice){
                     case 1:
                          nightStand.checkStand(inventory_Map);
-			 newline = false;
+						 newline = false;
                          choice = 0;
                          break;
                     case 2:
                          mrGlass.conversate(inventory_Map);
-			 newline = true;
+						 newline = true;
                          choice = 0;
                          break;
 
                     case 3:
                          std::cout << "\nGoing down into the Hallway.\n";
                          //change choice to reflect our room mapping and update move 
-		         choice = 14;
+						 choice = 14;
                          break;
                     case 4:
                          std::cout << "\nWalking out onto the Balcony.\n";
