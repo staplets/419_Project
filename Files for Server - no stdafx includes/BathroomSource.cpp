@@ -151,6 +151,7 @@ void Bath::checkBath(std::unordered_map<std::string, std::string>& inv){
 
 		 //bathtub animation
 		 initscr();
+		 clear();
 		 printTub(start_row, start_column);
 
 		 for (i = 0; i <= 7; i++)

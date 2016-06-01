@@ -196,6 +196,7 @@ void MrGlass::getMoreInfo(std::unordered_map<std::string, std::string>& inventor
 			   
 			  //chemistry animation
 			  initscr();
+			  clear();
 			  for (i = 0; i <= 13; i++)
 			  {
 				  printVial(start_row, start_column);

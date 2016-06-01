@@ -185,6 +185,7 @@ void FishBowl::fishConvo(std::unordered_map<std::string, std::string>& inventory
 
 	 //fishbowl animation
 	 initscr();
+	 clear();
 	 printFishbowl(start_row, start_column);
 	 start_row = start_row + 6;
 	 start_column = start_column + 14;
@@ -219,11 +220,11 @@ void FishBowl::fishConvo(std::unordered_map<std::string, std::string>& inventory
 	 {
 		 eraseFish(start_row, start_column);
 		 start_column--;
-		 printLeftFish(start_row, start_column);
+		 printRightFish(start_row, start_column);
 		 refresh();
 		 for (speed = 1; speed <= 59000000; speed++);
 	 }
-
+	 
 	 endwin();
 
      //output choices

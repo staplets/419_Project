@@ -120,6 +120,7 @@ void Parrot::convoParrot(std::unordered_map<std::string, std::string>& inv)
 		case 1:
 			//animation of parrot talking
 			initscr();
+			clear();
 			printParrot1(start_row, start_column);
 			for (i = 1; i <= 14; i++)
 			{

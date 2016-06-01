@@ -52,6 +52,7 @@ void Dog::giveTreat(std::unordered_map<std::string, std::string>& inv){
 
 	 //dog tail-wagging animation
 	 initscr();
+	 clear();
 	 printDog(start_row, start_column);
 	 for (i = 0; i <= 7; i++)
 	 {
