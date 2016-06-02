@@ -596,11 +596,11 @@ void playRooms(){
      //std::cout << "inventory is: " << myVector[0] << "\n";
 
      //testing!!
-     inventory_Map.insert({ "statement", "the statement from Mr. Glass" });
-     inventory_Map.insert({ "revolver", "revolver" });
-     inventory_Map.insert({ "key", "key" });
-     inventory_Map.insert({ "bulb", "light bulb" });
-     inventory_Map.insert({ "secret note", "secret note" });
+     //inventory_Map.insert({ "statement", "the statement from Mr. Glass" });
+     //inventory_Map.insert({ "revolver", "revolver" });
+     //inventory_Map.insert({ "key", "key" });
+     //inventory_Map.insert({ "bulb", "light bulb" });
+     //inventory_Map.insert({ "secret note", "secret note" });
      //inventory_Map.insert({ "grape", "Gamay Grape" });
      //inventory_Map.insert({ "old will", "old will" });
      //inventory_Map.insert({ "new will", "new will" });
@@ -2159,6 +2159,8 @@ void playRooms(){
                     //choice from player
                     int choice = 0;
 
+		    int trySpiderRet = 0;
+
                     //intialize objects
                     Shelf shelf;
                     EndTable endTable;
@@ -2203,8 +2205,12 @@ void playRooms(){
                     //take users choice and interact based on that
                     switch (choice){
                     case 1:
-                         shelf.checkShelf(inventory_Map);
-				//		 newline = true;
+                         trySpiderRet = shelf.checkShelf(inventory_Map);
+			
+			 if(trySpiderRet == 1){
+				newline = true;
+			 }
+             		 
                          choice = 0;
                          break;
                     case 2:

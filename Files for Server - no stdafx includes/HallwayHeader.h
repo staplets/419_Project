@@ -102,7 +102,7 @@ public:
      {}
 
      //member function
-     void checkShelf(std::unordered_map<std::string, std::string>& inv);
+     int checkShelf(std::unordered_map<std::string, std::string>& inv);
 
      //Accessor Functions for accessing private variables.
      std::string getDescription() const;

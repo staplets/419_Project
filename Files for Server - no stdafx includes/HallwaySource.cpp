@@ -31,12 +31,14 @@
 #include "animation.hpp"
 
 //member function to get into the trunk of Shelf
-void Shelf::checkShelf(std::unordered_map<std::string, std::string>& inv)
+int Shelf::checkShelf(std::unordered_map<std::string, std::string>& inv)
 {
      int start_row = 4;
      int start_column = 4;
      int i;
      int speed;
+
+     int trySpider = 0;
 
      //user input var
      std::string ans;
@@ -69,6 +71,7 @@ void Shelf::checkShelf(std::unordered_map<std::string, std::string>& inv)
 
                std::cout << "\nWould you like to try and kill the " << getSpider() << ".\n\n";
 
+	       
                //check user input
                do
                {
@@ -128,6 +131,8 @@ void Shelf::checkShelf(std::unordered_map<std::string, std::string>& inv)
                if (ans == "y") {
                     //guess right number to catch spider
                     std::cout << "\nOkay, in order to kill the spider you have to try timing when you want to smack him correctly.\n\n";
+
+		    trySpider = 1;
 
                     //choice from player
                     int choice = 0;
@@ -308,6 +313,8 @@ void Shelf::checkShelf(std::unordered_map<std::string, std::string>& inv)
                     //guess right number to catch spider
                     std::cout << "\nOkay, in order to kill the spider you have to try timing when you want to smack him correctly.\n\n";
 
+		    trySpider = 1;
+
                     //choice from player
                     int choice = 0;
                     int retry = 0;
@@ -356,6 +363,8 @@ void Shelf::checkShelf(std::unordered_map<std::string, std::string>& inv)
           }
 
      }
+
+    return trySpider;
 
 }
 
