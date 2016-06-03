@@ -226,7 +226,7 @@ std::string roomMenu(std::unordered_map<std::string, std::string>& inv, X theRoo
           std::cout << i + 1 << "." << " " << theRoom.getObjects()[i] << "\n";
      }
 
-     std::cout << "\nPlease enter a command from this menu of options:\n\n\"Go to (room name, example: go to dining room)\" or just \"(room name, example: Dining Room)\"\n, \"Inspect (object name)\"\n, \"Talk to (person name, example: Mr.White or Mr White)\"\n, \"Interact with (animal name)\"\n, \"Get in (object name)\"\n, \"Sleep on (furniture name)\"\n, \"Switch on (object name)\"\n, \"Open (object/door name)\"\n, or \"Play (instrument name)\".\n You may additionally check your inventory (\"Check inventory\").\n\n" << std::endl;
+     std::cout << "\nPlease enter a command from this menu of options:\n\n\"Go to (room name, ie: go to dining room)\" or just \"(room name, ie: Dining Room)\",\n \"Inspect (object name, ie: inspect reclining chair)\" or just \"(object name, ie: Reclining Chair)\",\n \"Talk to (person name, ie: Mr.White or Mr White)\",\n \"Interact with (animal name)\",\n \"Get in (object name)\",\n \"Sleep on (furniture name)\",\n \"Switch on (object name)\",\n \"Open (object/door name)\",\n or \"Play (instrument name)\".\n You may additionally check your inventory (\"Check inventory\").\n\n" << std::endl;
  //not using these: \"Give (object name)\", \"Use (object name)\", \"Add (object name) to inventory\", 
      //std::cin.clear();
      //std::cin >> choice;
@@ -246,7 +246,7 @@ std::string roomMenu(std::unordered_map<std::string, std::string>& inv, X theRoo
      std::istream_iterator<std::string> begin(ss);
      std::istream_iterator<std::string> end;
      std::vector<std::string> vstrings(begin, end);
-     std::copy(vstrings.begin(), vstrings.end(), std::ostream_iterator<std::string>(std::cout, "\n"));
+     //std::copy(vstrings.begin(), vstrings.end(), std::ostream_iterator<std::string>(std::cout, "\n"));
 
      if (vstrings.size() == 1) { //move to room (room name is 1 word)
           for (i = 0; i < theRoom.getNumRooms(); i++){
@@ -420,6 +420,28 @@ std::string roomMenu(std::unordered_map<std::string, std::string>& inv, X theRoo
       }
      }
 
+     //inspect 2-word object (if no "inspect" in front of command)
+     if((vstrings[0].compare("night") == 0 && vstrings[1].compare("stand") == 0) || (vstrings[0].compare("Night") == 0 && vstrings[1].compare("Stand") == 0))
+	choice = "nightstand";
+     if((vstrings[0].compare("folding") == 0 && vstrings[1].compare("table") == 0) || (vstrings[0].compare("Folding") == 0 && vstrings[1].compare("Table") == 0))
+	choice = "foldingtable";
+     if((vstrings[0].compare("pool") == 0 && vstrings[1].compare("table") == 0) || (vstrings[0].compare("Pool") == 0 && vstrings[1].compare("Table") == 0))
+	choice = "pooltable";
+     if((vstrings[0].compare("coffee") == 0 && vstrings[1].compare("table") == 0) || (vstrings[0].compare("Coffee") == 0 && vstrings[1].compare("Table") == 0))
+	choice = "coffeetable";
+     if((vstrings[0].compare("hot") == 0 && vstrings[1].compare("tub") == 0) || (vstrings[0].compare("Hot") == 0 && vstrings[1].compare("Tub") == 0))
+	choice = "hottub";
+     if((vstrings[0].compare("dining") == 0 && vstrings[1].compare("table") == 0) || (vstrings[0].compare("Dining") == 0 && vstrings[1].compare("Table") == 0))
+	choice = "diningtable";
+     if((vstrings[0].compare("end") == 0 && vstrings[1].compare("table") == 0) || (vstrings[0].compare("End") == 0 && vstrings[1].compare("Table") == 0))
+	choice = "endtable";
+     if((vstrings[0].compare("knife") == 0 && vstrings[1].compare("block") == 0) || (vstrings[0].compare("Knife") == 0 && vstrings[1].compare("Block") == 0))
+	choice = "knifeblock";
+     if((vstrings[0].compare("reclining") == 0 && vstrings[1].compare("chair") == 0) || (vstrings[0].compare("Reclining") == 0 && vstrings[1].compare("Chair") == 0))
+	choice = "recliningchair";
+     if((vstrings[0].compare("light") == 0 && vstrings[1].compare("switch") == 0) || (vstrings[0].compare("Light") == 0 && vstrings[1].compare("Switch") == 0))
+	choice = "lightswitch";
+
      //check if choice matches piano
      else if (vstrings[0].compare("play") == 0 || vstrings[0].compare("Play") == 0) {
           if (vstrings[1].compare("piano") == 0 || vstrings[1].compare("Piano") == 0)
@@ -447,8 +469,10 @@ std::string roomMenu(std::unordered_map<std::string, std::string>& inv, X theRoo
      }
      //check if choice matches light switch
      else if (vstrings[0].compare("switch") == 0 || vstrings[0].compare("Switch") == 0) {
+	if(vstrings[1].compare("on") == 0 || vstrings[1].compare("On") == 0) {
           if ((vstrings[2].compare("light") == 0 || vstrings[2].compare("Light") == 0) || vstrings[2].compare("lightswitch") == 0 || vstrings[2].compare("Lightswitch") == 0)
                choice = "lightswitch";
+	}
      }
      //check if choice matches animal name
      else if (vstrings[0].compare("interact") == 0 || vstrings[0].compare("Interact") == 0) {
