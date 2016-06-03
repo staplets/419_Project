@@ -61,6 +61,7 @@ void Safe::checkSafe(std::unordered_map<std::string, std::string>& inv)
           //key unlocking animation	
           initscr();
 		  clear();
+		  refresh();
           for (i = 1; i <= 28; i++)
           {
                printKey(start_row, start_column);
@@ -342,6 +343,7 @@ int LightSwitch::checkLightSwitch(std::unordered_map<std::string, std::string>& 
 		 //candle animation
 		 initscr();
 		 clear();
+		 refresh();
 
           for (i = 1; i <= 8; i++)
           {

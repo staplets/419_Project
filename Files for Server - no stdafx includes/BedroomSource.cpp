@@ -120,6 +120,7 @@ void Body::checkBody(std::unordered_map<std::string, std::string>& inv){
 	 //body outline animation
 	 initscr();
 	 clear();
+	 refresh();
 	 printOutline(start_row, start_column);
 	 refresh();
 	 getch();

@@ -53,6 +53,7 @@ void Dog::giveTreat(std::unordered_map<std::string, std::string>& inv){
 	 //dog tail-wagging animation
 	 initscr();
 	 clear();
+	 refresh();
 	 printDog(start_row, start_column);
 	 for (i = 0; i <= 7; i++)
 	 {
@@ -360,6 +361,7 @@ int MsWolf::conversate(std::unordered_map<std::string, std::string>& inventory){
 
 						 //animation for handcuffs
 						 initscr();
+						 refresh();
 						 for (i = 0; i <= 7; i++)
 						 {
 							 printGuilty(start_row, start_column);

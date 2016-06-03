@@ -218,6 +218,7 @@ void Refrigerator::checkFridge(std::unordered_map<std::string, std::string>& inv
 			  //code for pie animation
 			  initscr();
 			  clear();
+			  refresh();
 			  printPie(start_row, start_column);
 			  refresh();
 			  getch();

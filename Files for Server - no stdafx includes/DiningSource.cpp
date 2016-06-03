@@ -121,6 +121,7 @@ void Parrot::convoParrot(std::unordered_map<std::string, std::string>& inv)
 			//animation of parrot talking
 			initscr();
 			clear();
+			refresh();
 			printParrot1(start_row, start_column);
 			for (i = 1; i <= 14; i++)
 			{

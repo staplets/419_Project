@@ -238,6 +238,7 @@ std::string HotTub::checkHotTub(std::unordered_map<std::string, std::string>& in
                //animation of dripping clothes
                initscr();
 			   clear();
+			   refresh();
                printSherlock(start_row, start_column);
                for (i = 0; i < 19; i++)
                {

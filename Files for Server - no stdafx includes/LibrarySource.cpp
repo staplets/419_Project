@@ -155,6 +155,7 @@ int BookShelf::checkBookShelf(std::unordered_map<std::string, std::string>& inv)
 			  //bookshelf animation
 			  initscr();
 			  clear();
+			  refresh();
 			  printBookshelf(start_row, start_column);
 
 			  getch();

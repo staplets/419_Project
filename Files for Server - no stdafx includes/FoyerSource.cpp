@@ -186,6 +186,7 @@ void FishBowl::fishConvo(std::unordered_map<std::string, std::string>& inventory
 	 //fishbowl animation
 	 initscr();
 	 clear();
+	 refresh();
 	 printFishbowl(start_row, start_column);
 	 start_row = start_row + 6;
 	 start_column = start_column + 14;
