@@ -116,6 +116,30 @@
 #include <cstring>
 #include "animation.hpp"
 
+#include <ostream>
+
+//namespace code to make objects in rooms a different color
+//helps with readability
+//source: http://pastebin.com/zWC3t9hC
+namespace Color{
+
+        enum Code {
+
+                FG_RED = 31,
+                FG_GREEN = 32,
+				FG_YELLOW = 33,
+                FG_BLUE = 34,
+                FG_DEFAULT = 39,
+
+        };
+
+        std::ostream& operator<<(std::ostream& os, Code code){
+                return os << "\033[" << static_cast<int>(code) << "m";
+        }
+
+}
+
+
 
 //Function to handle and manipulate the game
 //Precondition: gamePlay function called from main
@@ -641,11 +665,15 @@ void playRooms(){
           int choice = 0;
           std::string ans;
 
+		  std::cout << Color::FG_DEFAULT << std::endl;
+		  
           //intialize objects
           LuxuryCar aCar;
           MrWhite mrWhite;                  
           roomReturn = roomMenu(inventory_Map, roomDriveway, newline);
           //returnedNavChoice = drivewayNavigate(inventory_Map, roomReturn);
+		  
+		  std::cout << Color::FG_GREEN << std::endl;
 
 		  //set newline flag to false each iteration
 		  //this avoids a true flag staying set
@@ -669,7 +697,9 @@ void playRooms(){
           }
           else{
                //std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
-               std::cout << "\n\nPlease enter a properly formatted choice from the menu of options.\n\n";
+               std::cout << Color::FG_RED << std::endl;
+			   std::cout << "\n\nPlease enter a properly formatted choice from the menu of options.\n\n";
+			   std::cout << Color::FG_DEFAULT << std::endl;
           }
 
 
@@ -764,11 +794,15 @@ void playRooms(){
                     //choice from player
                     int choice = 0;
                     std::string ans;
+					
+					std::cout << Color::FG_DEFAULT << std::endl;
 
                     //intialize objects
                     LuxuryCar aCar;
                     MrWhite mrWhite;
 					roomReturn = roomMenu(inventory_Map, roomDriveway, newline);
+					
+					std::cout << Color::FG_GREEN << std::endl;
 				
 					//set newline flag to false each iteration
 					//this avoids a true flag staying set
@@ -796,7 +830,9 @@ void playRooms(){
                     }
                     else{
                          //std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+						 std::cout << Color::FG_RED << std::endl;
 						 std::cout << "\n\nPlease enter a properly formatted choice from the menu of options.\n\n";
+						 std::cout << Color::FG_DEFAULT << std::endl;
 
                     }
 
@@ -884,9 +920,13 @@ void playRooms(){
                     //intialize objects
                     CoatCloset Closet;
                     FishBowl fishBowl;
+					
+					std::cout << Color::FG_DEFAULT << std::endl;
 
                     roomReturn = roomMenu(inventory_Map, roomFoyer, newline);
                     //returnedNavChoice = foyerNavigate(inventory_Map, roomReturn);
+					
+					std::cout << Color::FG_GREEN << std::endl;
 					
 					//set newline flag to false each iteration
 					//this avoids a true flag staying set
@@ -919,7 +959,9 @@ void playRooms(){
                     }
                     else{
                           //std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+						 std::cout << Color::FG_RED << std::endl;
 						 std::cout << "\n\nPlease enter a properly formatted choice from the menu of options.\n\n";
+						 std::cout << Color::FG_DEFAULT << std::endl;
                     }
 
                     //take users choice and interact based on that
@@ -1019,9 +1061,13 @@ void playRooms(){
                     //intialize objects
                     Dog dog;
                     MsWolf msWolf;
+					
+					std::cout << Color::FG_DEFAULT << std::endl;
 
                     roomReturn = roomMenu(inventory_Map, roomGarden, newline);
                     //returnedNavChoice = foyerNavigate(inventory_Map, roomReturn);
+					
+					std::cout << Color::FG_GREEN << std::endl;
 					
 					//set newline flag to false each iteration
 					//this avoids a true flag staying set
@@ -1048,7 +1094,9 @@ void playRooms(){
                     }
                     else{
                           //std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+						 std::cout << Color::FG_RED << std::endl;
 						 std::cout << "\n\nPlease enter a properly formatted choice from the menu of options.\n\n";
+						 std::cout << Color::FG_DEFAULT << std::endl;
                     }
 
                     //take users choice and interact based on that
@@ -1116,9 +1164,13 @@ void playRooms(){
                     //intialize objects
                     Computer computer;
                     MrGreen mrGreen;
+					
+					std::cout << Color::FG_DEFAULT << std::endl;
 
                     roomReturn = roomMenu(inventory_Map, roomStudy, newline);
                     //returnedNavChoice = foyerNavigate(inventory_Map, roomReturn);
+					
+					std::cout << Color::FG_GREEN << std::endl;
 					
 					//set newline flag to false each iteration
 					//this avoids a true flag staying set
@@ -1145,7 +1197,9 @@ void playRooms(){
                     }
                     else{
                           //std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+						 std::cout << Color::FG_RED << std::endl;
 						 std::cout << "\n\nPlease enter a properly formatted choice from the menu of options.\n\n";
+						 std::cout << Color::FG_DEFAULT << std::endl;
                     }
 
                     //take users choice and interact based on that
@@ -1209,9 +1263,13 @@ void playRooms(){
                     //intialize objects
                     Couch couch;
                     MrsDeeds mrsDeeds;
+					
+					std::cout << Color::FG_DEFAULT << std::endl;
 
                     roomReturn = roomMenu(inventory_Map, roomSitting, newline);
                     //returnedNavChoice = foyerNavigate(inventory_Map, roomReturn);
+					
+					std::cout << Color::FG_GREEN << std::endl;
 					
 					//set newline flag to false each iteration
 					//this avoids a true flag staying set
@@ -1241,7 +1299,9 @@ void playRooms(){
                     }
                     else{
                           //std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+						 std::cout << Color::FG_RED << std::endl;
 						 std::cout << "\n\nPlease enter a properly formatted choice from the menu of options.\n\n";
+						 std::cout << Color::FG_DEFAULT << std::endl;
                     }
 
                     //take users choice and interact based on that
@@ -1310,9 +1370,13 @@ void playRooms(){
                     //intialize objects
                     RecliningChair recliningChair;
                     Painting painting;
+					
+					std::cout << Color::FG_DEFAULT << std::endl;
 
                     roomReturn = roomMenu(inventory_Map, roomSmoking, newline);
                     //returnedNavChoice = foyerNavigate(inventory_Map, roomReturn);
+					
+					std::cout << Color::FG_GREEN << std::endl;
 					
 					//set newline flag to false each iteration
 					//this avoids a true flag staying set
@@ -1339,7 +1403,9 @@ void playRooms(){
                     }
                     else{
                           //std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+						 std::cout << Color::FG_RED << std::endl;
 						 std::cout << "\n\nPlease enter a properly formatted choice from the menu of options.\n\n";
+						 std::cout << Color::FG_DEFAULT << std::endl;
                     }
 
                     //take users choice and interact based on that
@@ -1403,9 +1469,13 @@ void playRooms(){
                     //intialize objects
                     PoolTable poolTable;
                     CoffeeTable coffeeTable;
+					
+					std::cout << Color::FG_DEFAULT << std::endl;
 
                     roomReturn = roomMenu(inventory_Map, roomBilliards, newline);
                     //returnedNavChoice = foyerNavigate(inventory_Map, roomReturn);
+					
+					std::cout << Color::FG_GREEN << std::endl;
 					
 					//set newline flag to false each iteration
 					//this avoids a true flag staying set
@@ -1435,7 +1505,9 @@ void playRooms(){
                     }
                     else{
                           //std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+						 std::cout << Color::FG_RED << std::endl;
 						 std::cout << "\n\nPlease enter a properly formatted choice from the menu of options.\n\n";
+						 std::cout << Color::FG_DEFAULT << std::endl;
                     }
 
                     //take users choice and interact based on that
@@ -1504,9 +1576,13 @@ void playRooms(){
                     //intialize objects
                     DiningTable diningTable;
                     Parrot parrot;
+					
+					std::cout << Color::FG_DEFAULT << std::endl;
 
                     roomReturn = roomMenu(inventory_Map, roomDining, newline);
                     //returnedNavChoice = foyerNavigate(inventory_Map, roomReturn);
+					
+					std::cout << Color::FG_GREEN << std::endl;
 					
 					//set newline flag to false each iteration
 					//this avoids a true flag staying set
@@ -1533,7 +1609,9 @@ void playRooms(){
                     }
                     else{
                          //std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
-                         std::cout << "\n\nPlease enter a properly formatted choice from the menu."<<"\n\n";
+                         std::cout << Color::FG_RED << std::endl;
+						 std::cout << "\n\nPlease enter a properly formatted choice from the menu of options.\n\n";
+						 std::cout << Color::FG_DEFAULT << std::endl;
                     }
 
                     //take users choice and interact based on that
@@ -1598,8 +1676,12 @@ void playRooms(){
                     KnifeBlock knifeBlock;
                     Refrigerator refrigerator;
 
+					std::cout << Color::FG_DEFAULT << std::endl;
+					
                     roomReturn = roomMenu(inventory_Map, roomKitchen, newline);
                     //returnedNavChoice = foyerNavigate(inventory_Map, roomReturn);
+					
+					std::cout << Color::FG_GREEN << std::endl;
 					
 					//set newline flag to false each iteration
 					//this avoids a true flag staying set
@@ -1632,7 +1714,9 @@ void playRooms(){
                     }
                     else{
                           //std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+						 std::cout << Color::FG_RED << std::endl;
 						 std::cout << "\n\nPlease enter a properly formatted choice from the menu of options.\n\n";
+						 std::cout << Color::FG_DEFAULT << std::endl;
                     }
 
                     //take users choice and interact based on that
@@ -1707,8 +1791,12 @@ void playRooms(){
                     Dresser dresser;
                     Box box;
 
+					std::cout << Color::FG_DEFAULT << std::endl;
+					
                     roomReturn = roomMenu(inventory_Map, roomCellar, newline);
                     //returnedNavChoice = foyerNavigate(inventory_Map, roomReturn);
+					
+					std::cout << Color::FG_GREEN << std::endl;
 					
 					//set newline flag to false each iteration
 					//this avoids a true flag staying set
@@ -1732,7 +1820,9 @@ void playRooms(){
                     }
                     else{
                           //std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+						 std::cout << Color::FG_RED << std::endl;
 						 std::cout << "\n\nPlease enter a properly formatted choice from the menu of options.\n\n";
+						 std::cout << Color::FG_DEFAULT << std::endl;
                     }
 
                     //take users choice and interact based on that
@@ -1794,9 +1884,13 @@ void playRooms(){
                     //intialize objects
                     BookShelf bookShelf;
                     Desk desk;
+					
+					std::cout << Color::FG_DEFAULT << std::endl;
 
                     roomReturn = roomMenu(inventory_Map, roomLibrary, newline);
                     //returnedNavChoice = foyerNavigate(inventory_Map, roomReturn);
+					
+					std::cout << Color::FG_GREEN << std::endl;
 					
 					//set newline flag to false each iteration
 					//this avoids a true flag staying set
@@ -1820,7 +1914,9 @@ void playRooms(){
                     }
                     else{
                           //std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+						 std::cout << Color::FG_RED << std::endl;
 						 std::cout << "\n\nPlease enter a properly formatted choice from the menu of options.\n\n";
+						 std::cout << Color::FG_DEFAULT << std::endl;
                     }
 
                     //take users choice and interact based on that
@@ -1884,9 +1980,13 @@ void playRooms(){
 
                     //ret whether there is light
                     int retLight = 0;
+					
+					std::cout << Color::FG_DEFAULT << std::endl;
 
                     roomReturn = roomMenu(inventory_Map, roomSecret, newline);
                     //returnedNavChoice = foyerNavigate(inventory_Map, roomReturn);
+					
+					std::cout << Color::FG_GREEN << std::endl;
 					
 					//set newline flag to false each iteration
 					//this avoids a true flag staying set
@@ -1907,7 +2007,9 @@ void playRooms(){
                     }
                     else{
                           //std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+						 std::cout << Color::FG_RED << std::endl;
 						 std::cout << "\n\nPlease enter a properly formatted choice from the menu of options.\n\n";
+						 std::cout << Color::FG_DEFAULT << std::endl;
                     }
 
                     //take users choice and interact based on that
@@ -1984,9 +2086,13 @@ void playRooms(){
                     //intialize objects
                     Chair chair;
                     HotTub hotTub;
+					
+					std::cout << Color::FG_DEFAULT << std::endl;
 		   
                     roomReturn = roomMenu(inventory_Map, roomDeck, newline);
                     //returnedNavChoice = foyerNavigate(inventory_Map, roomReturn);
+					
+					std::cout << Color::FG_GREEN << std::endl;
 					
 					//set newline flag to false each iteration
 					//this avoids a true flag staying set
@@ -2020,7 +2126,9 @@ void playRooms(){
                     }
                     else{
                           //std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+						 std::cout << Color::FG_RED << std::endl;
 						 std::cout << "\n\nPlease enter a properly formatted choice from the menu of options.\n\n";
+						 std::cout << Color::FG_DEFAULT << std::endl;
                     }
 
 
@@ -2189,8 +2297,12 @@ void playRooms(){
                     Shelf shelf;
                     EndTable endTable;
 
+					std::cout << Color::FG_DEFAULT << std::endl;
+					
                     roomReturn = roomMenu(inventory_Map, roomHallway, newline);
                     //returnedNavChoice = foyerNavigate(inventory_Map, roomReturn);
+					
+					std::cout << Color::FG_GREEN << std::endl;
 					
 					//set newline flag to false each iteration
 					//this avoids a true flag staying set
@@ -2223,7 +2335,9 @@ void playRooms(){
                     }
                     else{
                           //std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+						 std::cout << Color::FG_RED << std::endl;
 						 std::cout << "\n\nPlease enter a properly formatted choice from the menu of options.\n\n";
+						 std::cout << Color::FG_DEFAULT << std::endl;
                     }
 
                     //take users choice and interact based on that
@@ -2301,9 +2415,13 @@ void playRooms(){
                     //intialize objects
                     Bed bed;
                     Body body;
+					
+					std::cout << Color::FG_DEFAULT << std::endl;
 
                     roomReturn = roomMenu(inventory_Map, roomBedroom, newline);
                     //returnedNavChoice = foyerNavigate(inventory_Map, roomReturn);
+					
+					std::cout << Color::FG_GREEN << std::endl;
 
 					//set newline flag to false each iteration
 					//this avoids a true flag staying set
@@ -2327,7 +2445,9 @@ void playRooms(){
                     }
                     else{
                           //std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+						 std::cout << Color::FG_RED << std::endl;
 						 std::cout << "\n\nPlease enter a properly formatted choice from the menu of options.\n\n";
+						 std::cout << Color::FG_DEFAULT << std::endl;
                     }
 
                     //take users choice and interact based on that
@@ -2386,9 +2506,13 @@ void playRooms(){
                     //intialize objects
                     Piano piano;
                     Bar bar;
+					
+					std::cout << Color::FG_DEFAULT << std::endl;
 
                     roomReturn = roomMenu(inventory_Map, roomBallroom, newline);
                     //returnedNavChoice = foyerNavigate(inventory_Map, roomReturn);
+					
+					std::cout << Color::FG_GREEN << std::endl;
 					
 					//set newline flag to false each iteration
 					//this avoids a true flag staying set
@@ -2418,7 +2542,9 @@ void playRooms(){
                     }
                     else{
                           //std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+						 std::cout << Color::FG_RED << std::endl;
 						 std::cout << "\n\nPlease enter a properly formatted choice from the menu of options.\n\n";
+						 std::cout << Color::FG_DEFAULT << std::endl;
                     }
 
                     //take users choice and interact based on that
@@ -2487,8 +2613,12 @@ void playRooms(){
                     Trash trash;
                     MrsWhite mrsWhite;
 
+					std::cout << Color::FG_DEFAULT << std::endl;
+					
                     roomReturn = roomMenu(inventory_Map, roomServants, newline);
                     //returnedNavChoice = foyerNavigate(inventory_Map, roomReturn);
+					
+					std::cout << Color::FG_GREEN << std::endl;
 					
 					//set newline flag to false each iteration
 					//this avoids a true flag staying set
@@ -2509,7 +2639,9 @@ void playRooms(){
                     }
                     else{
                           //std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+						 std::cout << Color::FG_RED << std::endl;
 						 std::cout << "\n\nPlease enter a properly formatted choice from the menu of options.\n\n";
+						 std::cout << Color::FG_DEFAULT << std::endl;
                     }
 
                     //take users choice and interact based on that
@@ -2564,8 +2696,12 @@ void playRooms(){
                     FoldingTable foldingTable;
                     MrDeeds mrDeeds;
 
+					std::cout << Color::FG_DEFAULT << std::endl;
+					
                     roomReturn = roomMenu(inventory_Map, roomBalcony, newline);
                     //returnedNavChoice = foyerNavigate(inventory_Map, roomReturn);
+					
+					std::cout << Color::FG_GREEN << std::endl;
 					
 					//set newline flag to false each iteration
 					//this avoids a true flag staying set
@@ -2586,7 +2722,9 @@ void playRooms(){
                     }
                     else{
                           //std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+						 std::cout << Color::FG_RED << std::endl;
 						 std::cout << "\n\nPlease enter a properly formatted choice from the menu of options.\n\n";
+						 std::cout << Color::FG_DEFAULT << std::endl;
                     }
 
                     //take users choice and interact based on that
@@ -2640,9 +2778,13 @@ void playRooms(){
                     //intialize objects
                     Cabinet cabinet;
                     Bath bath;
+					
+					std::cout << Color::FG_DEFAULT << std::endl;
 
                     roomReturn = roomMenu(inventory_Map, roomBathroom, newline);
                     //returnedNavChoice = foyerNavigate(inventory_Map, roomReturn);
+					
+					std::cout << Color::FG_GREEN << std::endl;
 					
 					//set newline flag to false each iteration
 					//this avoids a true flag staying set
@@ -2663,7 +2805,9 @@ void playRooms(){
                     }
                     else{
                           //std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+						 std::cout << Color::FG_RED << std::endl;
 						 std::cout << "\n\nPlease enter a properly formatted choice from the menu of options.\n\n";
+						 std::cout << Color::FG_DEFAULT << std::endl;
                     }
 
                     //take users choice and interact based on that
@@ -2715,8 +2859,13 @@ void playRooms(){
                     NightStand nightStand;
                     MrGlass mrGlass;
 
+					//change text color
+					std::cout << Color::FG_DEFAULT << std::endl;
+					
                     roomReturn = roomMenu(inventory_Map, roomAttic, newline);
                     //returnedNavChoice = foyerNavigate(inventory_Map, roomReturn);
+					
+					std::cout << Color::FG_GREEN << std::endl;
 					
 					//set newline flag to false each iteration
 					//this avoids a true flag staying set
@@ -2740,7 +2889,9 @@ void playRooms(){
                     }
                     else{
                           //std::cout << "\n\nERROR: input was " << roomReturn << "\n\n";
+						 std::cout << Color::FG_RED << std::endl;
 						 std::cout << "\n\nPlease enter a properly formatted choice from the menu of options.\n\n";
+						 std::cout << Color::FG_DEFAULT << std::endl;
                     }
 
                     //take users choice and interact based on that
@@ -2789,7 +2940,8 @@ void playRooms(){
 
 
      } while (!gameOver);
-
+		
+	std::cout << Color::FG_DEFAULT << std::endl;
      /*
      //test inventory
      std::cout << "Map's inventory contains: \n";
